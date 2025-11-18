@@ -73,4 +73,95 @@ export class SightDetailPage implements OnInit {
     return this.store.select(createSelector(selectSightsFeature, state => state.sights.find(item => item.id === id)));
   }
 
+  /**
+   * 時間文字列をフォーマットする（例：830 → 8:30）
+   */
+  public formatTime(timeStr: string): string {
+    if (!timeStr || timeStr.trim() === '') {
+      return '';
+    }
+    const trimmed = timeStr.trim();
+    if (trimmed.length === 4) {
+      const hours = trimmed.substring(0, 2);
+      const minutes = trimmed.substring(2, 4);
+      return `${parseInt(hours, 10)}:${minutes}`;
+    }
+    return trimmed;
+  }
+
+  /**
+   * 改行文字を適切に処理する（\\nを実際の改行に変換）
+   */
+  public formatText(text: string): string {
+    if (!text) {
+      return '';
+    }
+    return text.replace(/\\n/g, '\n');
+  }
+
+  /**
+   * 写真のパスを取得する
+   */
+  public getPhotoPath(photo: string): string | null {
+    if (!photo || photo.trim() === '') {
+      return null;
+    }
+    // 写真パスが相対パスの場合、assetsディレクトリからのパスとして扱う
+    return `/assets/${photo}`;
+  }
+
+  /**
+   * 文字列が空でないかチェック
+   */
+  private hasValue(value: string | null | undefined): boolean {
+    return value !== null && value !== undefined && value.trim() !== '';
+  }
+
+  /**
+   * アクセス情報があるかチェック
+   */
+  public hasAccessInfo(): boolean {
+    if (!this.sight) return false;
+    return this.hasValue(this.sight.postal_code) || 
+           this.hasValue(this.sight.address) || 
+           this.hasValue(this.sight.tel) || 
+           this.hasValue(this.sight.fax);
+  }
+
+  /**
+   * 営業情報があるかチェック
+   */
+  public hasBusinessInfo(): boolean {
+    if (!this.sight) return false;
+    return this.hasValue(this.sight.business_hours) || 
+           this.hasValue(this.sight.opening_time) || 
+           this.hasValue(this.sight.closing_time) || 
+           this.hasValue(this.sight.duration) || 
+           this.hasValue(this.sight.holiday);
+  }
+
+  /**
+   * 料金情報があるかチェック
+   */
+  public hasPriceInfo(): boolean {
+    if (!this.sight) return false;
+    return this.hasValue(this.sight.price);
+  }
+
+  /**
+   * アクセシビリティ情報があるかチェック
+   */
+  public hasAccessibilityInfo(): boolean {
+    if (!this.sight) return false;
+    return this.hasValue(this.sight.accessibility);
+  }
+
+  /**
+   * 備考があるかチェック
+   */
+  public hasNotes(): boolean {
+    if (!this.sight) return false;
+    return this.hasValue(this.sight.notes);
+  }
+
 }

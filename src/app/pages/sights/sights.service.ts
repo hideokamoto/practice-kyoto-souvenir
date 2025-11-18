@@ -10,14 +10,28 @@ export type Sight = {
   name: string;
   // eslint-disable-next-line @typescript-eslint/naming-convention
   name_kana: string;
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  alt_name: string;
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  alt_name_kana: string;
   description: string;
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  postal_code: string;
   address: string;
+  tel: string;
+  fax: string;
+  accessibility: string;
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  opening_time: string;
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  closing_time: string;
+  duration: string;
+  holiday: string;
   // eslint-disable-next-line @typescript-eslint/naming-convention
   business_hours: string;
-  holiday: string;
-  notes: string;
   price: string;
-  tel: string;
+  notes: string;
+  photo: string;
 };
 
 @Injectable({
