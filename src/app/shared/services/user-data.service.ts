@@ -34,6 +34,7 @@ export class UserDataService {
   private readonly FAVORITES_KEY = 'kyoto-favorites';
   private readonly VISITS_KEY = 'kyoto-visits';
   private readonly PLANS_KEY = 'kyoto-plans';
+  private readonly ONBOARDING_KEY = 'kyoto-onboarding-completed';
 
   constructor() {}
 
@@ -231,10 +232,25 @@ export class UserDataService {
     };
   }
 
+  // ==================== オンボーディング関連 ====================
+
+  isOnboardingCompleted(): boolean {
+    return localStorage.getItem(this.ONBOARDING_KEY) === 'true';
+  }
+
+  completeOnboarding(): void {
+    localStorage.setItem(this.ONBOARDING_KEY, 'true');
+  }
+
+  resetOnboarding(): void {
+    localStorage.removeItem(this.ONBOARDING_KEY);
+  }
+
   // データのクリア（デバッグ用）
   clearAllData(): void {
     localStorage.removeItem(this.FAVORITES_KEY);
     localStorage.removeItem(this.VISITS_KEY);
     localStorage.removeItem(this.PLANS_KEY);
+    localStorage.removeItem(this.ONBOARDING_KEY);
   }
 }

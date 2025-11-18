@@ -15,10 +15,18 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
-  <div *ngIf="!loading && favoriteItems.length === 0" class="ion-padding ion-text-center">
+  <div *ngIf="!loading && favoriteItems.length === 0" class="ion-padding ion-text-center empty-state">
     <ion-icon name="heart-outline" size="large" color="medium"></ion-icon>
-    <p>お気に入りはまだありません</p>
-    <p><small>観光地やお土産の詳細ページでハートアイコンをタップしてお気に入りに追加できます</small></p>
+    <h2>お気に入りはまだありません</h2>
+    <p>観光地やお土産の詳細ページでハートアイコンをタップしてお気に入りに追加できます</p>
+    <ion-button expand="block" fill="outline" routerLink="/sights" style="margin-top: 20px;">
+      <ion-icon slot="start" name="location"></ion-icon>
+      観光地を探す
+    </ion-button>
+    <ion-button expand="block" fill="outline" routerLink="/souvenir" style="margin-top: 10px;">
+      <ion-icon slot="start" name="gift"></ion-icon>
+      お土産を探す
+    </ion-button>
   </div>
 
   <ion-list *ngIf="!loading && favoriteItems.length > 0">

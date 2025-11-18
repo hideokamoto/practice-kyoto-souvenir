@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
+import { AlertController, ToastController } from '@ionic/angular';
+import { Store } from '@ngrx/store';
 import { UserDataService, Plan } from '../../shared/services/user-data.service';
+import { selectSightsFeature } from '../sights/store';
+import { Sight, SightsService } from '../sights/sights.service';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-plans',
@@ -10,15 +14,38 @@ import { UserDataService, Plan } from '../../shared/services/user-data.service';
 })
 export class PlansPage implements OnInit {
   public plans: Plan[] = [];
+  private allSights: Sight[] = [];
 
   constructor(
     private readonly userDataService: UserDataService,
     private readonly router: Router,
-    private readonly alertController: AlertController
+    private readonly alertController: AlertController,
+    private readonly toastController: ToastController,
+    private readonly store: Store,
+    private readonly sightsService: SightsService
   ) {}
 
   ngOnInit() {
     this.loadPlans();
+    this.loadSightsData();
+  }
+
+  loadSightsData() {
+    // データが既に読み込まれているか確認
+    this.store.select(selectSightsFeature).pipe(take(1)).subscribe(sightState => {
+      const hasData = sightState && sightState.sights && sightState.sights.length > 0;
+      if (!hasData) {
+        // データを読み込む
+        this.sightsService.fetchSights(false).subscribe();
+      }
+    });
+
+    // ストアからデータを取得
+    this.store.select(selectSightsFeature).subscribe(sightState => {
+      if (sightState && sightState.sights && sightState.sights.length > 0) {
+        this.allSights = sightState.sights as Sight[];
+      }
+    });
   }
 
   ionViewWillEnter() {
@@ -100,5 +127,99 @@ export class PlansPage implements OnInit {
   formatDate(dateString: string): string {
     const date = new Date(dateString);
     return date.toLocaleDateString('ja-JP');
+  }
+
+  async createRandomPlan() {
+    if (this.allSights.length === 0) {
+      const toast = await this.toastController.create({
+        message: 'データを読み込み中です。しばらくお待ちください。',
+        duration: 2000,
+        color: 'warning'
+      });
+      await toast.present();
+      return;
+    }
+
+    // 未訪問のスポットを優先的に選択
+    const visits = this.userDataService.getVisits();
+    const visitedSightIds = visits
+      .filter(v => v.itemType === 'sight')
+      .map(v => v.itemId);
+
+    const unvisitedSights = this.allSights.filter(
+      sight => !visitedSightIds.includes(sight.id)
+    );
+
+    // 未訪問スポットがあればそこから、なければ全スポットから選択
+    const sightsPool = unvisitedSights.length > 0 ? unvisitedSights : this.allSights;
+    const count = Math.min(5, sightsPool.length);
+
+    // ランダムに指定数を選択
+    const selectedSights = this.getRandomItems(sightsPool, count);
+
+    if (selectedSights.length === 0) {
+      const toast = await this.toastController.create({
+        message: 'スポットの選択に失敗しました',
+        duration: 2000,
+        color: 'danger'
+      });
+      await toast.present();
+      return;
+    }
+
+    // プラン名を入力
+    const alert = await this.alertController.create({
+      header: 'ランダムプラン作成',
+      message: `${selectedSights.length}件のスポットを選択しました。プラン名を入力してください。`,
+      inputs: [
+        {
+          name: 'planName',
+          type: 'text',
+          placeholder: `ランダム${selectedSights.length}件プラン`,
+          value: `ランダム${selectedSights.length}件プラン（${new Date().toLocaleDateString()}）`
+        }
+      ],
+      buttons: [
+        {
+          text: 'キャンセル',
+          role: 'cancel'
+        },
+        {
+          text: '作成',
+          handler: async (data) => {
+            const planName = data.planName && data.planName.trim()
+              ? data.planName.trim()
+              : `ランダム${selectedSights.length}件プラン`;
+
+            // プランを作成
+            const plan = this.userDataService.createPlan(planName);
+
+            // スポットを追加
+            selectedSights.forEach(sight => {
+              this.userDataService.addItemToPlan(plan.id, sight.id, 'sight');
+            });
+
+            // 成功メッセージ
+            const toast = await this.toastController.create({
+              message: `「${planName}」を作成しました！`,
+              duration: 2000,
+              color: 'success'
+            });
+            await toast.present();
+
+            // プラン詳細ページへ遷移
+            this.loadPlans();
+            this.router.navigate(['/plans', plan.id]);
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  private getRandomItems<T>(array: T[], count: number): T[] {
+    const shuffled = [...array].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, count);
   }
 }

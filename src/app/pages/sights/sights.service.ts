@@ -30,24 +30,34 @@ export class SightsService {
     private readonly loadingController: LoadingController
   ) { }
 
-  public fetchSights() {
-    const loadingObservar = from(
-      this.loadingController.create()
-        .then(d => d.present())
-    );
+  public fetchSights(showLoading = true) {
     const dataLoaderObservar = from(
       import('./dataset/kyoto-sights.json')
     );
-    return loadingObservar.pipe(
-      concatMap(() => dataLoaderObservar.pipe(
-          map(result => Object.values(result)),
-          tap(sights => {
-            this.store.dispatch(setSights(sights));
-          }),
-          finalize(() => {
-            this.loadingController.dismiss();
-          })
-        ))
-    );
+    
+    if (showLoading) {
+      const loadingObservar = from(
+        this.loadingController.create()
+          .then(d => d.present())
+      );
+      return loadingObservar.pipe(
+        concatMap(() => dataLoaderObservar.pipe(
+            map(result => Object.values(result)),
+            tap(sights => {
+              this.store.dispatch(setSights(sights));
+            }),
+            finalize(() => {
+              this.loadingController.dismiss();
+            })
+          ))
+      );
+    } else {
+      return dataLoaderObservar.pipe(
+        map(result => Object.values(result)),
+        tap(sights => {
+          this.store.dispatch(setSights(sights));
+        })
+      );
+    }
   }
 }

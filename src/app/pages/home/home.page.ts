@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AlertController, ToastController } from '@ionic/angular';
 import { UserDataService } from '../../shared/services/user-data.service';
 import { selectSouvenirFeature } from '../souvenir/store';
 import { selectSightsFeature } from '../sights/store';
-import { Souvenir } from '../souvenir/souvenir.service';
-import { Sight } from '../sights/sights.service';
+import { Souvenir, SouvenirService } from '../souvenir/souvenir.service';
+import { Sight, SightsService } from '../sights/sights.service';
+import { Subscription } from 'rxjs';
+import { filter, take } from 'rxjs/operators';
 
 interface RandomSuggestion {
   id: string;
@@ -20,28 +22,39 @@ interface RandomSuggestion {
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage implements OnInit {
+export class HomePage implements OnInit, OnDestroy {
   public randomSuggestion: RandomSuggestion | null = null;
   public stats = {
     totalFavorites: 0,
     totalVisits: 0,
     totalPlans: 0
   };
+  public isLoading = false;
+  public hasError = false;
+  public errorMessage = '';
 
   private allSights: Sight[] = [];
   private allSouvenirs: Souvenir[] = [];
+  private subscriptions = new Subscription();
 
   constructor(
     private readonly userDataService: UserDataService,
     private readonly store: Store,
     private readonly router: Router,
     private readonly alertController: AlertController,
-    private readonly toastController: ToastController
+    private readonly toastController: ToastController,
+    private readonly sightsService: SightsService,
+    private readonly souvenirService: SouvenirService
   ) {}
 
   ngOnInit() {
     this.loadStats();
     this.loadData();
+    this.checkOnboarding();
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.unsubscribe();
   }
 
   ionViewWillEnter() {
@@ -54,14 +67,80 @@ export class HomePage implements OnInit {
   }
 
   loadData() {
-    this.store.select(selectSightsFeature).subscribe(sightState => {
-      this.allSights = sightState.sights as Sight[];
-      this.getRandomSuggestion();
+    // 既にデータが読み込まれているかチェック
+    const sightsState$ = this.store.select(selectSightsFeature);
+    const souvenirState$ = this.store.select(selectSouvenirFeature);
+
+    // データが既に読み込まれているか確認
+    sightsState$.pipe(take(1)).subscribe(sightState => {
+      const hasData = sightState && sightState.sights && sightState.sights.length > 0;
+      if (!hasData) {
+        this.isLoading = true;
+        this.hasError = false;
+        this.errorMessage = '';
+
+        // データを読み込む（ローディングダイアログは表示しない）
+        const sightsSubscription = this.sightsService.fetchSights(false).subscribe({
+          next: () => {
+            // データ読み込み成功
+          },
+          error: (error) => {
+            console.error('観光地データの読み込みに失敗しました:', error);
+            this.hasError = true;
+            this.errorMessage = '観光地データの読み込みに失敗しました';
+            this.isLoading = false;
+          }
+        });
+
+        this.subscriptions.add(sightsSubscription);
+      }
     });
 
-    this.store.select(selectSouvenirFeature).subscribe(souvenirState => {
+    souvenirState$.pipe(take(1)).subscribe(souvenirState => {
+      const hasData = souvenirState && souvenirState.souvenires && souvenirState.souvenires.length > 0;
+      if (!hasData) {
+        const souvenirSubscription = this.souvenirService.fetchSouvenires(false).subscribe({
+          next: () => {
+            // データ読み込み成功
+          },
+          error: (error) => {
+            console.error('お土産データの読み込みに失敗しました:', error);
+            if (!this.hasError) {
+              this.hasError = true;
+              this.errorMessage = 'お土産データの読み込みに失敗しました';
+            }
+            this.isLoading = false;
+          }
+        });
+
+        this.subscriptions.add(souvenirSubscription);
+      }
+    });
+
+    // データが読み込まれるまで待つ
+    const sightsSubscription = sightsState$.pipe(
+      filter(state => state && state.sights && state.sights.length > 0),
+      take(1)
+    ).subscribe(sightState => {
+      this.allSights = sightState.sights as Sight[];
+      this.getRandomSuggestion();
+      this.isLoading = false;
+      this.hasError = false;
+    });
+
+    const souvenirSubscription = souvenirState$.pipe(
+      filter(state => state && state.souvenires && state.souvenires.length > 0),
+      take(1)
+    ).subscribe(souvenirState => {
       this.allSouvenirs = souvenirState.souvenires as Souvenir[];
     });
+
+    this.subscriptions.add(sightsSubscription);
+    this.subscriptions.add(souvenirSubscription);
+  }
+
+  retryLoad() {
+    this.loadData();
   }
 
   getRandomSuggestion() {
@@ -192,5 +271,43 @@ export class HomePage implements OnInit {
   private getRandomItems<T>(array: T[], count: number): T[] {
     const shuffled = [...array].sort(() => 0.5 - Math.random());
     return shuffled.slice(0, count);
+  }
+
+  async checkOnboarding() {
+    if (!this.userDataService.isOnboardingCompleted()) {
+      // データが読み込まれるまで少し待つ
+      setTimeout(async () => {
+        await this.showOnboardingModal();
+      }, 1000);
+    }
+  }
+
+  async showOnboardingModal() {
+    const modal = await this.alertController.create({
+      header: '京都再発見アプリへようこそ！',
+      message: `
+        <div style="text-align: left; padding: 10px 0;">
+          <p><strong>このアプリの使い方</strong></p>
+          <ul style="margin: 10px 0; padding-left: 20px;">
+            <li><strong>ホーム</strong>：今週末のおすすめスポットが表示されます</li>
+            <li><strong>観光地・お土産</strong>：京都の名所やお土産を探せます</li>
+            <li><strong>お気に入り</strong>：気になる場所を保存できます</li>
+            <li><strong>プラン</strong>：複数のスポットを組み合わせてプランを作成できます</li>
+          </ul>
+          <p style="margin-top: 15px;">「今週末のおすすめ」から、新しい京都の魅力を発見してみましょう！</p>
+        </div>
+      `,
+      buttons: [
+        {
+          text: '始める',
+          handler: () => {
+            this.userDataService.completeOnboarding();
+          }
+        }
+      ],
+      cssClass: 'onboarding-modal'
+    });
+
+    await modal.present();
   }
 }

@@ -20,10 +20,18 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
-  <div *ngIf="plans.length === 0" class="ion-padding ion-text-center">
+  <div *ngIf="plans.length === 0" class="ion-padding ion-text-center empty-state">
     <ion-icon name="map-outline" size="large" color="medium"></ion-icon>
-    <p>プランはまだありません</p>
-    <p><small>右上の「+」ボタンから新しいプランを作成できます</small></p>
+    <h2>プランはまだありません</h2>
+    <p>複数のスポットを組み合わせて、あなただけの京都プランを作成しましょう</p>
+    <ion-button expand="block" fill="solid" (click)="createPlan()" style="margin-top: 20px;">
+      <ion-icon slot="start" name="add"></ion-icon>
+      最初のプランを作成
+    </ion-button>
+    <ion-button expand="block" fill="outline" (click)="createRandomPlan()" style="margin-top: 10px;">
+      <ion-icon slot="start" name="shuffle"></ion-icon>
+      ランダムプランを作成
+    </ion-button>
   </div>
 
   <ion-list *ngIf="plans.length > 0">

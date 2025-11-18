@@ -20,7 +20,7 @@ const routes: Routes = [
     path: '',
     children: [{
         path: 'home',
-        title: 'このアプリについて',
+        title: 'ホーム',
         loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule),
       },
       {
