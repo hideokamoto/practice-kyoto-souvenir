@@ -75,8 +75,7 @@ assets/
 
      ```bash
      cd assets/souvenires
-     node csv2json.js > ../../src/app/pages/souvenir/dataset/kyoto-souvenir.json
-     ```
+     node csv2json.js
 
    **注意**: 出力先のパスは相対パスで指定してください。上記のコマンドは`assets`フォルダから実行することを想定しています。
 
