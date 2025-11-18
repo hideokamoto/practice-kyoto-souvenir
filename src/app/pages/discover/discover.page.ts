@@ -35,7 +35,7 @@ export class DiscoverPage implements OnInit, OnDestroy {
   public sights$ = this.store.select(createSelector(selectSightsFeature, state => state.items));
   public souvenires$ = this.store.select(createSelector(selectSouvenirFeature, state => state.items));
   
-  public randomSuggestion: RandomSuggestion | null = null;
+  public randomSuggestions: RandomSuggestion[] = [];
   
   private allSights: Sight[] = [];
   private allSouvenirs: Souvenir[] = [];
@@ -115,7 +115,7 @@ export class DiscoverPage implements OnInit, OnDestroy {
       take(1)
     ).subscribe(sightState => {
       this.allSights = sightState.sights as Sight[];
-      this.getRandomSuggestion();
+      this.getRandomSuggestions();
       this.isLoading = false;
       this.hasError = false;
     });
@@ -131,7 +131,7 @@ export class DiscoverPage implements OnInit, OnDestroy {
     this.subscriptions.add(souvenirSubscription);
   }
 
-  getRandomSuggestion() {
+  getRandomSuggestions() {
     const visits = this.userDataService.getVisits();
     const favorites = this.userDataService.getFavorites();
     
@@ -163,32 +163,43 @@ export class DiscoverPage implements OnInit, OnDestroy {
       sightsPool = this.allSights;
     }
 
-    if (sightsPool.length > 0) {
+    // 3つの提案を取得（重複なし）
+    const selectedSights: Sight[] = [];
+    const usedIds = new Set<string>();
+    const maxCount = Math.min(3, sightsPool.length);
+
+    while (selectedSights.length < maxCount && usedIds.size < sightsPool.length) {
       const randomIndex = Math.floor(Math.random() * sightsPool.length);
-      const randomSight = sightsPool[randomIndex];
-      
+      const sight = sightsPool[randomIndex];
+      if (!usedIds.has(sight.id)) {
+        usedIds.add(sight.id);
+        selectedSights.push(sight);
+      }
+    }
+
+    this.randomSuggestions = selectedSights.map(sight => {
       // 選ばれた理由を判定
       let reason: 'favorite' | 'unvisited' | 'random' = 'random';
-      if (favoriteUnvisitedSights.length > 0 && favoriteUnvisitedSights.includes(randomSight)) {
+      if (favoriteUnvisitedSights.length > 0 && favoriteUnvisitedSights.includes(sight)) {
         reason = 'favorite';
-      } else if (unvisitedSights.length > 0 && unvisitedSights.includes(randomSight)) {
+      } else if (unvisitedSights.length > 0 && unvisitedSights.includes(sight)) {
         reason = 'unvisited';
       }
-      
-      this.randomSuggestion = {
-        id: randomSight.id,
-        name: randomSight.name,
-        description: randomSight.description,
-        type: 'sight',
-        photo: randomSight.photo,
-        address: randomSight.address,
-        price: randomSight.price,
-        name_kana: randomSight.name_kana,
+
+      return {
+        id: sight.id,
+        name: sight.name,
+        description: sight.description,
+        type: 'sight' as const,
+        photo: sight.photo,
+        address: sight.address,
+        price: sight.price,
+        name_kana: sight.name_kana,
         reason: reason,
-        isFavorite: this.userDataService.isFavorite(randomSight.id, 'sight'),
-        isVisited: this.userDataService.isVisited(randomSight.id, 'sight')
+        isFavorite: this.userDataService.isFavorite(sight.id, 'sight'),
+        isVisited: this.userDataService.isVisited(sight.id, 'sight')
       };
-    }
+    });
   }
 
   getRouterLink(suggestion: RandomSuggestion): string {
@@ -225,7 +236,7 @@ export class DiscoverPage implements OnInit, OnDestroy {
   }
 
   refresh(ev: any) {
-    this.getRandomSuggestion();
+    this.getRandomSuggestions();
     setTimeout(() => {
       ev.detail.complete();
     }, 500);

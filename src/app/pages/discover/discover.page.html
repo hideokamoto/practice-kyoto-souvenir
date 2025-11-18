@@ -46,69 +46,71 @@
     </ion-card-content>
   </ion-card>
 
-  <!-- メインアクション: 今日の提案 -->
+  <!-- メインアクション: 今日の提案（3択） -->
   <div class="main-action-container" *ngIf="!isLoading && !hasError">
-    <ion-card *ngIf="randomSuggestion" class="recommendation-card">
-      <!-- 画像 -->
-      <div *ngIf="getPhotoPath(randomSuggestion.photo)" class="recommendation-image">
-        <img [src]="getPhotoPath(randomSuggestion.photo)" [alt]="randomSuggestion.name" />
-      </div>
-      
-      <ion-card-header>
-        <div class="recommendation-badge">
-          <ion-icon name="compass" color="primary"></ion-icon>
-          <span>今日の提案</span>
-        </div>
-        <ion-card-title>{{ randomSuggestion.name }}</ion-card-title>
-        <p *ngIf="randomSuggestion.name_kana" class="name-kana">{{ randomSuggestion.name_kana }}</p>
-        
-        <!-- 選ばれた理由 -->
-        <div class="recommendation-reason">
-          <ion-icon name="information-circle-outline" color="primary"></ion-icon>
-          <span>{{ getRecommendationReason(randomSuggestion) }}</span>
-        </div>
-      </ion-card-header>
-      
-      <ion-card-content>
-        <p class="description">{{ randomSuggestion.description.substring(0, 150) }}{{ randomSuggestion.description.length > 150 ? '...' : '' }}</p>
-        
-        <!-- 追加情報 -->
-        <div class="recommendation-info" *ngIf="randomSuggestion.address || randomSuggestion.price">
-          <div *ngIf="randomSuggestion.address" class="info-item">
-            <ion-icon name="location-outline"></ion-icon>
-            <span>{{ randomSuggestion.address }}</span>
+    <div class="recommendations-header">
+      <h3>今日の提案</h3>
+      <p>3つの選択肢から選んでください</p>
+    </div>
+
+    <div class="recommendations-grid" *ngIf="randomSuggestions.length > 0">
+      <ion-card *ngFor="let suggestion of randomSuggestions" class="recommendation-card">
+        <ion-card-header>
+          <ion-card-title>{{ suggestion.name }}</ion-card-title>
+          <p *ngIf="suggestion.name_kana" class="name-kana">{{ suggestion.name_kana }}</p>
+          
+          <!-- 選ばれた理由 -->
+          <div class="recommendation-reason">
+            <ion-icon name="information-circle-outline" color="primary"></ion-icon>
+            <span>{{ getRecommendationReason(suggestion) }}</span>
           </div>
-          <div *ngIf="randomSuggestion.price" class="info-item">
-            <ion-icon name="cash-outline"></ion-icon>
-            <span>{{ randomSuggestion.price.substring(0, 50) }}{{ randomSuggestion.price.length > 50 ? '...' : '' }}</span>
+        </ion-card-header>
+        
+        <ion-card-content>
+          <p class="description">{{ suggestion.description.substring(0, 120) }}{{ suggestion.description.length > 120 ? '...' : '' }}</p>
+          
+          <!-- 追加情報 -->
+          <div class="recommendation-info" *ngIf="suggestion.address || suggestion.price">
+            <div *ngIf="suggestion.address" class="info-item">
+              <ion-icon name="location-outline"></ion-icon>
+              <span>{{ suggestion.address }}</span>
+            </div>
+            <div *ngIf="suggestion.price" class="info-item">
+              <ion-icon name="cash-outline"></ion-icon>
+              <span>{{ suggestion.price.substring(0, 40) }}{{ suggestion.price.length > 40 ? '...' : '' }}</span>
+            </div>
           </div>
-        </div>
-        
-        <!-- ステータス表示 -->
-        <div class="status-badges" *ngIf="randomSuggestion.isFavorite || randomSuggestion.isVisited">
-          <ion-badge *ngIf="randomSuggestion.isFavorite" color="danger">
-            <ion-icon name="heart"></ion-icon>
-            お気に入り
-          </ion-badge>
-          <ion-badge *ngIf="randomSuggestion.isVisited" color="success">
-            <ion-icon name="checkmark-circle"></ion-icon>
-            訪問済み
-          </ion-badge>
-        </div>
-        
-        <ion-button expand="block" class="primary-button" [routerLink]="getRouterLink(randomSuggestion)">
-          <ion-icon name="arrow-forward" slot="end"></ion-icon>
-          この場所に行く
-        </ion-button>
-        <ion-button expand="block" fill="outline" size="small" class="secondary-button" (click)="getRandomSuggestion()">
-          <ion-icon name="shuffle" slot="start"></ion-icon>
-          別の場所を提案
-        </ion-button>
-      </ion-card-content>
-    </ion-card>
+          
+          <!-- ステータス表示 -->
+          <div class="status-badges" *ngIf="suggestion.isFavorite || suggestion.isVisited">
+            <ion-badge *ngIf="suggestion.isFavorite" color="danger">
+              <ion-icon name="heart"></ion-icon>
+              お気に入り
+            </ion-badge>
+            <ion-badge *ngIf="suggestion.isVisited" color="success">
+              <ion-icon name="checkmark-circle"></ion-icon>
+              訪問済み
+            </ion-badge>
+          </div>
+          
+          <ion-button expand="block" class="primary-button" [routerLink]="getRouterLink(suggestion)">
+            <ion-icon name="arrow-forward" slot="end"></ion-icon>
+            この場所に行く
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+    <!-- 別の提案ボタン -->
+    <div class="refresh-actions" *ngIf="randomSuggestions.length > 0">
+      <ion-button expand="block" fill="outline" class="refresh-button" (click)="getRandomSuggestions()">
+        <ion-icon name="shuffle" slot="start"></ion-icon>
+        別の場所を提案
+      </ion-button>
+    </div>
 
     <!-- データがない場合の代替案 -->
-    <ion-card *ngIf="!randomSuggestion" class="empty-suggestion">
+    <ion-card *ngIf="randomSuggestions.length === 0" class="empty-suggestion">
       <ion-card-content>
         <ion-icon name="compass-outline" size="large"></ion-icon>
         <h3>観光地を探してみましょう</h3>
