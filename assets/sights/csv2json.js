@@ -49,3 +49,7 @@ csv({
     fs.writeFileSync(outputPath, JSON.stringify(dataset, null, 2));
     console.log(`✅ Generated ${outputPath}`);
 })
+.catch((error) => {
+    console.error('❌ Error processing CSV file:', error.message);
+    process.exit(1);
+})
