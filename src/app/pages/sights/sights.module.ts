@@ -22,6 +22,7 @@ import { SharedComponentsModule } from 'src/app/shared/components/components.mod
     SightsPageRoutingModule,
     StoreModule.forFeature(sightsFeatureKey, sightsReducer)
   ],
-  declarations: [SightsPage, ListSightItemComponent,SearchSightsComponent]
+  declarations: [SightsPage, ListSightItemComponent,SearchSightsComponent],
+  exports: [ListSightItemComponent, SearchSightsComponent]
 })
 export class SightsPageModule {}

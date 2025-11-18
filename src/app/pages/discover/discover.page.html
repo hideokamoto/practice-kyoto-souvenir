@@ -67,7 +67,25 @@
         </ion-card-header>
         
         <ion-card-content>
-          <p class="description">{{ suggestion.description.substring(0, 120) }}{{ suggestion.description.length > 120 ? '...' : '' }}</p>
+          <!-- 説明文（スマホでは折りたたみ可能） -->
+          <div class="description-container mobile-only">
+            <p 
+              class="description" 
+              [class.expanded]="isDescriptionExpanded(suggestion.id)"
+              (click)="toggleDescription(suggestion.id)">
+              {{ getDescriptionText(suggestion, isDescriptionExpanded(suggestion.id)) }}
+            </p>
+            <button 
+              *ngIf="suggestion.description.length > 60" 
+              class="toggle-description"
+              (click)="toggleDescription(suggestion.id)">
+              <ion-icon [name]="isDescriptionExpanded(suggestion.id) ? 'chevron-up' : 'chevron-down'"></ion-icon>
+              <span>{{ isDescriptionExpanded(suggestion.id) ? '閉じる' : '続きを読む' }}</span>
+            </button>
+          </div>
+          
+          <!-- デスクトップ用の説明文（常に表示） -->
+          <p class="description desktop-only">{{ suggestion.description.substring(0, 120) }}{{ suggestion.description.length > 120 ? '...' : '' }}</p>
           
           <!-- 追加情報 -->
           <div class="recommendation-info" *ngIf="suggestion.address || suggestion.price">
@@ -129,10 +147,10 @@
       <!-- セグメント切り替え -->
       <div class="ion-padding segment-container">
         <ion-segment [value]="contentType" (ionChange)="onSegmentChange($event)" class="content-segment">
-          <ion-segment-button value="sights" [selected]="contentType === 'sights'">
+          <ion-segment-button value="sights">
             <ion-label>観光地</ion-label>
           </ion-segment-button>
-          <ion-segment-button value="souvenirs" [selected]="contentType === 'souvenirs'">
+          <ion-segment-button value="souvenirs">
             <ion-label>お土産</ion-label>
           </ion-segment-button>
         </ion-segment>

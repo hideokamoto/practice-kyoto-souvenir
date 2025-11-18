@@ -21,6 +21,7 @@ import { SharedComponentsModule } from 'src/app/shared/components/components.mod
     SouvenirPageRoutingModule,
     StoreModule.forFeature(souvenirFeatureKey, souvenirReducer),
   ],
-  declarations: [SouvenirPage, ListSouveniresComponent, SearchSouveniresComponent]
+  declarations: [SouvenirPage, ListSouveniresComponent, SearchSouveniresComponent],
+  exports: [ListSouveniresComponent, SearchSouveniresComponent]
 })
 export class SouvenirPageModule {}

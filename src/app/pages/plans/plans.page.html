@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>マイプラン</ion-title>
+    <ion-title>プラン</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="createPlan()">
         <ion-icon slot="icon-only" name="add"></ion-icon>
@@ -12,7 +12,7 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">マイプラン</ion-title>
+      <ion-title size="large">プラン</ion-title>
     </ion-toolbar>
   </ion-header>
 
@@ -24,14 +24,16 @@
     <ion-icon name="map-outline" size="large" color="medium"></ion-icon>
     <h2>プランはまだありません</h2>
     <p>複数のスポットを組み合わせて、あなただけの京都プランを作成しましょう</p>
-    <ion-button expand="block" fill="solid" (click)="createPlan()" style="margin-top: 20px;">
-      <ion-icon slot="start" name="add"></ion-icon>
-      最初のプランを作成
-    </ion-button>
-    <ion-button expand="block" fill="outline" (click)="createRandomPlan()" style="margin-top: 10px;">
-      <ion-icon slot="start" name="shuffle"></ion-icon>
-      ランダムプランを作成
-    </ion-button>
+    <div class="empty-state-actions">
+      <ion-button expand="block" fill="solid" (click)="createPlan()">
+        <ion-icon slot="start" name="add"></ion-icon>
+        プランを作成
+      </ion-button>
+      <ion-button expand="block" fill="outline" (click)="createRandomPlan()">
+        <ion-icon slot="start" name="shuffle"></ion-icon>
+        ランダムプランを作成
+      </ion-button>
+    </div>
   </div>
 
   <ion-list *ngIf="plans.length > 0">

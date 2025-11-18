@@ -1,4 +1,28 @@
-ion-icon[size="large"] {
-  font-size: 64px;
-  margin: 20px 0;
+.empty-state {
+  padding: 60px 20px;
+  
+  ion-icon {
+    margin-bottom: 24px;
+  }
+  
+  h2 {
+    margin-top: 16px;
+    font-weight: 600;
+    font-size: 1.5rem;
+  }
+  
+  p {
+    color: var(--ion-color-medium);
+    margin-top: 12px;
+    margin-bottom: 32px;
+    line-height: 1.6;
+  }
+  
+  .empty-state-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 400px;
+    margin: 0 auto;
+  }
 }

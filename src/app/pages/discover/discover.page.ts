@@ -36,6 +36,7 @@ export class DiscoverPage implements OnInit, OnDestroy {
   public souvenires$ = this.store.select(createSelector(selectSouvenirFeature, state => state.items));
   
   public randomSuggestions: RandomSuggestion[] = [];
+  public expandedDescriptions: { [key: string]: boolean } = {}; // デフォルトは折りたたみ
   
   private allSights: Sight[] = [];
   private allSouvenirs: Souvenir[] = [];
@@ -132,6 +133,11 @@ export class DiscoverPage implements OnInit, OnDestroy {
   }
 
   getRandomSuggestions() {
+    if (this.allSights.length === 0) {
+      console.warn('観光地データがまだ読み込まれていません');
+      return;
+    }
+
     const visits = this.userDataService.getVisits();
     const favorites = this.userDataService.getFavorites();
     
@@ -153,7 +159,7 @@ export class DiscoverPage implements OnInit, OnDestroy {
       sight => !visitedSightIds.includes(sight.id)
     );
 
-    // 優先順位3: 全観光地
+    // 優先順位に従ってプールを決定
     let sightsPool: Sight[] = [];
     if (favoriteUnvisitedSights.length > 0) {
       sightsPool = favoriteUnvisitedSights;
@@ -163,19 +169,19 @@ export class DiscoverPage implements OnInit, OnDestroy {
       sightsPool = this.allSights;
     }
 
-    // 3つの提案を取得（重複なし）
-    const selectedSights: Sight[] = [];
-    const usedIds = new Set<string>();
-    const maxCount = Math.min(3, sightsPool.length);
-
-    while (selectedSights.length < maxCount && usedIds.size < sightsPool.length) {
-      const randomIndex = Math.floor(Math.random() * sightsPool.length);
-      const sight = sightsPool[randomIndex];
-      if (!usedIds.has(sight.id)) {
-        usedIds.add(sight.id);
-        selectedSights.push(sight);
-      }
+    // プールが3つ未満の場合は、全観光地から補完
+    if (sightsPool.length < 3) {
+      const additionalSights = this.allSights.filter(
+        sight => !sightsPool.some(poolSight => poolSight.id === sight.id)
+      );
+      const shuffledAdditional = [...additionalSights].sort(() => Math.random() - 0.5);
+      sightsPool = [...sightsPool, ...shuffledAdditional.slice(0, 3 - sightsPool.length)];
     }
+
+    // 3つの提案を取得（重複なし）
+    // 配列をシャッフルしてから最初の3つを取得
+    const shuffled = [...sightsPool].sort(() => Math.random() - 0.5);
+    const selectedSights = shuffled.slice(0, Math.min(3, shuffled.length));
 
     this.randomSuggestions = selectedSights.map(sight => {
       // 選ばれた理由を判定
@@ -223,6 +229,22 @@ export class DiscoverPage implements OnInit, OnDestroy {
     } else {
       return '京都の観光地を発見しましょう';
     }
+  }
+
+  toggleDescription(suggestionId: string) {
+    this.expandedDescriptions[suggestionId] = !this.expandedDescriptions[suggestionId];
+  }
+
+  isDescriptionExpanded(suggestionId: string): boolean {
+    return this.expandedDescriptions[suggestionId] || false;
+  }
+
+  getDescriptionText(suggestion: RandomSuggestion, isExpanded: boolean): string {
+    if (isExpanded) {
+      return suggestion.description;
+    }
+    // スマホでは60文字に短縮
+    return suggestion.description.substring(0, 60) + (suggestion.description.length > 60 ? '...' : '');
   }
 
   onSegmentChange(event: any) {

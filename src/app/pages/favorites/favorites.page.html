@@ -19,14 +19,12 @@
     <ion-icon name="heart-outline" size="large" color="medium"></ion-icon>
     <h2>お気に入りはまだありません</h2>
     <p>観光地やお土産の詳細ページでハートアイコンをタップしてお気に入りに追加できます</p>
-    <ion-button expand="block" fill="outline" routerLink="/sights" style="margin-top: 20px;">
-      <ion-icon slot="start" name="location"></ion-icon>
-      観光地を探す
-    </ion-button>
-    <ion-button expand="block" fill="outline" routerLink="/souvenir" style="margin-top: 10px;">
-      <ion-icon slot="start" name="gift"></ion-icon>
-      お土産を探す
-    </ion-button>
+    <div class="empty-state-actions">
+      <ion-button expand="block" fill="solid" routerLink="/discover">
+        <ion-icon slot="start" name="compass"></ion-icon>
+        発見ページへ
+      </ion-button>
+    </div>
   </div>
 
   <ion-list *ngIf="!loading && favoriteItems.length > 0">

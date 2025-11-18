@@ -1,4 +1,4 @@
-        <ion-item [detail]="true" *ngIf="sight" [routerLink]="sight.id">
+        <ion-item [detail]="true" *ngIf="sight" [routerLink]="'/sights/' + sight.id">
           <ion-label class='ion-text-wrap'>
             <h2>
               {{sight.name}}

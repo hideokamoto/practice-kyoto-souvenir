@@ -11,7 +11,7 @@ export class AppTitleStrategy extends TitleStrategy {
 
   override updateTitle(snapshot: RouterStateSnapshot) {
     const title = this.buildTitle(snapshot);
-    this.titleService.setTitle(title ? `${title} | My App` : 'My App');
+    this.titleService.setTitle(title ? `${title} | 京都再発見` : '京都再発見');
   }
 }
 
@@ -19,21 +19,9 @@ const routes: Routes = [
   {
     path: '',
     children: [{
-        path: 'home',
-        title: 'ホーム',
-        loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule),
-      },
-      {
-        path: 'souvenir',
-        loadChildren: () => import('./pages/souvenir/souvenir.module').then( m => m.SouvenirPageModule)
-      },{
-        path: '',
-        redirectTo: 'home',
-        pathMatch: 'full',
-      },
-      {
-        path: 'sights',
-        loadChildren: () => import('./pages/sights/sights.module').then( m => m.SightsPageModule)
+        path: 'discover',
+        title: '発見',
+        loadChildren: () => import('./pages/discover/discover.module').then( m => m.DiscoverPageModule),
       },
       {
         path: 'favorites',
@@ -42,8 +30,21 @@ const routes: Routes = [
       },
       {
         path: 'plans',
-        title: 'マイプラン',
+        title: 'プラン',
         loadChildren: () => import('./pages/plans/plans.module').then( m => m.PlansPageModule)
+      },
+      {
+        path: 'sights',
+        loadChildren: () => import('./pages/sights/sights.module').then( m => m.SightsPageModule)
+      },
+      {
+        path: 'souvenir',
+        loadChildren: () => import('./pages/souvenir/souvenir.module').then( m => m.SouvenirPageModule)
+      },
+      {
+        path: '',
+        redirectTo: 'discover',
+        pathMatch: 'full',
       }
     ]
   }
