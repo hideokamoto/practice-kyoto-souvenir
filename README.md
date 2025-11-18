@@ -69,8 +69,7 @@ assets/
 
      ```bash
      cd assets/sights
-     node csv2json.js > ../../src/app/pages/sights/dataset/kyoto-sights.json
-     ```
+     node csv2json.js
 
    - お土産データを変換する場合：
 
