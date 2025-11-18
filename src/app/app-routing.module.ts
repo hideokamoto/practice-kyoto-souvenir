@@ -34,6 +34,16 @@ const routes: Routes = [
       {
         path: 'sights',
         loadChildren: () => import('./pages/sights/sights.module').then( m => m.SightsPageModule)
+      },
+      {
+        path: 'favorites',
+        title: 'お気に入り',
+        loadChildren: () => import('./pages/favorites/favorites.module').then( m => m.FavoritesPageModule)
+      },
+      {
+        path: 'plans',
+        title: 'マイプラン',
+        loadChildren: () => import('./pages/plans/plans.module').then( m => m.PlansPageModule)
       }
     ]
   }

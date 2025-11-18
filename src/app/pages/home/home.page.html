@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      このアプリについて
+      京都再発見
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -10,19 +10,71 @@
   <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-  
+
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">
-        このアプリについて
+        京都再発見
       </ion-title>
     </ion-toolbar>
   </ion-header>
+
   <div class='ion-padding'>
-    <p>このアプリは、Ionic Angularの練習目的で構築したものです。</p>
+    <h2>地元だからこそ、もっと楽しもう</h2>
+    <p>「いつでも行けるから」と思って、実は行ったことがない観光地はありませんか？</p>
+    <p>このアプリは、京都に住むあなたのための観光コンパニオンです。</p>
+  </div>
+
+  <ion-card *ngIf="randomSuggestion">
+    <ion-card-header>
+      <ion-card-subtitle>今週末のおすすめ</ion-card-subtitle>
+      <ion-card-title>{{ randomSuggestion.name }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ randomSuggestion.description.substring(0, 100) }}{{ randomSuggestion.description.length > 100 ? '...' : '' }}</p>
+      <ion-button expand="block" [routerLink]="getRouterLink(randomSuggestion)">
+        詳しく見る
+      </ion-button>
+      <ion-button expand="block" fill="outline" (click)="getRandomSuggestion()">
+        別の場所を提案
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <div class='ion-padding'>
+    <h3>統計情報</h3>
+    <ion-list>
+      <ion-item>
+        <ion-icon name="checkmark-circle" slot="start" color="success"></ion-icon>
+        <ion-label>
+          <h2>訪問済み</h2>
+          <p>{{ stats.totalVisits }}件</p>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="heart" slot="start" color="danger"></ion-icon>
+        <ion-label>
+          <h2>お気に入り</h2>
+          <p>{{ stats.totalFavorites }}件</p>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="map" slot="start" color="primary"></ion-icon>
+        <ion-label>
+          <h2>作成したプラン</h2>
+          <p>{{ stats.totalPlans }}件</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div class='ion-padding'>
+    <h3>このアプリについて</h3>
     <p>
-      コンテンツは、京都市が<a href='https://creativecommons.org/licenses/by/4.0/deed.ja'>CC-BY 4.0 (link is external)</a>
-      で公開中の<a href='https://data.city.kyoto.lg.jp/node/92390'>オープンデータ</a>を加工して利用しています。
+      <small>
+        コンテンツは、京都市が<a href='https://creativecommons.org/licenses/by/4.0/deed.ja'>CC-BY 4.0</a>
+        で公開中の<a href='https://data.city.kyoto.lg.jp/node/92390'>オープンデータ</a>を加工して利用しています。
+      </small>
     </p>
   </div>
 </ion-content>

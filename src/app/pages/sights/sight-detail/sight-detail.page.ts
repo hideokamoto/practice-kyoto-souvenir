@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { createSelector, Store } from '@ngrx/store';
 import { Sight, SightsService } from '../sights.service';
 import { selectSightsFeature } from '../store';
+import { UserDataService } from '../../../shared/services/user-data.service';
 
 @Component({
   selector: 'app-sight-detail',
@@ -12,11 +13,15 @@ import { selectSightsFeature } from '../store';
 })
 export class SightDetailPage implements OnInit {
   public sight: Sight | null;
+  public isFavorite = false;
+  public isVisited = false;
+
   constructor(
     private readonly activatedRoute: ActivatedRoute,
     private readonly store: Store,
     private readonly service: SightsService,
-    private readonly title: Title
+    private readonly title: Title,
+    private readonly userDataService: UserDataService
   ) { }
   public ngOnInit() {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
@@ -24,14 +29,37 @@ export class SightDetailPage implements OnInit {
       .subscribe(result => {
         if (result) {
           this.sight = result;
+          this.updateUserDataStatus();
         } else {
           this.service.fetchSights()
             .subscribe(() => {
-              this.loadSouvenir(id).subscribe(item => this.sight = item);
+              this.loadSouvenir(id).subscribe(item => {
+                this.sight = item;
+                this.updateUserDataStatus();
+              });
             });
         }
         this.title.setTitle(this.sight.name);
       });
+  }
+
+  public toggleFavorite(): void {
+    if (this.sight) {
+      this.isFavorite = this.userDataService.toggleFavorite(this.sight.id, 'sight');
+    }
+  }
+
+  public toggleVisited(): void {
+    if (this.sight) {
+      this.isVisited = this.userDataService.toggleVisit(this.sight.id, 'sight');
+    }
+  }
+
+  private updateUserDataStatus(): void {
+    if (this.sight) {
+      this.isFavorite = this.userDataService.isFavorite(this.sight.id, 'sight');
+      this.isVisited = this.userDataService.isVisited(this.sight.id, 'sight');
+    }
   }
 
 
