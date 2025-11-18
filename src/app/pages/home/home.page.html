@@ -42,6 +42,36 @@
   </ion-card>
 
   <div class='ion-padding'>
+    <h3>ランダムプラン作成</h3>
+    <p>行き先が決まらない？ランダムにプランを作成しましょう！</p>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6">
+          <ion-button expand="block" (click)="createRandomPlan(3)">
+            <ion-icon slot="start" name="shuffle"></ion-icon>
+            3件プラン
+          </ion-button>
+        </ion-col>
+        <ion-col size="6">
+          <ion-button expand="block" (click)="createRandomPlan(5)">
+            <ion-icon slot="start" name="shuffle"></ion-icon>
+            5件プラン
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <ion-button expand="block" fill="outline" (click)="createRandomPlan(10)">
+            <ion-icon slot="start" name="shuffle"></ion-icon>
+            10件プラン（満喫コース）
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <p><small>未訪問の観光地を優先的に選択します</small></p>
+  </div>
+
+  <div class='ion-padding'>
     <h3>統計情報</h3>
     <ion-list>
       <ion-item>
