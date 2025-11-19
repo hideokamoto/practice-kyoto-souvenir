@@ -6,7 +6,7 @@ import { selectSightsFeature } from '../sights/store';
 import { SouvenirService } from '../souvenir/souvenir.service';
 import { SightsService } from '../sights/sights.service';
 import { Subscription, combineLatest, EMPTY, of, forkJoin } from 'rxjs';
-import { filter, take, switchMap, catchError } from 'rxjs/operators';
+import { filter, take, switchMap, catchError, tap, finalize } from 'rxjs/operators';
 import { FavoriteItem, mapFavoritesToFavoriteItems } from './favorites.utils';
 
 @Component({
@@ -27,11 +27,7 @@ export class FavoritesPage implements OnDestroy {
   private subscriptions = new Subscription();
   private loadFavoritesSubscription?: Subscription;
 
-
   ngOnDestroy() {
-    if (this.loadFavoritesSubscription) {
-      this.loadFavoritesSubscription.unsubscribe();
-    }
     this.subscriptions.unsubscribe();
   }
 
@@ -40,7 +36,10 @@ export class FavoritesPage implements OnDestroy {
   }
 
   loadData() {
-    // combineLatestを使用して、両方のストアの状態を一度に監視
+    this.loading = true;
+    this.favoriteItems = [];
+
+    // ストアの状態を一度取得し、必要に応じてfetchを実行
     const loadSubscription = combineLatest([
       this.store.select(selectSightsFeature),
       this.store.select(selectSouvenirFeature)
@@ -50,8 +49,9 @@ export class FavoritesPage implements OnDestroy {
         const needsSights = !sightState?.sights || sightState.sights.length === 0;
         const needsSouvenirs = !souvenirState?.souvenirs || souvenirState.souvenirs.length === 0;
 
-        // 必要なデータがない場合のみfetchを実行
-        const fetchObservables = [];
+        // 必要なデータがない場合のみfetchを実行（並行実行）
+        const fetchObservables: Array<ReturnType<typeof this.sightsService.fetchSights | typeof this.souvenirService.fetchSouvenirs>> = [];
+        
         if (needsSights) {
           fetchObservables.push(
             this.sightsService.fetchSights(false).pipe(
@@ -62,6 +62,7 @@ export class FavoritesPage implements OnDestroy {
             )
           );
         }
+        
         if (needsSouvenirs) {
           fetchObservables.push(
             this.souvenirService.fetchSouvenirs(false).pipe(
@@ -73,20 +74,46 @@ export class FavoritesPage implements OnDestroy {
           );
         }
 
-        // fetchが必要な場合は forkJoin で並行実行し、完了後にストアからデータを取得
+        // fetchが必要な場合は forkJoin で並行実行
+        // fetch後は、ストアが更新されるまで待つために、combineLatestでストアを監視し続ける
         if (fetchObservables.length > 0) {
           return forkJoin(fetchObservables).pipe(
-            switchMap(() => combineLatest([
-              this.store.select(selectSightsFeature),
-              this.store.select(selectSouvenirFeature)
-            ]).pipe(take(1)))
+            switchMap(() => 
+              combineLatest([
+                this.store.select(selectSightsFeature),
+                this.store.select(selectSouvenirFeature)
+              ]).pipe(
+                // データが揃うまで待つ
+                filter(([s, sv]) => {
+                  if (!s || !sv) {
+                    return false;
+                  }
+                  // 型ガード: sights プロパティの存在を確認
+                  if (!('sights' in s)) {
+                    return false;
+                  }
+                  // 型ガード: souvenirs プロパティの存在を確認
+                  if (!('souvenirs' in sv)) {
+                    return false;
+                  }
+                  // 型アサーションを使用して型を明示
+                  const sightsState = s as { sights: unknown[] };
+                  const souvenirsState = sv as { souvenirs: unknown[] };
+                  return Array.isArray(sightsState.sights) && 
+                         sightsState.sights.length > 0 &&
+                         Array.isArray(souvenirsState.souvenirs) && 
+                         souvenirsState.souvenirs.length > 0;
+                }),
+                take(1)
+              )
+            )
           );
         }
 
         // 既にデータがある場合はそのまま返す
         return of([sightState, souvenirState]);
       }),
-      // データが揃うまで待つ
+      // データが揃うまで待つ（fetchが不要な場合のためのフィルター）
       filter(([sightState, souvenirState]) => {
         if (!sightState || !souvenirState) {
           return false;
@@ -107,34 +134,59 @@ export class FavoritesPage implements OnDestroy {
                Array.isArray(souvenirsState.souvenirs) && 
                souvenirsState.souvenirs.length > 0;
       }),
-      take(1)
-    ).subscribe({
-      next: () => {
-        // データが揃ったら、お気に入りを読み込む
-        this.loadFavorites();
-      },
-      error: (error) => {
+      take(1),
+      // データが揃ったら、お気に入りを読み込む
+      tap(([sightState, souvenirState]) => {
+        const favorites = this.userDataService.getFavorites();
+        const souvenirs = (souvenirState as { souvenirs: unknown[] }).souvenirs;
+        const sights = (sightState as { sights: unknown[] }).sights;
+        
+        // 純粋関数を使用してマッピング（テスト可能で再発防止）
+        this.favoriteItems = mapFavoritesToFavoriteItems(
+          favorites,
+          souvenirs as any[],
+          sights as any[]
+        );
+      }),
+      catchError(error => {
         console.error('データの読み込みに失敗しました:', error);
         // エラーが発生しても、既存のデータでお気に入りを読み込む
-        this.loadFavorites();
-      }
-    });
+        return combineLatest([
+          this.store.select(selectSightsFeature),
+          this.store.select(selectSouvenirFeature)
+        ]).pipe(
+          take(1),
+          tap(([sightState, souvenirState]) => {
+            if (sightState && souvenirState && 'sights' in sightState && 'souvenirs' in souvenirState) {
+              const favorites = this.userDataService.getFavorites();
+              const souvenirs = (souvenirState as { souvenirs: unknown[] }).souvenirs;
+              const sights = (sightState as { sights: unknown[] }).sights;
+              
+              if (Array.isArray(souvenirs) && Array.isArray(sights)) {
+                this.favoriteItems = mapFavoritesToFavoriteItems(
+                  favorites,
+                  souvenirs as any[],
+                  sights as any[]
+                );
+              }
+            }
+          })
+        );
+      }),
+      finalize(() => {
+        this.loading = false;
+      })
+    ).subscribe();
 
     this.subscriptions.add(loadSubscription);
   }
 
   loadFavorites() {
-    // 既存のサブスクリプションをクリーンアップ
-    if (this.loadFavoritesSubscription) {
-      this.loadFavoritesSubscription.unsubscribe();
-    }
-
+    // 既存のデータからお気に入りを再読み込み（リフレッシュ時などに使用）
     this.loading = true;
-    const favorites = this.userDataService.getFavorites();
     this.favoriteItems = [];
 
-    // 両方のストアからデータを取得（データが揃ってから処理）
-    this.loadFavoritesSubscription = combineLatest([
+    const loadSubscription = combineLatest([
       this.store.select(selectSouvenirFeature).pipe(
         filter(state => Array.isArray(state?.souvenirs)),
         take(1)
@@ -144,25 +196,28 @@ export class FavoritesPage implements OnDestroy {
         take(1)
       )
     ]).pipe(
+      tap(([souvenirState, sightState]) => {
+        if (!souvenirState || !sightState) {
+          return;
+        }
+
+        const favorites = this.userDataService.getFavorites();
+        const souvenirs = souvenirState.souvenirs;
+        const sights = sightState.sights;
+
+        // 純粋関数を使用してマッピング（テスト可能で再発防止）
+        this.favoriteItems = mapFavoritesToFavoriteItems(favorites, souvenirs, sights);
+      }),
       catchError(error => {
         console.error('Error loading favorites data:', error);
+        return EMPTY;
+      }),
+      finalize(() => {
         this.loading = false;
-        return of([null, null]);
       })
-    ).subscribe(([souvenirState, sightState]) => {
-      if (!souvenirState || !sightState) {
-        this.loading = false;
-        return;
-      }
+    ).subscribe();
 
-      const souvenirs = souvenirState.souvenirs;
-      const sights = sightState.sights;
-
-      // 純粋関数を使用してマッピング（テスト可能で再発防止）
-      this.favoriteItems = mapFavoritesToFavoriteItems(favorites, souvenirs, sights);
-
-      this.loading = false;
-    });
+    this.subscriptions.add(loadSubscription);
   }
 
   removeFavorite(item: FavoriteItem) {

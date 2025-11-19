@@ -67,15 +67,16 @@ export class DiscoverPage implements OnDestroy {
     this.hasError = false;
     this.errorMessage = '';
 
-    // ストアの状態を一度取得し、必要に応じてfetchを実行
+    // ストアの状態を監視し、必要に応じてfetchを実行
+    // より宣言的で安全なアプローチ：combineLatestでストアを監視し続け、fetchが必要な場合のみ実行
     const loadSubscription = combineLatest([
       this.store.select(selectSightsFeature),
       this.store.select(selectSouvenirFeature)
     ]).pipe(
       take(1),
       switchMap(([sightState, souvenirState]) => {
-        const needsSights = !sightState?.items || sightState.items.length === 0;
-        const needsSouvenirs = !souvenirState?.items || souvenirState.items.length === 0;
+        const needsSights = !Array.isArray(sightState.items) || sightState.items.length === 0;
+        const needsSouvenirs = !Array.isArray(souvenirState.items) || souvenirState.items.length === 0;
 
         // 既にデータがある場合はそのまま返す
         if (!needsSights && !needsSouvenirs) {
@@ -115,6 +116,7 @@ export class DiscoverPage implements OnDestroy {
 
         // fetchが必要な場合は forkJoin で並行実行
         // fetch後は、ストアが更新されるまで待つために、combineLatestでストアを監視し続ける
+        // ネストしたcombineLatestを避けるため、fetch完了後にストアを監視し続ける
         return forkJoin(fetchObservables).pipe(
           switchMap(() => 
             combineLatest([
