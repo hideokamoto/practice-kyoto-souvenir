@@ -6,8 +6,8 @@ import { selectSouvenirFeature } from '../souvenir/store';
 import { selectSightsFeature } from '../sights/store';
 import { Souvenir, SouvenirService } from '../souvenir/souvenir.service';
 import { Sight, SightsService } from '../sights/sights.service';
-import { Subscription, combineLatest, EMPTY, of } from 'rxjs';
-import { filter, take, switchMap, catchError } from 'rxjs/operators';
+import { Subscription, combineLatest, EMPTY, of, forkJoin } from 'rxjs';
+import { filter, take, switchMap, catchError, tap, finalize } from 'rxjs/operators';
 import { truncateText } from '../../shared/pipes/truncate.pipe';
 
 type ContentType = 'sights' | 'souvenirs';
@@ -71,7 +71,7 @@ export class DiscoverPage implements OnInit, OnDestroy {
     this.hasError = false;
     this.errorMessage = '';
 
-    // combineLatestを使用して、両方のストアの状態を一度に監視
+    // 両方のストアの状態を一度に監視し、必要なデータを並行してフェッチ
     const loadSubscription = combineLatest([
       this.store.select(selectSightsFeature),
       this.store.select(selectSouvenirFeature)
@@ -81,8 +81,9 @@ export class DiscoverPage implements OnInit, OnDestroy {
         const needsSights = !sightState?.sights || sightState.sights.length === 0;
         const needsSouvenirs = !souvenirState?.souvenires || souvenirState.souvenires.length === 0;
 
-        // 必要なデータがない場合のみfetchを実行
-        const fetchObservables = [];
+        // 必要なデータがない場合のみfetchを実行（並行実行）
+        const fetchObservables: Array<ReturnType<typeof this.sightsService.fetchSights | typeof this.souvenirService.fetchSouvenires>> = [];
+        
         if (needsSights) {
           fetchObservables.push(
             this.sightsService.fetchSights(false).pipe(
@@ -95,6 +96,7 @@ export class DiscoverPage implements OnInit, OnDestroy {
             )
           );
         }
+        
         if (needsSouvenirs) {
           fetchObservables.push(
             this.souvenirService.fetchSouvenires(false).pipe(
@@ -110,13 +112,15 @@ export class DiscoverPage implements OnInit, OnDestroy {
           );
         }
 
-        // fetchが必要な場合は実行し、その後ストアからデータを取得
+        // fetchが必要な場合は forkJoin で並行実行し、完了後にストアからデータを取得
         if (fetchObservables.length > 0) {
-          return combineLatest(fetchObservables).pipe(
-            switchMap(() => combineLatest([
-              this.store.select(selectSightsFeature),
-              this.store.select(selectSouvenirFeature)
-            ]).pipe(take(1)))
+          return forkJoin(fetchObservables).pipe(
+            switchMap(() => 
+              combineLatest([
+                this.store.select(selectSightsFeature),
+                this.store.select(selectSouvenirFeature)
+              ]).pipe(take(1))
+            )
           );
         }
 
@@ -128,22 +132,23 @@ export class DiscoverPage implements OnInit, OnDestroy {
         sightState?.sights && sightState.sights.length > 0 &&
         souvenirState?.souvenires && souvenirState.souvenires.length > 0
       ),
-      take(1)
-    ).subscribe({
-      next: ([sightState, souvenirState]) => {
+      take(1),
+      tap(([sightState, souvenirState]) => {
         this.allSights = sightState.sights as Sight[];
         this.allSouvenirs = souvenirState.souvenires as Souvenir[];
         this.getRandomSuggestions();
-        this.isLoading = false;
         this.hasError = false;
-      },
-      error: (error) => {
+      }),
+      catchError(error => {
         console.error('データの読み込みに失敗しました:', error);
         this.hasError = true;
         this.errorMessage = 'データの読み込みに失敗しました';
+        return EMPTY;
+      }),
+      finalize(() => {
         this.isLoading = false;
-      }
-    });
+      })
+    ).subscribe();
 
     this.subscriptions.add(loadSubscription);
   }

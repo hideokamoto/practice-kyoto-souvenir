@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { UserDataService, Plan } from '../../shared/services/user-data.service';
 import { selectSightsFeature } from '../sights/store';
 import { Sight, SightsService } from '../sights/sights.service';
-import { Subscription, combineLatest, EMPTY, of } from 'rxjs';
+import { Subscription, EMPTY, of } from 'rxjs';
 import { take, switchMap, catchError, filter } from 'rxjs/operators';
 
 @Component({

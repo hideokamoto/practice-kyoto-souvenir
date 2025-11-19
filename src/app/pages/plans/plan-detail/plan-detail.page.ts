@@ -207,14 +207,31 @@ export class PlanDetailPage implements OnInit, OnDestroy {
     }
 
     // 両方のストアからデータを取得（データが揃ってから処理）
-    const favoriteSubscription = combineLatest([
+    combineLatest([
       this.store.select(selectSouvenirFeature).pipe(
-        filter(state => state !== null && state.souvenires !== null && state.souvenires !== undefined && Array.isArray(state.souvenires))
+        filter(state => state !== null && state.souvenires !== null && state.souvenires !== undefined && Array.isArray(state.souvenires)),
+        take(1)
       ),
       this.store.select(selectSightsFeature).pipe(
-        filter(state => state !== null && state.sights !== null && state.sights !== undefined && Array.isArray(state.sights))
+        filter(state => state !== null && state.sights !== null && state.sights !== undefined && Array.isArray(state.sights)),
+        take(1)
       )
-    ]).subscribe(async ([souvenirState, sightState]) => {
+    ]).pipe(
+      catchError(error => {
+        console.error('Error loading favorites data:', error);
+        return of([null, null]);
+      })
+    ).subscribe(async ([souvenirState, sightState]) => {
+      if (!souvenirState || !sightState) {
+        const alert = await this.alertController.create({
+          header: 'エラー',
+          message: 'データの読み込みに失敗しました',
+          buttons: ['OK']
+        });
+        await alert.present();
+        return;
+      }
+
       const souvenirs = souvenirState.souvenires as Souvenir[];
       const sights = sightState.sights as Sight[];
 
@@ -271,8 +288,6 @@ export class PlanDetailPage implements OnInit, OnDestroy {
 
       await alert.present();
     });
-
-    this.subscriptions.add(favoriteSubscription);
   }
 
   removeItem(item: PlanItemWithDetails) {
