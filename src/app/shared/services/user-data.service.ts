@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { v4 as uuidv4 } from 'uuid';
 
 export interface Favorite {
   itemId: string;
@@ -218,7 +219,7 @@ export class UserDataService {
   // ==================== ユーティリティ ====================
 
   private generateId(): string {
-    return Date.now().toString(36) + Math.random().toString(36).substr(2);
+    return uuidv4();
   }
 
   // 統計情報取得
