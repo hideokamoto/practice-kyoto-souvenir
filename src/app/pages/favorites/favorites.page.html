@@ -39,7 +39,7 @@
           <h2>{{ item.name }}</h2>
           <p>{{ item.name_kana }}</p>
           <p class="ion-text-wrap">
-            <small>{{ item.description.substring(0, 80) }}{{ item.description.length > 80 ? '...' : '' }}</small>
+            <small>{{ item.description | truncate:80 }}</small>
           </p>
         </ion-label>
       </ion-item>

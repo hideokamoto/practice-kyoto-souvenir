@@ -5,7 +5,7 @@ import { createSelector, Store } from '@ngrx/store';
 import { Sight, SightsService } from '../sights.service';
 import { selectSightsFeature } from '../store';
 import { UserDataService } from '../../../shared/services/user-data.service';
-import { take } from 'rxjs/operators';
+import { switchMap, tap, take, filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-sight-detail',
@@ -27,34 +27,35 @@ export class SightDetailPage implements OnInit {
   public ngOnInit() {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
     
-    // まずストアにデータが存在するか確認
-    this.store.select(selectSightsFeature).pipe(take(1)).subscribe(sightState => {
-      const hasData = sightState && sightState.sights && sightState.sights.length > 0;
-      
-      if (!hasData) {
-        // ストアにデータがない場合のみフェッチ
-        this.service.fetchSights(false)
-          .subscribe(() => {
-            this.loadSight(id);
-          });
-      } else {
-        // ストアにデータがある場合は直接読み込む
-        this.loadSight(id);
-      }
-    });
+    if (!id) {
+      return;
+    }
+
+    // ストアの状態を確認し、必要に応じてデータをフェッチしてから、sightを読み込む
+    this.store.select(selectSightsFeature).pipe(
+      take(1),
+      switchMap(sightState => {
+        const hasData = sightState?.sights?.length > 0;
+        
+        if (!hasData) {
+          // ストアにデータがない場合のみフェッチ
+          return this.service.fetchSights(false).pipe(
+            switchMap(() => this.loadSight(id))
+          );
+        } else {
+          // ストアにデータがある場合は直接読み込む
+          return this.loadSight(id);
+        }
+      }),
+      filter((sight): sight is Sight => sight !== null && sight !== undefined),
+      tap(sight => {
+        this.sight = sight;
+        this.updateUserDataStatus();
+        this.title.setTitle(sight.name);
+      })
+    ).subscribe();
   }
 
-  private loadSight(id: string) {
-    this.loadSouvenir(id)
-      .pipe(take(1))
-      .subscribe(result => {
-        if (result) {
-          this.sight = result;
-          this.updateUserDataStatus();
-          this.title.setTitle(this.sight.name);
-        }
-      });
-  }
 
   public toggleFavorite(): void {
     if (this.sight) {
@@ -82,8 +83,12 @@ export class SightDetailPage implements OnInit {
     return mode === 'ios' ? '戻る' : '';
   }
 
-  private loadSouvenir(id: string) {
-    return this.store.select(createSelector(selectSightsFeature, state => state.sights.find(item => item.id === id)));
+  private loadSight(id: string) {
+    return this.store.select(
+      createSelector(selectSightsFeature, state => 
+        state?.sights?.find(item => item.id === id) ?? null
+      )
+    );
   }
 
   /**

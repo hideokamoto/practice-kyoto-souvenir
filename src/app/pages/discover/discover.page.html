@@ -85,7 +85,7 @@
           </div>
           
           <!-- デスクトップ用の説明文（常に表示） -->
-          <p class="description desktop-only">{{ suggestion.description.substring(0, 120) }}{{ suggestion.description.length > 120 ? '...' : '' }}</p>
+          <p class="description desktop-only">{{ suggestion.description | truncate:120 }}</p>
           
           <!-- 追加情報 -->
           <div class="recommendation-info" *ngIf="suggestion.address || suggestion.price">
@@ -95,7 +95,7 @@
             </div>
             <div *ngIf="suggestion.price" class="info-item">
               <ion-icon name="cash-outline"></ion-icon>
-              <span>{{ suggestion.price.substring(0, 40) }}{{ suggestion.price.length > 40 ? '...' : '' }}</span>
+              <span>{{ suggestion.price | truncate:40 }}</span>
             </div>
           </div>
           

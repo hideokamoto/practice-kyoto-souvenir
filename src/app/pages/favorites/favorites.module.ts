@@ -8,6 +8,7 @@ import { StoreModule } from '@ngrx/store';
 import { FavoritesPage } from './favorites.page';
 import { sightsFeatureKey, sightsReducer } from '../sights/store';
 import { souvenirFeatureKey, souvenirReducer } from '../souvenir/store';
+import { SharedPipesModule } from '../../shared/pipes/pipes.module';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { souvenirFeatureKey, souvenirReducer } from '../souvenir/store';
       }
     ]),
     StoreModule.forFeature(sightsFeatureKey, sightsReducer),
-    StoreModule.forFeature(souvenirFeatureKey, souvenirReducer)
+    StoreModule.forFeature(souvenirFeatureKey, souvenirReducer),
+    SharedPipesModule
   ],
   declarations: [FavoritesPage]
 })

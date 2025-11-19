@@ -8,6 +8,7 @@ import { PlansPageRoutingModule } from './plans-routing.module';
 import { PlansPage } from './plans.page';
 import { PlanDetailPage } from './plan-detail/plan-detail.page';
 import { sightsFeatureKey, sightsReducer } from '../sights/store';
+import { SharedPipesModule } from '../../shared/pipes/pipes.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { sightsFeatureKey, sightsReducer } from '../sights/store';
     FormsModule,
     IonicModule,
     PlansPageRoutingModule,
-    StoreModule.forFeature(sightsFeatureKey, sightsReducer)
+    StoreModule.forFeature(sightsFeatureKey, sightsReducer),
+    SharedPipesModule
   ],
   declarations: [PlansPage, PlanDetailPage]
 })

@@ -8,9 +8,10 @@ import { DiscoverPage } from './discover.page';
 import { DiscoverPageRoutingModule } from './discover-routing.module';
 import { sightsFeatureKey, sightsReducer } from '../sights/store';
 import { souvenirFeatureKey, souvenirReducer } from '../souvenir/store';
-import { SightsPageModule } from '../sights/sights.module';
-import { SouvenirPageModule } from '../souvenir/souvenir.module';
+import { SightsComponentsModule } from '../sights/sights-components.module';
+import { SouvenirComponentsModule } from '../souvenir/souvenir-components.module';
 import { SharedComponentsModule } from '../../shared/components/components.module';
+import { SharedPipesModule } from '../../shared/pipes/pipes.module';
 
 @NgModule({
   imports: [
@@ -20,9 +21,10 @@ import { SharedComponentsModule } from '../../shared/components/components.modul
     DiscoverPageRoutingModule,
     StoreModule.forFeature(sightsFeatureKey, sightsReducer),
     StoreModule.forFeature(souvenirFeatureKey, souvenirReducer),
-    SightsPageModule,
-    SouvenirPageModule,
-    SharedComponentsModule
+    SightsComponentsModule,
+    SouvenirComponentsModule,
+    SharedComponentsModule,
+    SharedPipesModule
   ],
   declarations: [
     DiscoverPage

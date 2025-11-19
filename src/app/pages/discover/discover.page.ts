@@ -8,6 +8,7 @@ import { Souvenir, SouvenirService } from '../souvenir/souvenir.service';
 import { Sight, SightsService } from '../sights/sights.service';
 import { Subscription } from 'rxjs';
 import { filter, take } from 'rxjs/operators';
+import { truncateText } from '../../shared/pipes/truncate.pipe';
 
 type ContentType = 'sights' | 'souvenirs';
 
@@ -244,7 +245,7 @@ export class DiscoverPage implements OnInit, OnDestroy {
       return suggestion.description;
     }
     // スマホでは60文字に短縮
-    return suggestion.description.substring(0, 60) + (suggestion.description.length > 60 ? '...' : '');
+    return truncateText(suggestion.description, 60);
   }
 
   onSegmentChange(event: any) {
