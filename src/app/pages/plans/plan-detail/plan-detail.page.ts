@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController, ActionSheetController } from '@ionic/angular';
 import { Store } from '@ngrx/store';
@@ -22,7 +22,7 @@ interface PlanItemWithDetails extends PlanItem {
   templateUrl: './plan-detail.page.html',
   styleUrls: ['./plan-detail.page.scss'],
 })
-export class PlanDetailPage implements OnInit, OnDestroy {
+export class PlanDetailPage implements OnDestroy {
   public plan: Plan | null = null;
   public planItems: PlanItemWithDetails[] = [];
   public loading = true;
@@ -38,13 +38,6 @@ export class PlanDetailPage implements OnInit, OnDestroy {
     private readonly actionSheetController: ActionSheetController,
     private readonly store: Store
   ) {}
-
-  ngOnInit() {
-    const planId = this.route.snapshot.paramMap.get('id');
-    if (planId) {
-      this.loadPlan(planId);
-    }
-  }
 
   ionViewWillEnter() {
     const planId = this.route.snapshot.paramMap.get('id');
@@ -71,11 +64,11 @@ export class PlanDetailPage implements OnInit, OnDestroy {
     // 両方のストアからデータを取得（データが揃ってから処理）
     this.loadPlanSubscription = combineLatest([
       this.store.select(selectSouvenirFeature).pipe(
-        filter(state => state !== null && state.souvenires !== null && state.souvenires !== undefined && Array.isArray(state.souvenires)),
+        filter(state => Array.isArray(state.souvenires)),
         take(1)
       ),
       this.store.select(selectSightsFeature).pipe(
-        filter(state => state !== null && state.sights !== null && state.sights !== undefined && Array.isArray(state.sights)),
+        filter(state => Array.isArray(state.sights)),
         take(1)
       )
     ]).pipe(
@@ -209,11 +202,11 @@ export class PlanDetailPage implements OnInit, OnDestroy {
     // 両方のストアからデータを取得（データが揃ってから処理）
     combineLatest([
       this.store.select(selectSouvenirFeature).pipe(
-        filter(state => state !== null && state.souvenires !== null && state.souvenires !== undefined && Array.isArray(state.souvenires)),
+        filter(state => Array.isArray(state.souvenires)),
         take(1)
       ),
       this.store.select(selectSightsFeature).pipe(
-        filter(state => state !== null && state.sights !== null && state.sights !== undefined && Array.isArray(state.sights)),
+        filter(state => Array.isArray(state.sights)),
         take(1)
       )
     ]).pipe(
