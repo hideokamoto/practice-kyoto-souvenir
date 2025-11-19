@@ -125,8 +125,8 @@ export class DiscoverPage implements OnDestroy {
       }),
       // データが揃うまで待つ
       filter(([sightState, souvenirState]) => 
-        sightState?.items && sightState.items.length > 0 &&
-        souvenirState?.items && souvenirState.items.length > 0
+        (sightState?.items?.length ?? 0) > 0 &&
+        (souvenirState?.items?.length ?? 0) > 0
       ),
       take(1),
       tap(([sightState, souvenirState]) => {
@@ -222,10 +222,9 @@ export class DiscoverPage implements OnDestroy {
 
     // プールが3つ未満の場合は、全アイテムから補完
     if (itemsPool.length < 3) {
+      const poolItemKeys = new Set(itemsPool.map(p => `${p.type}-${p.item.id}`));
       const additionalItems = allItems.filter(
-        item => !itemsPool.some(poolItem => 
-          poolItem.type === item.type && poolItem.item.id === item.item.id
-        )
+        item => !poolItemKeys.has(`${item.type}-${item.item.id}`)
       );
       const shuffledAdditional = [...additionalItems].sort(() => Math.random() - 0.5);
       itemsPool = [...itemsPool, ...shuffledAdditional.slice(0, 3 - itemsPool.length)];
