@@ -97,15 +97,15 @@ export class FavoritesPage implements OnDestroy {
         );
       }),
       // データが揃うまで待つ（fetchが不要な場合のためのフィルター）
-      filter(([sightState, souvenirState]) => 
-        !!sightState?.sights?.length && !!souvenirState?.souvenirs?.length
-      ),
+      filter(([sightState, souvenirState]) => {
+        return !!sightState?.sights?.length && !!souvenirState?.souvenirs?.length;
+      }),
       take(1),
       // データが揃ったら、お気に入りを読み込む
       tap(([sightState, souvenirState]) => {
         const favorites = this.userDataService.getFavorites();
-        const souvenirs = souvenirState.souvenirs;
-        const sights = sightState.sights;
+        const souvenirs = (souvenirState as any).souvenirs;
+        const sights = (sightState as any).sights;
         
         // 純粋関数を使用してマッピング（テスト可能で再発防止）
         this.favoriteItems = mapFavoritesToFavoriteItems(

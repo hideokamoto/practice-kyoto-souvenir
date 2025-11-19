@@ -43,7 +43,17 @@ export class UserDataService {
 
   getFavorites(): Favorite[] {
     const data = localStorage.getItem(this.FAVORITES_KEY);
-    return data ? JSON.parse(data) : [];
+    if (!data) {
+      return [];
+    }
+    try {
+      return JSON.parse(data);
+    } catch (error) {
+      console.error('Failed to parse favorites data from localStorage:', error);
+      // 破損したデータを削除して、空の配列を返す
+      localStorage.removeItem(this.FAVORITES_KEY);
+      return [];
+    }
   }
 
   isFavorite(itemId: string, itemType: 'sight' | 'souvenir'): boolean {
@@ -83,7 +93,17 @@ export class UserDataService {
 
   getVisits(): Visit[] {
     const data = localStorage.getItem(this.VISITS_KEY);
-    return data ? JSON.parse(data) : [];
+    if (!data) {
+      return [];
+    }
+    try {
+      return JSON.parse(data);
+    } catch (error) {
+      console.error('Failed to parse visits data from localStorage:', error);
+      // 破損したデータを削除して、空の配列を返す
+      localStorage.removeItem(this.VISITS_KEY);
+      return [];
+    }
   }
 
   isVisited(itemId: string, itemType: 'sight' | 'souvenir'): boolean {
@@ -136,7 +156,17 @@ export class UserDataService {
 
   getPlans(): Plan[] {
     const data = localStorage.getItem(this.PLANS_KEY);
-    return data ? JSON.parse(data) : [];
+    if (!data) {
+      return [];
+    }
+    try {
+      return JSON.parse(data);
+    } catch (error) {
+      console.error('Failed to parse plans data from localStorage:', error);
+      // 破損したデータを削除して、空の配列を返す
+      localStorage.removeItem(this.PLANS_KEY);
+      return [];
+    }
   }
 
   getPlan(planId: string): Plan | undefined {
