@@ -28,7 +28,6 @@ export class PlansPage implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.loadPlans();
     this.loadSightsData();
   }
 
