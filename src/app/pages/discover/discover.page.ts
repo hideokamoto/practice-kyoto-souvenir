@@ -6,8 +6,8 @@ import { selectSouvenirFeature } from '../souvenir/store';
 import { selectSightsFeature } from '../sights/store';
 import { Souvenir, SouvenirService } from '../souvenir/souvenir.service';
 import { Sight, SightsService } from '../sights/sights.service';
-import { Subscription } from 'rxjs';
-import { filter, take } from 'rxjs/operators';
+import { Subscription, combineLatest, EMPTY, of } from 'rxjs';
+import { filter, take, switchMap, catchError } from 'rxjs/operators';
 import { truncateText } from '../../shared/pipes/truncate.pipe';
 
 type ContentType = 'sights' | 'souvenirs';
@@ -67,145 +67,216 @@ export class DiscoverPage implements OnInit, OnDestroy {
   }
 
   loadData() {
-    // 観光地データの読み込み
-    const sightsState$ = this.store.select(selectSightsFeature);
-    sightsState$.pipe(take(1)).subscribe(sightState => {
-      const hasData = sightState && sightState.sights && sightState.sights.length > 0;
-      if (!hasData) {
-        this.isLoading = true;
+    this.isLoading = true;
+    this.hasError = false;
+    this.errorMessage = '';
+
+    // combineLatestを使用して、両方のストアの状態を一度に監視
+    const loadSubscription = combineLatest([
+      this.store.select(selectSightsFeature),
+      this.store.select(selectSouvenirFeature)
+    ]).pipe(
+      take(1),
+      switchMap(([sightState, souvenirState]) => {
+        const needsSights = !sightState?.sights || sightState.sights.length === 0;
+        const needsSouvenirs = !souvenirState?.souvenires || souvenirState.souvenires.length === 0;
+
+        // 必要なデータがない場合のみfetchを実行
+        const fetchObservables = [];
+        if (needsSights) {
+          fetchObservables.push(
+            this.sightsService.fetchSights(false).pipe(
+              catchError(error => {
+                console.error('観光地データの読み込みに失敗しました:', error);
+                this.hasError = true;
+                this.errorMessage = '観光地データの読み込みに失敗しました';
+                return EMPTY;
+              })
+            )
+          );
+        }
+        if (needsSouvenirs) {
+          fetchObservables.push(
+            this.souvenirService.fetchSouvenires(false).pipe(
+              catchError(error => {
+                console.error('お土産データの読み込みに失敗しました:', error);
+                if (!this.hasError) {
+                  this.hasError = true;
+                  this.errorMessage = 'お土産データの読み込みに失敗しました';
+                }
+                return EMPTY;
+              })
+            )
+          );
+        }
+
+        // fetchが必要な場合は実行し、その後ストアからデータを取得
+        if (fetchObservables.length > 0) {
+          return combineLatest(fetchObservables).pipe(
+            switchMap(() => combineLatest([
+              this.store.select(selectSightsFeature),
+              this.store.select(selectSouvenirFeature)
+            ]).pipe(take(1)))
+          );
+        }
+
+        // 既にデータがある場合はそのまま返す
+        return of([sightState, souvenirState]);
+      }),
+      // データが揃うまで待つ
+      filter(([sightState, souvenirState]) => 
+        sightState?.sights && sightState.sights.length > 0 &&
+        souvenirState?.souvenires && souvenirState.souvenires.length > 0
+      ),
+      take(1)
+    ).subscribe({
+      next: ([sightState, souvenirState]) => {
+        this.allSights = sightState.sights as Sight[];
+        this.allSouvenirs = souvenirState.souvenires as Souvenir[];
+        this.getRandomSuggestions();
+        this.isLoading = false;
         this.hasError = false;
-        this.errorMessage = '';
-
-        const sightsSubscription = this.sightsService.fetchSights(false).subscribe({
-          next: () => {},
-          error: (error) => {
-            console.error('観光地データの読み込みに失敗しました:', error);
-            this.hasError = true;
-            this.errorMessage = '観光地データの読み込みに失敗しました';
-            this.isLoading = false;
-          }
-        });
-
-        this.subscriptions.add(sightsSubscription);
+      },
+      error: (error) => {
+        console.error('データの読み込みに失敗しました:', error);
+        this.hasError = true;
+        this.errorMessage = 'データの読み込みに失敗しました';
+        this.isLoading = false;
       }
     });
 
-    // お土産データの読み込み
-    const souvenirState$ = this.store.select(selectSouvenirFeature);
-    souvenirState$.pipe(take(1)).subscribe(souvenirState => {
-      const hasData = souvenirState && souvenirState.souvenires && souvenirState.souvenires.length > 0;
-      if (!hasData) {
-        const souvenirSubscription = this.souvenirService.fetchSouvenires(false).subscribe({
-          next: () => {},
-          error: (error) => {
-            console.error('お土産データの読み込みに失敗しました:', error);
-            if (!this.hasError) {
-              this.hasError = true;
-              this.errorMessage = 'お土産データの読み込みに失敗しました';
-            }
-            this.isLoading = false;
-          }
-        });
-
-        this.subscriptions.add(souvenirSubscription);
-      }
-    });
-
-    // データが読み込まれるまで待つ
-    const sightsSubscription = sightsState$.pipe(
-      filter(state => state && state.sights && state.sights.length > 0),
-      take(1)
-    ).subscribe(sightState => {
-      this.allSights = sightState.sights as Sight[];
-      this.getRandomSuggestions();
-      this.isLoading = false;
-      this.hasError = false;
-    });
-
-    const souvenirSubscription = souvenirState$.pipe(
-      filter(state => state && state.souvenires && state.souvenires.length > 0),
-      take(1)
-    ).subscribe(souvenirState => {
-      this.allSouvenirs = souvenirState.souvenires as Souvenir[];
-    });
-
-    this.subscriptions.add(sightsSubscription);
-    this.subscriptions.add(souvenirSubscription);
+    this.subscriptions.add(loadSubscription);
   }
 
   getRandomSuggestions() {
-    if (this.allSights.length === 0) {
-      console.warn('観光地データがまだ読み込まれていません');
+    if (this.allSights.length === 0 && this.allSouvenirs.length === 0) {
+      console.warn('観光地とお土産のデータがまだ読み込まれていません');
       return;
     }
 
     const visits = this.userDataService.getVisits();
     const favorites = this.userDataService.getFavorites();
     
+    // 訪問済み・お気に入りのIDを取得（観光地とお土産の両方）
     const visitedSightIds = visits
       .filter(v => v.itemType === 'sight')
+      .map(v => v.itemId);
+    const visitedSouvenirIds = visits
+      .filter(v => v.itemType === 'souvenir')
       .map(v => v.itemId);
     
     const favoriteSightIds = favorites
       .filter(f => f.itemType === 'sight')
       .map(f => f.itemId);
+    const favoriteSouvenirIds = favorites
+      .filter(f => f.itemType === 'souvenir')
+      .map(f => f.itemId);
 
-    // 優先順位1: お気に入りで未訪問の観光地
+    // 観光地の優先順位プール
     const favoriteUnvisitedSights = this.allSights.filter(
       sight => favoriteSightIds.includes(sight.id) && !visitedSightIds.includes(sight.id)
     );
-
-    // 優先順位2: 未訪問の観光地
     const unvisitedSights = this.allSights.filter(
       sight => !visitedSightIds.includes(sight.id)
     );
 
+    // お土産の優先順位プール
+    const favoriteUnvisitedSouvenirs = this.allSouvenirs.filter(
+      souvenir => favoriteSouvenirIds.includes(souvenir.id) && !visitedSouvenirIds.includes(souvenir.id)
+    );
+    const unvisitedSouvenirs = this.allSouvenirs.filter(
+      souvenir => !visitedSouvenirIds.includes(souvenir.id)
+    );
+
+    // 統合されたプールを作成（観光地とお土産を混在）
+    type ItemWithType = { item: Sight | Souvenir; type: 'sight' | 'souvenir' };
+    let itemsPool: ItemWithType[] = [];
+
+    // 優先順位1: お気に入りで未訪問のアイテム（観光地とお土産）
+    const favoriteUnvisitedItems: ItemWithType[] = [
+      ...favoriteUnvisitedSights.map(sight => ({ item: sight, type: 'sight' as const })),
+      ...favoriteUnvisitedSouvenirs.map(souvenir => ({ item: souvenir, type: 'souvenir' as const }))
+    ];
+
+    // 優先順位2: 未訪問のアイテム（観光地とお土産）
+    const unvisitedItems: ItemWithType[] = [
+      ...unvisitedSights.map(sight => ({ item: sight, type: 'sight' as const })),
+      ...unvisitedSouvenirs.map(souvenir => ({ item: souvenir, type: 'souvenir' as const }))
+    ];
+
+    // 優先順位3: 全アイテム
+    const allItems: ItemWithType[] = [
+      ...this.allSights.map(sight => ({ item: sight, type: 'sight' as const })),
+      ...this.allSouvenirs.map(souvenir => ({ item: souvenir, type: 'souvenir' as const }))
+    ];
+
     // 優先順位に従ってプールを決定
-    let sightsPool: Sight[] = [];
-    if (favoriteUnvisitedSights.length > 0) {
-      sightsPool = favoriteUnvisitedSights;
-    } else if (unvisitedSights.length > 0) {
-      sightsPool = unvisitedSights;
+    if (favoriteUnvisitedItems.length > 0) {
+      itemsPool = favoriteUnvisitedItems;
+    } else if (unvisitedItems.length > 0) {
+      itemsPool = unvisitedItems;
     } else {
-      sightsPool = this.allSights;
+      itemsPool = allItems;
     }
 
-    // プールが3つ未満の場合は、全観光地から補完
-    if (sightsPool.length < 3) {
-      const additionalSights = this.allSights.filter(
-        sight => !sightsPool.some(poolSight => poolSight.id === sight.id)
+    // プールが3つ未満の場合は、全アイテムから補完
+    if (itemsPool.length < 3) {
+      const additionalItems = allItems.filter(
+        item => !itemsPool.some(poolItem => 
+          poolItem.type === item.type && poolItem.item.id === item.item.id
+        )
       );
-      const shuffledAdditional = [...additionalSights].sort(() => Math.random() - 0.5);
-      sightsPool = [...sightsPool, ...shuffledAdditional.slice(0, 3 - sightsPool.length)];
+      const shuffledAdditional = [...additionalItems].sort(() => Math.random() - 0.5);
+      itemsPool = [...itemsPool, ...shuffledAdditional.slice(0, 3 - itemsPool.length)];
     }
 
-    // 3つの提案を取得（重複なし）
-    // 配列をシャッフルしてから最初の3つを取得
-    const shuffled = [...sightsPool].sort(() => Math.random() - 0.5);
-    const selectedSights = shuffled.slice(0, Math.min(3, shuffled.length));
+    // 3つの提案を取得（重複なし、観光地とお土産のバランスを考慮）
+    const shuffled = [...itemsPool].sort(() => Math.random() - 0.5);
+    const selectedItems = shuffled.slice(0, Math.min(3, shuffled.length));
 
-    this.randomSuggestions = selectedSights.map(sight => {
+    this.randomSuggestions = selectedItems.map(({ item, type }) => {
       // 選ばれた理由を判定
       let reason: 'favorite' | 'unvisited' | 'random' = 'random';
-      if (favoriteUnvisitedSights.length > 0 && favoriteUnvisitedSights.includes(sight)) {
-        reason = 'favorite';
-      } else if (unvisitedSights.length > 0 && unvisitedSights.includes(sight)) {
-        reason = 'unvisited';
-      }
+      if (type === 'sight') {
+        const sight = item as Sight;
+        if (favoriteUnvisitedSights.length > 0 && favoriteUnvisitedSights.includes(sight)) {
+          reason = 'favorite';
+        } else if (unvisitedSights.length > 0 && unvisitedSights.includes(sight)) {
+          reason = 'unvisited';
+        }
 
-      return {
-        id: sight.id,
-        name: sight.name,
-        description: sight.description,
-        type: 'sight' as const,
-        photo: sight.photo,
-        address: sight.address,
-        price: sight.price,
-        name_kana: sight.name_kana,
-        reason: reason,
-        isFavorite: this.userDataService.isFavorite(sight.id, 'sight'),
-        isVisited: this.userDataService.isVisited(sight.id, 'sight')
-      };
+        return {
+          id: sight.id,
+          name: sight.name,
+          description: sight.description,
+          type: 'sight' as const,
+          photo: sight.photo,
+          address: sight.address,
+          price: sight.price,
+          name_kana: sight.name_kana,
+          reason: reason,
+          isFavorite: this.userDataService.isFavorite(sight.id, 'sight'),
+          isVisited: this.userDataService.isVisited(sight.id, 'sight')
+        };
+      } else {
+        const souvenir = item as Souvenir;
+        if (favoriteUnvisitedSouvenirs.length > 0 && favoriteUnvisitedSouvenirs.includes(souvenir)) {
+          reason = 'favorite';
+        } else if (unvisitedSouvenirs.length > 0 && unvisitedSouvenirs.includes(souvenir)) {
+          reason = 'unvisited';
+        }
+
+        return {
+          id: souvenir.id,
+          name: souvenir.name,
+          description: souvenir.description,
+          type: 'souvenir' as const,
+          name_kana: souvenir.name_kana,
+          reason: reason,
+          isFavorite: this.userDataService.isFavorite(souvenir.id, 'souvenir'),
+          isVisited: this.userDataService.isVisited(souvenir.id, 'souvenir')
+        };
+      }
     });
   }
 
@@ -224,11 +295,23 @@ export class DiscoverPage implements OnInit, OnDestroy {
     if (!suggestion) return '';
     
     if (suggestion.reason === 'favorite') {
-      return 'あなたのお気に入りで、まだ行ったことがない場所です';
+      if (suggestion.type === 'sight') {
+        return 'あなたのお気に入りで、まだ行ったことがない場所です';
+      } else {
+        return 'あなたのお気に入りで、まだ購入していないお土産です';
+      }
     } else if (suggestion.reason === 'unvisited') {
-      return 'まだ行ったことがない場所です';
+      if (suggestion.type === 'sight') {
+        return 'まだ行ったことがない場所です';
+      } else {
+        return 'まだ購入していないお土産です';
+      }
     } else {
-      return '京都の観光地を発見しましょう';
+      if (suggestion.type === 'sight') {
+        return '京都の観光地を発見しましょう';
+      } else {
+        return '京都のお土産を発見しましょう';
+      }
     }
   }
 
