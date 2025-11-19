@@ -1,10 +1,11 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { createSelector, Store } from '@ngrx/store';
+import { AlertController, ToastController } from '@ionic/angular';
 import { Sight, SightsService } from '../sights.service';
 import { selectSightsFeature } from '../store';
-import { UserDataService } from '../../../shared/services/user-data.service';
+import { UserDataService, Plan } from '../../../shared/services/user-data.service';
 import { switchMap, tap, take, filter } from 'rxjs/operators';
 
 @Component({
@@ -15,10 +16,13 @@ import { switchMap, tap, take, filter } from 'rxjs/operators';
 })
 export class SightDetailPage implements OnInit {
   private readonly activatedRoute = inject(ActivatedRoute);
+  private readonly router = inject(Router);
   private readonly store = inject(Store);
   private readonly service = inject(SightsService);
   private readonly title = inject(Title);
   private readonly userDataService = inject(UserDataService);
+  private readonly alertController = inject(AlertController);
+  private readonly toastController = inject(ToastController);
 
   public sight: Sight | null;
   public isFavorite = false;
@@ -181,6 +185,133 @@ export class SightDetailPage implements OnInit {
   public hasNotes(): boolean {
     if (!this.sight) return false;
     return this.hasValue(this.sight.notes);
+  }
+
+  /**
+   * プランに追加する
+   */
+  public async addToPlan(): Promise<void> {
+    if (!this.sight) return;
+
+    const plans = this.userDataService.getPlans();
+
+    // 既存のプランがある場合、選択肢を提示
+    if (plans.length > 0) {
+      const alert = await this.alertController.create({
+        header: 'プランに追加',
+        message: '既存のプランに追加するか、新しいプランを作成しますか？',
+        buttons: [
+          {
+            text: '既存のプランに追加',
+            handler: () => {
+              this.selectExistingPlan(plans);
+            }
+          },
+          {
+            text: '新しいプランを作成',
+            handler: () => {
+              this.createNewPlanWithSight();
+            }
+          },
+          {
+            text: 'キャンセル',
+            role: 'cancel'
+          }
+        ]
+      });
+      await alert.present();
+    } else {
+      // プランがない場合は新規作成
+      this.createNewPlanWithSight();
+    }
+  }
+
+  /**
+   * 既存のプランを選択して追加
+   */
+  private async selectExistingPlan(plans: Plan[]): Promise<void> {
+    if (!this.sight) return;
+
+    const alert = await this.alertController.create({
+      header: 'プランを選択',
+      inputs: plans.map(plan => ({
+        type: 'radio' as const,
+        label: plan.name,
+        value: plan.id
+      })),
+      buttons: [
+        {
+          text: 'キャンセル',
+          role: 'cancel'
+        },
+        {
+          text: '追加',
+          handler: (planId: string) => {
+            if (planId) {
+              const isAlreadyInPlan = this.userDataService.isItemInPlan(planId, this.sight!.id, 'sight');
+              if (isAlreadyInPlan) {
+                this.showToast('この場所は既にプランに追加されています', 'warning');
+              } else {
+                this.userDataService.addItemToPlan(planId, this.sight!.id, 'sight');
+                this.showToast('プランに追加しました', 'success');
+                this.router.navigate(['/tabs/plans', planId]);
+              }
+            }
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  /**
+   * 新しいプランを作成して追加
+   */
+  private async createNewPlanWithSight(): Promise<void> {
+    if (!this.sight) return;
+
+    const alert = await this.alertController.create({
+      header: '新しいプラン',
+      message: 'プラン名を入力してください',
+      inputs: [
+        {
+          name: 'planName',
+          type: 'text',
+          placeholder: `例: ${this.sight.name}に行くプラン`,
+          value: `${this.sight.name}に行くプラン`
+        }
+      ],
+      buttons: [
+        {
+          text: 'キャンセル',
+          role: 'cancel'
+        },
+        {
+          text: '作成',
+          handler: (data) => {
+            if (data.planName && data.planName.trim()) {
+              const plan = this.userDataService.createPlan(data.planName.trim());
+              this.userDataService.addItemToPlan(plan.id, this.sight!.id, 'sight');
+              this.showToast('プランを作成しました', 'success');
+              this.router.navigate(['/tabs/plans', plan.id]);
+            }
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  /**
+   * トーストメッセージを表示
+   */
+  private async showToast(message: string, color: string = 'primary'): Promise<void> {
+    const toast = await this.toastController.create({
+      message,
+      duration: 2000,
+      color
+    });
+    await toast.present();
   }
 
 }

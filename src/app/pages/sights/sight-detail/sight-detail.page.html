@@ -30,6 +30,40 @@
       <img [src]="getPhotoPath(sight.photo)" [alt]="sight.name" class="sight-photo" />
     </div>
 
+    <!-- アクションボタンエリア -->
+    <div class="action-buttons-container">
+      <div class="action-buttons-row">
+        <ion-button 
+          [class.active]="isFavorite"
+          [color]="isFavorite ? 'danger' : 'medium'"
+          (click)="toggleFavorite()"
+          class="action-button favorite-button"
+          expand="block">
+          <ion-icon [name]="isFavorite ? 'heart' : 'heart-outline'" slot="start"></ion-icon>
+          <ion-label>{{isFavorite ? 'お気に入り済み' : 'お気に入りに追加'}}</ion-label>
+        </ion-button>
+        
+        <ion-button 
+          [class.active]="isVisited"
+          [color]="isVisited ? 'success' : 'medium'"
+          (click)="toggleVisited()"
+          class="action-button visited-button"
+          expand="block">
+          <ion-icon [name]="isVisited ? 'checkmark-circle' : 'checkmark-circle-outline'" slot="start"></ion-icon>
+          <ion-label>{{isVisited ? '行ったことがある' : '行ったことがあるにする'}}</ion-label>
+        </ion-button>
+      </div>
+      
+      <ion-button 
+        color="primary"
+        (click)="addToPlan()"
+        class="action-button plan-button"
+        expand="block">
+        <ion-icon name="calendar-outline" slot="start"></ion-icon>
+        <ion-label>この場所に行くプランを作る</ion-label>
+      </ion-button>
+    </div>
+
     <!-- 基本情報 -->
     <ion-item>
       <ion-label class='ion-text-wrap'>
