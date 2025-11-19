@@ -3,7 +3,7 @@ import { createFeatureSelector } from '@ngrx/store';
 import { Souvenir } from './souvenir.service';
 
 type SouvenirState = {
-    souvenires: Souvenir[];
+    souvenirs: Souvenir[];
     items: Souvenir[];
 };
 const souvenirSlice = createSlice<SouvenirState, {
@@ -18,18 +18,18 @@ const souvenirSlice = createSlice<SouvenirState, {
 }>({
     name: 'souvenir',
     initialState: {
-        souvenires: [],
+        souvenirs: [],
         items: [],
     },
     reducers: {
         setSouvenir: (state, action) => {
             state.items = action.payload;
-            state.souvenires = state.items;
+            state.souvenirs = state.items;
         },
         filterSouvenir: (state, action) => {
             const name = action.payload;
             if (name) {
-                state.items = state.souvenires.filter(item => {
+                state.items = state.souvenirs.filter(item => {
                     if (item.name) {
                         return item.name.includes(name)
                         || item.name_kana.includes(name);
@@ -37,7 +37,7 @@ const souvenirSlice = createSlice<SouvenirState, {
                     return true;
                 });
             } else {
-                state.items = state.souvenires;
+                state.items = state.souvenirs;
             }
         }
     }

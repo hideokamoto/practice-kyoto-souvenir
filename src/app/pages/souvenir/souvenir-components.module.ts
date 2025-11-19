@@ -1,29 +1,31 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { StoreModule } from '@ngrx/store';
 
 import { souvenirFeatureKey, souvenirReducer } from './store';
-import { ListSouveniresComponent } from './list-souvenires/list-souvenires.component';
-import { SearchSouveniresComponent } from './search-souvenires/search-souvenires.component';
+import { ListSouvenirsComponent } from './list-souvenirs/list-souvenirs.component';
+import { SearchSouvenirsComponent } from './search-souvenirs/search-souvenirs.component';
 import { SharedComponentsModule } from 'src/app/shared/components/components.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    RouterModule,
     IonicModule,
     SharedComponentsModule,
     StoreModule.forFeature(souvenirFeatureKey, souvenirReducer)
   ],
   declarations: [
-    ListSouveniresComponent,
-    SearchSouveniresComponent
+    ListSouvenirsComponent,
+    SearchSouvenirsComponent
   ],
   exports: [
-    ListSouveniresComponent,
-    SearchSouveniresComponent
+    ListSouvenirsComponent,
+    SearchSouvenirsComponent
   ]
 })
 export class SouvenirComponentsModule { }

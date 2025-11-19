@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { ListSouveniresComponent } from './list-souvenires.component';
+import { ListSouvenirsComponent } from './list-souvenirs.component';
 
-describe('ListSouveniresComponent', () => {
-  let component: ListSouveniresComponent;
-  let fixture: ComponentFixture<ListSouveniresComponent>;
+describe('ListSouvenirsComponent', () => {
+  let component: ListSouvenirsComponent;
+  let fixture: ComponentFixture<ListSouvenirsComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ ListSouveniresComponent ],
+      declarations: [ ListSouvenirsComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ListSouveniresComponent);
+    fixture = TestBed.createComponent(ListSouvenirsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
@@ -22,3 +22,4 @@ describe('ListSouveniresComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+

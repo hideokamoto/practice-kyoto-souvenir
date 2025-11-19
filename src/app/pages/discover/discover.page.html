@@ -161,13 +161,13 @@
         <ion-header *ngIf="!isIos()">
           <ion-toolbar>
             <app-search-sights *ngIf="contentType === 'sights'"></app-search-sights>
-            <app-search-souvenires *ngIf="contentType === 'souvenirs'"></app-search-souvenires>
+            <app-search-souvenirs *ngIf="contentType === 'souvenirs'"></app-search-souvenirs>
           </ion-toolbar>
         </ion-header>
         <ion-header collapse="condense">
           <ion-toolbar>
             <app-search-sights *ngIf="contentType === 'sights'"></app-search-sights>
-            <app-search-souvenires *ngIf="contentType === 'souvenirs'"></app-search-souvenires>
+            <app-search-souvenirs *ngIf="contentType === 'souvenirs'"></app-search-souvenirs>
           </ion-toolbar>
         </ion-header>
       </div>
@@ -194,14 +194,14 @@
 
       <!-- お土産リスト -->
       <div *ngIf="contentType === 'souvenirs'">
-        <ng-container *ngIf="souvenires$ | async as souvenires; else listSouvenirSkeleton">
-          <ion-list *ngIf="souvenires.length > 0">
-            <app-list-souvenires
-              *ngFor="let souvenir of souvenires"
+        <ng-container *ngIf="souvenirs$ | async as souvenirs; else listSouvenirSkeleton">
+          <ion-list *ngIf="souvenirs.length > 0">
+            <app-list-souvenirs
+              *ngFor="let souvenir of souvenirs"
               [souvenir]="souvenir">
-            </app-list-souvenires>
+            </app-list-souvenirs>
           </ion-list>
-          <div *ngIf="souvenires.length === 0" class="ion-padding ion-text-center empty-state">
+          <div *ngIf="souvenirs.length === 0" class="ion-padding ion-text-center empty-state">
             <ion-icon name="search-outline" size="large" color="medium"></ion-icon>
             <h3>検索結果が見つかりませんでした</h3>
             <p>別のキーワードで検索してみてください</p>

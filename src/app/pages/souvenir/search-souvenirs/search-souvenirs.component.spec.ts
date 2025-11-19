@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { SearchSouveniresComponent } from './search-souvenires.component';
+import { SearchSouvenirsComponent } from './search-souvenirs.component';
 
-describe('SearchSouveniresComponent', () => {
-  let component: SearchSouveniresComponent;
-  let fixture: ComponentFixture<SearchSouveniresComponent>;
+describe('SearchSouvenirsComponent', () => {
+  let component: SearchSouvenirsComponent;
+  let fixture: ComponentFixture<SearchSouvenirsComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ SearchSouveniresComponent ],
+      declarations: [ SearchSouvenirsComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(SearchSouveniresComponent);
+    fixture = TestBed.createComponent(SearchSouvenirsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
@@ -22,3 +22,4 @@ describe('SearchSouveniresComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+

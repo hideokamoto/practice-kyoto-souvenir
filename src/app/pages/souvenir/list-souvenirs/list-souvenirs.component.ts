@@ -3,11 +3,11 @@ import { Souvenir } from '../souvenir.service';
 import { UserDataService } from '../../../shared/services/user-data.service';
 
 @Component({
-  selector: 'app-list-souvenires',
-  templateUrl: './list-souvenires.component.html',
-  styleUrls: ['./list-souvenires.component.scss'],
+  selector: 'app-list-souvenirs',
+  templateUrl: './list-souvenirs.component.html',
+  styleUrls: ['./list-souvenirs.component.scss'],
 })
-export class ListSouveniresComponent implements OnInit {
+export class ListSouvenirsComponent implements OnInit {
   @Input() souvenir: Souvenir;
   public isFavorite = false;
   public isVisited = false;
@@ -21,3 +21,4 @@ export class ListSouveniresComponent implements OnInit {
     }
   }
 }
+

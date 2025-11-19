@@ -64,7 +64,7 @@ export class PlanDetailPage implements OnDestroy {
     // 両方のストアからデータを取得（データが揃ってから処理）
     this.loadPlanSubscription = combineLatest([
       this.store.select(selectSouvenirFeature).pipe(
-        filter(state => Array.isArray(state.souvenires)),
+        filter(state => Array.isArray(state.souvenirs)),
         take(1)
       ),
       this.store.select(selectSightsFeature).pipe(
@@ -83,7 +83,7 @@ export class PlanDetailPage implements OnDestroy {
         return;
       }
 
-      const souvenirs = souvenirState.souvenires as Souvenir[];
+      const souvenirs = souvenirState.souvenirs as Souvenir[];
       const sights = sightState.sights as Sight[];
 
       if (this.plan) {
@@ -202,7 +202,7 @@ export class PlanDetailPage implements OnDestroy {
     // 両方のストアからデータを取得（データが揃ってから処理）
     combineLatest([
       this.store.select(selectSouvenirFeature).pipe(
-        filter(state => Array.isArray(state.souvenires)),
+        filter(state => Array.isArray(state.souvenirs)),
         take(1)
       ),
       this.store.select(selectSightsFeature).pipe(
@@ -225,7 +225,7 @@ export class PlanDetailPage implements OnDestroy {
         return;
       }
 
-      const souvenirs = souvenirState.souvenires as Souvenir[];
+      const souvenirs = souvenirState.souvenirs as Souvenir[];
       const sights = sightState.sights as Sight[];
 
       // パフォーマンス向上のため、Mapオブジェクトを作成

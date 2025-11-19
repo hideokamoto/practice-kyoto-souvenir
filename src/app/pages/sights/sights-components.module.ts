@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { StoreModule } from '@ngrx/store';
 
@@ -13,6 +14,7 @@ import { SharedComponentsModule } from 'src/app/shared/components/components.mod
   imports: [
     CommonModule,
     FormsModule,
+    RouterModule,
     IonicModule,
     SharedComponentsModule,
     StoreModule.forFeature(sightsFeatureKey, sightsReducer)

@@ -36,11 +36,11 @@ export class SouvenirDetailPage implements OnInit {
     this.store.select(selectSouvenirFeature).pipe(
       take(1),
       switchMap(souvenirState => {
-        const hasData = souvenirState?.souvenires?.length > 0;
+        const hasData = souvenirState?.souvenirs?.length > 0;
         
         if (!hasData) {
           // ストアにデータがない場合のみフェッチ
-          return this.souvenirService.fetchSouvenires(false).pipe(
+          return this.souvenirService.fetchSouvenirs(false).pipe(
             switchMap(() => this.loadSouvenir(id))
           );
         } else {
@@ -87,7 +87,7 @@ export class SouvenirDetailPage implements OnInit {
   private loadSouvenir(id: string) {
     return this.store.select(
       createSelector(selectSouvenirFeature, state => 
-        state?.souvenires?.find(item => item.id === id) ?? null
+        state?.souvenirs?.find(item => item.id === id) ?? null
       )
     );
   }

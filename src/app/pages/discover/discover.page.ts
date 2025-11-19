@@ -34,7 +34,7 @@ interface RandomSuggestion {
 export class DiscoverPage implements OnInit, OnDestroy {
   public contentType: ContentType = 'sights';
   public sights$ = this.store.select(createSelector(selectSightsFeature, state => state.items));
-  public souvenires$ = this.store.select(createSelector(selectSouvenirFeature, state => state.items));
+  public souvenirs$ = this.store.select(createSelector(selectSouvenirFeature, state => state.items));
   
   public randomSuggestions: RandomSuggestion[] = [];
   public expandedDescriptions: { [key: string]: boolean } = {}; // デフォルトは折りたたみ
@@ -81,7 +81,7 @@ export class DiscoverPage implements OnInit, OnDestroy {
         const needsSouvenirs = !souvenirState?.items || souvenirState.items.length === 0;
 
         // 必要なデータがない場合のみfetchを実行（並行実行）
-        const fetchObservables: Array<ReturnType<typeof this.sightsService.fetchSights | typeof this.souvenirService.fetchSouvenires>> = [];
+        const fetchObservables: Array<ReturnType<typeof this.sightsService.fetchSights | typeof this.souvenirService.fetchSouvenirs>> = [];
         
         if (needsSights) {
           fetchObservables.push(
@@ -98,7 +98,7 @@ export class DiscoverPage implements OnInit, OnDestroy {
         
         if (needsSouvenirs) {
           fetchObservables.push(
-            this.souvenirService.fetchSouvenires(false).pipe(
+            this.souvenirService.fetchSouvenirs(false).pipe(
               catchError(error => {
                 console.error('お土産データの読み込みに失敗しました:', error);
                 if (!this.hasError) {

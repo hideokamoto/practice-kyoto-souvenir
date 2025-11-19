@@ -22,7 +22,7 @@ export class SouvenirService {
     private readonly store: Store,
     private readonly loadingController: LoadingController,
   ) { }
-  public fetchSouvenires(showLoading = true) {
+  public fetchSouvenirs(showLoading = true) {
     const dataLoaderObservar = from(
       import('./dataset/kyoto-souvenir.json')
     );
@@ -35,8 +35,8 @@ export class SouvenirService {
       return loadingObservar.pipe(
         concatMap(() => dataLoaderObservar.pipe(
             map(result => Object.values(result)),
-            tap(souvenires => {
-              this.store.dispatch(setSouvenir(souvenires));
+            tap(souvenirs => {
+              this.store.dispatch(setSouvenir(souvenirs));
             }),
             finalize(() => {
               this.loadingController.dismiss();
@@ -46,8 +46,8 @@ export class SouvenirService {
     } else {
       return dataLoaderObservar.pipe(
         map(result => Object.values(result)),
-        tap(souvenires => {
-          this.store.dispatch(setSouvenir(souvenires));
+        tap(souvenirs => {
+          this.store.dispatch(setSouvenir(souvenirs));
         })
       );
     }

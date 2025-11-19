@@ -139,7 +139,7 @@ export class FavoritesPage implements OnInit, OnDestroy {
     // 両方のストアからデータを取得（データが揃ってから処理）
     this.loadFavoritesSubscription = combineLatest([
       this.store.select(selectSouvenirFeature).pipe(
-        filter(state => Array.isArray(state?.souvenires)),
+        filter(state => Array.isArray(state?.souvenirs)),
         take(1)
       ),
       this.store.select(selectSightsFeature).pipe(

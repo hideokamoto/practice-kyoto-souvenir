@@ -3,11 +3,11 @@ import { Store } from '@ngrx/store';
 import { filterSouvenir } from '../store';
 
 @Component({
-  selector: 'app-search-souvenires',
-  templateUrl: './search-souvenires.component.html',
-  styleUrls: ['./search-souvenires.component.scss'],
+  selector: 'app-search-souvenirs',
+  templateUrl: './search-souvenirs.component.html',
+  styleUrls: ['./search-souvenirs.component.scss'],
 })
-export class SearchSouveniresComponent {
+export class SearchSouvenirsComponent {
 
   constructor(
     private readonly store: Store,
@@ -19,3 +19,4 @@ export class SearchSouveniresComponent {
   }
 
 }
+
