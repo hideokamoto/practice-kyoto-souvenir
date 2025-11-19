@@ -55,8 +55,6 @@ export class DiscoverPage implements OnInit, OnDestroy {
     private readonly souvenirService: SouvenirService
   ) {}
 
-  ngOnInit() {
-  }
 
   ngOnDestroy() {
     this.subscriptions.unsubscribe();
@@ -339,17 +337,17 @@ export class DiscoverPage implements OnInit, OnDestroy {
     return truncateText(suggestion.description, 60);
   }
 
-  onSegmentChange(event: any) {
+  onSegmentChange(event: CustomEvent) {
     this.contentType = event.detail.value;
   }
 
   public isIos() {
-    const win = window as any;
-    const mode = win && win.Ionic && win.Ionic.mode;
+    const win = window as Window & { Ionic?: { mode?: string } };
+    const mode = win?.Ionic?.mode;
     return mode === 'ios';
   }
 
-  refresh(ev: any) {
+  refresh(ev: CustomEvent) {
     this.getRandomSuggestions();
     setTimeout(() => {
       ev.detail.complete();

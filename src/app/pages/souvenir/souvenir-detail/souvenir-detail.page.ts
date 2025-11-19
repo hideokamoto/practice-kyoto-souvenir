@@ -80,8 +80,8 @@ export class SouvenirDetailPage implements OnInit {
   }
 
   public getBackButtonText() {
-    const win = window as any;
-    const mode = win && win.Ionic && win.Ionic.mode;
+    const win = window as Window & { Ionic?: { mode?: string } };
+    const mode = win?.Ionic?.mode;
     return mode === 'ios' ? '戻る' : '';
   }
 

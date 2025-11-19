@@ -268,9 +268,9 @@ export class PlanDetailPage implements OnDestroy {
           },
           {
             text: '追加',
-            handler: (selected) => {
+            handler: (selected: Array<{ itemId: string; itemType: 'sight' | 'souvenir' }>) => {
               if (selected && selected.length > 0 && this.plan) {
-                selected.forEach((item: any) => {
+                selected.forEach((item) => {
                   this.userDataService.addItemToPlan(this.plan!.id, item.itemId, item.itemType);
                 });
                 this.loadPlan(this.plan.id);
@@ -295,7 +295,7 @@ export class PlanDetailPage implements OnDestroy {
     return item.itemType === 'sight' ? `/sights/${item.itemId}` : `/souvenir/${item.itemId}`;
   }
 
-  doReorder(event: any) {
+  doReorder(event: CustomEvent<{ from: number; to: number; complete: () => void }>) {
     if (!this.plan) return;
 
     const itemToMove = this.planItems[event.detail.from];
@@ -313,7 +313,7 @@ export class PlanDetailPage implements OnDestroy {
     event.detail.complete();
   }
 
-  doRefresh(event: any) {
+  doRefresh(event: CustomEvent) {
     if (this.plan) {
       this.loadPlan(this.plan.id);
     }

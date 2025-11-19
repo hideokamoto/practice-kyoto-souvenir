@@ -15,7 +15,7 @@ export class SearchSightsComponent {
   ) { }
 
   public searchByName(event: Event) {
-    const name = (event.target as any).value;
+    const name = (event.target as HTMLInputElement).value;
     this.store.dispatch(filterSights(name));
   }
 

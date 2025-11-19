@@ -16,6 +16,8 @@
       ],
       "rules": {
         "prefer-arrow/prefer-arrow-functions": "off",
+        "@angular-eslint/prefer-inject": "warn",
+        "@angular-eslint/prefer-standalone": "warn",
         "@angular-eslint/component-class-suffix": [
           "error",
           {

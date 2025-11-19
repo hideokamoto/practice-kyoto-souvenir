@@ -1,4 +1,4 @@
-import { mapFavoritesToFavoriteItems, FavoriteItem } from './favorites.utils';
+import { mapFavoritesToFavoriteItems } from './favorites.utils';
 import { Favorite } from '../../shared/services/user-data.service';
 import { Souvenir } from '../souvenir/souvenir.service';
 import { Sight } from '../sights/sights.service';

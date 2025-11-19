@@ -29,8 +29,6 @@ export class FavoritesPage implements OnInit, OnDestroy {
     private readonly souvenirService: SouvenirService
   ) {}
 
-  ngOnInit() {
-  }
 
   ngOnDestroy() {
     if (this.loadFavoritesSubscription) {
@@ -178,7 +176,7 @@ export class FavoritesPage implements OnInit, OnDestroy {
     return item.type === 'sight' ? `/sights/${item.id}` : `/souvenir/${item.id}`;
   }
 
-  doRefresh(event: any) {
+  doRefresh(event: CustomEvent) {
     this.loadFavorites();
     setTimeout(() => {
       event.target.complete();

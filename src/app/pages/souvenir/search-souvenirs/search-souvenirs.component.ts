@@ -15,7 +15,7 @@ export class SearchSouvenirsComponent {
   ) { }
 
   public searchByName(event: Event) {
-    const name = (event.target as any).value;
+    const name = (event.target as HTMLInputElement).value;
     this.store.dispatch(filterSouvenir(name));
   }
 

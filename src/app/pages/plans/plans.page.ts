@@ -143,7 +143,7 @@ export class PlansPage implements OnInit, OnDestroy {
     this.router.navigate(['/tabs/plans', plan.id]);
   }
 
-  doRefresh(event: any) {
+  doRefresh(event: CustomEvent) {
     this.loadPlans();
     setTimeout(() => {
       event.target.complete();
