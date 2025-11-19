@@ -28,9 +28,16 @@ export function mapFavoritesToFavoriteItems(
   souvenirs: Souvenir[],
   sights: Sight[]
 ): FavoriteItem[] {
-  // パフォーマンス向上のため、Mapオブジェクトを作成（O(1)の検索を実現）
-  const souvenirMap = new Map(souvenirs.map(s => [s.id, s]));
-  const sightMap = new Map(sights.map(s => [s.id, s]));
+  // パフォーマンス向上のため、Mapオブジェクトを作成（O(N)からO(1)の検索を実現）
+  const souvenirMap = new Map<string, Souvenir>();
+  souvenirs.forEach(souvenir => {
+    souvenirMap.set(souvenir.id, souvenir);
+  });
+
+  const sightMap = new Map<string, Sight>();
+  sights.forEach(sight => {
+    sightMap.set(sight.id, sight);
+  });
 
   return favorites
     .map(fav => {

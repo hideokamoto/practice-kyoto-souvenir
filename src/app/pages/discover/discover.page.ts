@@ -26,6 +26,22 @@ interface RandomSuggestion {
   isVisited?: boolean;
 }
 
+type ItemWithType = { item: Sight | Souvenir; type: 'sight' | 'souvenir' };
+
+interface UserDataSets {
+  visitedSightIds: Set<string>;
+  visitedSouvenirIds: Set<string>;
+  favoriteSightIds: Set<string>;
+  favoriteSouvenirIds: Set<string>;
+}
+
+interface PriorityPools {
+  favoriteUnvisitedSights: Sight[];
+  unvisitedSights: Sight[];
+  favoriteUnvisitedSouvenirs: Souvenir[];
+  unvisitedSouvenirs: Souvenir[];
+}
+
 @Component({
     selector: 'app-discover',
     templateUrl: './discover.page.html',
