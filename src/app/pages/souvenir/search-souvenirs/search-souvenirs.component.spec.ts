@@ -14,7 +14,7 @@ describe('SearchSouvenirsComponent', () => {
       dispatch: jest.fn(),
       select: jest.fn(),
       pipe: jest.fn(),
-    } as any;
+    } as jest.Mocked<Store>;
 
     TestBed.configureTestingModule({
       declarations: [ SearchSouvenirsComponent ],

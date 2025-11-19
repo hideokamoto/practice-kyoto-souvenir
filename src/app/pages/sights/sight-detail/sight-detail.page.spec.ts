@@ -25,7 +25,7 @@ describe('SightDetailPage', () => {
       dispatch: jest.fn(),
       select: jest.fn().mockReturnValue(of({ sights: [] })),
       pipe: jest.fn(),
-    } as any;
+    } as jest.Mocked<Store>;
 
     loadingControllerMock = {
       create: jest.fn().mockResolvedValue({
@@ -33,7 +33,7 @@ describe('SightDetailPage', () => {
         dismiss: jest.fn().mockResolvedValue(undefined),
       }),
       dismiss: jest.fn().mockResolvedValue(undefined),
-    } as any;
+    } as jest.Mocked<LoadingController>;
 
     TestBed.configureTestingModule({
       declarations: [ SightDetailPage ],

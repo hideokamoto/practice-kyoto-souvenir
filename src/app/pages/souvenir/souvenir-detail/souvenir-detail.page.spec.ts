@@ -25,7 +25,7 @@ describe('SouvenirDetailPage', () => {
       dispatch: jest.fn(),
       select: jest.fn().mockReturnValue(of({ souvenirs: [] })),
       pipe: jest.fn(),
-    } as any;
+    } as jest.Mocked<Store>;
 
     loadingControllerMock = {
       create: jest.fn().mockResolvedValue({
@@ -33,7 +33,7 @@ describe('SouvenirDetailPage', () => {
         dismiss: jest.fn().mockResolvedValue(undefined),
       }),
       dismiss: jest.fn().mockResolvedValue(undefined),
-    } as any;
+    } as jest.Mocked<LoadingController>;
 
     TestBed.configureTestingModule({
       declarations: [ SouvenirDetailPage ],
