@@ -1,0 +1,16 @@
+<ion-item
+  *ngIf="souvenir"
+  [detail]="true"
+  [routerLink]="'/souvenir/' + souvenir.id"
+>
+  <ion-label class="ion-text-wrap">
+    <h2>
+      {{souvenir.name}}
+      <ion-icon *ngIf="isFavorite" name="heart" color="danger" size="small"></ion-icon>
+      <ion-icon *ngIf="isVisited" name="checkmark-circle" color="success" size="small"></ion-icon>
+    </h2>
+    <h3>{{souvenir.name_kana}}</h3>
+    <p>{{souvenir.description}}</p>
+  </ion-label>
+</ion-item>
+

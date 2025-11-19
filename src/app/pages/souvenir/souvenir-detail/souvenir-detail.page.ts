@@ -1,46 +1,94 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, inject} from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { createSelector, Store } from '@ngrx/store';
 import { Souvenir, SouvenirService } from '../souvenir.service';
 import { selectSouvenirFeature } from '../store';
+import { UserDataService } from '../../../shared/services/user-data.service';
+import { switchMap, take, filter, tap } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-souvenir-detail',
-  templateUrl: './souvenir-detail.page.html',
-  styleUrls: ['./souvenir-detail.page.scss'],
+    selector: 'app-souvenir-detail',
+    templateUrl: './souvenir-detail.page.html',
+    styleUrls: ['./souvenir-detail.page.scss'],
+    standalone: false
 })
 export class SouvenirDetailPage implements OnInit {
+  private readonly activatedRoute = inject(ActivatedRoute);
+  private readonly store = inject(Store);
+  private readonly souvenirService = inject(SouvenirService);
+  private readonly title = inject(Title);
+  private readonly userDataService = inject(UserDataService);
+
   public souvenir: Souvenir | null;
-  constructor(
-    private readonly activatedRoute: ActivatedRoute,
-    private readonly store: Store,
-    private readonly souvenirService: SouvenirService,
-    private readonly title: Title,
-  ) { }
+  public isFavorite = false;
+  public isVisited = false;
 
   public ngOnInit() {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
-    this.loadSouvenir(id)
-      .subscribe(result => {
-        if (result) {
-          this.souvenir = result;
+    
+    if (!id) {
+      return;
+    }
+
+    // ストアの状態を確認し、必要に応じてデータをフェッチしてから、souvenirを読み込む
+    this.store.select(selectSouvenirFeature).pipe(
+      take(1),
+      switchMap(souvenirState => {
+        const hasData = souvenirState?.souvenirs?.length > 0;
+        
+        if (!hasData) {
+          // ストアにデータがない場合のみフェッチ
+          return this.souvenirService.fetchSouvenirs(false).pipe(
+            switchMap(() => this.loadSouvenir(id))
+          );
         } else {
-          this.souvenirService.fetchSouvenires()
-            .subscribe(() => {
-              this.loadSouvenir(id).subscribe(item => this.souvenir = item);
-            });
+          // ストアにデータがある場合は直接読み込む
+          return this.loadSouvenir(id);
         }
-        this.title.setTitle(this.souvenir.name);
-      });
+      }),
+      filter((souvenir): souvenir is Souvenir => souvenir !== null && souvenir !== undefined),
+      tap(souvenir => {
+        this.souvenir = souvenir;
+        this.updateUserDataStatus();
+        if (souvenir?.name) {
+          this.title.setTitle(souvenir.name);
+        }
+      })
+    ).subscribe();
   }
+
+  public toggleFavorite(): void {
+    if (this.souvenir) {
+      this.isFavorite = this.userDataService.toggleFavorite(this.souvenir.id, 'souvenir');
+    }
+  }
+
+  public toggleVisited(): void {
+    if (this.souvenir) {
+      this.isVisited = this.userDataService.toggleVisit(this.souvenir.id, 'souvenir');
+    }
+  }
+
+  private updateUserDataStatus(): void {
+    if (this.souvenir) {
+      this.isFavorite = this.userDataService.isFavorite(this.souvenir.id, 'souvenir');
+      this.isVisited = this.userDataService.isVisited(this.souvenir.id, 'souvenir');
+    }
+  }
+
   public getBackButtonText() {
-    const win = window as any;
-    const mode = win && win.Ionic && win.Ionic.mode;
+    const win = window as Window & { Ionic?: { mode?: string } };
+    const mode = win?.Ionic?.mode;
     return mode === 'ios' ? '戻る' : '';
   }
+
   private loadSouvenir(id: string) {
-    return this.store.select(createSelector(selectSouvenirFeature, state => state.souvenires.find(item => item.id === id)));
+    return this.store.select(
+      createSelector(selectSouvenirFeature, state => 
+        state?.souvenirs?.find(item => item.id === id) ?? null
+      )
+    );
   }
 
 }

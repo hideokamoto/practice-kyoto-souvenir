@@ -1,0 +1,9 @@
+---
+description: When you want to capture screenshots
+alwaysApply: false
+---
+
+- You must save all of the screenshots to the test-results directory.
+- This project uses Playwright for E2E testing (already installed in package.json).
+- For E2E tests, use Playwright's built-in screenshot capabilities.
+- For ad-hoc screenshots or browser automation outside of E2E tests, you may use the built-in browser or chrome dev tools mcp.

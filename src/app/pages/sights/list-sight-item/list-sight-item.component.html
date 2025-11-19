@@ -1,6 +1,10 @@
-        <ion-item [detail]="true" *ngIf="sight" [routerLink]="sight.id">
+        <ion-item [detail]="true" *ngIf="sight" [routerLink]="'/sights/' + sight.id">
           <ion-label class='ion-text-wrap'>
-            <h2>{{sight.name}}</h2>
+            <h2>
+              {{sight.name}}
+              <ion-icon *ngIf="isFavorite" name="heart" color="danger" size="small"></ion-icon>
+              <ion-icon *ngIf="isVisited" name="checkmark-circle" color="success" size="small"></ion-icon>
+            </h2>
             <h3>{{sight.name_kana}}</h3>
             <p>{{sight.description}}</p>
           </ion-label>

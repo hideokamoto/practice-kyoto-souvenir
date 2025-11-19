@@ -1,0 +1,498 @@
+// 価値提案セクション（above the fold）
+.value-proposition {
+  padding: 24px 16px 16px;
+  text-align: center;
+  background: linear-gradient(135deg, var(--ion-color-primary-tint) 0%, var(--ion-color-primary) 100%);
+  color: white;
+  margin: 0;
+  
+  @media (max-width: 768px) {
+    padding: 12px 10px 10px;
+  }
+  
+  h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 12px 0;
+    color: white;
+    
+    @media (max-width: 768px) {
+      font-size: 18px;
+      margin: 0 0 6px 0;
+    }
+  }
+  
+  p {
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 8px 0;
+    color: rgba(255, 255, 255, 0.95);
+    
+    @media (max-width: 768px) {
+      font-size: 12px;
+      margin: 3px 0;
+      line-height: 1.3;
+    }
+  }
+  
+  .subtitle {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.85);
+    margin-top: 4px;
+    
+    @media (max-width: 768px) {
+      font-size: 10px;
+      margin-top: 2px;
+      display: none; // スマホでは非表示
+    }
+  }
+}
+
+// メインアクションコンテナ
+.main-action-container {
+  padding: 24px 16px;
+  
+  @media (max-width: 768px) {
+    padding: 12px 10px;
+  }
+  
+  .recommendations-header {
+    text-align: center;
+    margin-bottom: 20px;
+    
+    @media (max-width: 768px) {
+      margin-bottom: 8px;
+    }
+    
+    h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin: 0 0 8px 0;
+      color: var(--ion-color-dark);
+      
+      @media (max-width: 768px) {
+        font-size: 16px;
+        margin: 0 0 2px 0;
+      }
+    }
+    
+    p {
+      font-size: 14px;
+      color: var(--ion-color-medium);
+      margin: 0;
+      
+      @media (max-width: 768px) {
+        font-size: 11px;
+      }
+    }
+  }
+  
+  .recommendations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin-bottom: 20px;
+    
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+  }
+  
+  .refresh-actions {
+    margin-top: 24px;
+    
+    @media (max-width: 768px) {
+      margin-top: 12px;
+    }
+    
+    .refresh-button {
+      height: 44px;
+      font-size: 15px;
+      
+      @media (max-width: 768px) {
+        height: 36px;
+        font-size: 13px;
+      }
+      
+      ion-icon {
+        font-size: 18px;
+        
+        @media (max-width: 768px) {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+
+// 提案カード（3択表示用）
+.recommendation-card {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  
+  @media (max-width: 768px) {
+    border-radius: 8px;
+    max-height: 130px;
+    overflow: hidden;
+  }
+  
+  ion-card-header {
+    padding: 20px 16px 16px;
+    flex: 0 0 auto;
+    
+    @media (max-width: 768px) {
+      padding: 6px 5px 3px;
+    }
+    
+    ion-card-title {
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1.3;
+      margin: 0 0 4px 0;
+      
+      @media (max-width: 768px) {
+        font-size: 12px;
+        margin: 0;
+        line-height: 1.1;
+      }
+    }
+    
+    .name-kana {
+      font-size: 13px;
+      color: var(--ion-color-medium);
+      margin: 0 0 10px 0;
+      font-weight: 400;
+      
+      @media (max-width: 768px) {
+        font-size: 11px;
+        margin: 0 0 4px 0;
+        display: none; // スマホでは非表示
+      }
+    }
+    
+    .recommendation-reason {
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+      padding: 8px 10px;
+      background: var(--ion-color-light);
+      border-radius: 6px;
+      margin-top: 8px;
+      
+      @media (max-width: 768px) {
+        display: none; // スマホでは非表示
+      }
+      
+      ion-icon {
+        margin-top: 2px;
+        font-size: 16px;
+        flex-shrink: 0;
+      }
+      
+      span {
+        font-size: 12px;
+        color: var(--ion-color-dark);
+        line-height: 1.4;
+        flex: 1;
+      }
+    }
+  }
+  
+  ion-card-content {
+    padding: 0 16px 16px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow: hidden;
+    
+    @media (max-width: 768px) {
+      padding: 0 6px 6px;
+      flex: 1 1 auto;
+      min-height: 0;
+      overflow: hidden;
+    }
+    
+    .description-container {
+      margin-bottom: 12px;
+      flex: 0 0 auto;
+      
+      @media (max-width: 768px) {
+        margin-bottom: 2px;
+      }
+      
+      .description {
+        font-size: 13px;
+        line-height: 1.5;
+        color: var(--ion-color-dark);
+        margin: 0 0 8px 0;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        
+        @media (max-width: 768px) {
+          font-size: 9px;
+          line-height: 1.1;
+          margin: 0;
+        }
+      }
+      
+      .toggle-description {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        padding: 4px 8px;
+        background: transparent;
+        border: none;
+        color: var(--ion-color-primary);
+        font-size: 12px;
+        cursor: pointer;
+        width: 100%;
+        justify-content: center;
+        margin-top: 4px;
+        
+        @media (max-width: 768px) {
+          padding: 0;
+          font-size: 8px;
+          margin-top: 0;
+        }
+        
+        ion-icon {
+          font-size: 16px;
+          
+          @media (max-width: 768px) {
+            font-size: 10px;
+          }
+        }
+        
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+    
+    .description.desktop-only {
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--ion-color-dark);
+      margin-bottom: 12px;
+      flex: 1;
+    }
+    
+    // モバイル/デスクトップ表示切り替え
+    .mobile-only {
+      display: block;
+      
+      @media (min-width: 769px) {
+        display: none;
+      }
+    }
+    
+    .desktop-only {
+      display: none;
+      
+      @media (min-width: 769px) {
+        display: block;
+      }
+    }
+    
+    .recommendation-info {
+      margin-bottom: 12px;
+      padding: 8px 10px;
+      background: var(--ion-color-light);
+      border-radius: 6px;
+      flex: 0 0 auto;
+      
+      @media (max-width: 768px) {
+        display: none; // スマホでは非表示
+      }
+      
+      .info-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 6px;
+        margin-bottom: 6px;
+        
+        &:last-child {
+          margin-bottom: 0;
+        }
+        
+        ion-icon {
+          margin-top: 2px;
+          color: var(--ion-color-primary);
+          font-size: 16px;
+          flex-shrink: 0;
+        }
+        
+        span {
+          font-size: 12px;
+          color: var(--ion-color-dark);
+          line-height: 1.4;
+          flex: 1;
+        }
+      }
+    }
+    
+    .status-badges {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+      flex: 0 0 auto;
+      
+      @media (max-width: 768px) {
+        margin-bottom: 2px;
+        gap: 2px;
+      }
+      
+      ion-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        padding: 4px 8px;
+        font-size: 11px;
+        
+        @media (max-width: 768px) {
+          padding: 1px 3px;
+          font-size: 7px;
+        }
+        
+        ion-icon {
+          font-size: 12px;
+          
+          @media (max-width: 768px) {
+            font-size: 8px;
+          }
+        }
+      }
+    }
+    
+    .primary-button {
+      height: 44px;
+      font-size: 14px;
+      font-weight: 600;
+      --box-shadow: 0 2px 8px rgba(var(--ion-color-primary-rgb), 0.25);
+      margin-top: auto;
+      flex: 0 0 auto;
+      
+      @media (max-width: 768px) {
+        height: 26px;
+        font-size: 9px;
+        --padding-start: 4px;
+        --padding-end: 4px;
+        margin-top: 1px;
+      }
+      
+      ion-icon {
+        font-size: 18px;
+        
+        @media (max-width: 768px) {
+          font-size: 9px;
+        }
+      }
+    }
+  }
+}
+
+// 空の提案カード
+.empty-suggestion {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  border-radius: 16px;
+  text-align: center;
+  
+  ion-card-content {
+    padding: 48px 24px;
+    
+    ion-icon {
+      margin-bottom: 16px;
+      color: var(--ion-color-medium);
+    }
+    
+    h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 16px 0 8px;
+    }
+    
+    p {
+      font-size: 14px;
+      color: var(--ion-color-medium);
+    }
+  }
+}
+
+// 探索モードコンテナ（常に表示）
+.exploration-mode-container {
+  margin-top: 32px;
+  padding: 0 16px 24px;
+  
+  .exploration-header {
+    margin-bottom: 16px;
+    
+    h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 0;
+      color: var(--ion-color-dark);
+    }
+  }
+  
+  .segment-container {
+    padding-top: 0;
+    padding-bottom: 16px;
+  }
+}
+
+.content-segment {
+  margin: 8px 0;
+}
+
+.empty-state {
+  padding: 40px 20px;
+  text-align: center;
+  
+  ion-icon {
+    margin-bottom: 16px;
+  }
+  
+  h3 {
+    margin-top: 16px;
+    font-weight: 600;
+  }
+  
+  p {
+    color: var(--ion-color-medium);
+    margin-top: 8px;
+  }
+}
+
+.error-state {
+  margin: 16px;
+  
+  ion-card-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+}
+
+.search-section {
+  margin-top: 16px;
+}
+
+// ion-contentのスクロールを確実に有効化
+ion-content {
+  --overflow: auto;
+  
+  &::part(scroll) {
+    overflow-y: auto !important;
+  }
+}
+

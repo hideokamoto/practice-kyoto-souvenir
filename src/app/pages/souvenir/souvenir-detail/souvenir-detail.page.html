@@ -7,6 +7,14 @@
       <ion-title>
         {{souvenir.name}}
       </ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="toggleFavorite()">
+          <ion-icon slot="icon-only" [name]="isFavorite ? 'heart' : 'heart-outline'" [color]="isFavorite ? 'danger' : ''"></ion-icon>
+        </ion-button>
+        <ion-button (click)="toggleVisited()">
+          <ion-icon slot="icon-only" [name]="isVisited ? 'checkmark-circle' : 'checkmark-circle-outline'" [color]="isVisited ? 'success' : ''"></ion-icon>
+        </ion-button>
+      </ion-buttons>
     </ion-toolbar>
   </ion-header>
   

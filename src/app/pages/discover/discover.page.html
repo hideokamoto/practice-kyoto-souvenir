@@ -1,0 +1,217 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      発見
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">発見</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- アプリの価値提案（above the fold） -->
+  <div class="value-proposition" *ngIf="!isLoading && !hasError">
+    <h2>今日、何をしよう？</h2>
+    <p>「いつでも行けるから」と思って、実は行ったことがない観光地はありませんか？</p>
+    <p class="subtitle">京都に住むあなたのための観光コンパニオン</p>
+  </div>
+
+  <!-- データ読み込み中の表示 -->
+  <div *ngIf="isLoading && !hasError" class="ion-padding">
+    <ion-spinner></ion-spinner>
+    <p class="ion-text-center">京都の観光情報を読み込んでいます...</p>
+  </div>
+
+  <!-- エラー状態の表示 -->
+  <ion-card *ngIf="hasError" class="error-state">
+    <ion-card-header>
+      <ion-card-title>
+        <ion-icon name="alert-circle" color="danger"></ion-icon>
+        データの読み込みに失敗しました
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ errorMessage }}</p>
+      <ion-button expand="block" (click)="loadData()">
+        再試行
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- メインアクション: 今日の提案（3択） -->
+  <div class="main-action-container" *ngIf="!isLoading && !hasError">
+    <div class="recommendations-header">
+      <h3>今日の提案</h3>
+      <p>3つの選択肢から選んでください</p>
+    </div>
+
+    <div class="recommendations-grid" *ngIf="randomSuggestions.length > 0">
+      <ion-card *ngFor="let suggestion of randomSuggestions" class="recommendation-card">
+        <ion-card-header>
+          <ion-card-title>{{ suggestion.name }}</ion-card-title>
+          <p *ngIf="suggestion.name_kana" class="name-kana">{{ suggestion.name_kana }}</p>
+          
+          <!-- 選ばれた理由 -->
+          <div class="recommendation-reason">
+            <ion-icon name="information-circle-outline" color="primary"></ion-icon>
+            <span>{{ getRecommendationReason(suggestion) }}</span>
+          </div>
+        </ion-card-header>
+        
+        <ion-card-content>
+          <!-- 説明文（スマホでは折りたたみ可能） -->
+          <div class="description-container mobile-only">
+            <p 
+              class="description" 
+              [class.expanded]="isDescriptionExpanded(suggestion.id)"
+              (click)="toggleDescription(suggestion.id)">
+              {{ getDescriptionText(suggestion, isDescriptionExpanded(suggestion.id)) }}
+            </p>
+            <button 
+              *ngIf="suggestion.description && suggestion.description.length > 60" 
+              class="toggle-description"
+              (click)="toggleDescription(suggestion.id)">
+              <ion-icon [name]="isDescriptionExpanded(suggestion.id) ? 'chevron-up' : 'chevron-down'"></ion-icon>
+              <span>{{ isDescriptionExpanded(suggestion.id) ? '閉じる' : '続きを読む' }}</span>
+            </button>
+          </div>
+          
+          <!-- デスクトップ用の説明文（常に表示） -->
+          <p class="description desktop-only" *ngIf="suggestion.description">{{ suggestion.description | truncate:120 }}</p>
+          
+          <!-- 追加情報 -->
+          <div class="recommendation-info" *ngIf="suggestion.address || suggestion.price">
+            <div *ngIf="suggestion.address" class="info-item">
+              <ion-icon name="location-outline"></ion-icon>
+              <span>{{ suggestion.address }}</span>
+            </div>
+            <div *ngIf="suggestion.price" class="info-item">
+              <ion-icon name="cash-outline"></ion-icon>
+              <span>{{ suggestion.price | truncate:40 }}</span>
+            </div>
+          </div>
+          
+          <!-- ステータス表示 -->
+          <div class="status-badges" *ngIf="suggestion.isFavorite || suggestion.isVisited">
+            <ion-badge *ngIf="suggestion.isFavorite" color="danger">
+              <ion-icon name="heart"></ion-icon>
+              お気に入り
+            </ion-badge>
+            <ion-badge *ngIf="suggestion.isVisited" color="success">
+              <ion-icon name="checkmark-circle"></ion-icon>
+              訪問済み
+            </ion-badge>
+          </div>
+          
+          <ion-button expand="block" class="primary-button" [routerLink]="getRouterLink(suggestion)">
+            <ion-icon name="arrow-forward" slot="end"></ion-icon>
+            {{ getActionButtonText(suggestion) }}
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+    <!-- 別の提案ボタン -->
+    <div class="refresh-actions" *ngIf="randomSuggestions.length > 0">
+      <ion-button expand="block" fill="outline" class="refresh-button" (click)="getRandomSuggestions()">
+        <ion-icon name="shuffle" slot="start"></ion-icon>
+        別の提案を見る
+      </ion-button>
+    </div>
+
+    <!-- データがない場合の代替案 -->
+    <ion-card *ngIf="randomSuggestions.length === 0" class="empty-suggestion">
+      <ion-card-content>
+        <ion-icon name="compass-outline" size="large"></ion-icon>
+        <h3>観光地・お土産を探してみましょう</h3>
+        <p>下の探索モードから、京都の名所やお土産を探索できます</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <!-- 探索モード（常に表示） -->
+  <div class="exploration-mode-container" *ngIf="!isLoading && !hasError">
+    <div class="exploration-header">
+      <h3>観光地・お土産を探す</h3>
+    </div>
+
+    <div class="exploration-content">
+      <!-- セグメント切り替え -->
+      <div class="ion-padding segment-container">
+        <ion-segment [value]="contentType" (ionChange)="onSegmentChange($event)" class="content-segment">
+          <ion-segment-button value="sights">
+            <ion-label>観光地</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="souvenirs">
+            <ion-label>お土産</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </div>
+
+      <!-- 検索バー -->
+      <div class="search-section">
+        <ion-header *ngIf="!isIos()">
+          <ion-toolbar>
+            <app-search-sights *ngIf="contentType === 'sights'"></app-search-sights>
+            <app-search-souvenirs *ngIf="contentType === 'souvenirs'"></app-search-souvenirs>
+          </ion-toolbar>
+        </ion-header>
+        <ion-header collapse="condense">
+          <ion-toolbar>
+            <app-search-sights *ngIf="contentType === 'sights'"></app-search-sights>
+            <app-search-souvenirs *ngIf="contentType === 'souvenirs'"></app-search-souvenirs>
+          </ion-toolbar>
+        </ion-header>
+      </div>
+
+      <!-- 観光地リスト -->
+      <div *ngIf="contentType === 'sights'">
+        <ng-container *ngIf="sights$ | async as sights; else listSightsSkeleton">
+          <ion-list *ngIf="sights.length > 0">
+            <app-list-sight-item
+              *ngFor="let sight of sights"
+              [sight]='sight'>
+            </app-list-sight-item>
+          </ion-list>
+          <div *ngIf="sights.length === 0" class="ion-padding ion-text-center empty-state">
+            <ion-icon name="search-outline" size="large" color="medium"></ion-icon>
+            <h3>検索結果が見つかりませんでした</h3>
+            <p>別のキーワードで検索してみてください</p>
+          </div>
+        </ng-container>
+        <ng-template #listSightsSkeleton>
+          <app-list-item-skeleton></app-list-item-skeleton>
+        </ng-template>
+      </div>
+
+      <!-- お土産リスト -->
+      <div *ngIf="contentType === 'souvenirs'">
+        <ng-container *ngIf="souvenirs$ | async as souvenirs; else listSouvenirSkeleton">
+          <ion-list *ngIf="souvenirs.length > 0">
+            <app-list-souvenirs
+              *ngFor="let souvenir of souvenirs"
+              [souvenir]="souvenir">
+            </app-list-souvenirs>
+          </ion-list>
+          <div *ngIf="souvenirs.length === 0" class="ion-padding ion-text-center empty-state">
+            <ion-icon name="search-outline" size="large" color="medium"></ion-icon>
+            <h3>検索結果が見つかりませんでした</h3>
+            <p>別のキーワードで検索してみてください</p>
+          </div>
+        </ng-container>
+        <ng-template #listSouvenirSkeleton>
+          <app-list-item-skeleton></app-list-item-skeleton>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</ion-content>
+

@@ -1,0 +1,57 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>プラン</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">プラン</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div *ngIf="plans.length === 0" class="ion-padding ion-text-center empty-state">
+    <ion-icon name="map-outline" size="large" color="medium"></ion-icon>
+    <h2>プランはまだありません</h2>
+    <p>複数のスポットを組み合わせて、あなただけの京都プランを作成しましょう</p>
+    <div class="empty-state-actions">
+      <ion-button expand="block" fill="solid" (click)="createPlan()">
+        <ion-icon slot="start" name="add"></ion-icon>
+        プランを作成
+      </ion-button>
+      <ion-button expand="block" fill="outline" (click)="createRandomPlan()">
+        <ion-icon slot="start" name="shuffle"></ion-icon>
+        ランダムプランを作成
+      </ion-button>
+    </div>
+  </div>
+
+  <ion-list *ngIf="plans.length > 0">
+    <ion-item-sliding *ngFor="let plan of plans">
+      <ion-item (click)="viewPlan(plan)" detail>
+        <ion-icon slot="start" name="map" color="primary"></ion-icon>
+        <ion-label class="ion-text-wrap">
+          <h2>{{ plan.name }}</h2>
+          <p>{{ plan.items.length }}件のスポット</p>
+          <p><small>作成日: {{ formatDate(plan.createdAt) }}</small></p>
+        </ion-label>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option color="danger" (click)="deletePlan(plan, $event)">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="createPlan()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

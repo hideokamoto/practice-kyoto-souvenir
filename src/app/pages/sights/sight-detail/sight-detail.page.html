@@ -2,11 +2,19 @@
   <ion-header [translucent]="true">
     <ion-toolbar>
       <ion-buttons slot="start">
-        <ion-back-button [text]="getBackButtonText()" defaultHref="/sights"></ion-back-button>
+        <ion-back-button [text]="getBackButtonText()" defaultHref="/discover"></ion-back-button>
       </ion-buttons>
       <ion-title>
         {{sight.name}}
       </ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="toggleFavorite()">
+          <ion-icon slot="icon-only" [name]="isFavorite ? 'heart' : 'heart-outline'" [color]="isFavorite ? 'danger' : ''"></ion-icon>
+        </ion-button>
+        <ion-button (click)="toggleVisited()">
+          <ion-icon slot="icon-only" [name]="isVisited ? 'checkmark-circle' : 'checkmark-circle-outline'" [color]="isVisited ? 'success' : ''"></ion-icon>
+        </ion-button>
+      </ion-buttons>
     </ion-toolbar>
   </ion-header>
   
@@ -16,52 +24,178 @@
         <ion-title size="large">{{sight.name}}</ion-title>
       </ion-toolbar>
     </ion-header>
+
+    <!-- 写真 -->
+    <div *ngIf="getPhotoPath(sight.photo)" class="photo-container">
+      <img [src]="getPhotoPath(sight.photo)" [alt]="sight.name" class="sight-photo" />
+    </div>
+
+    <!-- 基本情報 -->
     <ion-item>
       <ion-label class='ion-text-wrap'>
         <h2>{{sight.name}}</h2>
         <h3><small>({{sight.name_kana}})</small></h3>
+        <p *ngIf="sight.alt_name" class="alt-name">
+          <small>別名: {{sight.alt_name}}<span *ngIf="sight.alt_name_kana"> ({{sight.alt_name_kana}})</span></small>
+        </p>
       </ion-label>
     </ion-item>
-    <div class='ion-padding'>
-      {{sight.description}}
+
+    <div class='ion-padding description-text'>
+      <pre class="formatted-text">{{formatText(sight.description)}}</pre>
     </div>
+
     <ion-list>
-      <ion-item *ngIf="sight.address">
-        <ion-label>
-          <h3>住所</h3>
-          <p>{{sight.address}}</p>
-        </ion-label>
-      </ion-item>
-      <ion-item *ngIf="sight.business_hours && false">
-        <ion-label>
-          <h3>営業時間</h3>
-          <p>{{sight.business_hours}}</p>
-        </ion-label>
-      </ion-item>
-      <ion-item *ngIf="sight.price && false">
+      <!-- アクセス情報 -->
+      <ion-item-divider>
+        <ion-label>アクセス情報</ion-label>
+      </ion-item-divider>
+
+      <ng-container *ngIf="hasAccessInfo(); else noAccessInfo">
+        <ion-item>
+          <ion-label>
+            <h3>住所</h3>
+            <p *ngIf="(sight.postal_code && sight.postal_code.trim() !== '') || (sight.address && sight.address.trim() !== '')">
+              <span *ngIf="sight.postal_code && sight.postal_code.trim() !== ''">〒{{sight.postal_code}} </span>
+              <span *ngIf="sight.address && sight.address.trim() !== ''">{{sight.address}}</span>
+            </p>
+            <p *ngIf="(!sight.postal_code || sight.postal_code.trim() === '') && (!sight.address || sight.address.trim() === '')">情報なし</p>
+          </ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>
+            <h3>電話番号</h3>
+            <p *ngIf="sight.tel && sight.tel.trim() !== ''"><a [href]="'tel:' + sight.tel">{{sight.tel}}</a></p>
+            <p *ngIf="!sight.tel || sight.tel.trim() === ''">情報なし</p>
+          </ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>
+            <h3>FAX</h3>
+            <p *ngIf="sight.fax && sight.fax.trim() !== ''">{{sight.fax}}</p>
+            <p *ngIf="!sight.fax || sight.fax.trim() === ''">情報なし</p>
+          </ion-label>
+        </ion-item>
+      </ng-container>
+      <ng-template #noAccessInfo>
+        <ion-item>
+          <ion-label>
+            <p>情報なし</p>
+          </ion-label>
+        </ion-item>
+      </ng-template>
+
+      <!-- 営業情報 -->
+      <ion-item-divider>
+        <ion-label>営業情報</ion-label>
+      </ion-item-divider>
+
+      <ng-container *ngIf="hasBusinessInfo(); else noBusinessInfo">
+        <ion-item>
+          <ion-label>
+            <h3>営業時間</h3>
+            <pre *ngIf="sight.business_hours && sight.business_hours.trim() !== ''" class="formatted-text">{{formatText(sight.business_hours)}}</pre>
+            <p *ngIf="!sight.business_hours || sight.business_hours.trim() === ''">情報なし</p>
+          </ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>
+            <h3>開館・閉館時間</h3>
+            <p *ngIf="(sight.opening_time && sight.opening_time.trim() !== '') || (sight.closing_time && sight.closing_time.trim() !== '')">
+              <span *ngIf="sight.opening_time && sight.opening_time.trim() !== ''">開館: {{formatTime(sight.opening_time)}}</span>
+              <span *ngIf="(sight.opening_time && sight.opening_time.trim() !== '') && (sight.closing_time && sight.closing_time.trim() !== '')"> / </span>
+              <span *ngIf="sight.closing_time && sight.closing_time.trim() !== ''">閉館: {{formatTime(sight.closing_time)}}</span>
+            </p>
+            <p *ngIf="(!sight.opening_time || sight.opening_time.trim() === '') && (!sight.closing_time || sight.closing_time.trim() === '')">情報なし</p>
+          </ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>
+            <h3>所要時間</h3>
+            <p *ngIf="sight.duration && sight.duration.trim() !== ''">{{sight.duration}}分</p>
+            <p *ngIf="!sight.duration || sight.duration.trim() === ''">情報なし</p>
+          </ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>
+            <h3>休業日</h3>
+            <p *ngIf="sight.holiday && sight.holiday.trim() !== ''">{{sight.holiday}}</p>
+            <p *ngIf="!sight.holiday || sight.holiday.trim() === ''">情報なし</p>
+          </ion-label>
+        </ion-item>
+      </ng-container>
+      <ng-template #noBusinessInfo>
+        <ion-item>
+          <ion-label>
+            <p>情報なし</p>
+          </ion-label>
+        </ion-item>
+      </ng-template>
+
+      <!-- 料金情報 -->
+      <ion-item-divider>
+        <ion-label>料金情報</ion-label>
+      </ion-item-divider>
+
+      <ion-item *ngIf="hasPriceInfo(); else noPriceInfo">
         <ion-label>
           <h3>料金</h3>
-          <p>{{sight.price}}</p>
+          <pre class="formatted-text">{{formatText(sight.price)}}</pre>
         </ion-label>
       </ion-item>
-      <ion-item *ngIf="sight.tel && false">
+      <ng-template #noPriceInfo>
+        <ion-item>
+          <ion-label>
+            <h3>料金</h3>
+            <p>情報なし</p>
+          </ion-label>
+        </ion-item>
+      </ng-template>
+
+      <!-- アクセシビリティ情報 -->
+      <ion-item-divider>
+        <ion-label>アクセシビリティ</ion-label>
+      </ion-item-divider>
+
+      <ion-item *ngIf="hasAccessibilityInfo(); else noAccessibilityInfo">
         <ion-label>
-          <h3>電話番号</h3>
-          <p>{{sight.tel}}</p>
+          <h3>バリアフリー対応</h3>
+          <p>{{sight.accessibility}}</p>
         </ion-label>
       </ion-item>
-      <ion-item *ngIf="sight.holiday && false">
-        <ion-label>
-          <h3>休業日</h3>
-          <p>{{sight.holiday}}</p>
-        </ion-label>
-      </ion-item>
-      <ion-item *ngIf="sight.notes">
+      <ng-template #noAccessibilityInfo>
+        <ion-item>
+          <ion-label>
+            <h3>バリアフリー対応</h3>
+            <p>情報なし</p>
+          </ion-label>
+        </ion-item>
+      </ng-template>
+
+      <!-- 備考 -->
+      <ion-item-divider>
+        <ion-label>備考</ion-label>
+      </ion-item-divider>
+
+      <ion-item *ngIf="hasNotes(); else noNotes">
         <ion-label>
           <h3>備考</h3>
-          <p>{{sight.notes}}</p>
+          <pre class="formatted-text">{{formatText(sight.notes)}}</pre>
         </ion-label>
       </ion-item>
+      <ng-template #noNotes>
+        <ion-item>
+          <ion-label>
+            <h3>備考</h3>
+            <p>情報なし</p>
+          </ion-label>
+        </ion-item>
+      </ng-template>
     </ion-list>
   </ion-content>
 </ng-container>

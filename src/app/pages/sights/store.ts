@@ -2,16 +2,16 @@ import { CaseReducer, createSlice } from '@reduxjs/toolkit';
 import { createFeatureSelector } from '@ngrx/store';
 import { Sight } from './sights.service';
 
-type State = {
+type SightsState = {
     sights: Sight[];
     items: Sight[];
 };
-const sightsSlice = createSlice<State, {
-    setSights: CaseReducer<State, {
+const sightsSlice = createSlice<SightsState, {
+    setSights: CaseReducer<SightsState, {
         type: string;
         payload: Sight[];
     }>;
-    filterSights: CaseReducer<State, {
+    filterSights: CaseReducer<SightsState, {
         type: string;
         payload: string;
     }>;
@@ -51,4 +51,4 @@ export const {
     },
     name: sightsFeatureKey
 } = sightsSlice;
-export const selectSightsFeature = createFeatureSelector<ReturnType<typeof sightsReducer>>(sightsFeatureKey);
+export const selectSightsFeature = createFeatureSelector<SightsState>(sightsFeatureKey);

@@ -1,0 +1,29 @@
+<!-- 
+  ⚠️ 重要: ion-router-outletを追加しないでください
+  
+  ion-tabsコンポーネントは内部で自動的にion-router-outletを生成します。
+  明示的にion-router-outletを追加すると、app.component.htmlのion-router-outletと
+  重複し、ルーティングが競合してスクロールやリンクが機能しなくなります。
+  
+  再発防止テスト: e2e/playwright/discover-page.spec.ts
+  詳細: INCIDENT_REPORT.md
+-->
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="discover" href="/tabs/discover">
+      <ion-icon name="compass"></ion-icon>
+      <ion-label>発見</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="favorites" href="/tabs/favorites">
+      <ion-icon name="heart"></ion-icon>
+      <ion-label>お気に入り</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="plans" href="/tabs/plans">
+      <ion-icon name="map"></ion-icon>
+      <ion-label>プラン</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>
+

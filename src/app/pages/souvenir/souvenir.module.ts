@@ -1,26 +1,12 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { SouvenirComponentsModule } from './souvenir-components.module';
 
-import { IonicModule } from '@ionic/angular';
-import { StoreModule } from '@ngrx/store';
-
-import { SouvenirPageRoutingModule } from './souvenir-routing.module';
-import { SouvenirPage } from './souvenir.page';
-import { ListSouveniresComponent } from './list-souvenires/list-souvenires.component';
-import { souvenirFeatureKey, souvenirReducer } from './store';
-import { SearchSouveniresComponent } from './search-souvenires/search-souvenires.component';
-import { SharedComponentsModule } from 'src/app/shared/components/components.module';
-
+/**
+ * @deprecated このモジュールは後方互換性のために残されています。
+ * 新しいコードでは SouvenirComponentsModule を直接使用してください。
+ */
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    SharedComponentsModule,
-    SouvenirPageRoutingModule,
-    StoreModule.forFeature(souvenirFeatureKey, souvenirReducer),
-  ],
-  declarations: [SouvenirPage, ListSouveniresComponent, SearchSouveniresComponent]
+  imports: [SouvenirComponentsModule],
+  exports: [SouvenirComponentsModule]
 })
 export class SouvenirPageModule {}

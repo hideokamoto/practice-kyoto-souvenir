@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { from } from 'rxjs';
 import { concatMap, tap, finalize, map } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
@@ -17,29 +17,36 @@ export type Souvenir = {
   providedIn: 'root'
 })
 export class SouvenirService {
-
-  constructor(
-    private readonly store: Store,
-    private readonly loadingController: LoadingController,
-  ) { }
-  public fetchSouvenires() {
-    const loadingObservar = from(
-      this.loadingController.create()
-        .then(d => d.present())
-      );
+  private readonly store = inject(Store);
+  private readonly loadingController = inject(LoadingController);
+  public fetchSouvenirs(showLoading = true) {
     const dataLoaderObservar = from(
       import('./dataset/kyoto-souvenir.json')
     );
-    return loadingObservar.pipe(
-      concatMap(() => dataLoaderObservar.pipe(
-          map(result => Object.values(result)),
-          tap(souvenires => {
-            this.store.dispatch(setSouvenir(souvenires));
-          }),
-          finalize(() => {
-            this.loadingController.dismiss();
-          })
-        ))
-    );
+    
+    if (showLoading) {
+      const loadingObservar = from(
+        this.loadingController.create()
+          .then(d => d.present())
+      );
+      return loadingObservar.pipe(
+        concatMap(() => dataLoaderObservar.pipe(
+            map(result => Object.values(result) as unknown as Souvenir[]),
+            tap(souvenirs => {
+              this.store.dispatch(setSouvenir(souvenirs));
+            }),
+            finalize(() => {
+              this.loadingController.dismiss();
+            })
+          ))
+      );
+    } else {
+      return dataLoaderObservar.pipe(
+        map(result => Object.values(result) as unknown as Souvenir[]),
+        tap(souvenirs => {
+          this.store.dispatch(setSouvenir(souvenirs));
+        })
+      );
+    }
   }
 }
