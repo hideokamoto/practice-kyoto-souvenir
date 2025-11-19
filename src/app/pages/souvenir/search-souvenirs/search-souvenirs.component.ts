@@ -3,9 +3,10 @@ import { Store } from '@ngrx/store';
 import { filterSouvenir } from '../store';
 
 @Component({
-  selector: 'app-search-souvenirs',
-  templateUrl: './search-souvenirs.component.html',
-  styleUrls: ['./search-souvenirs.component.scss'],
+    selector: 'app-search-souvenirs',
+    templateUrl: './search-souvenirs.component.html',
+    styleUrls: ['./search-souvenirs.component.scss'],
+    standalone: false
 })
 export class SearchSouvenirsComponent {
 

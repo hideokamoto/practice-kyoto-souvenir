@@ -3,9 +3,10 @@ import { Sight } from '../sights.service';
 import { UserDataService } from '../../../shared/services/user-data.service';
 
 @Component({
-  selector: 'app-list-sight-item',
-  templateUrl: './list-sight-item.component.html',
-  styleUrls: ['./list-sight-item.component.scss'],
+    selector: 'app-list-sight-item',
+    templateUrl: './list-sight-item.component.html',
+    styleUrls: ['./list-sight-item.component.scss'],
+    standalone: false
 })
 export class ListSightItemComponent implements OnInit {
   @Input() sight: Sight;

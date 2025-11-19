@@ -8,9 +8,10 @@ import { UserDataService } from '../../../shared/services/user-data.service';
 import { switchMap, tap, take, filter } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-sight-detail',
-  templateUrl: './sight-detail.page.html',
-  styleUrls: ['./sight-detail.page.scss'],
+    selector: 'app-sight-detail',
+    templateUrl: './sight-detail.page.html',
+    styleUrls: ['./sight-detail.page.scss'],
+    standalone: false
 })
 export class SightDetailPage implements OnInit {
   public sight: Sight | null;

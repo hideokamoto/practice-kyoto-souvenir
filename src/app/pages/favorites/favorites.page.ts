@@ -10,9 +10,10 @@ import { filter, take, switchMap, catchError } from 'rxjs/operators';
 import { FavoriteItem, mapFavoritesToFavoriteItems } from './favorites.utils';
 
 @Component({
-  selector: 'app-favorites',
-  templateUrl: './favorites.page.html',
-  styleUrls: ['./favorites.page.scss'],
+    selector: 'app-favorites',
+    templateUrl: './favorites.page.html',
+    styleUrls: ['./favorites.page.scss'],
+    standalone: false
 })
 export class FavoritesPage implements OnInit, OnDestroy {
   public favoriteItems: FavoriteItem[] = [];

@@ -9,9 +9,10 @@ import { Subscription, EMPTY, of } from 'rxjs';
 import { take, switchMap, catchError, filter } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-plans',
-  templateUrl: './plans.page.html',
-  styleUrls: ['./plans.page.scss'],
+    selector: 'app-plans',
+    templateUrl: './plans.page.html',
+    styleUrls: ['./plans.page.scss'],
+    standalone: false
 })
 export class PlansPage implements OnInit, OnDestroy {
   public plans: Plan[] = [];

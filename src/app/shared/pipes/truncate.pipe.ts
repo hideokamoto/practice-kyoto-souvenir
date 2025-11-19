@@ -19,7 +19,8 @@ export function truncateText(value: string | null | undefined, limit: number = 8
 }
 
 @Pipe({
-  name: 'truncate'
+    name: 'truncate',
+    standalone: false
 })
 export class TruncatePipe implements PipeTransform {
   transform(value: string | null | undefined, limit: number = 80): string {

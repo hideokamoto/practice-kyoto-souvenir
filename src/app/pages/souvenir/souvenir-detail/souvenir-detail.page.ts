@@ -8,9 +8,10 @@ import { UserDataService } from '../../../shared/services/user-data.service';
 import { switchMap, take, filter, tap } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-souvenir-detail',
-  templateUrl: './souvenir-detail.page.html',
-  styleUrls: ['./souvenir-detail.page.scss'],
+    selector: 'app-souvenir-detail',
+    templateUrl: './souvenir-detail.page.html',
+    styleUrls: ['./souvenir-detail.page.scss'],
+    standalone: false
 })
 export class SouvenirDetailPage implements OnInit {
   public souvenir: Souvenir | null;

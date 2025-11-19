@@ -3,9 +3,10 @@ import { Souvenir } from '../souvenir.service';
 import { UserDataService } from '../../../shared/services/user-data.service';
 
 @Component({
-  selector: 'app-list-souvenirs',
-  templateUrl: './list-souvenirs.component.html',
-  styleUrls: ['./list-souvenirs.component.scss'],
+    selector: 'app-list-souvenirs',
+    templateUrl: './list-souvenirs.component.html',
+    styleUrls: ['./list-souvenirs.component.scss'],
+    standalone: false
 })
 export class ListSouvenirsComponent implements OnInit {
   @Input() souvenir: Souvenir;

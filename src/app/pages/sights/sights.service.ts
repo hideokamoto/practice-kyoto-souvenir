@@ -56,7 +56,7 @@ export class SightsService {
       );
       return loadingObservar.pipe(
         concatMap(() => dataLoaderObservar.pipe(
-            map(result => Object.values(result)),
+            map(result => Object.values(result) as unknown as Sight[]),
             tap(sights => {
               this.store.dispatch(setSights(sights));
             }),
@@ -67,7 +67,7 @@ export class SightsService {
       );
     } else {
       return dataLoaderObservar.pipe(
-        map(result => Object.values(result)),
+        map(result => Object.values(result) as unknown as Sight[]),
         tap(sights => {
           this.store.dispatch(setSights(sights));
         })

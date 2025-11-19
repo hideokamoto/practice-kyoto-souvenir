@@ -27,9 +27,10 @@ interface RandomSuggestion {
 }
 
 @Component({
-  selector: 'app-discover',
-  templateUrl: './discover.page.html',
-  styleUrls: ['./discover.page.scss'],
+    selector: 'app-discover',
+    templateUrl: './discover.page.html',
+    styleUrls: ['./discover.page.scss'],
+    standalone: false
 })
 export class DiscoverPage implements OnInit, OnDestroy {
   public contentType: ContentType = 'sights';

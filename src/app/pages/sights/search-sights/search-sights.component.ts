@@ -3,9 +3,10 @@ import { Store } from '@ngrx/store';
 import { filterSights } from '../store';
 
 @Component({
-  selector: 'app-search-sights',
-  templateUrl: './search-sights.component.html',
-  styleUrls: ['./search-sights.component.scss'],
+    selector: 'app-search-sights',
+    templateUrl: './search-sights.component.html',
+    styleUrls: ['./search-sights.component.scss'],
+    standalone: false
 })
 export class SearchSightsComponent {
 

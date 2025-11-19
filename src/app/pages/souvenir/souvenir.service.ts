@@ -34,7 +34,7 @@ export class SouvenirService {
       );
       return loadingObservar.pipe(
         concatMap(() => dataLoaderObservar.pipe(
-            map(result => Object.values(result)),
+            map(result => Object.values(result) as unknown as Souvenir[]),
             tap(souvenirs => {
               this.store.dispatch(setSouvenir(souvenirs));
             }),
@@ -45,7 +45,7 @@ export class SouvenirService {
       );
     } else {
       return dataLoaderObservar.pipe(
-        map(result => Object.values(result)),
+        map(result => Object.values(result) as unknown as Souvenir[]),
         tap(souvenirs => {
           this.store.dispatch(setSouvenir(souvenirs));
         })

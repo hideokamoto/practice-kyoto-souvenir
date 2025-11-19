@@ -18,9 +18,10 @@ interface PlanItemWithDetails extends PlanItem {
 }
 
 @Component({
-  selector: 'app-plan-detail',
-  templateUrl: './plan-detail.page.html',
-  styleUrls: ['./plan-detail.page.scss'],
+    selector: 'app-plan-detail',
+    templateUrl: './plan-detail.page.html',
+    styleUrls: ['./plan-detail.page.scss'],
+    standalone: false
 })
 export class PlanDetailPage implements OnDestroy {
   public plan: Plan | null = null;
