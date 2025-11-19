@@ -16,8 +16,7 @@ module.exports = {
     '!src/**/*.enum.ts',
     '!src/**/*.type.ts',
     '!src/main.ts',
-    '!src/polyfills.ts',
-    '!src/test.ts'
+    '!src/polyfills.ts'
   ],
   coverageDirectory: 'coverage',
   coverageReporters: ['html', 'text-summary'],
