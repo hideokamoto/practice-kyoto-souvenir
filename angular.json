@@ -69,9 +69,7 @@
                 }
               ]
             },
-            "ci": {
-              "progress": false
-            }
+            "ci": {}
           }
         },
         "serve": {
@@ -83,9 +81,7 @@
             "production": {
               "buildTarget": "app:build:production"
             },
-            "ci": {
-              "progress": false
-            }
+            "ci": {}
           }
         },
         "extract-i18n": {
