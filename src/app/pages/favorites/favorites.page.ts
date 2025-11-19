@@ -88,28 +88,24 @@ export class FavoritesPage implements OnDestroy {
               this.store.select(selectSouvenirFeature)
             ]).pipe(
               // データが揃うまで待つ
-              filter(([sightState, souvenirState]) => {
-                const sights = (sightState as { sights?: unknown[] })?.sights;
-                const souvenirs = (souvenirState as { souvenirs?: unknown[] })?.souvenirs;
-                return (sights?.length ?? 0) > 0 && (souvenirs?.length ?? 0) > 0;
-              }),
+              filter(([sightState, souvenirState]) => 
+                !!sightState?.sights?.length && !!souvenirState?.souvenirs?.length
+              ),
               take(1)
             )
           )
         );
       }),
       // データが揃うまで待つ（fetchが不要な場合のためのフィルター）
-      filter(([sightState, souvenirState]) => {
-        const sights = (sightState as { sights?: unknown[] })?.sights;
-        const souvenirs = (souvenirState as { souvenirs?: unknown[] })?.souvenirs;
-        return (sights?.length ?? 0) > 0 && (souvenirs?.length ?? 0) > 0;
-      }),
+      filter(([sightState, souvenirState]) => 
+        !!sightState?.sights?.length && !!souvenirState?.souvenirs?.length
+      ),
       take(1),
       // データが揃ったら、お気に入りを読み込む
       tap(([sightState, souvenirState]) => {
         const favorites = this.userDataService.getFavorites();
-        const souvenirs = (souvenirState as { souvenirs: unknown[] }).souvenirs;
-        const sights = (sightState as { sights: unknown[] }).sights;
+        const souvenirs = souvenirState.souvenirs;
+        const sights = sightState.sights;
         
         // 純粋関数を使用してマッピング（テスト可能で再発防止）
         this.favoriteItems = mapFavoritesToFavoriteItems(
@@ -127,10 +123,10 @@ export class FavoritesPage implements OnDestroy {
         ]).pipe(
           take(1),
           tap(([sightState, souvenirState]) => {
-            if (sightState && souvenirState && 'sights' in sightState && 'souvenirs' in souvenirState) {
+            if (sightState?.sights && souvenirState?.souvenirs) {
               const favorites = this.userDataService.getFavorites();
-              const souvenirs = (souvenirState as { souvenirs: unknown[] }).souvenirs;
-              const sights = (sightState as { sights: unknown[] }).sights;
+              const souvenirs = souvenirState.souvenirs;
+              const sights = sightState.sights;
               
               if (Array.isArray(souvenirs) && Array.isArray(sights)) {
                 this.favoriteItems = mapFavoritesToFavoriteItems(

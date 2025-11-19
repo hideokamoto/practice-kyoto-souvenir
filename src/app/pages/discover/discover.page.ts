@@ -150,8 +150,7 @@ export class DiscoverPage implements OnDestroy {
       }),
       // データが揃うまで待つ（fetchが不要な場合のためのフィルター）
       filter(([sightState, souvenirState]) => 
-        (sightState?.items?.length ?? 0) > 0 &&
-        (souvenirState?.items?.length ?? 0) > 0
+        !!sightState?.items?.length && !!souvenirState?.items?.length
       ),
       take(1),
       tap(([sightState, souvenirState]) => {
