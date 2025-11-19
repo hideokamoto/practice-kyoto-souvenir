@@ -45,8 +45,8 @@ export class FavoritesPage implements OnDestroy {
     ]).pipe(
       take(1),
       switchMap(([sightState, souvenirState]) => {
-        const needsSights = !sightState?.sights || sightState.sights.length === 0;
-        const needsSouvenirs = !souvenirState?.souvenirs || souvenirState.souvenirs.length === 0;
+        const needsSights = !Array.isArray(sightState.sights) || sightState.sights.length === 0;
+        const needsSouvenirs = !Array.isArray(souvenirState.souvenirs) || souvenirState.souvenirs.length === 0;
 
         // 必要なデータがない場合のみfetchを実行（並行実行）
         const fetchObservables: Array<ReturnType<typeof this.sightsService.fetchSights | typeof this.souvenirService.fetchSouvenirs>> = [];
@@ -83,10 +83,11 @@ export class FavoritesPage implements OnDestroy {
                 this.store.select(selectSouvenirFeature)
               ]).pipe(
                 // データが揃うまで待つ
-                filter(([sightState, souvenirState]) => 
-                  (sightState?.sights?.length ?? 0) > 0 &&
-                  (souvenirState?.souvenirs?.length ?? 0) > 0
-                ),
+                filter(([sightState, souvenirState]) => {
+                  const sights = (sightState as { sights?: unknown[] })?.sights;
+                  const souvenirs = (souvenirState as { souvenirs?: unknown[] })?.souvenirs;
+                  return (sights?.length ?? 0) > 0 && (souvenirs?.length ?? 0) > 0;
+                }),
                 take(1)
               )
             )
@@ -97,10 +98,11 @@ export class FavoritesPage implements OnDestroy {
         return of([sightState, souvenirState]);
       }),
       // データが揃うまで待つ（fetchが不要な場合のためのフィルター）
-      filter(([sightState, souvenirState]) => 
-        (sightState?.sights?.length ?? 0) > 0 &&
-        (souvenirState?.souvenirs?.length ?? 0) > 0
-      ),
+      filter(([sightState, souvenirState]) => {
+        const sights = (sightState as { sights?: unknown[] })?.sights;
+        const souvenirs = (souvenirState as { souvenirs?: unknown[] })?.souvenirs;
+        return (sights?.length ?? 0) > 0 && (souvenirs?.length ?? 0) > 0;
+      }),
       take(1),
       // データが揃ったら、お気に入りを読み込む
       tap(([sightState, souvenirState]) => {
