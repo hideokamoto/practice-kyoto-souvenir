@@ -6,8 +6,8 @@ import { selectSouvenirFeature } from '../souvenir/store';
 import { selectSightsFeature } from '../sights/store';
 import { Souvenir, SouvenirService } from '../souvenir/souvenir.service';
 import { Sight, SightsService } from '../sights/sights.service';
-import { Subscription, combineLatest, EMPTY, of, forkJoin, defer } from 'rxjs';
-import { filter, take, switchMap, catchError, tap, finalize, startWith } from 'rxjs/operators';
+import { Subscription, combineLatest, EMPTY, of, forkJoin } from 'rxjs';
+import { filter, take, switchMap, catchError, tap, finalize } from 'rxjs/operators';
 import { truncateText } from '../../shared/pipes/truncate.pipe';
 
 type ContentType = 'sights' | 'souvenirs';

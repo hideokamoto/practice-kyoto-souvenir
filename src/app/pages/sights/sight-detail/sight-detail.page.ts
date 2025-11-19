@@ -327,7 +327,7 @@ export class SightDetailPage implements OnInit {
     if (!referrer) return;
     
     // 前のページが観光地の詳細ページかチェック
-    const sightsUrlPattern = /\/sights\/([^\/\?]+)/;
+    const sightsUrlPattern = /\/sights\/([^/?]+)/;
     const match = referrer.match(sightsUrlPattern);
     
     if (match && match[1]) {

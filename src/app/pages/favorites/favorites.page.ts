@@ -3,8 +3,8 @@ import { Store } from '@ngrx/store';
 import { UserDataService } from '../../shared/services/user-data.service';
 import { selectSouvenirFeature } from '../souvenir/store';
 import { selectSightsFeature } from '../sights/store';
-import { SouvenirService } from '../souvenir/souvenir.service';
-import { SightsService } from '../sights/sights.service';
+import { SouvenirService, Souvenir } from '../souvenir/souvenir.service';
+import { SightsService, Sight } from '../sights/sights.service';
 import { Subscription, combineLatest, EMPTY, of, forkJoin } from 'rxjs';
 import { filter, take, switchMap, catchError, tap, finalize } from 'rxjs/operators';
 import { FavoriteItem, mapFavoritesToFavoriteItems } from './favorites.utils';
@@ -89,7 +89,7 @@ export class FavoritesPage implements OnDestroy {
             ]).pipe(
               // データが揃うまで待つ
               filter(([sightState, souvenirState]) => 
-                !!(sightState as any)?.sights?.length && !!(souvenirState as any)?.souvenirs?.length
+                !!sightState?.sights?.length && !!souvenirState?.souvenirs?.length
               ),
               take(1)
             )
@@ -98,20 +98,20 @@ export class FavoritesPage implements OnDestroy {
       }),
       // データが揃うまで待つ（fetchが不要な場合のためのフィルター）
       filter(([sightState, souvenirState]) => {
-        return !!(sightState as any)?.sights?.length && !!(souvenirState as any)?.souvenirs?.length;
+        return !!(sightState as { sights?: Sight[] })?.sights?.length && !!(souvenirState as { souvenirs?: Souvenir[] })?.souvenirs?.length;
       }),
       take(1),
       // データが揃ったら、お気に入りを読み込む
       tap(([sightState, souvenirState]) => {
         const favorites = this.userDataService.getFavorites();
-        const souvenirs = (souvenirState as any).souvenirs;
-        const sights = (sightState as any).sights;
+        const souvenirs = (souvenirState as { souvenirs: Souvenir[] }).souvenirs;
+        const sights = (sightState as { sights: Sight[] }).sights;
         
         // 純粋関数を使用してマッピング（テスト可能で再発防止）
         this.favoriteItems = mapFavoritesToFavoriteItems(
           favorites,
-          souvenirs as any[],
-          sights as any[]
+          souvenirs,
+          sights
         );
       }),
       catchError(error => {
@@ -131,8 +131,8 @@ export class FavoritesPage implements OnDestroy {
               if (Array.isArray(souvenirs) && Array.isArray(sights)) {
                 this.favoriteItems = mapFavoritesToFavoriteItems(
                   favorites,
-                  souvenirs as any[],
-                  sights as any[]
+                  souvenirs,
+                  sights
                 );
               }
             }
