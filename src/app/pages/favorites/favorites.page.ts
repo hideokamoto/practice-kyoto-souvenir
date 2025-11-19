@@ -25,7 +25,6 @@ export class FavoritesPage implements OnDestroy {
   public loading = true;
 
   private subscriptions = new Subscription();
-  private loadFavoritesSubscription?: Subscription;
 
   ngOnDestroy() {
     this.subscriptions.unsubscribe();
@@ -84,26 +83,10 @@ export class FavoritesPage implements OnDestroy {
                 this.store.select(selectSouvenirFeature)
               ]).pipe(
                 // データが揃うまで待つ
-                filter(([s, sv]) => {
-                  if (!s || !sv) {
-                    return false;
-                  }
-                  // 型ガード: sights プロパティの存在を確認
-                  if (!('sights' in s)) {
-                    return false;
-                  }
-                  // 型ガード: souvenirs プロパティの存在を確認
-                  if (!('souvenirs' in sv)) {
-                    return false;
-                  }
-                  // 型アサーションを使用して型を明示
-                  const sightsState = s as { sights: unknown[] };
-                  const souvenirsState = sv as { souvenirs: unknown[] };
-                  return Array.isArray(sightsState.sights) && 
-                         sightsState.sights.length > 0 &&
-                         Array.isArray(souvenirsState.souvenirs) && 
-                         souvenirsState.souvenirs.length > 0;
-                }),
+                filter(([sightState, souvenirState]) => 
+                  (sightState?.sights?.length ?? 0) > 0 &&
+                  (souvenirState?.souvenirs?.length ?? 0) > 0
+                ),
                 take(1)
               )
             )
@@ -114,26 +97,10 @@ export class FavoritesPage implements OnDestroy {
         return of([sightState, souvenirState]);
       }),
       // データが揃うまで待つ（fetchが不要な場合のためのフィルター）
-      filter(([sightState, souvenirState]) => {
-        if (!sightState || !souvenirState) {
-          return false;
-        }
-        // 型ガード: sights プロパティの存在を確認
-        if (!('sights' in sightState)) {
-          return false;
-        }
-        // 型ガード: souvenirs プロパティの存在を確認
-        if (!('souvenirs' in souvenirState)) {
-          return false;
-        }
-        // 型アサーションを使用して型を明示
-        const sightsState = sightState as { sights: unknown[] };
-        const souvenirsState = souvenirState as { souvenirs: unknown[] };
-        return Array.isArray(sightsState.sights) && 
-               sightsState.sights.length > 0 &&
-               Array.isArray(souvenirsState.souvenirs) && 
-               souvenirsState.souvenirs.length > 0;
-      }),
+      filter(([sightState, souvenirState]) => 
+        (sightState?.sights?.length ?? 0) > 0 &&
+        (souvenirState?.souvenirs?.length ?? 0) > 0
+      ),
       take(1),
       // データが揃ったら、お気に入りを読み込む
       tap(([sightState, souvenirState]) => {

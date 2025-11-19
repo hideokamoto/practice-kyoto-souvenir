@@ -124,9 +124,9 @@ export class DiscoverPage implements OnDestroy {
               this.store.select(selectSouvenirFeature)
             ]).pipe(
               // データが揃うまで待つ
-              filter(([s, sv]) => 
-                Array.isArray(s.items) && s.items.length > 0 &&
-                Array.isArray(sv.items) && sv.items.length > 0
+              filter(([sightState, souvenirState]) => 
+                (sightState?.items?.length ?? 0) > 0 &&
+                (souvenirState?.items?.length ?? 0) > 0
               ),
               take(1)
             )
@@ -135,8 +135,8 @@ export class DiscoverPage implements OnDestroy {
       }),
       // データが揃うまで待つ（fetchが不要な場合のためのフィルター）
       filter(([sightState, souvenirState]) => 
-        Array.isArray(sightState.items) && sightState.items.length > 0 &&
-        Array.isArray(souvenirState.items) && souvenirState.items.length > 0
+        (sightState?.items?.length ?? 0) > 0 &&
+        (souvenirState?.items?.length ?? 0) > 0
       ),
       take(1),
       tap(([sightState, souvenirState]) => {
@@ -169,34 +169,43 @@ export class DiscoverPage implements OnDestroy {
     const favorites = this.userDataService.getFavorites();
     
     // 訪問済み・お気に入りのIDを取得（観光地とお土産の両方）
-    const visitedSightIds = visits
-      .filter(v => v.itemType === 'sight')
-      .map(v => v.itemId);
-    const visitedSouvenirIds = visits
-      .filter(v => v.itemType === 'souvenir')
-      .map(v => v.itemId);
+    // パフォーマンス向上のため、Setオブジェクトを作成（O(1)の検索を実現）
+    const visitedSightIds = new Set(
+      visits
+        .filter(v => v.itemType === 'sight')
+        .map(v => v.itemId)
+    );
+    const visitedSouvenirIds = new Set(
+      visits
+        .filter(v => v.itemType === 'souvenir')
+        .map(v => v.itemId)
+    );
     
-    const favoriteSightIds = favorites
-      .filter(f => f.itemType === 'sight')
-      .map(f => f.itemId);
-    const favoriteSouvenirIds = favorites
-      .filter(f => f.itemType === 'souvenir')
-      .map(f => f.itemId);
+    const favoriteSightIds = new Set(
+      favorites
+        .filter(f => f.itemType === 'sight')
+        .map(f => f.itemId)
+    );
+    const favoriteSouvenirIds = new Set(
+      favorites
+        .filter(f => f.itemType === 'souvenir')
+        .map(f => f.itemId)
+    );
 
     // 観光地の優先順位プール
     const favoriteUnvisitedSights = this.allSights.filter(
-      sight => favoriteSightIds.includes(sight.id) && !visitedSightIds.includes(sight.id)
+      sight => favoriteSightIds.has(sight.id) && !visitedSightIds.has(sight.id)
     );
     const unvisitedSights = this.allSights.filter(
-      sight => !visitedSightIds.includes(sight.id)
+      sight => !visitedSightIds.has(sight.id)
     );
 
     // お土産の優先順位プール
     const favoriteUnvisitedSouvenirs = this.allSouvenirs.filter(
-      souvenir => favoriteSouvenirIds.includes(souvenir.id) && !visitedSouvenirIds.includes(souvenir.id)
+      souvenir => favoriteSouvenirIds.has(souvenir.id) && !visitedSouvenirIds.has(souvenir.id)
     );
     const unvisitedSouvenirs = this.allSouvenirs.filter(
-      souvenir => !visitedSouvenirIds.includes(souvenir.id)
+      souvenir => !visitedSouvenirIds.has(souvenir.id)
     );
 
     // 統合されたプールを作成（観光地とお土産を混在）
