@@ -23,28 +23,7 @@ const routes: Routes = [
   },
   {
     path: 'tabs',
-    children: [
-      {
-        path: 'discover',
-        title: '発見',
-        loadChildren: () => import('./pages/discover/discover.module').then( m => m.DiscoverPageModule),
-      },
-      {
-        path: 'favorites',
-        title: 'お気に入り',
-        loadChildren: () => import('./pages/favorites/favorites.module').then( m => m.FavoritesPageModule)
-      },
-      {
-        path: 'plans',
-        title: 'プラン',
-        loadChildren: () => import('./pages/plans/plans.module').then( m => m.PlansPageModule)
-      },
-      {
-        path: '',
-        redirectTo: 'discover',
-        pathMatch: 'full',
-      }
-    ]
+    loadChildren: () => import('./pages/tabs/tabs.module').then( m => m.TabsPageModule)
   },
   {
     path: 'sights/:id',
