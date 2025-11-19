@@ -90,10 +90,26 @@ export class FavoritesPage implements OnInit, OnDestroy {
         return of([sightState, souvenirState]);
       }),
       // データが揃うまで待つ
-      filter(([sightState, souvenirState]) => 
-        Array.isArray(sightState.sights) && sightState.sights.length > 0 &&
-        Array.isArray(souvenirState.souvenires) && souvenirState.souvenires.length > 0
-      ),
+      filter(([sightState, souvenirState]) => {
+        if (!sightState || !souvenirState) {
+          return false;
+        }
+        // 型ガード: sights プロパティの存在を確認
+        if (!('sights' in sightState)) {
+          return false;
+        }
+        // 型ガード: souvenires プロパティの存在を確認
+        if (!('souvenires' in souvenirState)) {
+          return false;
+        }
+        // 型アサーションを使用して型を明示
+        const sightsState = sightState as { sights: unknown[] };
+        const souveniresState = souvenirState as { souvenires: unknown[] };
+        return Array.isArray(sightsState.sights) && 
+               sightsState.sights.length > 0 &&
+               Array.isArray(souveniresState.souvenires) && 
+               souveniresState.souvenires.length > 0;
+      }),
       take(1)
     ).subscribe({
       next: () => {
