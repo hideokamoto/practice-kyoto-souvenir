@@ -218,6 +218,14 @@ export class UserDataService {
 
   // ==================== ユーティリティ ====================
 
+  /**
+   * 一意のIDを生成します。
+   * 
+   * UUID v4を使用することで、短時間に複数回呼び出された場合でも
+   * IDの重複を防ぎ、将来的な拡張性（サーバーサイドとの連携など）にも対応できます。
+   * 
+   * @returns UUID v4形式の一意なID文字列
+   */
   private generateId(): string {
     return uuidv4();
   }
