@@ -18,7 +18,13 @@ export class AppTitleStrategy extends TitleStrategy {
 const routes: Routes = [
   {
     path: '',
-    children: [{
+    redirectTo: 'tabs',
+    pathMatch: 'full',
+  },
+  {
+    path: 'tabs',
+    children: [
+      {
         path: 'discover',
         title: '発見',
         loadChildren: () => import('./pages/discover/discover.module').then( m => m.DiscoverPageModule),
@@ -34,19 +40,19 @@ const routes: Routes = [
         loadChildren: () => import('./pages/plans/plans.module').then( m => m.PlansPageModule)
       },
       {
-        path: 'sights/:id',
-        loadChildren: () => import('./pages/sights/sight-detail/sight-detail.module').then( m => m.SightDetailPageModule)
-      },
-      {
-        path: 'souvenir/:id',
-        loadChildren: () => import('./pages/souvenir/souvenir-detail/souvenir-detail.module').then( m => m.SouvenirDetailPageModule)
-      },
-      {
         path: '',
         redirectTo: 'discover',
         pathMatch: 'full',
       }
     ]
+  },
+  {
+    path: 'sights/:id',
+    loadChildren: () => import('./pages/sights/sight-detail/sight-detail.module').then( m => m.SightDetailPageModule)
+  },
+  {
+    path: 'souvenir/:id',
+    loadChildren: () => import('./pages/souvenir/souvenir-detail/souvenir-detail.module').then( m => m.SouvenirDetailPageModule)
   }
 ];
 

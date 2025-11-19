@@ -1,19 +1,18 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
-  
   <ion-tabs>
+    <ion-router-outlet></ion-router-outlet>
     <ion-tab-bar slot="bottom">
-      <ion-tab-button tab="discover" href="/discover">
+      <ion-tab-button tab="discover" href="/tabs/discover">
         <ion-icon name="compass"></ion-icon>
         <ion-label>発見</ion-label>
       </ion-tab-button>
 
-      <ion-tab-button tab="favorites" href="/favorites">
+      <ion-tab-button tab="favorites" href="/tabs/favorites">
         <ion-icon name="heart"></ion-icon>
         <ion-label>お気に入り</ion-label>
       </ion-tab-button>
 
-      <ion-tab-button tab="plans" href="/plans">
+      <ion-tab-button tab="plans" href="/tabs/plans">
         <ion-icon name="map"></ion-icon>
         <ion-label>プラン</ion-label>
       </ion-tab-button>

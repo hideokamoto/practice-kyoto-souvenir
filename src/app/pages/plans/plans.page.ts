@@ -1,20 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController, ToastController } from '@ionic/angular';
 import { Store } from '@ngrx/store';
 import { UserDataService, Plan } from '../../shared/services/user-data.service';
 import { selectSightsFeature } from '../sights/store';
 import { Sight, SightsService } from '../sights/sights.service';
-import { take } from 'rxjs/operators';
+import { Subscription, combineLatest, EMPTY, of } from 'rxjs';
+import { take, switchMap, catchError, filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-plans',
   templateUrl: './plans.page.html',
   styleUrls: ['./plans.page.scss'],
 })
-export class PlansPage implements OnInit {
+export class PlansPage implements OnInit, OnDestroy {
   public plans: Plan[] = [];
   private allSights: Sight[] = [];
+  private subscriptions = new Subscription();
 
   constructor(
     private readonly userDataService: UserDataService,
@@ -30,22 +32,46 @@ export class PlansPage implements OnInit {
     this.loadSightsData();
   }
 
+  ngOnDestroy() {
+    this.subscriptions.unsubscribe();
+  }
+
   loadSightsData() {
-    // データが既に読み込まれているか確認
-    this.store.select(selectSightsFeature).pipe(take(1)).subscribe(sightState => {
-      const hasData = sightState && sightState.sights && sightState.sights.length > 0;
-      if (!hasData) {
-        // データを読み込む
-        this.sightsService.fetchSights(false).subscribe();
+    // ストアの状態を確認し、必要に応じてデータをフェッチしてから、データを取得
+    const loadSubscription = this.store.select(selectSightsFeature).pipe(
+      take(1),
+      switchMap(sightState => {
+        const needsSights = !sightState?.sights || sightState.sights.length === 0;
+
+        // データがない場合のみfetchを実行
+        if (needsSights) {
+          return this.sightsService.fetchSights(false).pipe(
+            catchError(error => {
+              console.error('観光地データの読み込みに失敗しました:', error);
+              return EMPTY;
+            }),
+            switchMap(() => this.store.select(selectSightsFeature).pipe(take(1)))
+          );
+        }
+
+        // 既にデータがある場合はそのまま返す
+        return of(sightState);
+      }),
+      // データが揃うまで待つ
+      filter(sightState => 
+        sightState?.sights && sightState.sights.length > 0
+      ),
+      take(1)
+    ).subscribe({
+      next: (sightState) => {
+        this.allSights = sightState.sights as Sight[];
+      },
+      error: (error) => {
+        console.error('データの読み込みに失敗しました:', error);
       }
     });
 
-    // ストアからデータを取得
-    this.store.select(selectSightsFeature).subscribe(sightState => {
-      if (sightState && sightState.sights && sightState.sights.length > 0) {
-        this.allSights = sightState.sights as Sight[];
-      }
-    });
+    this.subscriptions.add(loadSubscription);
   }
 
   ionViewWillEnter() {
@@ -78,7 +104,7 @@ export class PlansPage implements OnInit {
             if (data.planName && data.planName.trim()) {
               const plan = this.userDataService.createPlan(data.planName.trim());
               this.loadPlans();
-              this.router.navigate(['/plans', plan.id]);
+              this.router.navigate(['/tabs/plans', plan.id]);
             }
           }
         }
@@ -114,7 +140,7 @@ export class PlansPage implements OnInit {
   }
 
   viewPlan(plan: Plan) {
-    this.router.navigate(['/plans', plan.id]);
+    this.router.navigate(['/tabs/plans', plan.id]);
   }
 
   doRefresh(event: any) {
@@ -209,7 +235,7 @@ export class PlansPage implements OnInit {
 
             // プラン詳細ページへ遷移
             this.loadPlans();
-            this.router.navigate(['/plans', plan.id]);
+            this.router.navigate(['/tabs/plans', plan.id]);
           }
         }
       ]
