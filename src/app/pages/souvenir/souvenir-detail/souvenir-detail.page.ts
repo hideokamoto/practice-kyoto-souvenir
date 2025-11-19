@@ -5,7 +5,7 @@ import { createSelector, Store } from '@ngrx/store';
 import { Souvenir, SouvenirService } from '../souvenir.service';
 import { selectSouvenirFeature } from '../store';
 import { UserDataService } from '../../../shared/services/user-data.service';
-import { switchMap, tap, take, filter } from 'rxjs/operators';
+import { switchMap, take, filter, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-souvenir-detail',
@@ -52,7 +52,9 @@ export class SouvenirDetailPage implements OnInit {
       tap(souvenir => {
         this.souvenir = souvenir;
         this.updateUserDataStatus();
-        this.title.setTitle(souvenir.name);
+        if (souvenir?.name) {
+          this.title.setTitle(souvenir.name);
+        }
       })
     ).subscribe();
   }

@@ -51,7 +51,9 @@ export class SightDetailPage implements OnInit {
       tap(sight => {
         this.sight = sight;
         this.updateUserDataStatus();
-        this.title.setTitle(sight.name);
+        if (sight?.name) {
+          this.title.setTitle(sight.name);
+        }
       })
     ).subscribe();
   }
