@@ -28,32 +28,25 @@ export function mapFavoritesToFavoriteItems(
   souvenirs: Souvenir[],
   sights: Sight[]
 ): FavoriteItem[] {
+  // パフォーマンス向上のため、Mapオブジェクトを作成（O(1)の検索を実現）
+  const souvenirMap = new Map(souvenirs.map(s => [s.id, s]));
+  const sightMap = new Map(sights.map(s => [s.id, s]));
+
   return favorites
     .map(fav => {
-      if (fav.itemType === 'souvenir') {
-        const item = souvenirs.find(s => s.id === fav.itemId);
-        if (item) {
-          return {
-            id: item.id,
-            name: item.name,
-            name_kana: item.name_kana,
-            description: item.description,
-            type: 'souvenir' as const,
-            addedAt: fav.addedAt
-          };
-        }
-      } else {
-        const item = sights.find(s => s.id === fav.itemId);
-        if (item) {
-          return {
-            id: item.id,
-            name: item.name,
-            name_kana: item.name_kana,
-            description: item.description,
-            type: 'sight' as const,
-            addedAt: fav.addedAt
-          };
-        }
+      const item = fav.itemType === 'souvenir'
+        ? souvenirMap.get(fav.itemId)
+        : sightMap.get(fav.itemId);
+
+      if (item) {
+        return {
+          id: item.id,
+          name: item.name,
+          name_kana: item.name_kana,
+          description: item.description,
+          type: fav.itemType,
+          addedAt: fav.addedAt
+        };
       }
       return null;
     })
