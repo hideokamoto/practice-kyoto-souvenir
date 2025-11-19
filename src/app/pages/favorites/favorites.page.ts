@@ -89,7 +89,7 @@ export class FavoritesPage implements OnDestroy {
             ]).pipe(
               // データが揃うまで待つ
               filter(([sightState, souvenirState]) => 
-                !!sightState?.sights?.length && !!souvenirState?.souvenirs?.length
+                !!(sightState as any)?.sights?.length && !!(souvenirState as any)?.souvenirs?.length
               ),
               take(1)
             )
@@ -98,7 +98,7 @@ export class FavoritesPage implements OnDestroy {
       }),
       // データが揃うまで待つ（fetchが不要な場合のためのフィルター）
       filter(([sightState, souvenirState]) => {
-        return !!sightState?.sights?.length && !!souvenirState?.souvenirs?.length;
+        return !!(sightState as any)?.sights?.length && !!(souvenirState as any)?.souvenirs?.length;
       }),
       take(1),
       // データが揃ったら、お気に入りを読み込む
