@@ -17,15 +17,15 @@ const mockSightsService = {
 describe('SightDetailPage', () => {
   let component: SightDetailPage;
   let fixture: ComponentFixture<SightDetailPage>;
-  let storeMock: jest.Mocked<Store>;
-  let loadingControllerMock: jest.Mocked<LoadingController>;
+  let storeMock: Store;
+  let loadingControllerMock: LoadingController;
 
   beforeEach(waitForAsync(() => {
     storeMock = {
       dispatch: jest.fn(),
       select: jest.fn().mockReturnValue(of({ sights: [] })),
       pipe: jest.fn(),
-    } as jest.Mocked<Store>;
+    } as Partial<Store> as Store;
 
     loadingControllerMock = {
       create: jest.fn().mockResolvedValue({
@@ -33,7 +33,8 @@ describe('SightDetailPage', () => {
         dismiss: jest.fn().mockResolvedValue(undefined),
       }),
       dismiss: jest.fn().mockResolvedValue(undefined),
-    } as jest.Mocked<LoadingController>;
+      getTop: jest.fn().mockResolvedValue(undefined),
+    } as Partial<LoadingController> as LoadingController;
 
     TestBed.configureTestingModule({
       declarations: [ SightDetailPage ],

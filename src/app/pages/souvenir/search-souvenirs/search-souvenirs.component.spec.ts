@@ -7,14 +7,14 @@ import { SearchSouvenirsComponent } from './search-souvenirs.component';
 describe('SearchSouvenirsComponent', () => {
   let component: SearchSouvenirsComponent;
   let fixture: ComponentFixture<SearchSouvenirsComponent>;
-  let storeMock: jest.Mocked<Store>;
+  let storeMock: Store;
 
   beforeEach(waitForAsync(() => {
     storeMock = {
       dispatch: jest.fn(),
       select: jest.fn(),
       pipe: jest.fn(),
-    } as jest.Mocked<Store>;
+    } as Partial<Store> as Store;
 
     TestBed.configureTestingModule({
       declarations: [ SearchSouvenirsComponent ],

@@ -17,15 +17,15 @@ const mockSouvenirService = {
 describe('SouvenirDetailPage', () => {
   let component: SouvenirDetailPage;
   let fixture: ComponentFixture<SouvenirDetailPage>;
-  let storeMock: jest.Mocked<Store>;
-  let loadingControllerMock: jest.Mocked<LoadingController>;
+  let storeMock: Store;
+  let loadingControllerMock: LoadingController;
 
   beforeEach(waitForAsync(() => {
     storeMock = {
       dispatch: jest.fn(),
       select: jest.fn().mockReturnValue(of({ souvenirs: [] })),
       pipe: jest.fn(),
-    } as jest.Mocked<Store>;
+    } as Partial<Store> as Store;
 
     loadingControllerMock = {
       create: jest.fn().mockResolvedValue({
@@ -33,7 +33,8 @@ describe('SouvenirDetailPage', () => {
         dismiss: jest.fn().mockResolvedValue(undefined),
       }),
       dismiss: jest.fn().mockResolvedValue(undefined),
-    } as jest.Mocked<LoadingController>;
+      getTop: jest.fn().mockResolvedValue(undefined),
+    } as Partial<LoadingController> as LoadingController;
 
     TestBed.configureTestingModule({
       declarations: [ SouvenirDetailPage ],

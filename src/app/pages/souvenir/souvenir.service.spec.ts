@@ -6,15 +6,15 @@ import { SouvenirService } from './souvenir.service';
 
 describe('SouvenirService', () => {
   let service: SouvenirService;
-  let storeMock: jest.Mocked<Store>;
-  let loadingControllerMock: jest.Mocked<LoadingController>;
+  let storeMock: Store;
+  let loadingControllerMock: LoadingController;
 
   beforeEach(() => {
     storeMock = {
       dispatch: jest.fn(),
       select: jest.fn(),
       pipe: jest.fn(),
-    } as jest.Mocked<Store>;
+    } as Partial<Store> as Store;
 
     loadingControllerMock = {
       create: jest.fn().mockResolvedValue({
@@ -22,7 +22,8 @@ describe('SouvenirService', () => {
         dismiss: jest.fn().mockResolvedValue(undefined),
       }),
       dismiss: jest.fn().mockResolvedValue(undefined),
-    } as jest.Mocked<LoadingController>;
+      getTop: jest.fn().mockResolvedValue(undefined),
+    } as Partial<LoadingController> as LoadingController;
 
     TestBed.configureTestingModule({
       providers: [
