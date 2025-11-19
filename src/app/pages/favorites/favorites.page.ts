@@ -48,6 +48,11 @@ export class FavoritesPage implements OnDestroy {
         const needsSights = !Array.isArray(sightState.sights) || sightState.sights.length === 0;
         const needsSouvenirs = !Array.isArray(souvenirState.souvenirs) || souvenirState.souvenirs.length === 0;
 
+        // 既にデータがある場合はそのまま返す
+        if (!needsSights && !needsSouvenirs) {
+          return of([sightState, souvenirState]);
+        }
+
         // 必要なデータがない場合のみfetchを実行（並行実行）
         const fetchObservables: Array<ReturnType<typeof this.sightsService.fetchSights | typeof this.souvenirService.fetchSouvenirs>> = [];
         
@@ -75,27 +80,23 @@ export class FavoritesPage implements OnDestroy {
 
         // fetchが必要な場合は forkJoin で並行実行
         // fetch後は、ストアが更新されるまで待つために、combineLatestでストアを監視し続ける
-        if (fetchObservables.length > 0) {
-          return forkJoin(fetchObservables).pipe(
-            switchMap(() => 
-              combineLatest([
-                this.store.select(selectSightsFeature),
-                this.store.select(selectSouvenirFeature)
-              ]).pipe(
-                // データが揃うまで待つ
-                filter(([sightState, souvenirState]) => {
-                  const sights = (sightState as { sights?: unknown[] })?.sights;
-                  const souvenirs = (souvenirState as { souvenirs?: unknown[] })?.souvenirs;
-                  return (sights?.length ?? 0) > 0 && (souvenirs?.length ?? 0) > 0;
-                }),
-                take(1)
-              )
+        // ネストしたcombineLatestを避けるため、fetch完了後にストアを監視し続ける
+        return forkJoin(fetchObservables).pipe(
+          switchMap(() => 
+            combineLatest([
+              this.store.select(selectSightsFeature),
+              this.store.select(selectSouvenirFeature)
+            ]).pipe(
+              // データが揃うまで待つ
+              filter(([sightState, souvenirState]) => {
+                const sights = (sightState as { sights?: unknown[] })?.sights;
+                const souvenirs = (souvenirState as { souvenirs?: unknown[] })?.souvenirs;
+                return (sights?.length ?? 0) > 0 && (souvenirs?.length ?? 0) > 0;
+              }),
+              take(1)
             )
-          );
-        }
-
-        // 既にデータがある場合はそのまま返す
-        return of([sightState, souvenirState]);
+          )
+        );
       }),
       // データが揃うまで待つ（fetchが不要な場合のためのフィルター）
       filter(([sightState, souvenirState]) => {
@@ -157,11 +158,11 @@ export class FavoritesPage implements OnDestroy {
 
     const loadSubscription = combineLatest([
       this.store.select(selectSouvenirFeature).pipe(
-        filter(state => Array.isArray(state?.souvenirs)),
+        filter(state => Array.isArray(state.souvenirs)),
         take(1)
       ),
       this.store.select(selectSightsFeature).pipe(
-        filter(state => Array.isArray(state?.sights)),
+        filter(state => Array.isArray(state.sights)),
         take(1)
       )
     ]).pipe(

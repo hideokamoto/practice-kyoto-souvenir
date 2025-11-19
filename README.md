@@ -100,7 +100,7 @@ assets/
 ├── sights/               # 観光スポットデータ
 │   ├── csv2json.js      # CSV→JSON変換スクリプト
 │   └── DSIGHT_1.csv     # 観光スポットのCSVデータ
-└── souvenires/          # お土産データ
+└── souvenirs/           # お土産データ
     ├── csv2json.js      # CSV→JSON変換スクリプト
     └── DSOURVENIR_0.csv # お土産のCSVデータ
 ```
@@ -119,7 +119,7 @@ assets/
 2. **CSVデータの更新**
 
    - 観光スポットデータを更新する場合：`assets/sights/DSIGHT_1.csv`を編集
-   - お土産データを更新する場合：`assets/souvenires/DSOURVENIR_0.csv`を編集
+   - お土産データを更新する場合：`assets/souvenirs/DSOURVENIR_0.csv`を編集
 
 3. **JSONデータの生成**
 
@@ -132,7 +132,7 @@ assets/
    - お土産データを変換する場合：
 
      ```bash
-     cd assets/souvenires
+     cd assets/souvenirs
      node csv2json.js
 
    **注意**: 出力先のパスは相対パスで指定してください。上記のコマンドは`assets`フォルダから実行することを想定しています。
@@ -149,7 +149,7 @@ assets/
   - CSVファイルの各フィールドをマッピングし、郵便番号を結合する処理を含みます
   - 出力されるJSONには、id、name、name_kana、description、住所、連絡先などの情報が含まれます
 
-- **お土産スクリプト** (`assets/souvenires/csv2json.js`)
+- **お土産スクリプト** (`assets/souvenirs/csv2json.js`)
   - CSVファイルから基本的な情報（id、name、name_kana、description）を抽出します
   - シンプルな構造でJSONを生成します
 
