@@ -31,3 +31,4 @@ npm-debug.log*
 /plugins
 /www
 assets/node_modules/
+test-results/

@@ -328,6 +328,9 @@ export class DiscoverPage implements OnInit, OnDestroy {
   }
 
   getDescriptionText(suggestion: RandomSuggestion, isExpanded: boolean): string {
+    if (!suggestion.description) {
+      return '';
+    }
     if (isExpanded) {
       return suggestion.description;
     }

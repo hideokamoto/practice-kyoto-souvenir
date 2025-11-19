@@ -444,10 +444,6 @@
     }
   }
   
-  .exploration-content {
-    // 常に表示されるため、アニメーションは不要
-  }
-  
   .segment-container {
     padding-top: 0;
     padding-bottom: 16px;
@@ -489,5 +485,14 @@
 
 .search-section {
   margin-top: 16px;
+}
+
+// ion-contentのスクロールを確実に有効化
+ion-content {
+  --overflow: auto;
+  
+  &::part(scroll) {
+    overflow-y: auto !important;
+  }
 }
 

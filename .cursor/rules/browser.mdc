@@ -1,0 +1,7 @@
+---
+description: When you want to capture screenshots
+alwaysApply: false
+---
+
+- You must save all of the screenshots to the test-results directory.
+- You must use the built-in browser or chrome dev tools mcp. DO NOT INSTALL playwright via npm

@@ -76,7 +76,7 @@
               {{ getDescriptionText(suggestion, isDescriptionExpanded(suggestion.id)) }}
             </p>
             <button 
-              *ngIf="suggestion.description.length > 60" 
+              *ngIf="suggestion.description && suggestion.description.length > 60" 
               class="toggle-description"
               (click)="toggleDescription(suggestion.id)">
               <ion-icon [name]="isDescriptionExpanded(suggestion.id) ? 'chevron-up' : 'chevron-down'"></ion-icon>
@@ -85,7 +85,7 @@
           </div>
           
           <!-- デスクトップ用の説明文（常に表示） -->
-          <p class="description desktop-only">{{ suggestion.description | truncate:120 }}</p>
+          <p class="description desktop-only" *ngIf="suggestion.description">{{ suggestion.description | truncate:120 }}</p>
           
           <!-- 追加情報 -->
           <div class="recommendation-info" *ngIf="suggestion.address || suggestion.price">
