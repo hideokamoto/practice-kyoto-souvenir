@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController, ActionSheetController } from '@ionic/angular';
 import { Store } from '@ngrx/store';
@@ -24,21 +24,19 @@ interface PlanItemWithDetails extends PlanItem {
     standalone: false
 })
 export class PlanDetailPage implements OnDestroy {
+  private readonly route = inject(ActivatedRoute);
+  private readonly router = inject(Router);
+  private readonly userDataService = inject(UserDataService);
+  private readonly alertController = inject(AlertController);
+  private readonly actionSheetController = inject(ActionSheetController);
+  private readonly store = inject(Store);
+
   public plan: Plan | null = null;
   public planItems: PlanItemWithDetails[] = [];
   public loading = true;
 
   private subscriptions = new Subscription();
   private loadPlanSubscription?: Subscription;
-
-  constructor(
-    private readonly route: ActivatedRoute,
-    private readonly router: Router,
-    private readonly userDataService: UserDataService,
-    private readonly alertController: AlertController,
-    private readonly actionSheetController: ActionSheetController,
-    private readonly store: Store
-  ) {}
 
   ionViewWillEnter() {
     const planId = this.route.snapshot.paramMap.get('id');

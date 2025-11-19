@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { UserDataService } from '../../shared/services/user-data.service';
 import { selectSouvenirFeature } from '../souvenir/store';
@@ -16,18 +16,16 @@ import { FavoriteItem, mapFavoritesToFavoriteItems } from './favorites.utils';
     standalone: false
 })
 export class FavoritesPage implements OnDestroy {
+  private readonly userDataService = inject(UserDataService);
+  private readonly store = inject(Store);
+  private readonly sightsService = inject(SightsService);
+  private readonly souvenirService = inject(SouvenirService);
+
   public favoriteItems: FavoriteItem[] = [];
   public loading = true;
 
   private subscriptions = new Subscription();
   private loadFavoritesSubscription?: Subscription;
-
-  constructor(
-    private readonly userDataService: UserDataService,
-    private readonly store: Store,
-    private readonly sightsService: SightsService,
-    private readonly souvenirService: SouvenirService
-  ) {}
 
 
   ngOnDestroy() {

@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store, createSelector } from '@ngrx/store';
 import { UserDataService } from '../../shared/services/user-data.service';
@@ -33,6 +33,12 @@ interface RandomSuggestion {
     standalone: false
 })
 export class DiscoverPage implements OnDestroy {
+  private readonly userDataService = inject(UserDataService);
+  private readonly store = inject(Store);
+  private readonly router = inject(Router);
+  private readonly sightsService = inject(SightsService);
+  private readonly souvenirService = inject(SouvenirService);
+
   public contentType: ContentType = 'sights';
   public sights$ = this.store.select(createSelector(selectSightsFeature, state => state.items));
   public souvenirs$ = this.store.select(createSelector(selectSouvenirFeature, state => state.items));
@@ -46,14 +52,6 @@ export class DiscoverPage implements OnDestroy {
   public isLoading = false;
   public hasError = false;
   public errorMessage = '';
-
-  constructor(
-    private readonly userDataService: UserDataService,
-    private readonly store: Store,
-    private readonly router: Router,
-    private readonly sightsService: SightsService,
-    private readonly souvenirService: SouvenirService
-  ) {}
 
 
   ngOnDestroy() {

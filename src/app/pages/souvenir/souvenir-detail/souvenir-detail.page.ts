@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, inject} from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { createSelector, Store } from '@ngrx/store';
@@ -14,17 +14,15 @@ import { switchMap, take, filter, tap } from 'rxjs/operators';
     standalone: false
 })
 export class SouvenirDetailPage implements OnInit {
+  private readonly activatedRoute = inject(ActivatedRoute);
+  private readonly store = inject(Store);
+  private readonly souvenirService = inject(SouvenirService);
+  private readonly title = inject(Title);
+  private readonly userDataService = inject(UserDataService);
+
   public souvenir: Souvenir | null;
   public isFavorite = false;
   public isVisited = false;
-
-  constructor(
-    private readonly activatedRoute: ActivatedRoute,
-    private readonly store: Store,
-    private readonly souvenirService: SouvenirService,
-    private readonly title: Title,
-    private readonly userDataService: UserDataService
-  ) { }
 
   public ngOnInit() {
     const id = this.activatedRoute.snapshot.paramMap.get('id');

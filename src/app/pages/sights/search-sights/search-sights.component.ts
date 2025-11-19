@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { filterSights } from '../store';
 
@@ -9,10 +9,7 @@ import { filterSights } from '../store';
     standalone: false
 })
 export class SearchSightsComponent {
-
-  constructor(
-    private readonly store: Store
-  ) { }
+  private readonly store = inject(Store);
 
   public searchByName(event: Event) {
     const name = (event.target as HTMLInputElement).value;

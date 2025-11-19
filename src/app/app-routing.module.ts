@@ -1,11 +1,13 @@
-import { Injectable, NgModule } from '@angular/core';
+import { Injectable, NgModule, inject } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { TitleStrategy, RouterStateSnapshot } from '@angular/router';
 
 @Injectable()
 export class AppTitleStrategy extends TitleStrategy {
-  constructor(private titleService: Title) {
+  private readonly titleService = inject(Title);
+
+  constructor() {
     super();
   }
 

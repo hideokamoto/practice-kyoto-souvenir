@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController, ToastController } from '@ionic/angular';
 import { Store } from '@ngrx/store';
@@ -15,18 +15,16 @@ import { take, switchMap, catchError, filter } from 'rxjs/operators';
     standalone: false
 })
 export class PlansPage implements OnInit, OnDestroy {
+  private readonly userDataService = inject(UserDataService);
+  private readonly router = inject(Router);
+  private readonly alertController = inject(AlertController);
+  private readonly toastController = inject(ToastController);
+  private readonly store = inject(Store);
+  private readonly sightsService = inject(SightsService);
+
   public plans: Plan[] = [];
   private allSights: Sight[] = [];
   private subscriptions = new Subscription();
-
-  constructor(
-    private readonly userDataService: UserDataService,
-    private readonly router: Router,
-    private readonly alertController: AlertController,
-    private readonly toastController: ToastController,
-    private readonly store: Store,
-    private readonly sightsService: SightsService
-  ) {}
 
   ngOnInit() {
     this.loadSightsData();

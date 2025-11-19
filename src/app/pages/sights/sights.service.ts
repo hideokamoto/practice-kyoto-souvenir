@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { LoadingController } from '@ionic/angular';
 import { Store } from '@ngrx/store';
 import { from } from 'rxjs';
@@ -38,11 +38,8 @@ export type Sight = {
   providedIn: 'root'
 })
 export class SightsService {
-
-  constructor(
-    private readonly store: Store,
-    private readonly loadingController: LoadingController
-  ) { }
+  private readonly store = inject(Store);
+  private readonly loadingController = inject(LoadingController);
 
   public fetchSights(showLoading = true) {
     const dataLoaderObservar = from(

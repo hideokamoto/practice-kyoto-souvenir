@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { from } from 'rxjs';
 import { concatMap, tap, finalize, map } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
@@ -17,11 +17,8 @@ export type Souvenir = {
   providedIn: 'root'
 })
 export class SouvenirService {
-
-  constructor(
-    private readonly store: Store,
-    private readonly loadingController: LoadingController,
-  ) { }
+  private readonly store = inject(Store);
+  private readonly loadingController = inject(LoadingController);
   public fetchSouvenirs(showLoading = true) {
     const dataLoaderObservar = from(
       import('./dataset/kyoto-souvenir.json')

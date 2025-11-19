@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { Souvenir } from '../souvenir.service';
 import { UserDataService } from '../../../shared/services/user-data.service';
 
@@ -9,11 +9,11 @@ import { UserDataService } from '../../../shared/services/user-data.service';
     standalone: false
 })
 export class ListSouvenirsComponent implements OnInit {
+  private readonly userDataService = inject(UserDataService);
+
   @Input() souvenir: Souvenir;
   public isFavorite = false;
   public isVisited = false;
-
-  constructor(private readonly userDataService: UserDataService) {}
 
   ngOnInit() {
     if (this.souvenir) {
