@@ -51,7 +51,7 @@ export class FavoritesPage implements OnInit, OnDestroy {
       take(1),
       switchMap(([sightState, souvenirState]) => {
         const needsSights = !sightState?.sights || sightState.sights.length === 0;
-        const needsSouvenirs = !souvenirState?.souvenires || souvenirState.souvenires.length === 0;
+        const needsSouvenirs = !souvenirState?.souvenirs || souvenirState.souvenirs.length === 0;
 
         // 必要なデータがない場合のみfetchを実行
         const fetchObservables = [];
@@ -67,7 +67,7 @@ export class FavoritesPage implements OnInit, OnDestroy {
         }
         if (needsSouvenirs) {
           fetchObservables.push(
-            this.souvenirService.fetchSouvenires(false).pipe(
+            this.souvenirService.fetchSouvenirs(false).pipe(
               catchError(error => {
                 console.error('お土産データの読み込みに失敗しました:', error);
                 return EMPTY;
@@ -98,17 +98,17 @@ export class FavoritesPage implements OnInit, OnDestroy {
         if (!('sights' in sightState)) {
           return false;
         }
-        // 型ガード: souvenires プロパティの存在を確認
-        if (!('souvenires' in souvenirState)) {
+        // 型ガード: souvenirs プロパティの存在を確認
+        if (!('souvenirs' in souvenirState)) {
           return false;
         }
         // 型アサーションを使用して型を明示
         const sightsState = sightState as { sights: unknown[] };
-        const souveniresState = souvenirState as { souvenires: unknown[] };
+        const souvenirsState = souvenirState as { souvenirs: unknown[] };
         return Array.isArray(sightsState.sights) && 
                sightsState.sights.length > 0 &&
-               Array.isArray(souveniresState.souvenires) && 
-               souveniresState.souvenires.length > 0;
+               Array.isArray(souvenirsState.souvenirs) && 
+               souvenirsState.souvenirs.length > 0;
       }),
       take(1)
     ).subscribe({
@@ -139,11 +139,11 @@ export class FavoritesPage implements OnInit, OnDestroy {
     // 両方のストアからデータを取得（データが揃ってから処理）
     this.loadFavoritesSubscription = combineLatest([
       this.store.select(selectSouvenirFeature).pipe(
-        filter(state => Array.isArray(state.souvenires)),
+        filter(state => Array.isArray(state?.souvenires)),
         take(1)
       ),
       this.store.select(selectSightsFeature).pipe(
-        filter(state => Array.isArray(state.sights)),
+        filter(state => Array.isArray(state?.sights)),
         take(1)
       )
     ]).pipe(
@@ -158,7 +158,7 @@ export class FavoritesPage implements OnInit, OnDestroy {
         return;
       }
 
-      const souvenirs = souvenirState.souvenires;
+      const souvenirs = souvenirState.souvenirs;
       const sights = sightState.sights;
 
       // 純粋関数を使用してマッピング（テスト可能で再発防止）
