@@ -78,8 +78,8 @@ export class DiscoverPage implements OnInit, OnDestroy {
     ]).pipe(
       take(1),
       switchMap(([sightState, souvenirState]) => {
-        const needsSights = !sightState?.sights || sightState.sights.length === 0;
-        const needsSouvenirs = !souvenirState?.souvenires || souvenirState.souvenires.length === 0;
+        const needsSights = !sightState?.items || sightState.items.length === 0;
+        const needsSouvenirs = !souvenirState?.items || souvenirState.items.length === 0;
 
         // 必要なデータがない場合のみfetchを実行（並行実行）
         const fetchObservables: Array<ReturnType<typeof this.sightsService.fetchSights | typeof this.souvenirService.fetchSouvenires>> = [];
@@ -129,13 +129,13 @@ export class DiscoverPage implements OnInit, OnDestroy {
       }),
       // データが揃うまで待つ
       filter(([sightState, souvenirState]) => 
-        sightState?.sights && sightState.sights.length > 0 &&
-        souvenirState?.souvenires && souvenirState.souvenires.length > 0
+        sightState?.items && sightState.items.length > 0 &&
+        souvenirState?.items && souvenirState.items.length > 0
       ),
       take(1),
       tap(([sightState, souvenirState]) => {
-        this.allSights = sightState.sights as Sight[];
-        this.allSouvenirs = souvenirState.souvenires as Souvenir[];
+        this.allSights = sightState.items as Sight[];
+        this.allSouvenirs = souvenirState.items as Souvenir[];
         this.getRandomSuggestions();
         this.hasError = false;
       }),

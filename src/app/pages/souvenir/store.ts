@@ -1,7 +1,21 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { CaseReducer, createSlice } from '@reduxjs/toolkit';
 import { createFeatureSelector } from '@ngrx/store';
+import { Souvenir } from './souvenir.service';
 
-const souvenirSlice = createSlice({
+type SouvenirState = {
+    souvenires: Souvenir[];
+    items: Souvenir[];
+};
+const souvenirSlice = createSlice<SouvenirState, {
+    setSouvenir: CaseReducer<SouvenirState, {
+        type: string;
+        payload: Souvenir[];
+    }>;
+    filterSouvenir: CaseReducer<SouvenirState, {
+        type: string;
+        payload: string;
+    }>;
+}>({
     name: 'souvenir',
     initialState: {
         souvenires: [],
@@ -37,4 +51,4 @@ export const {
     },
     name: souvenirFeatureKey
 } = souvenirSlice;
-export const selectSouvenirFeature = createFeatureSelector<ReturnType<typeof souvenirReducer>>(souvenirFeatureKey);
+export const selectSouvenirFeature = createFeatureSelector<SouvenirState>(souvenirFeatureKey);

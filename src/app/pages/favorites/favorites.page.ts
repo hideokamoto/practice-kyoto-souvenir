@@ -51,8 +51,8 @@ export class FavoritesPage implements OnInit, OnDestroy {
     ]).pipe(
       take(1),
       switchMap(([sightState, souvenirState]) => {
-        const needsSights = !sightState?.sights || sightState.sights.length === 0;
-        const needsSouvenirs = !souvenirState?.souvenires || souvenirState.souvenires.length === 0;
+        const needsSights = !sightState?.items || sightState.items.length === 0;
+        const needsSouvenirs = !souvenirState?.items || souvenirState.items.length === 0;
 
         // 必要なデータがない場合のみfetchを実行
         const fetchObservables = [];
@@ -92,8 +92,8 @@ export class FavoritesPage implements OnInit, OnDestroy {
       }),
       // データが揃うまで待つ
       filter(([sightState, souvenirState]) => 
-        sightState?.sights && sightState.sights.length > 0 &&
-        souvenirState?.souvenires && souvenirState.souvenires.length > 0
+        sightState?.items && sightState.items.length > 0 &&
+        souvenirState?.items && souvenirState.items.length > 0
       ),
       take(1)
     ).subscribe({
@@ -124,11 +124,11 @@ export class FavoritesPage implements OnInit, OnDestroy {
     // 両方のストアからデータを取得（データが揃ってから処理）
     this.loadFavoritesSubscription = combineLatest([
       this.store.select(selectSouvenirFeature).pipe(
-        filter(state => state !== null && state.souvenires !== null && state.souvenires !== undefined && Array.isArray(state.souvenires)),
+        filter(state => state !== null && state.items !== null && state.items !== undefined && Array.isArray(state.items)),
         take(1)
       ),
       this.store.select(selectSightsFeature).pipe(
-        filter(state => state !== null && state.sights !== null && state.sights !== undefined && Array.isArray(state.sights)),
+        filter(state => state !== null && state.items !== null && state.items !== undefined && Array.isArray(state.items)),
         take(1)
       )
     ]).pipe(
@@ -143,8 +143,8 @@ export class FavoritesPage implements OnInit, OnDestroy {
         return;
       }
 
-      const souvenirs = souvenirState.souvenires;
-      const sights = sightState.sights;
+      const souvenirs = souvenirState.items;
+      const sights = sightState.items;
 
       // 純粋関数を使用してマッピング（テスト可能で再発防止）
       this.favoriteItems = mapFavoritesToFavoriteItems(favorites, souvenirs, sights);
