@@ -30,6 +30,21 @@
       <img [src]="getPhotoPath(sight.photo)" [alt]="sight.name" class="sight-photo" />
     </div>
 
+    <!-- 基本情報 -->
+    <ion-item>
+      <ion-label class='ion-text-wrap'>
+        <h2>{{sight.name}}</h2>
+        <h3><small>({{sight.name_kana}})</small></h3>
+        <p *ngIf="sight.alt_name" class="alt-name">
+          <small>別名: {{sight.alt_name}}<span *ngIf="sight.alt_name_kana"> ({{sight.alt_name_kana}})</span></small>
+        </p>
+      </ion-label>
+    </ion-item>
+
+    <div class='ion-padding description-text'>
+      <pre class="formatted-text">{{formatText(sight.description)}}</pre>
+    </div>
+
     <!-- アクションボタンエリア -->
     <div class="action-buttons-container">
       <div class="action-buttons-row">
@@ -62,21 +77,6 @@
         <ion-icon name="calendar-outline" slot="start"></ion-icon>
         <ion-label>この場所に行くプランを作る</ion-label>
       </ion-button>
-    </div>
-
-    <!-- 基本情報 -->
-    <ion-item>
-      <ion-label class='ion-text-wrap'>
-        <h2>{{sight.name}}</h2>
-        <h3><small>({{sight.name_kana}})</small></h3>
-        <p *ngIf="sight.alt_name" class="alt-name">
-          <small>別名: {{sight.alt_name}}<span *ngIf="sight.alt_name_kana"> ({{sight.alt_name_kana}})</span></small>
-        </p>
-      </ion-label>
-    </ion-item>
-
-    <div class='ion-padding description-text'>
-      <pre class="formatted-text">{{formatText(sight.description)}}</pre>
     </div>
 
     <ion-list>
