@@ -13,7 +13,7 @@ export class AppTitleStrategy extends TitleStrategy {
 
   override updateTitle(snapshot: RouterStateSnapshot) {
     const title = this.buildTitle(snapshot);
-    this.titleService.setTitle(title ? `${title} | 京都再発見` : '京都再発見');
+    this.titleService.setTitle(title ? `${title} | きょう再見` : 'きょう再見');
   }
 }
 
@@ -34,6 +34,10 @@ const routes: Routes = [
   {
     path: 'souvenir/:id',
     loadChildren: () => import('./pages/souvenir/souvenir-detail/souvenir-detail.module').then( m => m.SouvenirDetailPageModule)
+  },
+  {
+    path: 'about',
+    loadChildren: () => import('./pages/about/about.module').then( m => m.AboutPageModule)
   }
 ];
 

@@ -1,3 +1,23 @@
+// ヘッダースタイル
+ion-header {
+  ion-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    
+    .app-name {
+      font-weight: 600;
+      color: var(--ion-color-primary);
+      font-size: 0.9rem;
+    }
+    
+    .page-title {
+      font-weight: 400;
+      color: var(--ion-color-dark);
+    }
+  }
+}
+
 // 価値提案セクション（above the fold）
 .value-proposition {
   padding: 24px 16px 16px;

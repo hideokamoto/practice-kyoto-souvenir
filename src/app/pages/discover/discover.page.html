@@ -1,7 +1,12 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/about']">
+        <ion-icon name="information-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
     <ion-title>
-      発見
+      <span class="app-name">きょう再見</span>
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -13,7 +18,9 @@
 
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">発見</ion-title>
+      <ion-title size="large">
+        <span class="app-name">きょう再見</span>
+      </ion-title>
     </ion-toolbar>
   </ion-header>
 

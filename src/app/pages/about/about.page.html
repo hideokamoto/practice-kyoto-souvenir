@@ -1,0 +1,117 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/discover"></ion-back-button>
+    </ion-buttons>
+    <ion-title>このアプリについて</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">このアプリについて</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="ion-padding">
+    <div class="app-header">
+      <h1>きょう再見</h1>
+      <p class="app-subtitle">京都に住むあなたのための観光コンパニオン</p>
+    </div>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          <ion-icon name="information-circle-outline"></ion-icon>
+          アプリのコンセプト
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>
+          「いつでも行けるから」と思って、実は行ったことがない観光地はありませんか？
+        </p>
+        <p>
+          きょう再見は、京都に住む人々が地元の魅力を再発見し、行動を促すアプリです。
+          観光地やお土産を発見し、お気に入りに保存して、あなただけの京都プランを作成できます。
+        </p>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          <ion-icon name="compass-outline"></ion-icon>
+          主な機能
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list lines="none">
+          <ion-item>
+            <ion-icon slot="start" name="compass" color="primary"></ion-icon>
+            <ion-label>
+              <h3>発見</h3>
+              <p>京都の観光地やお土産を発見できます</p>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon slot="start" name="heart" color="danger"></ion-icon>
+            <ion-label>
+              <h3>お気に入り</h3>
+              <p>気に入った場所やお土産をお気に入りに保存できます</p>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon slot="start" name="map" color="secondary"></ion-icon>
+            <ion-label>
+              <h3>プラン</h3>
+              <p>複数のスポットを組み合わせて、あなただけの京都プランを作成できます</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          <ion-icon name="code-outline"></ion-icon>
+          アプリ情報
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list lines="none">
+          <ion-item>
+            <ion-label>
+              <h3>バージョン</h3>
+              <p>0.0.1</p>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <h3>フレームワーク</h3>
+              <p>Ionic Angular</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          <ion-icon name="heart-outline"></ion-icon>
+          開発について
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>
+          このアプリは、京都の魅力を再発見するためのツールとして開発されました。
+          地元に住む人々が「いつでも行けるから」という理由で先延ばしにしている観光地を、
+          発見し、行動を促すことを目的としています。
+        </p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
+

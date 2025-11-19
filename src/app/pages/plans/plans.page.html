@@ -1,13 +1,24 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>プラン</ion-title>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/about']">
+        <ion-icon name="information-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      <span class="app-name">きょう再見</span>
+      <span class="page-title">プラン</span>
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">プラン</ion-title>
+      <ion-title size="large">
+        <span class="app-name">きょう再見</span>
+        <span class="page-title">プラン</span>
+      </ion-title>
     </ion-toolbar>
   </ion-header>
 
