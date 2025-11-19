@@ -6,7 +6,7 @@ import { AlertController, ToastController } from '@ionic/angular';
 import { Sight, SightsService } from '../sights.service';
 import { selectSightsFeature } from '../store';
 import { UserDataService, Plan } from '../../../shared/services/user-data.service';
-import { switchMap, tap, take, filter } from 'rxjs/operators';
+import { switchMap, tap, take, filter, map } from 'rxjs/operators';
 
 @Component({
     selector: 'app-sight-detail',
@@ -27,7 +27,10 @@ export class SightDetailPage implements OnInit {
   public sight: Sight | null;
   public isFavorite = false;
   public isVisited = false;
+  public previousSightId: string | null = null;
+
   public ngOnInit() {
+    this.checkPreviousSight();
     const id = this.activatedRoute.snapshot.paramMap.get('id');
     
     if (!id) {
@@ -312,6 +315,89 @@ export class SightDetailPage implements OnInit {
       color
     });
     await toast.present();
+  }
+
+  /**
+   * 前の観光地のIDをチェック
+   */
+  private checkPreviousSight(): void {
+    if (typeof document === 'undefined') return;
+    
+    const referrer = document.referrer;
+    if (!referrer) return;
+    
+    // 前のページが観光地の詳細ページかチェック
+    const sightsUrlPattern = /\/sights\/([^\/\?]+)/;
+    const match = referrer.match(sightsUrlPattern);
+    
+    if (match && match[1]) {
+      const previousId = match[1];
+      // 現在の観光地と同じでないことを確認
+      const currentId = this.activatedRoute.snapshot.paramMap.get('id');
+      if (previousId !== currentId) {
+        this.previousSightId = previousId;
+      }
+    }
+  }
+
+  /**
+   * 前の観光地に遷移
+   */
+  public goToPreviousSight(): void {
+    if (this.previousSightId) {
+      this.router.navigate(['/sights', this.previousSightId]);
+    }
+  }
+
+  /**
+   * ランダムに次の観光地に遷移
+   */
+  public goToNextSight(): void {
+    if (!this.sight) return;
+
+    // ストアから全観光地を取得
+    this.store.select(selectSightsFeature).pipe(
+      take(1),
+      switchMap(sightState => {
+        const hasData = sightState?.sights?.length > 0;
+        
+        if (!hasData) {
+          // ストアにデータがない場合のみフェッチ
+          return this.service.fetchSights(false).pipe(
+            switchMap(() => this.store.select(selectSightsFeature).pipe(take(1)))
+          );
+        } else {
+          // ストアにデータがある場合は直接返す
+          return this.store.select(selectSightsFeature).pipe(take(1));
+        }
+      }),
+      map(sightState => {
+        const allSights = sightState?.sights || [];
+        // 現在の観光地を除外
+        const otherSights = allSights.filter(s => s.id !== this.sight!.id);
+        
+        if (otherSights.length === 0) {
+          return null;
+        }
+        
+        // ランダムに選択
+        const randomIndex = Math.floor(Math.random() * otherSights.length);
+        return otherSights[randomIndex];
+      }),
+      take(1)
+    ).subscribe({
+      next: (nextSight) => {
+        if (nextSight) {
+          this.router.navigate(['/sights', nextSight.id]);
+        } else {
+          this.showToast('他の観光地が見つかりませんでした', 'warning');
+        }
+      },
+      error: (error) => {
+        console.error('次の観光地の取得に失敗しました:', error);
+        this.showToast('エラーが発生しました', 'danger');
+      }
+    });
   }
 
 }

@@ -79,6 +79,33 @@
       </ion-button>
     </div>
 
+    <!-- 前の観光地・次の観光地ボタン -->
+    <div class="navigation-sights-container">
+      <div class="navigation-sights-row">
+        <ion-button 
+          *ngIf="previousSightId"
+          color="medium"
+          fill="outline"
+          (click)="goToPreviousSight()"
+          class="navigation-sight-button previous-button"
+          expand="block">
+          <ion-icon name="arrow-back-outline" slot="start"></ion-icon>
+          <ion-label>前の観光地</ion-label>
+        </ion-button>
+        
+        <ion-button 
+          color="medium"
+          fill="outline"
+          (click)="goToNextSight()"
+          class="navigation-sight-button next-button"
+          [class.full-width]="!previousSightId"
+          expand="block">
+          <ion-icon name="arrow-forward-outline" slot="start"></ion-icon>
+          <ion-label>次の観光地</ion-label>
+        </ion-button>
+      </div>
+    </div>
+
     <ion-list>
       <!-- アクセス情報 -->
       <ion-item-divider>
