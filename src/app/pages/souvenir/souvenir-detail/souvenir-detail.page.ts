@@ -5,6 +5,7 @@ import { createSelector, Store } from '@ngrx/store';
 import { Souvenir, SouvenirService } from '../souvenir.service';
 import { selectSouvenirFeature } from '../store';
 import { UserDataService } from '../../../shared/services/user-data.service';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-souvenir-detail',
@@ -26,21 +27,33 @@ export class SouvenirDetailPage implements OnInit {
 
   public ngOnInit() {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
+    
+    // まずストアにデータが存在するか確認
+    this.store.select(selectSouvenirFeature).pipe(take(1)).subscribe(souvenirState => {
+      const hasData = souvenirState && souvenirState.souvenires && souvenirState.souvenires.length > 0;
+      
+      if (!hasData) {
+        // ストアにデータがない場合のみフェッチ
+        this.souvenirService.fetchSouvenires(false)
+          .subscribe(() => {
+            this.loadSouvenirData(id);
+          });
+      } else {
+        // ストアにデータがある場合は直接読み込む
+        this.loadSouvenirData(id);
+      }
+    });
+  }
+
+  private loadSouvenirData(id: string) {
     this.loadSouvenir(id)
+      .pipe(take(1))
       .subscribe(result => {
         if (result) {
           this.souvenir = result;
           this.updateUserDataStatus();
-        } else {
-          this.souvenirService.fetchSouvenires()
-            .subscribe(() => {
-              this.loadSouvenir(id).subscribe(item => {
-                this.souvenir = item;
-                this.updateUserDataStatus();
-              });
-            });
+          this.title.setTitle(this.souvenir.name);
         }
-        this.title.setTitle(this.souvenir.name);
       });
   }
 

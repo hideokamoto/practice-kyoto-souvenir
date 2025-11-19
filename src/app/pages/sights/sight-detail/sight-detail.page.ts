@@ -5,6 +5,7 @@ import { createSelector, Store } from '@ngrx/store';
 import { Sight, SightsService } from '../sights.service';
 import { selectSightsFeature } from '../store';
 import { UserDataService } from '../../../shared/services/user-data.service';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-sight-detail',
@@ -25,21 +26,33 @@ export class SightDetailPage implements OnInit {
   ) { }
   public ngOnInit() {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
+    
+    // まずストアにデータが存在するか確認
+    this.store.select(selectSightsFeature).pipe(take(1)).subscribe(sightState => {
+      const hasData = sightState && sightState.sights && sightState.sights.length > 0;
+      
+      if (!hasData) {
+        // ストアにデータがない場合のみフェッチ
+        this.service.fetchSights(false)
+          .subscribe(() => {
+            this.loadSight(id);
+          });
+      } else {
+        // ストアにデータがある場合は直接読み込む
+        this.loadSight(id);
+      }
+    });
+  }
+
+  private loadSight(id: string) {
     this.loadSouvenir(id)
+      .pipe(take(1))
       .subscribe(result => {
         if (result) {
           this.sight = result;
           this.updateUserDataStatus();
-        } else {
-          this.service.fetchSights()
-            .subscribe(() => {
-              this.loadSouvenir(id).subscribe(item => {
-                this.sight = item;
-                this.updateUserDataStatus();
-              });
-            });
+          this.title.setTitle(this.sight.name);
         }
-        this.title.setTitle(this.sight.name);
       });
   }
 
