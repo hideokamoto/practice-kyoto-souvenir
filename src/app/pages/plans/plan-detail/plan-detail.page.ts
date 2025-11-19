@@ -318,7 +318,7 @@ export class PlanDetailPage implements OnDestroy {
       this.loadPlan(this.plan.id);
     }
     setTimeout(() => {
-      event.target.complete();
+      (event.target as HTMLIonRefresherElement).complete();
     }, 500);
   }
 

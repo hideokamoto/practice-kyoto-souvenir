@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store, createSelector } from '@ngrx/store';
 import { UserDataService } from '../../shared/services/user-data.service';
@@ -32,7 +32,7 @@ interface RandomSuggestion {
     styleUrls: ['./discover.page.scss'],
     standalone: false
 })
-export class DiscoverPage implements OnInit, OnDestroy {
+export class DiscoverPage implements OnDestroy {
   public contentType: ContentType = 'sights';
   public sights$ = this.store.select(createSelector(selectSightsFeature, state => state.items));
   public souvenirs$ = this.store.select(createSelector(selectSouvenirFeature, state => state.items));

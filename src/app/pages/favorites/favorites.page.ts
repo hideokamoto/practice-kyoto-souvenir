@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { UserDataService } from '../../shared/services/user-data.service';
 import { selectSouvenirFeature } from '../souvenir/store';
@@ -15,7 +15,7 @@ import { FavoriteItem, mapFavoritesToFavoriteItems } from './favorites.utils';
     styleUrls: ['./favorites.page.scss'],
     standalone: false
 })
-export class FavoritesPage implements OnInit, OnDestroy {
+export class FavoritesPage implements OnDestroy {
   public favoriteItems: FavoriteItem[] = [];
   public loading = true;
 
@@ -179,7 +179,7 @@ export class FavoritesPage implements OnInit, OnDestroy {
   doRefresh(event: CustomEvent) {
     this.loadFavorites();
     setTimeout(() => {
-      event.target.complete();
+      (event.target as HTMLIonRefresherElement).complete();
     }, 500);
   }
 }

@@ -146,7 +146,7 @@ export class PlansPage implements OnInit, OnDestroy {
   doRefresh(event: CustomEvent) {
     this.loadPlans();
     setTimeout(() => {
-      event.target.complete();
+      (event.target as HTMLIonRefresherElement).complete();
     }, 500);
   }
 
