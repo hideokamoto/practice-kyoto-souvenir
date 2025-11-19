@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController, ActionSheetController } from '@ionic/angular';
 import { Store } from '@ngrx/store';
@@ -7,6 +7,8 @@ import { selectSouvenirFeature } from '../../souvenir/store';
 import { selectSightsFeature } from '../../sights/store';
 import { Souvenir } from '../../souvenir/souvenir.service';
 import { Sight } from '../../sights/sights.service';
+import { Subscription, combineLatest } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 interface PlanItemWithDetails extends PlanItem {
   name: string;
@@ -19,10 +21,13 @@ interface PlanItemWithDetails extends PlanItem {
   templateUrl: './plan-detail.page.html',
   styleUrls: ['./plan-detail.page.scss'],
 })
-export class PlanDetailPage implements OnInit {
+export class PlanDetailPage implements OnInit, OnDestroy {
   public plan: Plan | null = null;
   public planItems: PlanItemWithDetails[] = [];
   public loading = true;
+
+  private subscriptions = new Subscription();
+  private loadPlanSubscription?: Subscription;
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -48,6 +53,11 @@ export class PlanDetailPage implements OnInit {
   }
 
   loadPlan(planId: string) {
+    // 既存のサブスクリプションをクリーンアップ
+    if (this.loadPlanSubscription) {
+      this.loadPlanSubscription.unsubscribe();
+    }
+
     this.loading = true;
     this.plan = this.userDataService.getPlan(planId);
 
@@ -56,45 +66,60 @@ export class PlanDetailPage implements OnInit {
       return;
     }
 
-    // アイテムの詳細を取得
-    this.store.select(selectSouvenirFeature).subscribe(souvenirState => {
+    // 両方のストアからデータを取得（データが揃ってから処理）
+    this.loadPlanSubscription = combineLatest([
+      this.store.select(selectSouvenirFeature).pipe(
+        filter(state => state !== null && state.souvenires !== null && state.souvenires !== undefined && Array.isArray(state.souvenires))
+      ),
+      this.store.select(selectSightsFeature).pipe(
+        filter(state => state !== null && state.sights !== null && state.sights !== undefined && Array.isArray(state.sights))
+      )
+    ]).subscribe(([souvenirState, sightState]) => {
       const souvenirs = souvenirState.souvenires as Souvenir[];
+      const sights = sightState.sights as Sight[];
 
-      this.store.select(selectSightsFeature).subscribe(sightState => {
-        const sights = sightState.sights as Sight[];
+      if (this.plan) {
+        // パフォーマンス向上のため、Mapオブジェクトを作成
+        const souvenirMap = new Map<string, Souvenir>();
+        souvenirs.forEach(souvenir => {
+          souvenirMap.set(souvenir.id, souvenir);
+        });
 
-        if (this.plan) {
-          this.planItems = this.plan.items
-            .sort((a, b) => a.order - b.order)
-            .map(item => {
-              if (item.itemType === 'souvenir') {
-                const souvenir = souvenirs.find(s => s.id === item.itemId);
-                if (souvenir) {
-                  return {
-                    ...item,
-                    name: souvenir.name,
-                    name_kana: souvenir.name_kana,
-                    description: souvenir.description
-                  };
-                }
-              } else {
-                const sight = sights.find(s => s.id === item.itemId);
-                if (sight) {
-                  return {
-                    ...item,
-                    name: sight.name,
-                    name_kana: sight.name_kana,
-                    description: sight.description
-                  };
-                }
+        const sightMap = new Map<string, Sight>();
+        sights.forEach(sight => {
+          sightMap.set(sight.id, sight);
+        });
+
+        this.planItems = this.plan.items
+          .sort((a, b) => a.order - b.order)
+          .map(item => {
+            if (item.itemType === 'souvenir') {
+              const souvenir = souvenirMap.get(item.itemId);
+              if (souvenir) {
+                return {
+                  ...item,
+                  name: souvenir.name,
+                  name_kana: souvenir.name_kana,
+                  description: souvenir.description
+                };
               }
-              return null;
-            })
-            .filter((item): item is PlanItemWithDetails => item !== null);
-        }
+            } else {
+              const sight = sightMap.get(item.itemId);
+              if (sight) {
+                return {
+                  ...item,
+                  name: sight.name,
+                  name_kana: sight.name_kana,
+                  description: sight.description
+                };
+              }
+            }
+            return null;
+          })
+          .filter((item): item is PlanItemWithDetails => item !== null);
+      }
 
-        this.loading = false;
-      });
+      this.loading = false;
     });
   }
 
@@ -166,54 +191,73 @@ export class PlanDetailPage implements OnInit {
       return;
     }
 
-    // お気に入りの詳細情報を取得
-    this.store.select(selectSouvenirFeature).subscribe(async souvenirState => {
+    // 両方のストアからデータを取得（データが揃ってから処理）
+    const favoriteSubscription = combineLatest([
+      this.store.select(selectSouvenirFeature).pipe(
+        filter(state => state !== null && state.souvenires !== null && state.souvenires !== undefined && Array.isArray(state.souvenires))
+      ),
+      this.store.select(selectSightsFeature).pipe(
+        filter(state => state !== null && state.sights !== null && state.sights !== undefined && Array.isArray(state.sights))
+      )
+    ]).subscribe(async ([souvenirState, sightState]) => {
       const souvenirs = souvenirState.souvenires as Souvenir[];
+      const sights = sightState.sights as Sight[];
 
-      this.store.select(selectSightsFeature).subscribe(async sightState => {
-        const sights = sightState.sights as Sight[];
+      // パフォーマンス向上のため、Mapオブジェクトを作成
+      const souvenirMap = new Map<string, Souvenir>();
+      souvenirs.forEach(souvenir => {
+        souvenirMap.set(souvenir.id, souvenir);
+      });
 
-        const favoriteItems = favorites.map(fav => {
+      const sightMap = new Map<string, Sight>();
+      sights.forEach(sight => {
+        sightMap.set(sight.id, sight);
+      });
+
+      const favoriteItems = favorites
+        .map(fav => {
           if (fav.itemType === 'souvenir') {
-            const item = souvenirs.find(s => s.id === fav.itemId);
+            const item = souvenirMap.get(fav.itemId);
             if (item) return { ...fav, name: item.name };
           } else {
-            const item = sights.find(s => s.id === fav.itemId);
+            const item = sightMap.get(fav.itemId);
             if (item) return { ...fav, name: item.name };
           }
           return null;
-        }).filter(item => item !== null);
+        })
+        .filter(item => item !== null);
 
-        const alert = await this.alertController.create({
-          header: 'お気に入りから選択',
-          inputs: favoriteItems.map(item => ({
-            type: 'checkbox' as const,
-            label: item!.name,
-            value: item,
-            checked: this.userDataService.isItemInPlan(this.plan!.id, item!.itemId, item!.itemType)
-          })),
-          buttons: [
-            {
-              text: 'キャンセル',
-              role: 'cancel'
-            },
-            {
-              text: '追加',
-              handler: (selected) => {
-                if (selected && selected.length > 0 && this.plan) {
-                  selected.forEach((item: any) => {
-                    this.userDataService.addItemToPlan(this.plan!.id, item.itemId, item.itemType);
-                  });
-                  this.loadPlan(this.plan.id);
-                }
+      const alert = await this.alertController.create({
+        header: 'お気に入りから選択',
+        inputs: favoriteItems.map(item => ({
+          type: 'checkbox' as const,
+          label: item!.name,
+          value: item,
+          checked: this.userDataService.isItemInPlan(this.plan!.id, item!.itemId, item!.itemType)
+        })),
+        buttons: [
+          {
+            text: 'キャンセル',
+            role: 'cancel'
+          },
+          {
+            text: '追加',
+            handler: (selected) => {
+              if (selected && selected.length > 0 && this.plan) {
+                selected.forEach((item: any) => {
+                  this.userDataService.addItemToPlan(this.plan!.id, item.itemId, item.itemType);
+                });
+                this.loadPlan(this.plan.id);
               }
             }
-          ]
-        });
-
-        await alert.present();
+          }
+        ]
       });
+
+      await alert.present();
     });
+
+    this.subscriptions.add(favoriteSubscription);
   }
 
   removeItem(item: PlanItemWithDetails) {
@@ -252,5 +296,12 @@ export class PlanDetailPage implements OnInit {
     setTimeout(() => {
       event.target.complete();
     }, 500);
+  }
+
+  ngOnDestroy() {
+    if (this.loadPlanSubscription) {
+      this.loadPlanSubscription.unsubscribe();
+    }
+    this.subscriptions.unsubscribe();
   }
 }
