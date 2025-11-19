@@ -113,7 +113,7 @@
           
           <ion-button expand="block" class="primary-button" [routerLink]="getRouterLink(suggestion)">
             <ion-icon name="arrow-forward" slot="end"></ion-icon>
-            この場所に行く
+            {{ getActionButtonText(suggestion) }}
           </ion-button>
         </ion-card-content>
       </ion-card>
@@ -123,7 +123,7 @@
     <div class="refresh-actions" *ngIf="randomSuggestions.length > 0">
       <ion-button expand="block" fill="outline" class="refresh-button" (click)="getRandomSuggestions()">
         <ion-icon name="shuffle" slot="start"></ion-icon>
-        別の場所を提案
+        別の提案を見る
       </ion-button>
     </div>
 
@@ -131,8 +131,8 @@
     <ion-card *ngIf="randomSuggestions.length === 0" class="empty-suggestion">
       <ion-card-content>
         <ion-icon name="compass-outline" size="large"></ion-icon>
-        <h3>観光地を探してみましょう</h3>
-        <p>下の探索モードから、京都の名所を探索できます</p>
+        <h3>観光地・お土産を探してみましょう</h3>
+        <p>下の探索モードから、京都の名所やお土産を探索できます</p>
       </ion-card-content>
     </ion-card>
   </div>
