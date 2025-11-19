@@ -32,3 +32,4 @@ npm-debug.log*
 /www
 assets/node_modules/
 test-results/
+playwright-report/
