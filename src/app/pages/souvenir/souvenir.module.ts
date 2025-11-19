@@ -5,8 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { StoreModule } from '@ngrx/store';
 
-import { SouvenirPageRoutingModule } from './souvenir-routing.module';
-import { SouvenirPage } from './souvenir.page';
 import { ListSouveniresComponent } from './list-souvenires/list-souvenires.component';
 import { souvenirFeatureKey, souvenirReducer } from './store';
 import { SearchSouveniresComponent } from './search-souvenires/search-souvenires.component';
@@ -18,10 +16,9 @@ import { SharedComponentsModule } from 'src/app/shared/components/components.mod
     FormsModule,
     IonicModule,
     SharedComponentsModule,
-    SouvenirPageRoutingModule,
     StoreModule.forFeature(souvenirFeatureKey, souvenirReducer),
   ],
-  declarations: [SouvenirPage, ListSouveniresComponent, SearchSouveniresComponent],
+  declarations: [ListSouveniresComponent, SearchSouveniresComponent],
   exports: [ListSouveniresComponent, SearchSouveniresComponent]
 })
 export class SouvenirPageModule {}

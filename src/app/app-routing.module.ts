@@ -34,12 +34,12 @@ const routes: Routes = [
         loadChildren: () => import('./pages/plans/plans.module').then( m => m.PlansPageModule)
       },
       {
-        path: 'sights',
-        loadChildren: () => import('./pages/sights/sights.module').then( m => m.SightsPageModule)
+        path: 'sights/:id',
+        loadChildren: () => import('./pages/sights/sight-detail/sight-detail.module').then( m => m.SightDetailPageModule)
       },
       {
-        path: 'souvenir',
-        loadChildren: () => import('./pages/souvenir/souvenir.module').then( m => m.SouvenirPageModule)
+        path: 'souvenir/:id',
+        loadChildren: () => import('./pages/souvenir/souvenir-detail/souvenir-detail.module').then( m => m.SouvenirDetailPageModule)
       },
       {
         path: '',
