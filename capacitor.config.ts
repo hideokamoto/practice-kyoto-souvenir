@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'kyoto-souvenir',
+  appId: 'jp.kyoto-saiken.app',
+  appName: 'きょう再見',
   webDir: 'www',
   bundledWebRuntime: false
 };
