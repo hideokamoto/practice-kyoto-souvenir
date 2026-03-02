@@ -132,6 +132,10 @@ export class SightDetailPage implements OnInit {
     if (!photo || photo.trim() === '') {
       return null;
     }
+    // 外部URL（Wikimedia Commons等）の場合はそのまま返す
+    if (photo.startsWith('http://') || photo.startsWith('https://')) {
+      return photo;
+    }
     // 写真パスが相対パスの場合、assetsディレクトリからのパスとして扱う
     return `/assets/${photo}`;
   }
