@@ -51,7 +51,7 @@
     "@capacitor/cli": "3.6.0",
     "@ionic/angular-toolkit": "^6.0.0",
     "@ngrx/eslint-plugin": "^20.1.0",
-    "@playwright/test": "^1.56.1",
+    "@playwright/test": "^1.58.2",
     "@types/jest": "^29.5.12",
     "@types/node": "^20.0.0",
     "@types/uuid": "^9.0.8",
