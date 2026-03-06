@@ -18,52 +18,77 @@ ion-header {
   }
 }
 
-// 価値提案セクション（above the fold）
+// 価値提案セクション（初回のみ表示）
 .value-proposition {
+  position: relative;
   padding: 24px 16px 16px;
   text-align: center;
   background: linear-gradient(135deg, var(--ion-color-primary-tint) 0%, var(--ion-color-primary) 100%);
   color: white;
   margin: 0;
-  
+
   @media (max-width: 768px) {
     padding: 12px 10px 10px;
   }
-  
+
   h2 {
     font-size: 24px;
     font-weight: 700;
     margin: 0 0 12px 0;
     color: white;
-    
+
     @media (max-width: 768px) {
       font-size: 18px;
       margin: 0 0 6px 0;
     }
   }
-  
+
   p {
     font-size: 15px;
     line-height: 1.6;
     margin: 8px 0;
     color: rgba(255, 255, 255, 0.95);
-    
+
     @media (max-width: 768px) {
       font-size: 12px;
       margin: 3px 0;
       line-height: 1.3;
     }
   }
-  
+
   .subtitle {
     font-size: 13px;
     color: rgba(255, 255, 255, 0.85);
     margin-top: 4px;
-    
+
     @media (max-width: 768px) {
       font-size: 10px;
       margin-top: 2px;
-      display: none; // スマホでは非表示
+      display: none;
+    }
+  }
+
+  .dismiss-vp {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+
+    ion-icon {
+      font-size: 18px;
+    }
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.35);
     }
   }
 }
@@ -71,74 +96,50 @@ ion-header {
 // メインアクションコンテナ
 .main-action-container {
   padding: 24px 16px;
-  
+
   @media (max-width: 768px) {
     padding: 12px 10px;
   }
-  
+
   .recommendations-header {
     text-align: center;
     margin-bottom: 20px;
-    
+
     @media (max-width: 768px) {
-      margin-bottom: 8px;
+      margin-bottom: 12px;
     }
-    
+
     h3 {
       font-size: 20px;
       font-weight: 600;
-      margin: 0 0 8px 0;
+      margin: 0;
       color: var(--ion-color-dark);
-      
+
       @media (max-width: 768px) {
         font-size: 16px;
-        margin: 0 0 2px 0;
-      }
-    }
-    
-    p {
-      font-size: 14px;
-      color: var(--ion-color-medium);
-      margin: 0;
-      
-      @media (max-width: 768px) {
-        font-size: 11px;
       }
     }
   }
-  
-  .recommendations-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 16px;
-    margin-bottom: 20px;
-    
-    @media (max-width: 768px) {
-      grid-template-columns: 1fr;
-      gap: 8px;
-      margin-bottom: 12px;
-    }
-  }
-  
+
   .refresh-actions {
     margin-top: 24px;
-    
+
     @media (max-width: 768px) {
       margin-top: 12px;
     }
-    
+
     .refresh-button {
       height: 44px;
       font-size: 15px;
-      
+
       @media (max-width: 768px) {
         height: 36px;
         font-size: 13px;
       }
-      
+
       ion-icon {
         font-size: 18px;
-        
+
         @media (max-width: 768px) {
           font-size: 16px;
         }
@@ -147,273 +148,184 @@ ion-header {
   }
 }
 
-// 提案カード（3択表示用）
-.recommendation-card {
+// プライマリ提案カード（1つの明確な答え）
+.primary-recommendation-card {
   width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.08);
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  
+  border-left: 4px solid var(--ion-color-primary);
+
   @media (max-width: 768px) {
-    border-radius: 8px;
-    max-height: 130px;
-    overflow: hidden;
+    border-radius: 12px;
   }
-  
+
   ion-card-header {
-    padding: 20px 16px 16px;
-    flex: 0 0 auto;
-    
+    padding: 20px 16px 12px;
+
     @media (max-width: 768px) {
-      padding: 6px 5px 3px;
+      padding: 14px 12px 8px;
     }
-    
+
     ion-card-title {
-      font-size: 18px;
-      font-weight: 600;
+      font-size: 22px;
+      font-weight: 700;
       line-height: 1.3;
       margin: 0 0 4px 0;
-      
+
       @media (max-width: 768px) {
-        font-size: 12px;
-        margin: 0;
-        line-height: 1.1;
+        font-size: 18px;
       }
     }
-    
+
     .name-kana {
-      font-size: 13px;
+      font-size: 14px;
       color: var(--ion-color-medium);
-      margin: 0 0 10px 0;
+      margin: 0 0 8px 0;
       font-weight: 400;
-      
-      @media (max-width: 768px) {
-        font-size: 11px;
-        margin: 0 0 4px 0;
-        display: none; // スマホでは非表示
-      }
     }
-    
+
     .recommendation-reason {
       display: flex;
       align-items: flex-start;
       gap: 6px;
-      padding: 8px 10px;
+      padding: 8px 12px;
       background: var(--ion-color-light);
-      border-radius: 6px;
+      border-radius: 8px;
       margin-top: 8px;
-      
-      @media (max-width: 768px) {
-        display: none; // スマホでは非表示
-      }
-      
+
       ion-icon {
         margin-top: 2px;
         font-size: 16px;
         flex-shrink: 0;
       }
-      
+
       span {
-        font-size: 12px;
+        font-size: 13px;
         color: var(--ion-color-dark);
         line-height: 1.4;
         flex: 1;
       }
     }
   }
-  
+
   ion-card-content {
     padding: 0 16px 16px;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    overflow: hidden;
-    
+
     @media (max-width: 768px) {
-      padding: 0 6px 6px;
-      flex: 1 1 auto;
-      min-height: 0;
-      overflow: hidden;
+      padding: 0 12px 14px;
     }
-    
-    .description-container {
-      margin-bottom: 12px;
-      flex: 0 0 auto;
-      
+
+    .description {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--ion-color-dark);
+      margin: 0 0 12px 0;
+
       @media (max-width: 768px) {
-        margin-bottom: 2px;
-      }
-      
-      .description {
         font-size: 13px;
         line-height: 1.5;
-        color: var(--ion-color-dark);
-        margin: 0 0 8px 0;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        
-        @media (max-width: 768px) {
-          font-size: 9px;
-          line-height: 1.1;
-          margin: 0;
-        }
-      }
-      
-      .toggle-description {
-        display: flex;
-        align-items: center;
-        gap: 4px;
-        padding: 4px 8px;
-        background: transparent;
-        border: none;
-        color: var(--ion-color-primary);
-        font-size: 12px;
-        cursor: pointer;
-        width: 100%;
-        justify-content: center;
-        margin-top: 4px;
-        
-        @media (max-width: 768px) {
-          padding: 0;
-          font-size: 8px;
-          margin-top: 0;
-        }
-        
-        ion-icon {
-          font-size: 16px;
-          
-          @media (max-width: 768px) {
-            font-size: 10px;
-          }
-        }
-        
-        &:hover {
-          opacity: 0.8;
-        }
       }
     }
-    
-    .description.desktop-only {
-      font-size: 13px;
-      line-height: 1.5;
-      color: var(--ion-color-dark);
-      margin-bottom: 12px;
-      flex: 1;
-    }
-    
-    // モバイル/デスクトップ表示切り替え
-    .mobile-only {
-      display: block;
-      
-      @media (min-width: 769px) {
-        display: none;
-      }
-    }
-    
-    .desktop-only {
-      display: none;
-      
-      @media (min-width: 769px) {
-        display: block;
-      }
-    }
-    
+
     .recommendation-info {
       margin-bottom: 12px;
-      padding: 8px 10px;
+      padding: 10px 12px;
       background: var(--ion-color-light);
-      border-radius: 6px;
-      flex: 0 0 auto;
-      
-      @media (max-width: 768px) {
-        display: none; // スマホでは非表示
-      }
-      
+      border-radius: 8px;
+
       .info-item {
         display: flex;
         align-items: flex-start;
-        gap: 6px;
+        gap: 8px;
         margin-bottom: 6px;
-        
+
         &:last-child {
           margin-bottom: 0;
         }
-        
+
         ion-icon {
           margin-top: 2px;
           color: var(--ion-color-primary);
           font-size: 16px;
           flex-shrink: 0;
         }
-        
+
         span {
-          font-size: 12px;
+          font-size: 13px;
           color: var(--ion-color-dark);
           line-height: 1.4;
           flex: 1;
         }
       }
     }
-    
+
     .status-badges {
       display: flex;
       gap: 6px;
       margin-bottom: 12px;
       flex-wrap: wrap;
-      flex: 0 0 auto;
-      
-      @media (max-width: 768px) {
-        margin-bottom: 2px;
-        gap: 2px;
-      }
-      
+
       ion-badge {
         display: inline-flex;
         align-items: center;
         gap: 4px;
-        padding: 4px 8px;
-        font-size: 11px;
-        
-        @media (max-width: 768px) {
-          padding: 1px 3px;
-          font-size: 7px;
-        }
-        
+        padding: 4px 10px;
+        font-size: 12px;
+
         ion-icon {
-          font-size: 12px;
-          
-          @media (max-width: 768px) {
-            font-size: 8px;
-          }
+          font-size: 14px;
         }
       }
     }
-    
+
     .primary-button {
-      height: 44px;
-      font-size: 14px;
+      height: 48px;
+      font-size: 16px;
       font-weight: 600;
-      --box-shadow: 0 2px 8px rgba(var(--ion-color-primary-rgb), 0.25);
-      margin-top: auto;
-      flex: 0 0 auto;
-      
+      --box-shadow: 0 2px 8px rgba(var(--ion-color-primary-rgb), 0.3);
+      margin-top: 4px;
+
       @media (max-width: 768px) {
-        height: 26px;
-        font-size: 9px;
-        --padding-start: 4px;
-        --padding-end: 4px;
-        margin-top: 1px;
+        height: 44px;
+        font-size: 15px;
       }
-      
+
       ion-icon {
-        font-size: 18px;
-        
-        @media (max-width: 768px) {
-          font-size: 9px;
-        }
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+// 代替の提案（控えめ表示）
+.alternative-suggestions {
+  margin-top: 20px;
+
+  @media (max-width: 768px) {
+    margin-top: 16px;
+  }
+
+  .alternatives-label {
+    font-size: 13px;
+    color: var(--ion-color-medium);
+    margin: 0 0 8px 4px;
+    font-weight: 500;
+  }
+
+  .alternatives-list {
+    .alternative-item {
+      --border-radius: 8px;
+      --padding-start: 12px;
+
+      h3 {
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      p {
+        font-size: 12px;
+        color: var(--ion-color-medium);
       }
     }
   }
@@ -448,22 +360,44 @@ ion-header {
   }
 }
 
-// 探索モードコンテナ（常に表示）
+// 探索モードコンテナ（デフォルト折りたたみ）
 .exploration-mode-container {
   margin-top: 32px;
   padding: 0 16px 24px;
-  
-  .exploration-header {
-    margin-bottom: 16px;
-    
+
+  .exploration-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 14px 16px;
+    background: var(--ion-color-light);
+    border: 1px solid var(--ion-color-light-shade);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.2s;
+
+    &:hover {
+      background: var(--ion-color-light-shade);
+    }
+
     h3 {
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 600;
       margin: 0;
       color: var(--ion-color-dark);
     }
+
+    ion-icon {
+      font-size: 20px;
+      color: var(--ion-color-medium);
+    }
   }
-  
+
+  .exploration-content {
+    margin-top: 16px;
+  }
+
   .segment-container {
     padding-top: 0;
     padding-bottom: 16px;
