@@ -31,6 +31,7 @@ npm-debug.log*
 /plugins
 /www
 assets/node_modules/
+assets/dbpedia-results.json
 test-results/
 playwright-report/
 /.playwright-mcp
