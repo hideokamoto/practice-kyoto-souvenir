@@ -221,6 +221,7 @@ async function fetchAndEnrich() {
   const allExternal = [...results.dbpedia, ...results.wikidata];
 
   items.forEach(item => {
+    if (!item.name || typeof item.name !== 'string') return;
     const baseName = item.name.split('\u3000')[0].replace(/（.*?）/g, '').trim();
     // 空のbaseNameはあらゆるext.nameに部分一致してしまうため、スキップする
     if (!baseName) return;
