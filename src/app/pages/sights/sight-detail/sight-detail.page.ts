@@ -129,15 +129,20 @@ export class SightDetailPage implements OnInit {
    * 写真のパスを取得する
    */
   public getPhotoPath(photo: string): string | null {
-    if (!photo || photo.trim() === '') {
+    const trimmed = photo ? photo.trim() : '';
+    if (!trimmed) {
       return null;
     }
-    // 外部URL（Wikimedia Commons等）の場合はそのまま返す
-    if (photo.startsWith('http://') || photo.startsWith('https://')) {
-      return photo;
+    // 外部URL（Wikimedia Commons等）の場合はそのまま返す。
+    // http:// は混在コンテンツエラーを防ぐため https:// に正規化する。
+    if (trimmed.startsWith('https://')) {
+      return trimmed;
+    }
+    if (trimmed.startsWith('http://')) {
+      return 'https://' + trimmed.slice(7);
     }
     // 写真パスが相対パスの場合、assetsディレクトリからのパスとして扱う
-    return `/assets/${photo}`;
+    return `/assets/${trimmed}`;
   }
 
   /**

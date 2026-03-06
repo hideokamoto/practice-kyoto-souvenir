@@ -213,13 +213,17 @@ async function fetchAndEnrich() {
   // 3. 既存データとのマッチングと補完
   console.log('\n3. 既存データとのマッチング...');
   const rawData = JSON.parse(fs.readFileSync(SIGHTS_PATH, 'utf-8'));
-  const items = Array.isArray(rawData) ? rawData : Object.values(rawData);
+  const isArray = Array.isArray(rawData);
+  const rawKeys = isArray ? null : Object.keys(rawData);
+  const items = isArray ? rawData : Object.values(rawData);
   let matchCount = 0;
 
   const allExternal = [...results.dbpedia, ...results.wikidata];
 
   items.forEach(item => {
     const baseName = item.name.split('\u3000')[0].replace(/（.*?）/g, '').trim();
+    // 空のbaseNameはあらゆるext.nameに部分一致してしまうため、スキップする
+    if (!baseName) return;
 
     for (const ext of allExternal) {
       if (!ext.name) continue;
@@ -233,7 +237,9 @@ async function fetchAndEnrich() {
           item.postal_code = ext.postalCode;
         }
         if ((ext.thumbnail || ext.image) && (!item.photo || item.photo.trim() === '')) {
-          item.photo = ext.thumbnail || ext.image;
+          // HTTP URLをHTTPSに正規化して混在コンテンツエラーを防ぐ
+          const rawUrl = (ext.thumbnail || ext.image).trim();
+          item.photo = rawUrl.startsWith('http://') ? 'https://' + rawUrl.slice(7) : rawUrl;
         }
         break;
       }
@@ -243,12 +249,19 @@ async function fetchAndEnrich() {
   results.matched = matchCount;
   console.log(`   ${matchCount}件をマッチングしました。`);
 
-  // 4. 結果を保存
+  // 4. 結果を保存（元の構造を維持）
   fs.writeFileSync(OUTPUT_PATH, JSON.stringify(results, null, 2) + '\n');
   console.log(`\n外部データを ${OUTPUT_PATH} に保存しました。`);
 
   if (matchCount > 0) {
-    fs.writeFileSync(SIGHTS_PATH, JSON.stringify(items, null, 2) + '\n');
+    let output;
+    if (isArray) {
+      output = items;
+    } else {
+      output = {};
+      rawKeys.forEach((key, idx) => { output[key] = items[idx]; });
+    }
+    fs.writeFileSync(SIGHTS_PATH, JSON.stringify(output, null, 2) + '\n');
     console.log(`更新されたデータを ${SIGHTS_PATH} に保存しました。`);
   }
 

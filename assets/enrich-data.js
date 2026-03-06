@@ -185,50 +185,60 @@ function enrichFromKnownData(items) {
 // =====================================================================
 // CC BY-SA ライセンスの画像 (商用利用可・帰属表示必要)
 // 出典: Wikimedia Commons (https://commons.wikimedia.org/)
+// photo_attribution は CC BY-SA の帰属表示に必要な情報を保持する
 const WIKIMEDIA_PHOTOS = {
-  '北野天満宮': 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Kitano-tenmangu_Kyoto_Japan41s3s4500.jpg/640px-Kitano-tenmangu_Kyoto_Japan41s3s4500.jpg',
-  '高山寺': 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Kozan-ji_Kyoto_Kyoto11s3s4592.jpg/640px-Kozan-ji_Kyoto_Kyoto11s3s4592.jpg',
-  '三十三間堂': 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Sanjusangendo_temple01s1408.jpg/640px-Sanjusangendo_temple01s1408.jpg',
-  '蓮華王院': 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Sanjusangendo_temple01s1408.jpg/640px-Sanjusangendo_temple01s1408.jpg',
-  '常寂光寺': 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Jojakko-ji_Kyoto_Kyoto18n4272.jpg/640px-Jojakko-ji_Kyoto_Kyoto18n4272.jpg',
-  '千本釈迦堂': 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Daihoon-ji_Kyoto_Kyoto01n4500.jpg/640px-Daihoon-ji_Kyoto_Kyoto01n4500.jpg',
-  '大覚寺': 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Daikaku-ji_Kyoto_Kyoto10n4592.jpg/640px-Daikaku-ji_Kyoto_Kyoto10n4592.jpg',
-  '東寺': 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Toji-temple-kyoto.jpg/640px-Toji-temple-kyoto.jpg',
-  '南禅寺': 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Nanzen-ji_sanmon_2021a.jpg/640px-Nanzen-ji_sanmon_2021a.jpg',
-  '二条城': 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Nijo_Castle_-_01.jpg/640px-Nijo_Castle_-_01.jpg',
-  '仁和寺': 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Ninnaji_Kyoto01s3s4350.jpg/640px-Ninnaji_Kyoto01s3s4350.jpg',
-  '本願寺': 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Nishi_Honganji01s4592.jpg/640px-Nishi_Honganji01s4592.jpg',
-  '伏見稲荷大社': 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Fushimi_Inari-taisha_2018c.jpg/640px-Fushimi_Inari-taisha_2018c.jpg',
-  '妙心寺': 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Myoshinji_sanmon.jpg/640px-Myoshinji_sanmon.jpg',
-  '醍醐寺': 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Daigoji_Kyoto01s3s4560.jpg/640px-Daigoji_Kyoto01s3s4560.jpg',
-  '清水寺': 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Kiyomizu-dera_in_Kyoto-r.jpg/640px-Kiyomizu-dera_in_Kyoto-r.jpg',
-  '金閣寺': 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Kinkaku-ji_2022a.jpg/640px-Kinkaku-ji_2022a.jpg',
-  '銀閣寺': 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Ginkaku-ji_after_being_restored_in_2008.jpg/640px-Ginkaku-ji_after_being_restored_in_2008.jpg',
-  '広隆寺': 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Koryu-ji_Kyoto_Kyoto02n4500.jpg/640px-Koryu-ji_Kyoto_Kyoto02n4500.jpg',
-  '龍安寺': 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Ryoan-ji_Kyoto01.jpg/640px-Ryoan-ji_Kyoto01.jpg',
-  '天龍寺': 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Tenryu-ji_Kyoto_Kyoto03n4500.jpg/640px-Tenryu-ji_Kyoto_Kyoto03n4500.jpg',
-  '知恩院': 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Chionin24n3200.jpg/640px-Chionin24n3200.jpg',
-  '建仁寺': 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Kennin-ji_in_Kyoto.jpg/640px-Kennin-ji_in_Kyoto.jpg',
-  '大徳寺': 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Daitoku-ji_sanmon.jpg/640px-Daitoku-ji_sanmon.jpg',
-  '泉涌寺': 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Sennyuji_Kyoto03n4592.jpg/640px-Sennyuji_Kyoto03n4592.jpg',
-  '高台寺': 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Kodaiji07s3200.jpg/640px-Kodaiji07s3200.jpg',
-  '賀茂別雷神社': 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Kamigamo-jinja01ns3200.jpg/640px-Kamigamo-jinja01ns3200.jpg',
-  '西明寺': 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Saimyoji_Kyoto_Kyoto01n4350.jpg/640px-Saimyoji_Kyoto_Kyoto01n4350.jpg',
-  '神護寺': 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Jingoji_Kyoto_Kyoto11n4592.jpg/640px-Jingoji_Kyoto_Kyoto11n4592.jpg',
-  '平安神宮': 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Heian-jingu_shinen_IMG_5752_0-26.JPG/640px-Heian-jingu_shinen_IMG_5752_0-26.JPG',
-  '八坂神社': 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Yasaka-Shrine_Gate_of_the_main_hall.JPG/640px-Yasaka-Shrine_Gate_of_the_main_hall.JPG',
-  '鞍馬寺': 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Kurama-dera_honden.jpg/640px-Kurama-dera_honden.jpg',
-  '松尾大社': 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Matsunoo_taisha_torii.jpg/640px-Matsunoo_taisha_torii.jpg',
-  '智積院': 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Chishakuin_Kyoto01s3s4592.jpg/640px-Chishakuin_Kyoto01s3s4592.jpg',
-  '東福寺': 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Tofukuji_Tsutenkyo.jpg/640px-Tofukuji_Tsutenkyo.jpg',
-  '豊国神社': 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Toyokuni_jinja02s1024.jpg/640px-Toyokuni_jinja02s1024.jpg',
-  '清凉寺': 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Seiryoji_Kyoto01n4500.jpg/640px-Seiryoji_Kyoto01n4500.jpg',
+  '北野天満宮': { photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Kitano-tenmangu_Kyoto_Japan41s3s4500.jpg/640px-Kitano-tenmangu_Kyoto_Japan41s3s4500.jpg', photo_attribution: { license: 'CC BY-SA 3.0', source_url: 'https://commons.wikimedia.org/wiki/File:Kitano-tenmangu_Kyoto_Japan41s3s4500.jpg' } },
+  '高山寺': { photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Kozan-ji_Kyoto_Kyoto11s3s4592.jpg/640px-Kozan-ji_Kyoto_Kyoto11s3s4592.jpg', photo_attribution: { license: 'CC BY-SA 3.0', source_url: 'https://commons.wikimedia.org/wiki/File:Kozan-ji_Kyoto_Kyoto11s3s4592.jpg' } },
+  '三十三間堂': { photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Sanjusangendo_temple01s1408.jpg/640px-Sanjusangendo_temple01s1408.jpg', photo_attribution: { license: 'CC BY-SA 3.0', source_url: 'https://commons.wikimedia.org/wiki/File:Sanjusangendo_temple01s1408.jpg' } },
+  '蓮華王院': { photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Sanjusangendo_temple01s1408.jpg/640px-Sanjusangendo_temple01s1408.jpg', photo_attribution: { license: 'CC BY-SA 3.0', source_url: 'https://commons.wikimedia.org/wiki/File:Sanjusangendo_temple01s1408.jpg' } },
+  '常寂光寺': { photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Jojakko-ji_Kyoto_Kyoto18n4272.jpg/640px-Jojakko-ji_Kyoto_Kyoto18n4272.jpg', photo_attribution: { license: 'CC BY-SA 3.0', source_url: 'https://commons.wikimedia.org/wiki/File:Jojakko-ji_Kyoto_Kyoto18n4272.jpg' } },
+  '千本釈迦堂': { photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Daihoon-ji_Kyoto_Kyoto01n4500.jpg/640px-Daihoon-ji_Kyoto_Kyoto01n4500.jpg', photo_attribution: { license: 'CC BY-SA 3.0', source_url: 'https://commons.wikimedia.org/wiki/File:Daihoon-ji_Kyoto_Kyoto01n4500.jpg' } },
+  '大覚寺': { photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Daikaku-ji_Kyoto_Kyoto10n4592.jpg/640px-Daikaku-ji_Kyoto_Kyoto10n4592.jpg', photo_attribution: { license: 'CC BY-SA 3.0', source_url: 'https://commons.wikimedia.org/wiki/File:Daikaku-ji_Kyoto_Kyoto10n4592.jpg' } },
+  '東寺': { photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Toji-temple-kyoto.jpg/640px-Toji-temple-kyoto.jpg', photo_attribution: { license: 'CC BY-SA 3.0', source_url: 'https://commons.wikimedia.org/wiki/File:Toji-temple-kyoto.jpg' } },
+  '南禅寺': { photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Nanzen-ji_sanmon_2021a.jpg/640px-Nanzen-ji_sanmon_2021a.jpg', photo_attribution: { license: 'CC BY-SA 4.0', source_url: 'https://commons.wikimedia.org/wiki/File:Nanzen-ji_sanmon_2021a.jpg' } },
+  '二条城': { photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Nijo_Castle_-_01.jpg/640px-Nijo_Castle_-_01.jpg', photo_attribution: { license: 'CC BY-SA 3.0', source_url: 'https://commons.wikimedia.org/wiki/File:Nijo_Castle_-_01.jpg' } },
+  '仁和寺': { photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Ninnaji_Kyoto01s3s4350.jpg/640px-Ninnaji_Kyoto01s3s4350.jpg', photo_attribution: { license: 'CC BY-SA 3.0', source_url: 'https://commons.wikimedia.org/wiki/File:Ninnaji_Kyoto01s3s4350.jpg' } },
+  '本願寺': { photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Nishi_Honganji01s4592.jpg/640px-Nishi_Honganji01s4592.jpg', photo_attribution: { license: 'CC BY-SA 3.0', source_url: 'https://commons.wikimedia.org/wiki/File:Nishi_Honganji01s4592.jpg' } },
+  '伏見稲荷大社': { photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Fushimi_Inari-taisha_2018c.jpg/640px-Fushimi_Inari-taisha_2018c.jpg', photo_attribution: { license: 'CC BY-SA 4.0', source_url: 'https://commons.wikimedia.org/wiki/File:Fushimi_Inari-taisha_2018c.jpg' } },
+  '妙心寺': { photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Myoshinji_sanmon.jpg/640px-Myoshinji_sanmon.jpg', photo_attribution: { license: 'CC BY-SA 3.0', source_url: 'https://commons.wikimedia.org/wiki/File:Myoshinji_sanmon.jpg' } },
+  '醍醐寺': { photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Daigoji_Kyoto01s3s4560.jpg/640px-Daigoji_Kyoto01s3s4560.jpg', photo_attribution: { license: 'CC BY-SA 3.0', source_url: 'https://commons.wikimedia.org/wiki/File:Daigoji_Kyoto01s3s4560.jpg' } },
+  '清水寺': { photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Kiyomizu-dera_in_Kyoto-r.jpg/640px-Kiyomizu-dera_in_Kyoto-r.jpg', photo_attribution: { license: 'CC BY-SA 3.0', source_url: 'https://commons.wikimedia.org/wiki/File:Kiyomizu-dera_in_Kyoto-r.jpg' } },
+  '金閣寺': { photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Kinkaku-ji_2022a.jpg/640px-Kinkaku-ji_2022a.jpg', photo_attribution: { license: 'CC BY-SA 4.0', source_url: 'https://commons.wikimedia.org/wiki/File:Kinkaku-ji_2022a.jpg' } },
+  '銀閣寺': { photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Ginkaku-ji_after_being_restored_in_2008.jpg/640px-Ginkaku-ji_after_being_restored_in_2008.jpg', photo_attribution: { license: 'CC BY-SA 3.0', source_url: 'https://commons.wikimedia.org/wiki/File:Ginkaku-ji_after_being_restored_in_2008.jpg' } },
+  '広隆寺': { photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Koryu-ji_Kyoto_Kyoto02n4500.jpg/640px-Koryu-ji_Kyoto_Kyoto02n4500.jpg', photo_attribution: { license: 'CC BY-SA 3.0', source_url: 'https://commons.wikimedia.org/wiki/File:Koryu-ji_Kyoto_Kyoto02n4500.jpg' } },
+  '龍安寺': { photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Ryoan-ji_Kyoto01.jpg/640px-Ryoan-ji_Kyoto01.jpg', photo_attribution: { license: 'CC BY-SA 3.0', source_url: 'https://commons.wikimedia.org/wiki/File:Ryoan-ji_Kyoto01.jpg' } },
+  '天龍寺': { photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Tenryu-ji_Kyoto_Kyoto03n4500.jpg/640px-Tenryu-ji_Kyoto_Kyoto03n4500.jpg', photo_attribution: { license: 'CC BY-SA 3.0', source_url: 'https://commons.wikimedia.org/wiki/File:Tenryu-ji_Kyoto_Kyoto03n4500.jpg' } },
+  '知恩院': { photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Chionin24n3200.jpg/640px-Chionin24n3200.jpg', photo_attribution: { license: 'CC BY-SA 3.0', source_url: 'https://commons.wikimedia.org/wiki/File:Chionin24n3200.jpg' } },
+  '建仁寺': { photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Kennin-ji_in_Kyoto.jpg/640px-Kennin-ji_in_Kyoto.jpg', photo_attribution: { license: 'CC BY-SA 3.0', source_url: 'https://commons.wikimedia.org/wiki/File:Kennin-ji_in_Kyoto.jpg' } },
+  '大徳寺': { photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Daitoku-ji_sanmon.jpg/640px-Daitoku-ji_sanmon.jpg', photo_attribution: { license: 'CC BY-SA 3.0', source_url: 'https://commons.wikimedia.org/wiki/File:Daitoku-ji_sanmon.jpg' } },
+  '泉涌寺': { photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Sennyuji_Kyoto03n4592.jpg/640px-Sennyuji_Kyoto03n4592.jpg', photo_attribution: { license: 'CC BY-SA 3.0', source_url: 'https://commons.wikimedia.org/wiki/File:Sennyuji_Kyoto03n4592.jpg' } },
+  '高台寺': { photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Kodaiji07s3200.jpg/640px-Kodaiji07s3200.jpg', photo_attribution: { license: 'CC BY-SA 3.0', source_url: 'https://commons.wikimedia.org/wiki/File:Kodaiji07s3200.jpg' } },
+  '賀茂別雷神社': { photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Kamigamo-jinja01ns3200.jpg/640px-Kamigamo-jinja01ns3200.jpg', photo_attribution: { license: 'CC BY-SA 3.0', source_url: 'https://commons.wikimedia.org/wiki/File:Kamigamo-jinja01ns3200.jpg' } },
+  '西明寺': { photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Saimyoji_Kyoto_Kyoto01n4350.jpg/640px-Saimyoji_Kyoto_Kyoto01n4350.jpg', photo_attribution: { license: 'CC BY-SA 3.0', source_url: 'https://commons.wikimedia.org/wiki/File:Saimyoji_Kyoto_Kyoto01n4350.jpg' } },
+  '神護寺': { photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Jingoji_Kyoto_Kyoto11n4592.jpg/640px-Jingoji_Kyoto_Kyoto11n4592.jpg', photo_attribution: { license: 'CC BY-SA 3.0', source_url: 'https://commons.wikimedia.org/wiki/File:Jingoji_Kyoto_Kyoto11n4592.jpg' } },
+  '平安神宮': { photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Heian-jingu_shinen_IMG_5752_0-26.JPG/640px-Heian-jingu_shinen_IMG_5752_0-26.JPG', photo_attribution: { license: 'CC BY-SA 3.0', source_url: 'https://commons.wikimedia.org/wiki/File:Heian-jingu_shinen_IMG_5752_0-26.JPG' } },
+  '八坂神社': { photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Yasaka-Shrine_Gate_of_the_main_hall.JPG/640px-Yasaka-Shrine_Gate_of_the_main_hall.JPG', photo_attribution: { license: 'CC BY-SA 3.0', source_url: 'https://commons.wikimedia.org/wiki/File:Yasaka-Shrine_Gate_of_the_main_hall.JPG' } },
+  '鞍馬寺': { photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Kurama-dera_honden.jpg/640px-Kurama-dera_honden.jpg', photo_attribution: { license: 'CC BY-SA 3.0', source_url: 'https://commons.wikimedia.org/wiki/File:Kurama-dera_honden.jpg' } },
+  '松尾大社': { photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Matsunoo_taisha_torii.jpg/640px-Matsunoo_taisha_torii.jpg', photo_attribution: { license: 'CC BY-SA 3.0', source_url: 'https://commons.wikimedia.org/wiki/File:Matsunoo_taisha_torii.jpg' } },
+  '智積院': { photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Chishakuin_Kyoto01s3s4592.jpg/640px-Chishakuin_Kyoto01s3s4592.jpg', photo_attribution: { license: 'CC BY-SA 3.0', source_url: 'https://commons.wikimedia.org/wiki/File:Chishakuin_Kyoto01s3s4592.jpg' } },
+  '東福寺': { photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Tofukuji_Tsutenkyo.jpg/640px-Tofukuji_Tsutenkyo.jpg', photo_attribution: { license: 'CC BY-SA 3.0', source_url: 'https://commons.wikimedia.org/wiki/File:Tofukuji_Tsutenkyo.jpg' } },
+  '豊国神社': { photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Toyokuni_jinja02s1024.jpg/640px-Toyokuni_jinja02s1024.jpg', photo_attribution: { license: 'CC BY-SA 3.0', source_url: 'https://commons.wikimedia.org/wiki/File:Toyokuni_jinja02s1024.jpg' } },
+  '清凉寺': { photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Seiryoji_Kyoto01n4500.jpg/640px-Seiryoji_Kyoto01n4500.jpg', photo_attribution: { license: 'CC BY-SA 3.0', source_url: 'https://commons.wikimedia.org/wiki/File:Seiryoji_Kyoto01n4500.jpg' } },
 };
+
+const WIKIMEDIA_COMMONS_PREFIX = 'https://upload.wikimedia.org/';
 
 function enrichPhotos(items) {
   let count = 0;
   items.forEach(item => {
-    if (item.photo && item.photo.trim() !== '') return;
+    const hasPhoto = item.photo && item.photo.trim() !== '';
+    const isWikimediaPhoto = hasPhoto && item.photo.startsWith(WIKIMEDIA_COMMONS_PREFIX);
+    const hasAttribution = !!item.photo_attribution;
+
+    // 写真が Wikimedia 以外のソースからある場合は手を加えない
+    if (hasPhoto && !isWikimediaPhoto) return;
+    // Wikimedia の写真があり帰属表示も揃っている場合もスキップ
+    if (isWikimediaPhoto && hasAttribution) return;
 
     const baseName = item.name
       .split('\u3000')[0]
@@ -236,19 +246,24 @@ function enrichPhotos(items) {
       .replace(/\s+/g, '')
       .trim();
 
-    let photoUrl = WIKIMEDIA_PHOTOS[baseName];
-    if (!photoUrl) {
-      for (const [key, url] of Object.entries(WIKIMEDIA_PHOTOS)) {
+    let entry = WIKIMEDIA_PHOTOS[baseName];
+    if (!entry) {
+      for (const [key, val] of Object.entries(WIKIMEDIA_PHOTOS)) {
         if (baseName.includes(key) || key.includes(baseName)) {
-          photoUrl = url;
+          entry = val;
           break;
         }
       }
     }
 
-    if (photoUrl) {
-      item.photo = photoUrl;
-      count++;
+    if (entry) {
+      if (!hasPhoto) {
+        // 新規に写真を設定
+        item.photo = entry.photo;
+        count++;
+      }
+      // Wikimedia 写真には必ず帰属表示を付与（新規・既存を問わず）
+      item.photo_attribution = entry.photo_attribution;
     }
   });
   return count;
@@ -264,7 +279,10 @@ function main() {
 
   // データ読み込み
   const rawData = JSON.parse(fs.readFileSync(SIGHTS_PATH, 'utf-8'));
-  const items = Array.isArray(rawData) ? rawData : Object.values(rawData);
+  const isArray = Array.isArray(rawData);
+  // Object形式の場合はキー順を保持するため entries で扱い、items は値配列として処理する
+  const rawKeys = isArray ? null : Object.keys(rawData);
+  const items = isArray ? rawData : Object.values(rawData);
 
   // 補完前の統計
   const beforeStats = {
@@ -314,16 +332,23 @@ function main() {
   console.log(`  郵便番号欠損: ${beforeStats.missingPostal} → ${afterStats.missingPostal}件 (${beforeStats.missingPostal - afterStats.missingPostal}件改善)`);
   console.log('========================================\n');
 
-  // ファイル書き出し
-  fs.writeFileSync(SIGHTS_PATH, JSON.stringify(items, null, 2) + '\n');
+  // ファイル書き出し（元の構造を維持）
+  let output;
+  if (isArray) {
+    output = items;
+  } else {
+    output = {};
+    rawKeys.forEach((key, idx) => { output[key] = items[idx]; });
+  }
+  fs.writeFileSync(SIGHTS_PATH, JSON.stringify(output, null, 2) + '\n');
   console.log(`データを ${SIGHTS_PATH} に保存しました。\n`);
 
   // 残存する住所欠損の内訳
   const stillMissing = items.filter(i => !i.address || i.address.trim() === '');
   const categories = { temples: 0, literature: 0, food: 0, culture: 0, nature: 0, area: 0, other: 0 };
   stillMissing.forEach(i => {
-    const desc = i.description;
-    const name = i.name;
+    const desc = i.description || '';
+    const name = i.name || '';
     if (desc.match(/寺|神社|堂|院|殿|城|門|塔|閣/) && desc.match(/建|造|築/)) categories.temples++;
     else if (desc.match(/小説|著|文学|作品|歌集|日記|随筆|物語集/)) categories.literature++;
     else if (name.match(/料理|漬|そば|豆腐|麩|茄子|野菜|湯葉|七味|寿司/)) categories.food++;
