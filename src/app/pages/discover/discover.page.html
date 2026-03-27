@@ -143,7 +143,7 @@
 
   <!-- 探索モード（デフォルト折りたたみ） -->
   <div class="exploration-mode-container" *ngIf="!isLoading && !hasError">
-    <button class="exploration-toggle" (click)="toggleExploration()">
+    <button class="exploration-toggle" (click)="toggleExploration()" [attr.aria-expanded]="isExplorationExpanded">
       <h3>観光地・お土産を探す</h3>
       <ion-icon [name]="isExplorationExpanded ? 'chevron-up' : 'chevron-down'"></ion-icon>
     </button>
