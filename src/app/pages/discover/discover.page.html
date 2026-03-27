@@ -117,7 +117,7 @@
           <ion-icon [name]="alt.type === 'sight' ? 'location-outline' : 'gift-outline'" slot="start" color="primary"></ion-icon>
           <ion-label>
             <h3>{{ alt.name }}</h3>
-            <p>{{ alt.description | truncate:50 }}</p>
+            <p *ngIf="alt.description">{{ alt.description | truncate:50 }}</p>
           </ion-label>
         </ion-item>
       </div>
@@ -144,7 +144,7 @@
   <!-- 探索モード（デフォルト折りたたみ） -->
   <div class="exploration-mode-container" *ngIf="!isLoading && !hasError">
     <button class="exploration-toggle" (click)="toggleExploration()" [attr.aria-expanded]="isExplorationExpanded">
-      <h3>観光地・お土産を探す</h3>
+      <span class="exploration-toggle-title">観光地・お土産を探す</span>
       <ion-icon [name]="isExplorationExpanded ? 'chevron-up' : 'chevron-down'"></ion-icon>
     </button>
 
