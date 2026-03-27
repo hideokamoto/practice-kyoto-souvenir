@@ -30,6 +30,7 @@ function propagateSiblingAddresses(items) {
   const groups = {};
   items.forEach((item, idx) => {
     // 「東寺（教王護国寺）　金堂」→「東寺」のようにベース名を抽出
+    if (!item.name || typeof item.name !== 'string') return;
     const baseName = item.name
       .split('\u3000')[0]                    // 全角スペースで分割
       .replace(/（.*?）/g, '')               // 括弧内を除去
@@ -146,6 +147,7 @@ function enrichFromKnownData(items) {
     if (item.address && item.address.trim() !== '') return; // 既に住所あり
 
     // 名称からベース名を抽出して照合
+    if (!item.name || typeof item.name !== 'string') return;
     const baseName = item.name
       .split('\u3000')[0]
       .replace(/（.*?）/g, '')
@@ -240,6 +242,7 @@ function enrichPhotos(items) {
     // Wikimedia の写真があり帰属表示も揃っている場合もスキップ
     if (isWikimediaPhoto && hasAttribution) return;
 
+    if (!item.name || typeof item.name !== 'string') return;
     const baseName = item.name
       .split('\u3000')[0]
       .replace(/（.*?）/g, '')
