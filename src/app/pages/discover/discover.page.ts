@@ -59,9 +59,8 @@ export class DiscoverPage implements OnDestroy {
   public sights$ = this.store.select(createSelector(selectSightsFeature, state => state.items));
   public souvenirs$ = this.store.select(createSelector(selectSouvenirFeature, state => state.items));
   
-  public primarySuggestion: RandomSuggestion | null = null;
-  public alternativeSuggestions: RandomSuggestion[] = [];
-  private randomSuggestions: RandomSuggestion[] = [];
+  public primarySightSuggestion: RandomSuggestion | null = null;
+  public primarySouvenirSuggestion: RandomSuggestion | null = null;
   public expandedDescriptions: { [key: string]: boolean } = {}; // デフォルトは折りたたみ
   public isExplorationExpanded = false;
   public showValueProposition = true;
@@ -197,11 +196,16 @@ export class DiscoverPage implements OnDestroy {
 
     const userDataSets = this.getUserDataSets();
     const priorityPools = this.buildPriorityPools(userDataSets);
-    const itemsPool = this.selectPriorityPool(priorityPools);
-    const selectedItems = this.selectRandomItems(itemsPool);
-    this.randomSuggestions = this.mapToRandomSuggestions(selectedItems, priorityPools);
-    this.primarySuggestion = this.randomSuggestions.length > 0 ? this.randomSuggestions[0] : null;
-    this.alternativeSuggestions = this.randomSuggestions.slice(1);
+
+    const sightItem = this.selectSightFromPool(priorityPools);
+    this.primarySightSuggestion = sightItem
+      ? this.mapToRandomSuggestion(sightItem, priorityPools)
+      : null;
+
+    const souvenirItem = this.selectSouvenirFromPool(priorityPools);
+    this.primarySouvenirSuggestion = souvenirItem
+      ? this.mapToRandomSuggestion(souvenirItem, priorityPools)
+      : null;
   }
 
   /**
@@ -259,97 +263,75 @@ export class DiscoverPage implements OnDestroy {
   }
 
   /**
-   * 優先順位に従ってプールを選択し、必要に応じて補完
+   * 優先順位に従ってスポットを1件選択
    */
-  private selectPriorityPool(priorityPools: PriorityPools): ItemWithType[] {
-    // 優先順位1: お気に入りで未訪問のアイテム（観光地とお土産）
-    const favoriteUnvisitedItems: ItemWithType[] = [
-      ...priorityPools.favoriteUnvisitedSights.map(sight => ({ item: sight, type: 'sight' as const })),
-      ...priorityPools.favoriteUnvisitedSouvenirs.map(souvenir => ({ item: souvenir, type: 'souvenir' as const }))
-    ];
-
-    // 優先順位2: 未訪問のアイテム（観光地とお土産）
-    const unvisitedItems: ItemWithType[] = [
-      ...priorityPools.unvisitedSights.map(sight => ({ item: sight, type: 'sight' as const })),
-      ...priorityPools.unvisitedSouvenirs.map(souvenir => ({ item: souvenir, type: 'souvenir' as const }))
-    ];
-
-    // 優先順位3: 全アイテム
-    const allItems: ItemWithType[] = [
-      ...this.allSights.map(sight => ({ item: sight, type: 'sight' as const })),
-      ...this.allSouvenirs.map(souvenir => ({ item: souvenir, type: 'souvenir' as const }))
-    ];
-
-    // 優先順位に従ってプールを決定
-    let itemsPool: ItemWithType[];
-    if (favoriteUnvisitedItems.length > 0) {
-      itemsPool = favoriteUnvisitedItems;
-    } else if (unvisitedItems.length > 0) {
-      itemsPool = unvisitedItems;
+  private selectSightFromPool(priorityPools: PriorityPools): ItemWithType | null {
+    let pool: Sight[];
+    if (priorityPools.favoriteUnvisitedSights.length > 0) {
+      pool = priorityPools.favoriteUnvisitedSights;
+    } else if (priorityPools.unvisitedSights.length > 0) {
+      pool = priorityPools.unvisitedSights;
     } else {
-      itemsPool = allItems;
+      pool = this.allSights;
     }
-
-    // プールが3つ未満の場合は、全アイテムから補完
-    if (itemsPool.length < 3) {
-      const poolItemKeys = new Set(itemsPool.map(p => `${p.type}-${p.item.id}`));
-      const additionalItems = allItems.filter(
-        item => !poolItemKeys.has(`${item.type}-${item.item.id}`)
-      );
-      const shuffledAdditional = [...additionalItems].sort(() => Math.random() - 0.5);
-      itemsPool = [...itemsPool, ...shuffledAdditional.slice(0, 3 - itemsPool.length)];
-    }
-
-    return itemsPool;
+    if (pool.length === 0) return null;
+    const shuffled = [...pool].sort(() => Math.random() - 0.5);
+    return { item: shuffled[0], type: 'sight' };
   }
 
   /**
-   * プールからランダムにアイテムを選択
+   * 優先順位に従ってお土産を1件選択
    */
-  private selectRandomItems(itemsPool: ItemWithType[]): ItemWithType[] {
-    const shuffled = [...itemsPool].sort(() => Math.random() - 0.5);
-    return shuffled.slice(0, Math.min(3, shuffled.length));
+  private selectSouvenirFromPool(priorityPools: PriorityPools): ItemWithType | null {
+    let pool: Souvenir[];
+    if (priorityPools.favoriteUnvisitedSouvenirs.length > 0) {
+      pool = priorityPools.favoriteUnvisitedSouvenirs;
+    } else if (priorityPools.unvisitedSouvenirs.length > 0) {
+      pool = priorityPools.unvisitedSouvenirs;
+    } else {
+      pool = this.allSouvenirs;
+    }
+    if (pool.length === 0) return null;
+    const shuffled = [...pool].sort(() => Math.random() - 0.5);
+    return { item: shuffled[0], type: 'souvenir' };
   }
 
   /**
-   * 選択されたアイテムをRandomSuggestionにマッピング
+   * アイテムをRandomSuggestionにマッピング
    */
-  private mapToRandomSuggestions(
-    selectedItems: ItemWithType[],
+  private mapToRandomSuggestion(
+    { item, type }: ItemWithType,
     priorityPools: PriorityPools
-  ): RandomSuggestion[] {
-    return selectedItems.map(({ item, type }) => {
-      const reason = this.determineReason(item, type, priorityPools);
-
-      if (type === 'sight') {
-        const sight = item as Sight;
-        return {
-          id: sight.id,
-          name: sight.name,
-          description: sight.description,
-          type: 'sight' as const,
-          photo: sight.photo,
-          address: sight.address,
-          price: sight.price,
-          name_kana: sight.name_kana,
-          reason: reason,
-          isFavorite: this.userDataService.isFavorite(sight.id, 'sight'),
-          isVisited: this.userDataService.isVisited(sight.id, 'sight')
-        };
-      } else {
-        const souvenir = item as Souvenir;
-        return {
-          id: souvenir.id,
-          name: souvenir.name,
-          description: souvenir.description,
-          type: 'souvenir' as const,
-          name_kana: souvenir.name_kana,
-          reason: reason,
-          isFavorite: this.userDataService.isFavorite(souvenir.id, 'souvenir'),
-          isVisited: this.userDataService.isVisited(souvenir.id, 'souvenir')
-        };
-      }
-    });
+  ): RandomSuggestion {
+    const reason = this.determineReason(item, type, priorityPools);
+    if (type === 'sight') {
+      const sight = item as Sight;
+      return {
+        id: sight.id,
+        name: sight.name,
+        description: sight.description,
+        type: 'sight' as const,
+        photo: sight.photo,
+        address: sight.address,
+        price: sight.price,
+        name_kana: sight.name_kana,
+        reason,
+        isFavorite: this.userDataService.isFavorite(sight.id, 'sight'),
+        isVisited: this.userDataService.isVisited(sight.id, 'sight')
+      };
+    } else {
+      const souvenir = item as Souvenir;
+      return {
+        id: souvenir.id,
+        name: souvenir.name,
+        description: souvenir.description,
+        type: 'souvenir' as const,
+        name_kana: souvenir.name_kana,
+        reason,
+        isFavorite: this.userDataService.isFavorite(souvenir.id, 'souvenir'),
+        isVisited: this.userDataService.isVisited(souvenir.id, 'souvenir')
+      };
+    }
   }
 
   /**
