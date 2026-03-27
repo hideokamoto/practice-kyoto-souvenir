@@ -90,6 +90,11 @@ ion-header {
     &:hover {
       background: rgba(255, 255, 255, 0.35);
     }
+
+    &:focus-visible {
+      outline: 2px solid white;
+      outline-offset: 2px;
+    }
   }
 }
 
@@ -380,6 +385,11 @@ ion-header {
 
     &:hover {
       background: var(--ion-color-light-shade);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--ion-color-primary);
+      outline-offset: -2px;
     }
 
     .exploration-toggle-title {
