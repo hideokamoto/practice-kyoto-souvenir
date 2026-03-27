@@ -61,7 +61,7 @@ export class DiscoverPage implements OnDestroy {
   
   public primarySuggestion: RandomSuggestion | null = null;
   public alternativeSuggestions: RandomSuggestion[] = [];
-  public randomSuggestions: RandomSuggestion[] = [];
+  private randomSuggestions: RandomSuggestion[] = [];
   public expandedDescriptions: { [key: string]: boolean } = {}; // デフォルトは折りたたみ
   public isExplorationExpanded = false;
   public showValueProposition = true;

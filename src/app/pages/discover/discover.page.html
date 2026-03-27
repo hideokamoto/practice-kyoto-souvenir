@@ -132,7 +132,7 @@
     </div>
 
     <!-- データがない場合の代替案 -->
-    <ion-card *ngIf="!primarySuggestion && randomSuggestions.length === 0" class="empty-suggestion">
+    <ion-card *ngIf="!primarySuggestion" class="empty-suggestion">
       <ion-card-content>
         <ion-icon name="compass-outline" size="large"></ion-icon>
         <h3>観光地・お土産を探してみましょう</h3>
