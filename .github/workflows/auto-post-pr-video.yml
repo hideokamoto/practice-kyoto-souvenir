@@ -1,0 +1,115 @@
+name: PR動画をXに自動投稿
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'out/*.mp4'
+      - 'remotion/scripts/post-scripts.json'
+
+  workflow_dispatch:
+    inputs:
+      composition_id:
+        description: '投稿するコンポジションID（空の場合は全件投稿）'
+        required: false
+        type: string
+
+jobs:
+  post-to-x:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: リポジトリをチェックアウト
+        uses: actions/checkout@v4
+
+      - name: Node.js をセットアップ
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 台本ファイルを読み取り、動画付きでXに投稿
+        env:
+          X_API_KEY: ${{ secrets.X_API_KEY }}
+          X_API_SECRET: ${{ secrets.X_API_SECRET }}
+          X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
+          X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
+          COMPOSITION_ID: ${{ inputs.composition_id }}
+        run: |
+          npm install twitter-api-v2
+
+          node << 'SCRIPT'
+          const { TwitterApi } = require('twitter-api-v2');
+          const fs = require('fs');
+          const path = require('path');
+
+          async function main() {
+            const client = new TwitterApi({
+              appKey: process.env.X_API_KEY,
+              appSecret: process.env.X_API_SECRET,
+              accessToken: process.env.X_ACCESS_TOKEN,
+              accessSecret: process.env.X_ACCESS_TOKEN_SECRET,
+            });
+
+            const rwClient = client.readWrite;
+
+            // 台本ファイルを読み取り
+            const scripts = JSON.parse(
+              fs.readFileSync('remotion/scripts/post-scripts.json', 'utf-8')
+            );
+
+            // 特定のコンポジションが指定されている場合はフィルタ
+            const targetId = process.env.COMPOSITION_ID;
+            const targets = targetId
+              ? scripts.filter(s => s.compositionId === targetId)
+              : scripts;
+
+            if (targets.length === 0) {
+              console.log('投稿対象のコンポジションが見つかりません');
+              return;
+            }
+
+            for (const script of targets) {
+              const videoPath = path.join('out', script.videoFile);
+
+              if (!fs.existsSync(videoPath)) {
+                console.log(`[スキップ] ${script.videoFile} が見つかりません`);
+                continue;
+              }
+
+              console.log(`[投稿中] ${script.compositionId}...`);
+
+              try {
+                // 動画をアップロード
+                const mediaId = await rwClient.v1.uploadMedia(videoPath, {
+                  mimeType: 'video/mp4',
+                  additionalOwners: [],
+                });
+
+                // ツイートを投稿
+                await rwClient.v2.tweet({
+                  text: script.postText,
+                  media: { media_ids: [mediaId] },
+                });
+
+                console.log(`[完了] ${script.compositionId} を投稿しました`);
+
+                // レート制限対策: 投稿間に30秒待つ
+                if (targets.indexOf(script) < targets.length - 1) {
+                  console.log('30秒待機中...');
+                  await new Promise(r => setTimeout(r, 30000));
+                }
+              } catch (err) {
+                console.error(`[エラー] ${script.compositionId}:`, err.message);
+              }
+            }
+
+            console.log('全投稿が完了しました');
+          }
+
+          main().catch(err => {
+            console.error('致命的エラー:', err);
+            process.exit(1);
+          });
+          SCRIPT
