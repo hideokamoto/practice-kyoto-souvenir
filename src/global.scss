@@ -24,3 +24,395 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+/* ============================================================
+   Editorial overlay — きょう再見 Ionic Redesign v2 (Custom CSS)
+   These styles are taken directly from the Claude Design handoff.
+   They work WITH Ionic's design system by using CSS custom
+   properties wherever available, and apply only to named utility
+   classes (.hero-card, .letter-thumb, etc.) rather than
+   overriding global Ionic component selectors.
+   ============================================================ */
+
+/* ---------- Toolbar: display font, remove hairline ---------- */
+ion-toolbar ion-title {
+  font-family: var(--display-font);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+ion-toolbar ion-title[size="large"] {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+/* Suppress the MD elevation shadow under header */
+ion-header.header-md::after { display: none; }
+ion-toolbar { --border-width: 0; }
+
+/* ---------- Tab bar ---------- */
+ion-tab-bar {
+  border-top: 1px solid var(--ion-border-color);
+}
+
+ion-tab-button {
+  --color: var(--ion-color-step-500);
+  --color-selected: var(--ion-color-primary);
+  font-family: var(--display-font);
+  letter-spacing: 0.10em;
+}
+
+/* ---------- Segment: underlined editorial style ---------- */
+ion-segment {
+  --background: transparent;
+  border-bottom: 1px solid var(--ion-border-color);
+  border-radius: 0;
+}
+
+ion-segment-button {
+  --background: transparent;
+  --background-checked: transparent;
+  --indicator-color: var(--ion-color-primary);
+  --color: var(--ion-color-step-500);
+  --color-checked: var(--ion-color-primary);
+  font-family: var(--display-font);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  font-size: 12px;
+  text-transform: uppercase;
+  min-height: 40px;
+}
+
+/* ---------- FAB: squared ---------- */
+ion-fab-button {
+  --border-radius: 4px;
+  --box-shadow: 0 6px 16px rgba(var(--ion-color-primary-rgb), 0.28);
+}
+
+/* ---------- Searchbar ---------- */
+ion-searchbar {
+  --background: var(--ion-color-step-50);
+  --border-radius: 2px;
+  --box-shadow: none;
+}
+
+/* ============================================================
+   Utility classes — apply to named elements in templates
+   ============================================================ */
+
+/* ---------- Hero card ---------- */
+.hero-card {
+  margin: 14px 16px 6px;
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--ion-card-background);
+  border: 1px solid var(--ion-border-color);
+  box-shadow: none;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--ion-color-primary);
+    z-index: 1;
+  }
+
+  .glyph-block {
+    padding: 24px 22px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    color: var(--ion-color-primary);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-feature-settings: "palt";
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 18px;
+      height: 1px;
+      background: var(--ion-color-primary);
+      flex-shrink: 0;
+    }
+  }
+
+  .place {
+    font-family: var(--display-font);
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.5;
+    letter-spacing: 0.04em;
+    color: var(--ion-text-color);
+    margin: 0;
+  }
+
+  .reading {
+    font-size: 12px;
+    color: var(--ion-color-step-500);
+    line-height: 1.6;
+    letter-spacing: 0.04em;
+    margin: 0;
+  }
+
+  .meta-row {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--ion-border-color);
+  }
+
+  .chip-on-color {
+    background: transparent;
+    color: var(--ion-color-step-600);
+    border: 1px solid var(--ion-border-color);
+    border-radius: 2px;
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+
+    &:first-child {
+      background: rgba(var(--ion-color-primary-rgb), 0.08);
+      color: var(--ion-color-primary);
+      border-color: rgba(var(--ion-color-primary-rgb), 0.25);
+    }
+  }
+
+  ion-button {
+    --background: var(--ion-color-primary);
+    --color: var(--ion-color-primary-contrast);
+    --border-radius: 2px;
+    --box-shadow: none;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+    height: 48px;
+  }
+}
+
+/* ---------- Letter thumbnail ---------- */
+.letter-thumb {
+  width: 40px;
+  height: 40px;
+  border-radius: 2px;
+  background: rgba(var(--ion-color-primary-rgb), 0.08);
+  color: var(--ion-color-primary);
+  border: 1px solid rgba(var(--ion-color-primary-rgb), 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--display-font);
+  font-weight: 700;
+  font-size: 20px;
+  flex-shrink: 0;
+
+  &.visited {
+    background: rgba(45, 211, 111, 0.12);
+    color: #1c8a4a;
+    border-color: rgba(45, 211, 111, 0.25);
+  }
+}
+
+/* ---------- Filter chips ---------- */
+.chip-row {
+  display: flex;
+  gap: 6px;
+  padding: 8px 16px 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar { display: none; }
+
+  ion-chip {
+    flex-shrink: 0;
+    margin: 0;
+    --background: transparent;
+    border: 1px solid var(--ion-border-color);
+    border-radius: 2px;
+    height: 30px;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+
+    &[color="primary"] {
+      --background: var(--ion-color-primary);
+      --color: var(--ion-color-primary-contrast);
+      border-color: var(--ion-color-primary);
+    }
+  }
+}
+
+/* ---------- Section header ---------- */
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 26px 20px 8px;
+
+  h2 {
+    margin: 0;
+    font-family: var(--display-font);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ion-color-step-700);
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    &::before {
+      content: "";
+      width: 2px;
+      height: 14px;
+      background: var(--ion-color-primary);
+      display: inline-block;
+      flex-shrink: 0;
+    }
+  }
+
+  .more {
+    font-size: 12px;
+    color: var(--ion-color-primary);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+  }
+}
+
+/* ---------- Greeting ---------- */
+.greeting-block {
+  padding: 8px 16px 4px;
+
+  .greeting-sub {
+    font-size: 13px;
+    color: var(--ion-color-step-500);
+    margin: 0 0 4px;
+  }
+
+  .greeting-main {
+    font-size: 17px;
+    font-weight: 600;
+    margin: 0;
+    color: var(--ion-text-color);
+    line-height: 1.5;
+  }
+}
+
+/* ---------- Plan divider ---------- */
+.plan-divider {
+  --background: var(--ion-color-step-50);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ion-color-step-600);
+  letter-spacing: 0.06em;
+  font-family: var(--display-font);
+}
+
+/* ---------- Empty state ---------- */
+.editorial-empty {
+  text-align: center;
+  padding: 60px 24px;
+  color: var(--ion-color-step-500);
+
+  .ico {
+    font-size: 44px;
+    color: var(--ion-color-step-400);
+    margin-bottom: 12px;
+  }
+
+  h3 {
+    font-size: 17px;
+    margin: 0 0 6px;
+    color: var(--ion-text-color);
+    font-family: var(--display-font);
+  }
+
+  p {
+    font-size: 14px;
+    margin: 0;
+    line-height: 1.6;
+  }
+}
+
+/* ---------- List items in the exploration list ---------- */
+.exploration-list-item {
+  ion-label h3 {
+    font-family: var(--display-font);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  ion-label p {
+    font-size: 12px;
+    letter-spacing: 0.02em;
+  }
+}
+
+/* ---------- Exploration mode toggle ---------- */
+.exploration-mode-container {
+  margin: 20px 16px 0;
+
+  .exploration-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 12px 16px;
+    background: var(--ion-color-step-50);
+    border: 1px solid var(--ion-border-color);
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background 0.15s;
+
+    &:hover { background: var(--ion-color-step-100); }
+    &:focus-visible {
+      outline: 2px solid var(--ion-color-primary);
+      outline-offset: -2px;
+    }
+
+    .exploration-toggle-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ion-text-color);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--display-font);
+      letter-spacing: 0.04em;
+
+      ion-icon {
+        font-size: 16px;
+        color: var(--ion-color-primary);
+      }
+    }
+
+    ion-icon {
+      font-size: 16px;
+      color: var(--ion-color-step-500);
+    }
+  }
+
+  .exploration-content {
+    margin-top: 8px;
+  }
+}

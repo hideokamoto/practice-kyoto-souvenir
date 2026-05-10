@@ -9,6 +9,7 @@ import { souvenirFeatureKey, souvenirReducer } from './store';
 import { ListSouvenirsComponent } from './list-souvenirs/list-souvenirs.component';
 import { SearchSouvenirsComponent } from './search-souvenirs/search-souvenirs.component';
 import { SharedComponentsModule } from 'src/app/shared/components/components.module';
+import { SharedPipesModule } from 'src/app/shared/pipes/pipes.module';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { SharedComponentsModule } from 'src/app/shared/components/components.mod
     RouterModule,
     IonicModule,
     SharedComponentsModule,
+    SharedPipesModule,
     StoreModule.forFeature(souvenirFeatureKey, souvenirReducer)
   ],
   declarations: [
