@@ -112,7 +112,7 @@
     </div>
 
     <ion-list inset="true" *ngIf="alternativeSuggestions.length > 0">
-      <ion-item button="true" detail="true" *ngFor="let alt of alternativeSuggestions; let last = last" [lines]="last ? 'none' : 'full'" [routerLink]="getRouterLink(alt)">
+      <ion-item class="exploration-list-item" button="true" detail="true" *ngFor="let alt of alternativeSuggestions; let last = last" [lines]="last ? 'none' : 'full'" [routerLink]="getRouterLink(alt)">
         <div class="letter-thumb" [class.visited]="alt.isVisited" slot="start">{{ alt.name | slice:0:1 }}</div>
         <ion-label>
           <h3>{{ alt.name }}</h3>

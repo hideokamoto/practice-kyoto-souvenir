@@ -1,4 +1,4 @@
-<ion-item [detail]="true" *ngIf="sight" [routerLink]="'/sights/' + sight.id" button>
+<ion-item class="exploration-list-item" [detail]="true" *ngIf="sight" [routerLink]="'/sights/' + sight.id" button>
   <div class="letter-thumb" [class.visited]="isVisited" slot="start">{{ sight.name | slice:0:1 }}</div>
   <ion-label class="ion-text-wrap">
     <h3>{{ sight.name }}</h3>

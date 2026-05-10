@@ -50,7 +50,7 @@
   <!-- Favorites list -->
   <ion-list *ngIf="!loading && filteredFavorites.length > 0">
     <ion-item-sliding *ngFor="let item of filteredFavorites">
-      <ion-item [routerLink]="getRouterLink(item)" detail="true" button>
+      <ion-item class="exploration-list-item" [routerLink]="getRouterLink(item)" detail="true" button>
         <div class="letter-thumb" slot="start">{{ item.name | slice:0:1 }}</div>
         <ion-label class="ion-text-wrap">
           <h3>{{ item.name }}</h3>

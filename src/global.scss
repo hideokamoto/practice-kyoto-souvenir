@@ -26,10 +26,15 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 /* ============================================================
-   Editorial design system — きょう再見 Ionic Redesign v2
+   Editorial overlay — きょう再見 Ionic Redesign v2 (Custom CSS)
+   These styles are taken directly from the Claude Design handoff.
+   They work WITH Ionic's design system by using CSS custom
+   properties wherever available, and apply only to named utility
+   classes (.hero-card, .letter-thumb, etc.) rather than
+   overriding global Ionic component selectors.
    ============================================================ */
 
-/* ---------- Toolbar + large title: editorial mincho ---------- */
+/* ---------- Toolbar: display font, remove hairline ---------- */
 ion-toolbar ion-title {
   font-family: var(--display-font);
   font-weight: 600;
@@ -42,13 +47,12 @@ ion-toolbar ion-title[size="large"] {
   letter-spacing: 0.06em;
 }
 
-/* Remove the MD shadow line under header; use a hairline border instead */
+/* Suppress the MD elevation shadow under header */
 ion-header.header-md::after { display: none; }
-ion-toolbar { --border-width: 0 !important; }
+ion-toolbar { --border-width: 0; }
 
-/* ---------- Tab bar — editorial hairline + mincho labels ---------- */
+/* ---------- Tab bar ---------- */
 ion-tab-bar {
-  --background: var(--ion-tab-bar-background);
   border-top: 1px solid var(--ion-border-color);
 }
 
@@ -59,12 +63,45 @@ ion-tab-button {
   letter-spacing: 0.10em;
 }
 
-ion-tab-button ion-label {
-  font-size: 10px !important;
-  font-weight: 600;
+/* ---------- Segment: underlined editorial style ---------- */
+ion-segment {
+  --background: transparent;
+  border-bottom: 1px solid var(--ion-border-color);
+  border-radius: 0;
 }
 
-/* ---------- Hero card: paper-feel, thin top accent rule ---------- */
+ion-segment-button {
+  --background: transparent;
+  --background-checked: transparent;
+  --indicator-color: var(--ion-color-primary);
+  --color: var(--ion-color-step-500);
+  --color-checked: var(--ion-color-primary);
+  font-family: var(--display-font);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  font-size: 12px;
+  text-transform: uppercase;
+  min-height: 40px;
+}
+
+/* ---------- FAB: squared ---------- */
+ion-fab-button {
+  --border-radius: 4px;
+  --box-shadow: 0 6px 16px rgba(var(--ion-color-primary-rgb), 0.28);
+}
+
+/* ---------- Searchbar ---------- */
+ion-searchbar {
+  --background: var(--ion-color-step-50);
+  --border-radius: 2px;
+  --box-shadow: none;
+}
+
+/* ============================================================
+   Utility classes — apply to named elements in templates
+   ============================================================ */
+
+/* ---------- Hero card ---------- */
 .hero-card {
   margin: 14px 16px 6px;
   border-radius: 4px;
@@ -80,18 +117,17 @@ ion-tab-button ion-label {
     top: 0; left: 0; right: 0;
     height: 3px;
     background: var(--ion-color-primary);
+    z-index: 1;
   }
 
   .glyph-block {
-    background: transparent;
-    color: var(--ion-text-color);
     padding: 24px 22px 12px;
     display: flex;
     flex-direction: column;
     gap: 6px;
   }
 
-  .glyph-block .eyebrow {
+  .eyebrow {
     font-size: 11px;
     letter-spacing: 0.22em;
     color: var(--ion-color-primary);
@@ -112,7 +148,7 @@ ion-tab-button ion-label {
     }
   }
 
-  .glyph-block .place {
+  .place {
     font-family: var(--display-font);
     font-size: 22px;
     font-weight: 700;
@@ -122,7 +158,7 @@ ion-tab-button ion-label {
     margin: 0;
   }
 
-  .glyph-block .reading {
+  .reading {
     font-size: 12px;
     color: var(--ion-color-step-500);
     line-height: 1.6;
@@ -170,7 +206,7 @@ ion-tab-button ion-label {
   }
 }
 
-/* ---------- Letter thumbnail — editorial mincho square ---------- */
+/* ---------- Letter thumbnail ---------- */
 .letter-thumb {
   width: 40px;
   height: 40px;
@@ -193,7 +229,7 @@ ion-tab-button ion-label {
   }
 }
 
-/* ---------- Filter chips horizontal scroll — squared chip ---------- */
+/* ---------- Filter chips ---------- */
 .chip-row {
   display: flex;
   gap: 6px;
@@ -222,13 +258,12 @@ ion-tab-button ion-label {
   }
 }
 
-/* ---------- Section header — editorial label with vertical rule ---------- */
+/* ---------- Section header ---------- */
 .section-head {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   padding: 26px 20px 8px;
-  position: relative;
 
   h2 {
     margin: 0;
@@ -264,84 +299,32 @@ ion-tab-button ion-label {
   }
 }
 
-/* ---------- List — squared corners, hairline borders ---------- */
-ion-list[inset="true"],
-ion-list[inset] {
-  border-radius: 2px !important;
-  margin-left: 16px !important;
-  margin-right: 16px !important;
-  border: 1px solid var(--ion-border-color);
-  box-shadow: none;
+/* ---------- Greeting ---------- */
+.greeting-block {
+  padding: 8px 16px 4px;
+
+  .greeting-sub {
+    font-size: 13px;
+    color: var(--ion-color-step-500);
+    margin: 0 0 4px;
+  }
+
+  .greeting-main {
+    font-size: 17px;
+    font-weight: 600;
+    margin: 0;
+    color: var(--ion-text-color);
+    line-height: 1.5;
+  }
 }
 
-ion-list ion-item {
-  --border-color: var(--ion-border-color);
-}
-
-ion-list ion-item h3 {
-  font-family: var(--display-font);
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  font-size: 16px !important;
-}
-
-ion-list ion-item p {
-  color: var(--ion-color-step-500) !important;
-  font-size: 12px !important;
-  letter-spacing: 0.02em;
-}
-
-ion-list-header ion-label {
-  font-family: var(--display-font);
-  font-size: 12px !important;
-  font-weight: 700;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--ion-color-step-700) !important;
-}
-
-/* ---------- Segment — underlined editorial ---------- */
-ion-segment {
-  --background: transparent;
-  border-bottom: 1px solid var(--ion-border-color);
-  border-radius: 0;
-}
-
-ion-segment-button {
-  --background: transparent;
-  --background-checked: transparent;
-  --indicator-color: var(--ion-color-primary);
-  --color: var(--ion-color-step-500);
-  --color-checked: var(--ion-color-primary);
-  font-family: var(--display-font);
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  font-size: 12px;
-  text-transform: uppercase;
-  min-height: 40px;
-}
-
-/* ---------- FAB — squared editorial ---------- */
-ion-fab-button {
-  --border-radius: 4px;
-  --box-shadow: 0 6px 16px rgba(var(--ion-color-primary-rgb), 0.3);
-}
-
-/* ---------- Searchbar ---------- */
-ion-searchbar {
-  --background: var(--ion-color-step-50) !important;
-  --border-radius: 2px !important;
-  --box-shadow: none !important;
-}
-
-/* ---------- Plan timeline divider ---------- */
+/* ---------- Plan divider ---------- */
 .plan-divider {
   --background: var(--ion-color-step-50);
   font-size: 12px;
   font-weight: 600;
   color: var(--ion-color-step-600);
   letter-spacing: 0.06em;
-  padding: 8px 16px;
   font-family: var(--display-font);
 }
 
@@ -371,64 +354,65 @@ ion-searchbar {
   }
 }
 
-/* ---------- Greeting block ---------- */
-.greeting-block {
-  padding: 8px 16px 4px;
-
-  .greeting-sub {
-    font-size: 13px;
-    color: var(--ion-color-step-500);
-    margin: 0 0 4px;
-  }
-
-  .greeting-main {
-    font-size: 17px;
-    font-weight: 600;
-    margin: 0;
-    color: var(--ion-text-color);
-    line-height: 1.5;
-  }
-}
-
-/* ---------- Detail hero (sight/souvenir detail pages) ---------- */
-.detail-hero {
-  padding: 14px 20px 16px;
-  border-bottom: 1px solid var(--ion-border-color);
-  margin-bottom: 8px;
-
-  .eyebrow-line {
-    font-size: 10px;
-    letter-spacing: 0.32em;
-    color: var(--ion-color-primary);
-    text-transform: uppercase;
-    font-weight: 700;
-    margin-bottom: 8px;
-  }
-
-  .place-name {
+/* ---------- List items in the exploration list ---------- */
+.exploration-list-item {
+  ion-label h3 {
     font-family: var(--display-font);
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 1.55;
-    letter-spacing: 0.04em;
-    margin: 0 0 6px;
-    color: var(--ion-text-color);
+    font-weight: 600;
+    letter-spacing: 0.02em;
   }
 
-  .reading {
+  ion-label p {
     font-size: 12px;
-    color: var(--ion-color-step-500);
-    line-height: 1.6;
-    letter-spacing: 0.05em;
-    margin: 0 0 14px;
+    letter-spacing: 0.02em;
   }
 }
 
-/* ---------- Detail body copy ---------- */
-.detail-body {
-  padding: 12px 20px 22px;
-  font-size: 14.5px;
-  line-height: 2;
-  color: var(--ion-text-color);
-  letter-spacing: 0.02em;
+/* ---------- Exploration mode toggle ---------- */
+.exploration-mode-container {
+  margin: 20px 16px 0;
+
+  .exploration-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 12px 16px;
+    background: var(--ion-color-step-50);
+    border: 1px solid var(--ion-border-color);
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background 0.15s;
+
+    &:hover { background: var(--ion-color-step-100); }
+    &:focus-visible {
+      outline: 2px solid var(--ion-color-primary);
+      outline-offset: -2px;
+    }
+
+    .exploration-toggle-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ion-text-color);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--display-font);
+      letter-spacing: 0.04em;
+
+      ion-icon {
+        font-size: 16px;
+        color: var(--ion-color-primary);
+      }
+    }
+
+    ion-icon {
+      font-size: 16px;
+      color: var(--ion-color-step-500);
+    }
+  }
+
+  .exploration-content {
+    margin-top: 8px;
+  }
 }
