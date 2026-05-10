@@ -9,6 +9,7 @@ import { sightsFeatureKey, sightsReducer } from './store';
 import { ListSightItemComponent } from './list-sight-item/list-sight-item.component';
 import { SearchSightsComponent } from './search-sights/search-sights.component';
 import { SharedComponentsModule } from 'src/app/shared/components/components.module';
+import { SharedPipesModule } from 'src/app/shared/pipes/pipes.module';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { SharedComponentsModule } from 'src/app/shared/components/components.mod
     RouterModule,
     IonicModule,
     SharedComponentsModule,
+    SharedPipesModule,
     StoreModule.forFeature(sightsFeatureKey, sightsReducer)
   ],
   declarations: [
