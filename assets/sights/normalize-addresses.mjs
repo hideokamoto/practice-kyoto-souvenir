@@ -22,8 +22,12 @@ function complementAddress(address) {
   if (/^[^\d]{1,4}区/.test(address)) {
     return '京都府京都市' + address;
   }
-  // それ以外（町名から始まるなど）は「京都府京都市」を補完
-  return '京都府京都市' + address;
+  // 既に市区を含む場合はそのまま返す（他の市のデータなど）
+  if (/[市区]/.test(address)) {
+    return address;
+  }
+  // それ以外の場合は元の文字列をそのまま返す（安全なフォールバック）
+  return address;
 }
 
 async function sleep(ms) {
@@ -39,12 +43,13 @@ async function main() {
 
   for (let i = 0; i < data.length; i++) {
     const item = data[i];
-    if (!item.address) {
+    const trimmed = item.address && item.address.trim();
+    if (!trimmed) {
       skipCount++;
       continue;
     }
 
-    const complemented = complementAddress(item.address);
+    const complemented = complementAddress(trimmed);
 
     try {
       const result = await normalize(complemented);
