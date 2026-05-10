@@ -23,6 +23,30 @@ export class FavoritesPage implements OnDestroy {
 
   public favoriteItems: FavoriteItem[] = [];
   public loading = true;
+  public searchQuery = '';
+  public favSegment = 'all';
+
+  get filteredFavorites(): FavoriteItem[] {
+    let items = this.favoriteItems;
+    if (this.favSegment === 'sights') {
+      items = items.filter(i => i.type === 'sight');
+    } else if (this.favSegment === 'souvenirs') {
+      items = items.filter(i => i.type === 'souvenir');
+    }
+    if (this.searchQuery.trim()) {
+      const q = this.searchQuery.trim().toLowerCase();
+      items = items.filter(i =>
+        i.name.toLowerCase().includes(q) ||
+        (i.name_kana && i.name_kana.toLowerCase().includes(q)) ||
+        (i.description && i.description.toLowerCase().includes(q))
+      );
+    }
+    return items;
+  }
+
+  onFavSegmentChange(event: CustomEvent) {
+    this.favSegment = event.detail.value;
+  }
 
   private subscriptions = new Subscription();
 

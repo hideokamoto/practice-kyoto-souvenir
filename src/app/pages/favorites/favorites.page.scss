@@ -1,48 +1,7 @@
-// ヘッダースタイル
-ion-header {
-  ion-title {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    
-    .app-name {
-      font-weight: 600;
-      color: var(--ion-color-primary);
-      font-size: 0.9rem;
-    }
-    
-    .page-title {
-      font-weight: 400;
-      color: var(--ion-color-dark);
-    }
-  }
-}
+ion-content {
+  --overflow: auto;
 
-.empty-state {
-  padding: 60px 20px;
-  
-  ion-icon {
-    margin-bottom: 24px;
-  }
-  
-  h2 {
-    margin-top: 16px;
-    font-weight: 600;
-    font-size: 1.5rem;
-  }
-  
-  p {
-    color: var(--ion-color-medium);
-    margin-top: 12px;
-    margin-bottom: 32px;
-    line-height: 1.6;
-  }
-  
-  .empty-state-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    max-width: 400px;
-    margin: 0 auto;
+  &::part(scroll) {
+    overflow-y: auto !important;
   }
 }

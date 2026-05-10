@@ -1,16 +1,9 @@
-<ion-item
-  *ngIf="souvenir"
-  [detail]="true"
-  [routerLink]="'/souvenir/' + souvenir.id"
->
+<ion-item class="exploration-list-item" *ngIf="souvenir" [detail]="true" [routerLink]="'/souvenir/' + souvenir.id" button>
+  <div class="letter-thumb" [class.visited]="isVisited" slot="start">{{ souvenir.name | slice:0:1 }}</div>
   <ion-label class="ion-text-wrap">
-    <h2>
-      {{souvenir.name}}
-      <ion-icon *ngIf="isFavorite" name="heart" color="danger" size="small"></ion-icon>
-      <ion-icon *ngIf="isVisited" name="checkmark-circle" color="success" size="small"></ion-icon>
-    </h2>
-    <h3>{{souvenir.name_kana}}</h3>
-    <p>{{souvenir.description}}</p>
+    <h3>{{ souvenir.name }}</h3>
+    <p>{{ souvenir.name_kana }}</p>
+    <p>{{ souvenir.description | truncate:60 }}</p>
   </ion-label>
+  <ion-icon *ngIf="isFavorite" name="heart" slot="end" color="primary" style="font-size:16px;"></ion-icon>
 </ion-item>
-
