@@ -58,10 +58,15 @@ export class DiscoverPage implements OnDestroy {
   public contentType: ContentType = 'sights';
   public sights$ = this.store.select(createSelector(selectSightsFeature, state => state.items));
   public souvenirs$ = this.store.select(createSelector(selectSouvenirFeature, state => state.items));
-  
-  public randomSuggestions: RandomSuggestion[] = [];
-  public expandedDescriptions: { [key: string]: boolean } = {}; // デフォルトは折りたたみ
-  
+
+  public primarySuggestion: RandomSuggestion | null = null;
+  public alternativeSuggestions: RandomSuggestion[] = [];
+  private randomSuggestions: RandomSuggestion[] = [];
+  public expandedDescriptions: { [key: string]: boolean } = {};
+  public isExplorationExpanded = false;
+  public showValueProposition = true;
+  public activeFilter: string = 'all';
+
   private allSights: Sight[] = [];
   private allSouvenirs: Souvenir[] = [];
   private subscriptions = new Subscription();
@@ -69,13 +74,25 @@ export class DiscoverPage implements OnDestroy {
   public hasError = false;
   public errorMessage = '';
 
+  private static readonly VALUE_PROPOSITION_KEY = 'kyou-saiken-vp-seen';
+
 
   ngOnDestroy() {
     this.subscriptions.unsubscribe();
   }
 
   ionViewWillEnter() {
+    this.showValueProposition = !localStorage.getItem(DiscoverPage.VALUE_PROPOSITION_KEY);
     this.loadData();
+  }
+
+  dismissValueProposition() {
+    this.showValueProposition = false;
+    localStorage.setItem(DiscoverPage.VALUE_PROPOSITION_KEY, 'true');
+  }
+
+  toggleExploration() {
+    this.isExplorationExpanded = !this.isExplorationExpanded;
   }
 
   loadData() {
@@ -184,6 +201,8 @@ export class DiscoverPage implements OnDestroy {
     const itemsPool = this.selectPriorityPool(priorityPools);
     const selectedItems = this.selectRandomItems(itemsPool);
     this.randomSuggestions = this.mapToRandomSuggestions(selectedItems, priorityPools);
+    this.primarySuggestion = this.randomSuggestions.length > 0 ? this.randomSuggestions[0] : null;
+    this.alternativeSuggestions = this.randomSuggestions.slice(1);
   }
 
   /**
@@ -424,6 +443,20 @@ export class DiscoverPage implements OnDestroy {
 
   onSegmentChange(event: CustomEvent) {
     this.contentType = event.detail.value;
+  }
+
+  getTodayJapanese(): string {
+    const now = new Date();
+    const month = now.getMonth() + 1;
+    const day = now.getDate();
+    const weekdays = ['日', '月', '火', '水', '木', '金', '土'];
+    const weekday = weekdays[now.getDay()];
+    return `${month}月${day}日(${weekday})`;
+  }
+
+  setFilter(filter: string) {
+    this.activeFilter = filter;
+    this.getRandomSuggestions();
   }
 
   public isIos() {

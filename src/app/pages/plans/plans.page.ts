@@ -23,8 +23,27 @@ export class PlansPage implements OnInit, OnDestroy {
   private readonly sightsService = inject(SightsService);
 
   public plans: Plan[] = [];
+  public planSegment = 'upcoming';
   private allSights: Sight[] = [];
   private subscriptions = new Subscription();
+
+  get upcomingPlans(): Plan[] {
+    return this.plans.filter(plan =>
+      plan.items.length === 0 ||
+      !plan.items.every(item => this.userDataService.isVisited(item.itemId, item.itemType))
+    );
+  }
+
+  get donePlans(): Plan[] {
+    return this.plans.filter(plan =>
+      plan.items.length > 0 &&
+      plan.items.every(item => this.userDataService.isVisited(item.itemId, item.itemType))
+    );
+  }
+
+  onPlanSegmentChange(event: CustomEvent) {
+    this.planSegment = event.detail.value;
+  }
 
   ngOnInit() {
     this.loadSightsData();
