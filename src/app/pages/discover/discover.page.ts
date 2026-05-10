@@ -373,6 +373,10 @@ export class DiscoverPage implements OnDestroy {
     return suggestion.type === 'sight' ? 'この場所に行く' : 'このお土産を見る';
   }
 
+  getButtonLabel(suggestion: RandomSuggestion): string {
+    return suggestion.type === 'sight' ? 'スポットを見る' : 'お土産を見る';
+  }
+
   getPhotoPath(photo: string | undefined): string | null {
     if (!photo || photo.trim() === '') {
       return null;

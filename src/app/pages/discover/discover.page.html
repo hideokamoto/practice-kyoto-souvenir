@@ -97,7 +97,7 @@
         </p>
       </ion-card-content>
       <ion-button expand="block" style="margin: 4px 12px 12px;" (click)="$event.stopPropagation()" [routerLink]="getRouterLink(primarySightSuggestion)">
-        詳しく見る
+        {{ getButtonLabel(primarySightSuggestion) }}
         <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
       </ion-button>
     </ion-card>
@@ -135,7 +135,7 @@
         </p>
       </ion-card-content>
       <ion-button expand="block" style="margin: 4px 12px 12px;" (click)="$event.stopPropagation()" [routerLink]="getRouterLink(primarySouvenirSuggestion)">
-        詳しく見る
+        {{ getButtonLabel(primarySouvenirSuggestion) }}
         <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
       </ion-button>
     </ion-card>
