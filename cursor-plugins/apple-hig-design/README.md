@@ -18,6 +18,25 @@ HIG 公式分類（Foundations / Patterns / Components / Inputs / Technologies /
 | `skills/apple-hig-design/references/accessibility-privacy.md` | アクセシビリティ・インクルージョン・プライバシー |
 | `skills/apple-hig-design/references/web-adaptation.md` | Web サイトへの翻訳指針（HIG 外の解釈） |
 
+## Private 登録（このアカウント向け）
+
+詳細手順は [PRIVATE_SETUP.md](./PRIVATE_SETUP.md) を参照。
+
+**個人アカウント（全プラン）— いちばん手軽:**
+
+```bash
+./scripts/install.sh plugin
+# → ~/.cursor/plugins/local/apple-hig-design
+```
+
+**Teams / Enterprise — Dashboard から private repo import:**
+
+1. https://cursor.com/dashboard → **Plugins** → **Add Marketplace** → **Import from Repo**
+2. `https://github.com/hideokamoto/practice-kyoto-souvenir` を指定
+3. `apple-hig-design` を marketplace に追加
+
+リポジトリルートの `.cursor-plugin/marketplace.json` が import 用マニフェストです。
+
 ## インストール
 
 ### 方法 A: プロジェクトにコピー（推奨）

@@ -4,8 +4,11 @@
   "version": "1.0.0",
   "description": "Apple Human Interface Guidelines（2025-06 Liquid Glass 改訂含む）を単一ソースとする UI/UX 設計スキル。7フェーズの設計ワークフローと HIG コーパス蒸留 references を提供する。",
   "author": {
-    "name": "hideokamoto"
+    "name": "Hidetaka Okamoto",
+    "email": "kokkoku214@gmail.com"
   },
+  "repository": "https://github.com/hideokamoto/practice-kyoto-souvenir",
+  "homepage": "https://github.com/hideokamoto/practice-kyoto-souvenir/tree/main/cursor-plugins/apple-hig-design",
   "license": "MIT",
   "keywords": [
     "apple",
