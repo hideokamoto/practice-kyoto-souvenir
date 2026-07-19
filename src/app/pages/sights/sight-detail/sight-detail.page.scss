@@ -12,7 +12,7 @@
   max-width: 100%;
   max-height: 300px;
   object-fit: contain;
-  border-radius: 8px;
+  border-radius: 4px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -37,9 +37,11 @@
 }
 
 ion-item-divider {
-  --background: var(--ion-color-light, #f4f5f8);
-  --color: var(--ion-color-primary, #3880ff);
+  --background: var(--ion-color-step-50);
+  --color: var(--ion-color-primary);
+  font-family: var(--display-font);
   font-weight: 600;
+  letter-spacing: 0.04em;
   margin-top: 0.5rem;
 }
 
@@ -51,7 +53,7 @@ ion-item {
 ion-item h3 {
   font-weight: 600;
   margin-bottom: 0.5rem;
-  color: var(--ion-color-primary, #3880ff);
+  color: var(--ion-color-primary);
 }
 
 ion-item p {
@@ -60,7 +62,7 @@ ion-item p {
 }
 
 ion-item a {
-  color: var(--ion-color-primary, #3880ff);
+  color: var(--ion-color-primary);
   text-decoration: none;
 }
 
@@ -72,8 +74,9 @@ ion-item a:hover {
 .action-buttons-container {
   padding: 1rem;
   margin-bottom: 1rem;
-  background-color: var(--ion-color-light, #f4f5f8);
-  border-radius: 12px;
+  background-color: var(--ion-color-step-50);
+  border: 1px solid var(--ion-border-color);
+  border-radius: 4px;
   margin-left: 1rem;
   margin-right: 1rem;
 }
@@ -85,14 +88,15 @@ ion-item a:hover {
 }
 
 .action-button {
-  --border-radius: 8px;
+  --border-radius: 2px;
+  --box-shadow: none;
   --padding-top: 0.75rem;
   --padding-bottom: 0.75rem;
   --padding-start: 1rem;
   --padding-end: 1rem;
   font-weight: 600;
   height: auto;
-  min-height: 48px;
+  min-height: var(--tap-target-min);
   
   ion-icon {
     font-size: 1.2rem;
@@ -147,14 +151,14 @@ ion-item a:hover {
 }
 
 .navigation-sight-button {
-  --border-radius: 8px;
+  --border-radius: 2px;
   --padding-top: 0.75rem;
   --padding-bottom: 0.75rem;
   --padding-start: 1rem;
   --padding-end: 1rem;
   font-weight: 500;
   height: auto;
-  min-height: 44px;
+  min-height: var(--tap-target-min);
   flex: 1;
   
   &.full-width {

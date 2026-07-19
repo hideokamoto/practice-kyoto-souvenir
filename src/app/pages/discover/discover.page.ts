@@ -194,16 +194,37 @@ export class DiscoverPage implements OnDestroy {
       console.warn('観光地とお土産のデータがまだ読み込まれていません');
       return;
     }
+    this.shuffleSight();
+    this.shuffleSouvenir();
+  }
 
+  /**
+   * スポットの提案だけを引き直す（「別の提案」）
+   */
+  shuffleSight() {
+    if (this.allSights.length === 0) {
+      this.primarySightSuggestion = null;
+      return;
+    }
     const userDataSets = this.getUserDataSets();
     const priorityPools = this.buildPriorityPools(userDataSets);
-
-    const sightItem = this.selectSightFromPool(priorityPools);
+    const sightItem = this.selectSightFromPool(priorityPools, userDataSets);
     this.primarySightSuggestion = sightItem
       ? this.mapToRandomSuggestion(sightItem, priorityPools)
       : null;
+  }
 
-    const souvenirItem = this.selectSouvenirFromPool(priorityPools);
+  /**
+   * お土産の提案だけを引き直す（「別の提案」）
+   */
+  shuffleSouvenir() {
+    if (this.allSouvenirs.length === 0) {
+      this.primarySouvenirSuggestion = null;
+      return;
+    }
+    const userDataSets = this.getUserDataSets();
+    const priorityPools = this.buildPriorityPools(userDataSets);
+    const souvenirItem = this.selectSouvenirFromPool(priorityPools, userDataSets);
     this.primarySouvenirSuggestion = souvenirItem
       ? this.mapToRandomSuggestion(souvenirItem, priorityPools)
       : null;
@@ -264,35 +285,54 @@ export class DiscoverPage implements OnDestroy {
   }
 
   /**
-   * 優先順位に従ってスポットを1件選択
+   * 優先順位（および activeFilter）に従ってスポットを1件選択
+   *
+   * activeFilter:
+   *  - 'unvisited' … 未訪問のみを対象
+   *  - 'favorite'  … お気に入りのみを対象
+   *  - それ以外     … お気に入り未訪問 → 未訪問 → 全件 の優先順位
    */
-  private selectSightFromPool(priorityPools: PriorityPools): ItemWithType | null {
+  private selectSightFromPool(
+    priorityPools: PriorityPools,
+    userDataSets: UserDataSets
+  ): ItemWithType | null {
     let pool: Sight[];
-    if (priorityPools.favoriteUnvisitedSights.length > 0) {
+    if (this.activeFilter === 'unvisited') {
+      pool = priorityPools.unvisitedSights;
+    } else if (this.activeFilter === 'favorite') {
+      pool = this.allSights.filter(s => userDataSets.favoriteSightIds.has(s.id));
+    } else if (priorityPools.favoriteUnvisitedSights.length > 0) {
       pool = priorityPools.favoriteUnvisitedSights;
     } else if (priorityPools.unvisitedSights.length > 0) {
       pool = priorityPools.unvisitedSights;
     } else {
       pool = this.allSights;
     }
-    if (pool.length === 0) return null;
+    if (!pool || pool.length === 0) return null;
     const shuffled = [...pool].sort(() => Math.random() - 0.5);
     return { item: shuffled[0], type: 'sight' };
   }
 
   /**
-   * 優先順位に従ってお土産を1件選択
+   * 優先順位（および activeFilter）に従ってお土産を1件選択
    */
-  private selectSouvenirFromPool(priorityPools: PriorityPools): ItemWithType | null {
+  private selectSouvenirFromPool(
+    priorityPools: PriorityPools,
+    userDataSets: UserDataSets
+  ): ItemWithType | null {
     let pool: Souvenir[];
-    if (priorityPools.favoriteUnvisitedSouvenirs.length > 0) {
+    if (this.activeFilter === 'unvisited') {
+      pool = priorityPools.unvisitedSouvenirs;
+    } else if (this.activeFilter === 'favorite') {
+      pool = this.allSouvenirs.filter(s => userDataSets.favoriteSouvenirIds.has(s.id));
+    } else if (priorityPools.favoriteUnvisitedSouvenirs.length > 0) {
       pool = priorityPools.favoriteUnvisitedSouvenirs;
     } else if (priorityPools.unvisitedSouvenirs.length > 0) {
       pool = priorityPools.unvisitedSouvenirs;
     } else {
       pool = this.allSouvenirs;
     }
-    if (pool.length === 0) return null;
+    if (!pool || pool.length === 0) return null;
     const shuffled = [...pool].sort(() => Math.random() - 0.5);
     return { item: shuffled[0], type: 'souvenir' };
   }

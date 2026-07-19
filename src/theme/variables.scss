@@ -107,6 +107,28 @@
   --ion-font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN",
     "Hiragino Sans", "Yu Gothic", "YuGothic", "Noto Sans JP", "Helvetica Neue",
     "Arial", sans-serif;
+
+  /** ============================================================
+      Typography scale (HIG text-style 原則の Web 翻訳)
+      生の px 指定を散らさず、意味ベースのトークンに集約する。
+      値は Ionic 既定に合わせた px 起点。ブラウザのテキスト拡大に
+      追従させたい場合は各コンポーネントで rem 併用も可能。
+      ============================================================ */
+  --step-eyebrow: 11px;   /* オーバーライン・ラベル */
+  --step-caption: 12px;   /* 補助情報・読み仮名 */
+  --step-body-sm: 13px;   /* 小さめ本文 */
+  --step-body: 14px;      /* 標準本文 */
+  --step-subhead: 15px;
+  --step-headline: 17px;  /* iOS Body/Headline 相当 */
+  --step-title: 22px;     /* カード見出し */
+  --step-display: 32px;   /* Large Title */
+
+  /** 可読幅の上限（HIG layout guide の Web 翻訳）。
+      広い画面でカードやリストが間延びしないようコンテンツを中央寄せする。 */
+  --content-max-width: 640px;
+
+  /** 最小タップ領域（HIG 44pt の Web 翻訳） */
+  --tap-target-min: 44px;
 }
 
 @media (prefers-color-scheme: dark) {

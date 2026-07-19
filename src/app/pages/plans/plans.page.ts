@@ -134,26 +134,26 @@ export class PlansPage implements OnInit, OnDestroy {
   async deletePlan(plan: Plan, event: Event) {
     event.stopPropagation();
 
-    const alert = await this.alertController.create({
-      header: 'プランを削除',
-      message: `「${plan.name}」を削除しますか？`,
+    // HIG: 確認ダイアログの代わりに即時削除＋Undo（元に戻す）を提供する。
+    // restorePlan は id・items・作成日をそのまま復元する。
+    this.userDataService.deletePlan(plan.id);
+    this.loadPlans();
+
+    const toast = await this.toastController.create({
+      message: `「${plan.name}」を削除しました`,
+      duration: 4500,
+      color: 'dark',
       buttons: [
         {
-          text: 'キャンセル',
-          role: 'cancel'
-        },
-        {
-          text: '削除',
-          role: 'destructive',
+          text: '元に戻す',
           handler: () => {
-            this.userDataService.deletePlan(plan.id);
+            this.userDataService.restorePlan(plan);
             this.loadPlans();
           }
         }
       ]
     });
-
-    await alert.present();
+    await toast.present();
   }
 
   viewPlan(plan: Plan) {

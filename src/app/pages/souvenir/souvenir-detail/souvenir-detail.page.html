@@ -8,32 +8,95 @@
         {{souvenir.name}}
       </ion-title>
       <ion-buttons slot="end">
-        <ion-button (click)="toggleFavorite()">
+        <ion-button (click)="toggleFavorite()" [attr.aria-label]="isFavorite ? 'お気に入りから外す' : 'お気に入りに追加'">
           <ion-icon slot="icon-only" [name]="isFavorite ? 'heart' : 'heart-outline'" [color]="isFavorite ? 'danger' : ''"></ion-icon>
         </ion-button>
-        <ion-button (click)="toggleVisited()">
+        <ion-button (click)="toggleVisited()" [attr.aria-label]="isVisited ? '購入済みを取り消す' : '購入済みにする'">
           <ion-icon slot="icon-only" [name]="isVisited ? 'checkmark-circle' : 'checkmark-circle-outline'" [color]="isVisited ? 'success' : ''"></ion-icon>
         </ion-button>
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
-  
+
   <ion-content [fullscreen]="true">
     <ion-header collapse="condense">
       <ion-toolbar>
         <ion-title size="large">{{souvenir.name}}</ion-title>
       </ion-toolbar>
     </ion-header>
-    <ion-item>
-      <ion-label class='ion-text-wrap'>
-        <h2>{{souvenir.name}} <small>({{souvenir.name_kana}})</small></h2>
-      </ion-label>
-    </ion-item>
-    <div class='ion-padding'>
-      {{souvenir.description}}
+
+    <!-- エディトリアル・ヘッダー（hero-card と同系の意匠） -->
+    <div class="detail-hero">
+      <div class="eyebrow">
+        <ion-icon name="gift-outline" style="font-size:13px"></ion-icon>
+        京のお土産
+      </div>
+      <h2 class="place">{{souvenir.name}}</h2>
+      <p class="reading" *ngIf="souvenir.name_kana">{{souvenir.name_kana}}</p>
+      <div class="meta-row" *ngIf="isFavorite || isVisited">
+        <span class="chip-on-color" *ngIf="isFavorite">
+          <ion-icon name="heart" style="font-size:13px"></ion-icon>
+          お気に入り
+        </span>
+        <span class="chip-on-color" *ngIf="isVisited">
+          <ion-icon name="checkmark-circle" style="font-size:13px"></ion-icon>
+          購入済み
+        </span>
+      </div>
     </div>
+
+    <!-- 説明本文 -->
+    <div class="description-block" *ngIf="souvenir.description">
+      <pre class="formatted-text">{{formatText(souvenir.description)}}</pre>
+    </div>
+
+    <!-- アクションボタンエリア（sight-detail と同一の導線） -->
+    <div class="action-buttons-container">
+      <div class="action-buttons-row">
+        <ion-button
+          [class.active]="isFavorite"
+          [color]="isFavorite ? 'danger' : 'medium'"
+          (click)="toggleFavorite()"
+          class="action-button favorite-button"
+          expand="block">
+          <ion-icon [name]="isFavorite ? 'heart' : 'heart-outline'" slot="start"></ion-icon>
+          <ion-label>{{isFavorite ? 'お気に入り済み' : 'お気に入りに追加'}}</ion-label>
+        </ion-button>
+
+        <ion-button
+          [class.active]="isVisited"
+          [color]="isVisited ? 'success' : 'medium'"
+          (click)="toggleVisited()"
+          class="action-button visited-button"
+          expand="block">
+          <ion-icon [name]="isVisited ? 'checkmark-circle' : 'checkmark-circle-outline'" slot="start"></ion-icon>
+          <ion-label>{{isVisited ? '購入済み' : '購入済みにする'}}</ion-label>
+        </ion-button>
+      </div>
+
+      <ion-button
+        color="primary"
+        (click)="addToPlan()"
+        class="action-button plan-button"
+        expand="block">
+        <ion-icon name="calendar-outline" slot="start"></ion-icon>
+        <ion-label>このお土産を買うプランを作る</ion-label>
+      </ion-button>
+    </div>
+
+    <!-- 別のお土産へ -->
+    <div class="navigation-souvenir-container">
+      <ion-button
+        color="medium"
+        fill="outline"
+        (click)="goToNextSouvenir()"
+        class="navigation-souvenir-button"
+        expand="block">
+        <ion-icon name="shuffle-outline" slot="start"></ion-icon>
+        <ion-label>別のお土産を見る</ion-label>
+      </ion-button>
+    </div>
+
+    <div style="height: 24px;"></div>
   </ion-content>
 </ng-container>
-
-
-

@@ -79,9 +79,9 @@ ion-segment-button {
   font-family: var(--display-font);
   font-weight: 600;
   letter-spacing: 0.14em;
-  font-size: 12px;
+  font-size: var(--step-caption);
   text-transform: uppercase;
-  min-height: 40px;
+  min-height: var(--tap-target-min); /* HIG 44pt タップ領域 */
 }
 
 /* ---------- FAB: squared ---------- */
@@ -128,7 +128,7 @@ ion-searchbar {
   }
 
   .eyebrow {
-    font-size: 11px;
+    font-size: var(--step-eyebrow);
     letter-spacing: 0.22em;
     color: var(--ion-color-primary);
     font-weight: 600;
@@ -150,7 +150,7 @@ ion-searchbar {
 
   .place {
     font-family: var(--display-font);
-    font-size: 22px;
+    font-size: var(--step-title);
     font-weight: 700;
     line-height: 1.5;
     letter-spacing: 0.04em;
@@ -159,8 +159,8 @@ ion-searchbar {
   }
 
   .reading {
-    font-size: 12px;
-    color: var(--ion-color-step-500);
+    font-size: var(--step-caption);
+    color: var(--ion-color-step-600); /* コントラスト確保: step-500→600 (WCAG AA) */
     line-height: 1.6;
     letter-spacing: 0.04em;
     margin: 0;
@@ -177,11 +177,11 @@ ion-searchbar {
 
   .chip-on-color {
     background: transparent;
-    color: var(--ion-color-step-600);
+    color: var(--ion-color-step-700); /* 11px の小さい文字: コントラスト確保のため step-700 */
     border: 1px solid var(--ion-border-color);
     border-radius: 2px;
     padding: 4px 10px;
-    font-size: 11px;
+    font-size: var(--step-eyebrow);
     font-weight: 500;
     letter-spacing: 0.05em;
     display: inline-flex;
@@ -245,15 +245,22 @@ ion-searchbar {
     --background: transparent;
     border: 1px solid var(--ion-border-color);
     border-radius: 2px;
-    height: 30px;
-    font-size: 12px;
+    /* HIG 44pt タップ領域を満たす。視覚的な高さは padding で調整 */
+    min-height: var(--tap-target-min);
+    font-size: var(--step-caption);
     letter-spacing: 0.06em;
     font-weight: 500;
+
+    &:focus-visible {
+      outline: 2px solid var(--ion-color-primary);
+      outline-offset: 2px;
+    }
 
     &[color="primary"] {
       --background: var(--ion-color-primary);
       --color: var(--ion-color-primary-contrast);
       border-color: var(--ion-color-primary);
+      font-weight: 700; /* 色以外でも選択状態を伝える（WCAG 1.4.1） */
     }
   }
 }
@@ -304,13 +311,13 @@ ion-searchbar {
   padding: 8px 16px 4px;
 
   .greeting-sub {
-    font-size: 13px;
-    color: var(--ion-color-step-500);
+    font-size: var(--step-body-sm);
+    color: var(--ion-color-step-600);
     margin: 0 0 4px;
   }
 
   .greeting-main {
-    font-size: 17px;
+    font-size: var(--step-headline);
     font-weight: 600;
     margin: 0;
     color: var(--ion-text-color);
@@ -414,5 +421,55 @@ ion-searchbar {
 
   .exploration-content {
     margin-top: 8px;
+  }
+}
+
+/* ============================================================
+   Phase 6/7: レスポンシブ可読幅・フォーカス・Reduce Motion
+   HIG の layout guide（可読幅）・アクセシビリティ原則の Web 翻訳。
+   ============================================================ */
+
+/* ---------- 可読幅の上限（タブレット/デスクトップ Web で間延びさせない） ---------- */
+@media (min-width: 700px) {
+  .greeting-block,
+  .chip-row,
+  .section-head,
+  .hero-card,
+  .exploration-mode-container,
+  ion-list,
+  .editorial-empty {
+    max-width: var(--content-max-width);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* hero-card は左右マージンを保ちつつ中央寄せ */
+  .hero-card {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* ---------- フォーカスリング（キーボード操作可視化・Web で特に重要） ---------- */
+a:focus-visible,
+button:focus-visible,
+ion-button:focus-visible,
+ion-item[button]:focus-visible,
+ion-tab-button:focus-visible,
+ion-fab-button:focus-visible,
+ion-segment-button:focus-visible {
+  outline: 2px solid var(--ion-color-primary);
+  outline-offset: 2px;
+}
+
+/* ---------- Reduce Motion 対応（前庭障害等への配慮） ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

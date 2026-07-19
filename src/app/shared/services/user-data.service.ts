@@ -207,6 +207,19 @@ export class UserDataService {
     localStorage.setItem(this.PLANS_KEY, JSON.stringify(plans));
   }
 
+  /**
+   * 削除したプランを元の内容（id・items・作成日を含む）のまま復元する。
+   * Undo トーストの「元に戻す」で使用。既に同一 id が存在する場合は何もしない。
+   */
+  restorePlan(plan: Plan): void {
+    const plans = this.getPlans();
+    if (plans.some(p => p.id === plan.id)) {
+      return;
+    }
+    plans.push(plan);
+    localStorage.setItem(this.PLANS_KEY, JSON.stringify(plans));
+  }
+
   addItemToPlan(planId: string, itemId: string, itemType: 'sight' | 'souvenir'): void {
     const plan = this.getPlan(planId);
     if (plan) {

@@ -26,23 +26,32 @@
     <h2 class="greeting-main">いつでも行けるから、まだ行ってない場所。</h2>
   </div>
 
-  <!-- Filter chips -->
-  <div class="chip-row">
-    <ion-chip [color]="activeFilter === 'all' ? 'primary' : ''" (click)="setFilter('all')">
+  <!--
+    Filter chips
+    実データ（訪問済み/お気に入り）で機能するフィルターのみを表示する。
+    かつて存在した「寺社」「庭園」は Sight 型にカテゴリ列がなく非機能だったため撤去。
+    選択状態は色に加えてチェックアイコン（非色）でも伝える（WCAG 1.4.1）。
+  -->
+  <div class="chip-row" role="group" aria-label="おすすめの絞り込み">
+    <ion-chip
+      [color]="activeFilter === 'all' ? 'primary' : ''"
+      (click)="setFilter('all')"
+      [attr.aria-pressed]="activeFilter === 'all'">
+      <ion-icon name="checkmark-outline" *ngIf="activeFilter === 'all'"></ion-icon>
       <ion-label>すべて</ion-label>
     </ion-chip>
-    <ion-chip [color]="activeFilter === 'temple' ? 'primary' : ''" (click)="setFilter('temple')">
-      <ion-label>寺社</ion-label>
-    </ion-chip>
-    <ion-chip [color]="activeFilter === 'garden' ? 'primary' : ''" (click)="setFilter('garden')">
-      <ion-label>庭園</ion-label>
-    </ion-chip>
-    <ion-chip [color]="activeFilter === 'unvisited' ? 'primary' : ''" (click)="setFilter('unvisited')">
-      <ion-icon name="sparkles-outline"></ion-icon>
+    <ion-chip
+      [color]="activeFilter === 'unvisited' ? 'primary' : ''"
+      (click)="setFilter('unvisited')"
+      [attr.aria-pressed]="activeFilter === 'unvisited'">
+      <ion-icon [name]="activeFilter === 'unvisited' ? 'checkmark-outline' : 'sparkles-outline'"></ion-icon>
       <ion-label>未訪問</ion-label>
     </ion-chip>
-    <ion-chip [color]="activeFilter === 'favorite' ? 'primary' : ''" (click)="setFilter('favorite')">
-      <ion-icon name="heart-outline"></ion-icon>
+    <ion-chip
+      [color]="activeFilter === 'favorite' ? 'primary' : ''"
+      (click)="setFilter('favorite')"
+      [attr.aria-pressed]="activeFilter === 'favorite'">
+      <ion-icon [name]="activeFilter === 'favorite' ? 'checkmark-outline' : 'heart-outline'"></ion-icon>
       <ion-label>お気に入り</ion-label>
     </ion-chip>
   </div>
@@ -69,6 +78,9 @@
     <!-- Hero card: おすすめスポット -->
     <div class="section-head">
       <h2>おすすめスポット</h2>
+      <button class="more" (click)="shuffleSight()" *ngIf="primarySightSuggestion" aria-label="別のスポットを提案">
+        <ion-icon name="shuffle-outline" style="font-size:13px;vertical-align:-2px;margin-right:4px;"></ion-icon>別の提案
+      </button>
     </div>
 
     <ion-card class="hero-card" button="true" *ngIf="primarySightSuggestion" [routerLink]="getRouterLink(primarySightSuggestion)">
@@ -111,6 +123,9 @@
     <!-- Pickup card: 今日のピックアップ (お土産) -->
     <div class="section-head">
       <h2>今日のピックアップ</h2>
+      <button class="more" (click)="shuffleSouvenir()" *ngIf="primarySouvenirSuggestion" aria-label="別のお土産を提案">
+        <ion-icon name="shuffle-outline" style="font-size:13px;vertical-align:-2px;margin-right:4px;"></ion-icon>別の提案
+      </button>
     </div>
 
     <ion-card class="hero-card pickup-card" button="true" *ngIf="primarySouvenirSuggestion" [routerLink]="getRouterLink(primarySouvenirSuggestion)">
@@ -201,15 +216,8 @@
       </div>
     </div>
 
-    <div style="height: 90px;"></div>
+    <div style="height: 40px;"></div>
 
   </ng-container>
-
-  <!-- Shuffle FAB -->
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed" style="margin-bottom: 8px;">
-    <ion-fab-button color="primary" (click)="getRandomSuggestions()">
-      <ion-icon name="shuffle-outline"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
 
 </ion-content>

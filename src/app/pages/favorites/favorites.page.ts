@@ -1,4 +1,5 @@
 import { Component, OnDestroy, inject } from '@angular/core';
+import { ToastController } from '@ionic/angular';
 import { Store } from '@ngrx/store';
 import { UserDataService } from '../../shared/services/user-data.service';
 import { selectSouvenirFeature } from '../souvenir/store';
@@ -20,6 +21,7 @@ export class FavoritesPage implements OnDestroy {
   private readonly store = inject(Store);
   private readonly sightsService = inject(SightsService);
   private readonly souvenirService = inject(SouvenirService);
+  private readonly toastController = inject(ToastController);
 
   public favoriteItems: FavoriteItem[] = [];
   public loading = true;
@@ -210,9 +212,26 @@ export class FavoritesPage implements OnDestroy {
     this.subscriptions.add(loadSubscription);
   }
 
-  removeFavorite(item: FavoriteItem) {
+  async removeFavorite(item: FavoriteItem) {
     this.userDataService.removeFavorite(item.id, item.type);
     this.loadFavorites();
+
+    // HIG: 頻繁で取り消し可能な削除には確認ダイアログを出さず Undo を提供する
+    const toast = await this.toastController.create({
+      message: `「${item.name}」をお気に入りから削除しました`,
+      duration: 3500,
+      color: 'dark',
+      buttons: [
+        {
+          text: '元に戻す',
+          handler: () => {
+            this.userDataService.addFavorite(item.id, item.type);
+            this.loadFavorites();
+          }
+        }
+      ]
+    });
+    await toast.present();
   }
 
   getRouterLink(item: FavoriteItem): string {
