@@ -26,16 +26,16 @@
   </ion-segment>
 
   <!-- Empty state -->
-  <div *ngIf="plans.length === 0" class="editorial-empty">
-    <ion-icon name="map-outline" class="ico"></ion-icon>
+  <div *ngIf="plans.length === 0" class="app-empty">
+    <ion-icon name="map-outline" class="ico" aria-hidden="true"></ion-icon>
     <h3>プランはまだありません</h3>
     <p>複数のスポットを組み合わせて、あなただけの京都プランを作成しましょう</p>
-    <ion-button expand="block" fill="solid" (click)="createPlan()" style="margin-top:16px;">
-      <ion-icon slot="start" name="add"></ion-icon>
+    <ion-button expand="block" fill="solid" (click)="createPlan()">
+      <ion-icon slot="start" name="add" aria-hidden="true"></ion-icon>
       プランを作成
     </ion-button>
-    <ion-button expand="block" fill="outline" (click)="createRandomPlan()" style="margin-top:8px;">
-      <ion-icon slot="start" name="shuffle-outline"></ion-icon>
+    <ion-button expand="block" fill="outline" (click)="createRandomPlan()">
+      <ion-icon slot="start" name="shuffle-outline" aria-hidden="true"></ion-icon>
       ランダムプランを作成
     </ion-button>
   </div>
@@ -64,8 +64,8 @@
         </ion-item-options>
       </ion-item-sliding>
 
-      <div *ngIf="upcomingPlans.length === 0" class="editorial-empty" style="padding:40px 24px;">
-        <ion-icon name="calendar-outline" class="ico"></ion-icon>
+      <div *ngIf="upcomingPlans.length === 0" class="app-empty" style="padding:40px 24px;">
+        <ion-icon name="calendar-outline" class="ico" aria-hidden="true"></ion-icon>
         <h3>これからのプランはありません</h3>
         <p>新しいプランを作成しましょう</p>
       </div>
@@ -92,19 +92,19 @@
         </ion-item-options>
       </ion-item-sliding>
 
-      <div *ngIf="donePlans.length === 0" class="editorial-empty" style="padding:40px 24px;">
-        <ion-icon name="checkmark-circle-outline" class="ico"></ion-icon>
+      <div *ngIf="donePlans.length === 0" class="app-empty" style="padding:40px 24px;">
+        <ion-icon name="checkmark-circle-outline" class="ico" aria-hidden="true"></ion-icon>
         <h3>完了したプランはありません</h3>
         <p>プランのスポットをすべてチェックすると完了になります</p>
       </div>
     </ng-container>
   </ion-list>
 
-  <div style="height: 90px;"></div>
+  <div class="safe-bottom-spacer" aria-hidden="true"></div>
 
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed" style="margin-bottom: 8px;">
-    <ion-fab-button color="primary" (click)="createPlan()">
-      <ion-icon name="add"></ion-icon>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="primary" (click)="createPlan()" aria-label="プランを作成">
+      <ion-icon name="add" aria-hidden="true"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 </ion-content>

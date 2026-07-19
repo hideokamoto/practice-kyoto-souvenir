@@ -37,12 +37,12 @@
   </ion-segment>
 
   <!-- Empty state -->
-  <div *ngIf="!loading && filteredFavorites.length === 0" class="editorial-empty">
-    <ion-icon name="heart-outline" class="ico"></ion-icon>
+  <div *ngIf="!loading && filteredFavorites.length === 0" class="app-empty">
+    <ion-icon name="heart-outline" class="ico" aria-hidden="true"></ion-icon>
     <h3>{{ favoriteItems.length === 0 ? 'お気に入りはまだありません' : '条件に一致する項目がありません' }}</h3>
     <p *ngIf="favoriteItems.length === 0">観光地やお土産の詳細ページでハートアイコンをタップして追加できます</p>
-    <ion-button *ngIf="favoriteItems.length === 0" expand="block" fill="outline" size="small" routerLink="/tabs/discover" style="margin-top:16px;">
-      <ion-icon slot="start" name="compass-outline"></ion-icon>
+    <ion-button *ngIf="favoriteItems.length === 0" expand="block" fill="outline" routerLink="/tabs/discover">
+      <ion-icon slot="start" name="compass-outline" aria-hidden="true"></ion-icon>
       発見ページへ
     </ion-button>
   </div>

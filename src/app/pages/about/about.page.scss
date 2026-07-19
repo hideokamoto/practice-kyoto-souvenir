@@ -1,39 +1,48 @@
 .app-header {
   text-align: center;
-  margin: 2rem 0;
+  margin: 1.5rem 0 2rem;
 
   h1 {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-    color: var(--ion-color-primary);
+    font-size: var(--text-title-1, 1.75rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0 0 0.5rem;
+    color: var(--app-label-primary, var(--ion-text-color));
   }
 
   .app-subtitle {
-    color: var(--ion-color-medium);
-    font-size: 1rem;
+    color: var(--app-label-secondary, var(--ion-color-medium));
+    font-size: var(--text-subhead, 0.9375rem);
+    margin: 0;
   }
 }
 
 ion-card {
   margin-bottom: 1rem;
+  border-radius: 16px;
+  box-shadow: none;
+  border: 0.55px solid var(--app-separator, var(--ion-border-color));
 
   ion-card-header {
     ion-card-title {
       display: flex;
       align-items: center;
       gap: 0.5rem;
+      font-size: var(--text-headline, 1.0625rem);
+      font-weight: 600;
 
       ion-icon {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
+        color: var(--ion-color-primary);
       }
     }
   }
 
   ion-card-content {
     p {
-      line-height: 1.6;
+      line-height: 1.5;
       margin-bottom: 1rem;
+      color: var(--app-label-primary, var(--ion-text-color));
 
       &:last-child {
         margin-bottom: 0;
