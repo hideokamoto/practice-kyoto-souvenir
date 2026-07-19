@@ -6,10 +6,10 @@
       </ion-buttons>
       <ion-title>{{ plan.name }}</ion-title>
       <ion-buttons slot="end">
-        <ion-button (click)="renamePlan()">
+        <ion-button (click)="renamePlan()" aria-label="プラン名を変更">
           <ion-icon slot="icon-only" name="create"></ion-icon>
         </ion-button>
-        <ion-button (click)="addItem()">
+        <ion-button (click)="addItem()" aria-label="スポットを追加">
           <ion-icon slot="icon-only" name="add"></ion-icon>
         </ion-button>
       </ion-buttons>
@@ -49,10 +49,10 @@
                 <small>{{ item.description | truncate:60 }}</small>
               </p>
             </ion-label>
-            <ion-reorder slot="end"></ion-reorder>
+            <ion-reorder slot="end" [attr.aria-label]="item.name + 'をドラッグして並べ替え'"></ion-reorder>
           </ion-item>
           <ion-item-options side="end">
-            <ion-item-option color="danger" (click)="removeItem(item)">
+            <ion-item-option color="danger" (click)="removeItem(item)" [attr.aria-label]="'「' + item.name + '」をプランから削除'">
               <ion-icon slot="icon-only" name="trash"></ion-icon>
             </ion-item-option>
           </ion-item-options>

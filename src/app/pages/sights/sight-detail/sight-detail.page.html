@@ -8,10 +8,10 @@
         {{sight.name}}
       </ion-title>
       <ion-buttons slot="end">
-        <ion-button (click)="toggleFavorite()">
+        <ion-button (click)="toggleFavorite()" [attr.aria-label]="isFavorite ? 'お気に入りから外す' : 'お気に入りに追加'">
           <ion-icon slot="icon-only" [name]="isFavorite ? 'heart' : 'heart-outline'" [color]="isFavorite ? 'danger' : ''"></ion-icon>
         </ion-button>
-        <ion-button (click)="toggleVisited()">
+        <ion-button (click)="toggleVisited()" [attr.aria-label]="isVisited ? '訪問済みを取り消す' : '行ったことがあるにする'">
           <ion-icon slot="icon-only" [name]="isVisited ? 'checkmark-circle' : 'checkmark-circle-outline'" [color]="isVisited ? 'success' : ''"></ion-icon>
         </ion-button>
       </ion-buttons>

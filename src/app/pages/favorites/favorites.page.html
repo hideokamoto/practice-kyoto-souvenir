@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-title>お気に入り</ion-title>
     <ion-buttons slot="end">
-      <ion-button [routerLink]="['/about']">
+      <ion-button [routerLink]="['/about']" aria-label="このアプリについて">
         <ion-icon name="information-circle-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -21,7 +21,7 @@
   </ion-refresher>
 
   <ion-toolbar>
-    <ion-searchbar placeholder="場所を検索" show-clear-button="focus" [(ngModel)]="searchQuery"></ion-searchbar>
+    <ion-searchbar placeholder="場所を検索" aria-label="お気に入りを検索" show-clear-button="focus" [(ngModel)]="searchQuery"></ion-searchbar>
   </ion-toolbar>
 
   <ion-segment [value]="favSegment" (ionChange)="onFavSegmentChange($event)" style="margin: 4px 16px 8px;">
@@ -64,7 +64,7 @@
         </ion-icon>
       </ion-item>
       <ion-item-options side="end">
-        <ion-item-option color="danger" (click)="removeFavorite(item)">
+        <ion-item-option color="danger" (click)="removeFavorite(item)" [attr.aria-label]="'「' + item.name + '」をお気に入りから削除'">
           <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
         </ion-item-option>
       </ion-item-options>

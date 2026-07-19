@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-title>プラン</ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="createPlan()">
+      <ion-button (click)="createPlan()" aria-label="新しいプランを作成">
         <ion-icon slot="icon-only" name="add"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -58,7 +58,7 @@
           <ion-note slot="end" color="primary">{{ plan.items.length }}件</ion-note>
         </ion-item>
         <ion-item-options side="end">
-          <ion-item-option color="danger" (click)="deletePlan(plan, $event)">
+          <ion-item-option color="danger" (click)="deletePlan(plan, $event)" [attr.aria-label]="'「' + plan.name + '」を削除'">
             <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
           </ion-item-option>
         </ion-item-options>
@@ -86,7 +86,7 @@
           <ion-icon name="checkmark-circle" slot="end" color="success"></ion-icon>
         </ion-item>
         <ion-item-options side="end">
-          <ion-item-option color="danger" (click)="deletePlan(plan, $event)">
+          <ion-item-option color="danger" (click)="deletePlan(plan, $event)" [attr.aria-label]="'「' + plan.name + '」を削除'">
             <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
           </ion-item-option>
         </ion-item-options>
@@ -103,7 +103,7 @@
   <div style="height: 90px;"></div>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed" style="margin-bottom: 8px;">
-    <ion-fab-button color="primary" (click)="createPlan()">
+    <ion-fab-button color="primary" (click)="createPlan()" aria-label="新しいプランを作成">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>

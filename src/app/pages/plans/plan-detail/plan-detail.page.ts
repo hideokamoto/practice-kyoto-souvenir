@@ -1,6 +1,6 @@
 import { Component, OnDestroy, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AlertController, ActionSheetController } from '@ionic/angular';
+import { AlertController, ActionSheetController, ToastController } from '@ionic/angular';
 import { Store } from '@ngrx/store';
 import { UserDataService, Plan, PlanItem } from '../../../shared/services/user-data.service';
 import { selectSouvenirFeature } from '../../souvenir/store';
@@ -29,6 +29,7 @@ export class PlanDetailPage implements OnDestroy {
   private readonly userDataService = inject(UserDataService);
   private readonly alertController = inject(AlertController);
   private readonly actionSheetController = inject(ActionSheetController);
+  private readonly toastController = inject(ToastController);
   private readonly store = inject(Store);
 
   public plan: Plan | null = null;
@@ -282,11 +283,30 @@ export class PlanDetailPage implements OnDestroy {
     });
   }
 
-  removeItem(item: PlanItemWithDetails) {
-    if (this.plan) {
-      this.userDataService.removeItemFromPlan(this.plan.id, item.itemId, item.itemType);
-      this.loadPlan(this.plan.id);
-    }
+  async removeItem(item: PlanItemWithDetails) {
+    if (!this.plan) return;
+    const planId = this.plan.id;
+
+    // HIG: 確認ダイアログの代わりに即時削除＋Undo（元に戻す）を提供する。
+    // favorites/plans 一覧の削除と同じパターンに揃える。
+    this.userDataService.removeItemFromPlan(planId, item.itemId, item.itemType);
+    this.loadPlan(planId);
+
+    const toast = await this.toastController.create({
+      message: `「${item.name}」をプランから削除しました`,
+      duration: 3500,
+      color: 'dark',
+      buttons: [
+        {
+          text: '元に戻す',
+          handler: () => {
+            this.userDataService.addItemToPlan(planId, item.itemId, item.itemType);
+            this.loadPlan(planId);
+          }
+        }
+      ]
+    });
+    await toast.present();
   }
 
   getRouterLink(item: PlanItemWithDetails): string {

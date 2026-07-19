@@ -9,7 +9,12 @@
   詳細: INCIDENT_REPORT.md
 -->
 <ion-tabs>
-  <ion-tab-bar slot="bottom">
+  <!--
+    translucent: HIG の Liquid Glass 原則（コントロール層とコンテンツ層の分離）の
+    Ionic 標準実装を利用。ion-header の [translucent]="true" と同じ仕組みで、
+    @supports (backdrop-filter) でのみ有効化されるため非対応環境には影響しない。
+  -->
+  <ion-tab-bar slot="bottom" [translucent]="true">
     <ion-tab-button tab="discover" href="/tabs/discover">
       <ion-icon name="compass-outline"></ion-icon>
       <ion-label>発見</ion-label>

@@ -295,14 +295,24 @@ ion-searchbar {
   }
 
   .more {
-    font-size: 12px;
+    font-size: var(--step-caption);
     color: var(--ion-color-primary);
     text-decoration: none;
     letter-spacing: 0.08em;
     cursor: pointer;
     background: none;
     border: none;
-    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    /* HIG 44pt タップ領域: 見た目のサイズは変えず、当たり判定だけ padding で拡張する */
+    min-height: var(--tap-target-min);
+    padding: 0 4px;
+    margin: 0 -4px;
+
+    &:focus-visible {
+      outline: 2px solid var(--ion-color-primary);
+      outline-offset: 2px;
+    }
   }
 }
 
