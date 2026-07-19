@@ -1,0 +1,28 @@
+{
+  "name": "hideokamoto-private-plugins",
+  "owner": {
+    "name": "Hidetaka Okamoto",
+    "email": "kokkoku214@gmail.com"
+  },
+  "metadata": {
+    "description": "hideokamoto 用プライベート Cursor プラグイン集",
+    "version": "1.0.0",
+    "pluginRoot": "cursor-plugins"
+  },
+  "plugins": [
+    {
+      "name": "apple-hig-design",
+      "source": "apple-hig-design",
+      "description": "Apple Human Interface Guidelines（2025-06 Liquid Glass 改訂含む）を単一ソースとする UI/UX 設計スキル",
+      "version": "1.0.0",
+      "author": {
+        "name": "Hidetaka Okamoto",
+        "email": "kokkoku214@gmail.com"
+      },
+      "repository": "https://github.com/hideokamoto/practice-kyoto-souvenir",
+      "license": "MIT",
+      "keywords": ["apple", "hig", "design", "ui", "ux"],
+      "category": "design"
+    }
+  ]
+}
