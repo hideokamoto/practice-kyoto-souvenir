@@ -16,3 +16,6 @@
 .DS_Store
 Thumbs.db
 *~
+
+# Netlify CLI のローカル状態
+/.netlify
