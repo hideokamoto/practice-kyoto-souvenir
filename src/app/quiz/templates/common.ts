@@ -8,6 +8,18 @@ export function defineTemplate<E>(t: Template<E>): Template<E> {
   return t;
 }
 
+/**
+ * 元データのオブジェクトごとに 1 回だけ計算して覚えておく（データは読み込み後に変わらない）。
+ * 全件の伏せ字処理のような重い計算を、出題のたびにやり直さないために使う。
+ */
+export function memoByObject<K extends object, R>(fn: (k: K) => R): (k: K) => R {
+  const cache = new WeakMap<K, R>();
+  return (k) => {
+    if (!cache.has(k)) cache.set(k, fn(k));
+    return cache.get(k)!;
+  };
+}
+
 export function fmtNumber(n: number): string {
   return n.toLocaleString('ja-JP', { maximumFractionDigits: 2 });
 }

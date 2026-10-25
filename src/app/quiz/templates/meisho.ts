@@ -3,7 +3,13 @@ import { WARDS } from '../../data/types';
 import { makeQuestion } from '../make';
 import { sample, shuffle } from '../rng';
 import { containsLoosely, excerpt, maskTerms, maskText } from '../text';
-import { byLengthCloseness, defineTemplate, KANJI_ONLY, type AnyTemplate } from './common';
+import {
+  byLengthCloseness,
+  defineTemplate,
+  KANJI_ONLY,
+  memoByObject,
+  type AnyTemplate,
+} from './common';
 
 const SOURCES = ['kyoto-navi'];
 
@@ -32,26 +38,28 @@ const ERAS = ['飛鳥', '奈良', '平安', '鎌倉', '南北朝', '室町', '�
 const items = (d: { meisho?: { items: Meisho[] } }) => d.meisho?.items ?? [];
 const firstSentence = (m: Meisho) => `${m.description.split('。')[0]}。`;
 
-const quoteOf = (m: Meisho) =>
-  maskText(excerpt(m.description, 120), [...maskTerms(m.name, m.kana), ...maskTerms(m.base, '')]);
+const quoteOf = memoByObject((m: Meisho) =>
+  maskText(excerpt(m.description, 120), [...maskTerms(m.name, m.kana), ...maskTerms(m.base, '')]),
+);
+
+const describeCandidates = memoByObject((all: Meisho[]): Meisho[] => {
+  const bases = new Map<MeishoGenre, Set<string>>();
+  for (const m of all) {
+    if (!bases.has(m.genre)) bases.set(m.genre, new Set());
+    bases.get(m.genre)!.add(m.base);
+  }
+  return all.filter(
+    (m) =>
+      m.genre !== 'other' &&
+      (bases.get(m.genre)?.size ?? 0) >= 4 &&
+      quoteOf(m).replace(/〇〇/g, '').length >= 8,
+  );
+});
 
 const describe = defineTemplate<Meisho>({
   id: 'meisho.describe',
   needs: 'meisho',
-  candidates(d) {
-    const all = items(d);
-    const bases = new Map<MeishoGenre, Set<string>>();
-    for (const m of all) {
-      if (!bases.has(m.genre)) bases.set(m.genre, new Set());
-      bases.get(m.genre)!.add(m.base);
-    }
-    return all.filter(
-      (m) =>
-        m.genre !== 'other' &&
-        (bases.get(m.genre)?.size ?? 0) >= 4 &&
-        quoteOf(m).replace(/〇〇/g, '').length >= 8,
-    );
-  },
+  candidates: (d) => (d.meisho ? describeCandidates(d.meisho.items) : []),
   key: (m) => m.id,
   build(m, d, rng) {
     const quote = quoteOf(m);

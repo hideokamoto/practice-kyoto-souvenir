@@ -2,13 +2,22 @@ import type { Omiyage } from '../../data/types';
 import { makeQuestion } from '../make';
 import { shuffle } from '../rng';
 import { containsLoosely, excerpt, maskTerms, maskText } from '../text';
-import { byLengthCloseness, countBy, defineTemplate, KANJI_ONLY, type AnyTemplate } from './common';
+import {
+  byLengthCloseness,
+  countBy,
+  defineTemplate,
+  KANJI_ONLY,
+  memoByObject,
+  type AnyTemplate,
+} from './common';
 
 const SOURCES = ['kyoto-navi'];
 
 const items = (d: { omiyage?: { items: Omiyage[] } }) => d.omiyage?.items ?? [];
 
-const quoteOf = (o: Omiyage) => maskText(excerpt(o.description, 120), maskTerms(o.name, o.kana));
+const quoteOf = memoByObject((o: Omiyage) =>
+  maskText(excerpt(o.description, 120), maskTerms(o.name, o.kana)),
+);
 
 const describe = defineTemplate<Omiyage>({
   id: 'omiyage.describe',

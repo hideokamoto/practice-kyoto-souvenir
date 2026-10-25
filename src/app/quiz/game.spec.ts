@@ -51,6 +51,13 @@ describe('buildGame', () => {
     expect(qs.every((q) => q.template === 'ok')).toBe(true);
   });
 
+  it('1 プレイの組み立てで、各テンプレートの出題対象は 1 回だけ求める', () => {
+    const t = fake('t1', 20);
+    const spy = vi.spyOn(t, 'candidates');
+    buildGame([t], {}, mulberry32(1));
+    expect(spy).toHaveBeenCalledTimes(1);
+  });
+
   it('同じシードなら同じ出題', () => {
     const ts = [fake('t1', 30), fake('t2', 30)];
     expect(buildGame(ts, {}, mulberry32(9))).toEqual(buildGame(ts, {}, mulberry32(9)));

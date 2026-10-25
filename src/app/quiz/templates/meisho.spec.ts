@@ -112,6 +112,13 @@ describe('meisho.describe', () => {
   });
 });
 
+describe('meisho.describe の計算の使い回し', () => {
+  it('同じデータなら出題対象の一覧を作り直さない（全件の伏せ字処理が重いため）', () => {
+    const tpl = t('meisho.describe');
+    expect(tpl.candidates(data)).toBe(tpl.candidates(data));
+  });
+});
+
 describe('meisho.era', () => {
   const tpl = t('meisho.era');
 

@@ -100,11 +100,12 @@ export function buildGame(
   rng: Rng,
   n = QUESTIONS_PER_GAME,
 ): Question[] {
+  const cands = new Map(templates.map((t) => [t, t.candidates(d)]));
   const active = shuffle(
-    templates.filter((t) => t.candidates(d).length > 0),
+    templates.filter((t) => cands.get(t)!.length > 0),
     rng,
   );
-  const queues = new Map(active.map((t) => [t, shuffle(t.candidates(d), rng)]));
+  const queues = new Map(active.map((t) => [t, shuffle(cands.get(t)!, rng)]));
   const used = new Set<string>();
   const out: Question[] = [];
   let turn = 0;
