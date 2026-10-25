@@ -1,41 +1,22 @@
-import { defineConfig, devices } from '@playwright/test';
+import { defineConfig } from '@playwright/test';
 
-/**
- * Playwright E2Eテスト設定
- * 
- * この設定は、Ionic AngularアプリケーションのE2Eテスト用です。
- * 再発防止のための重要なテストが含まれています：
- * - ion-router-outletの重複チェック
- * - スクロール機能の検証
- * - ナビゲーション機能の検証
- */
+// 事前に `npm run build` しておくこと（CI では build の後に実行する）。
 export default defineConfig({
-  testDir: './e2e/playwright',
-  fullyParallel: true,
-  forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 2 : 0,
-  workers: process.env.CI ? 1 : undefined,
-  reporter: 'html',
+  testDir: 'e2e',
+  timeout: 60_000,
+  retries: process.env['CI'] ? 1 : 0,
+  reporter: process.env['CI'] ? [['list'], ['html', { open: 'never' }]] : 'list',
   use: {
-    baseURL: 'http://localhost:4200',
-    trace: 'on-first-retry',
-    screenshot: 'only-on-failure',
+    baseURL: 'http://localhost:4310/kyoto-ikezu-quiz/',
+    locale: 'ja-JP',
+    timezoneId: 'Asia/Tokyo',
+    launchOptions: process.env['PW_CHROMIUM_PATH']
+      ? { executablePath: process.env['PW_CHROMIUM_PATH'] }
+      : undefined,
   },
-
-  projects: [
-    {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
-    },
-  ],
-
   webServer: {
-    command: 'npm start',
-    url: 'http://localhost:4200',
-    reuseExistingServer: !process.env.CI,
-    timeout: 120 * 1000,
+    command: 'node tools/e2e-server.mjs',
+    url: 'http://localhost:4310/kyoto-ikezu-quiz/',
+    reuseExistingServer: !process.env['CI'],
   },
 });
-
-
-

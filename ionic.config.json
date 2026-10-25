@@ -1,7 +1,0 @@
-{
-  "name": "kyoto-souvenir",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular"
-}

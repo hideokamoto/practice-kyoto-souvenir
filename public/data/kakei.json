@@ -1,0 +1,5152 @@
+{
+  "meta": [
+    {
+      "id": "kakei",
+      "title": "家計調査（家計収支編）品目別都道府県庁所在市及び政令指定都市ランキング",
+      "publisher": "総務省統計局",
+      "url": "https://www.stat.go.jp/data/kakei/5.html",
+      "license": "公共データ利用規約（第1.0版）（PDL1.0）。CC BY 4.0 と互換",
+      "licenseUrl": "https://www.stat.go.jp/info/riyou.html",
+      "retrievedAt": "2026-10-25",
+      "note": "「家計調査（家計収支編）品目別都道府県庁所在市及び政令指定都市ランキング（2023年（令和5年）～2025年（令和7年）平均）」（総務省統計局）を加工して作成。二人以上の世帯。各品目の京都市の順位・値と 1 位の都市を抽出。1 位や京都市の順位が同値で決まらない品目は除外。"
+    }
+  ],
+  "period": "2023年（令和5年）～2025年（令和7年）平均",
+  "items": [
+    {
+      "group": "穀類",
+      "item": "穀類",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 10,
+      "kyotoValue": 96287,
+      "top": {
+        "city": "堺市",
+        "value": 100291
+      }
+    },
+    {
+      "group": "穀類",
+      "item": "米",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 25,
+      "kyotoValue": 30173,
+      "top": {
+        "city": "浜松市",
+        "value": 39473
+      }
+    },
+    {
+      "group": "穀類",
+      "item": "米",
+      "measure": "quantity",
+      "unit": "kg",
+      "cities": 52,
+      "kyotoRank": 32,
+      "kyotoValue": 56.41,
+      "top": {
+        "city": "福島市",
+        "value": 81.47
+      }
+    },
+    {
+      "group": "穀類",
+      "item": "パン",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 3,
+      "kyotoValue": 39347,
+      "top": {
+        "city": "神戸市",
+        "value": 41967
+      }
+    },
+    {
+      "group": "穀類",
+      "item": "パン",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 4,
+      "kyotoValue": 49484,
+      "top": {
+        "city": "堺市",
+        "value": 52737
+      }
+    },
+    {
+      "group": "穀類",
+      "item": "食パン",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 3,
+      "kyotoValue": 12914,
+      "top": {
+        "city": "神戸市",
+        "value": 14550
+      }
+    },
+    {
+      "group": "穀類",
+      "item": "食パン",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 7,
+      "kyotoValue": 23015,
+      "top": {
+        "city": "堺市",
+        "value": 24190
+      }
+    },
+    {
+      "group": "穀類",
+      "item": "他のパン",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 5,
+      "kyotoValue": 26433,
+      "top": {
+        "city": "神戸市",
+        "value": 27417
+      }
+    },
+    {
+      "group": "穀類",
+      "item": "他のパン",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 4,
+      "kyotoValue": 22938,
+      "top": {
+        "city": "堺市",
+        "value": 24173
+      }
+    },
+    {
+      "group": "穀類",
+      "item": "麺類",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 34,
+      "kyotoValue": 20271,
+      "top": {
+        "city": "山形市",
+        "value": 26372
+      }
+    },
+    {
+      "group": "穀類",
+      "item": "麺類",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 19,
+      "kyotoValue": 34480,
+      "top": {
+        "city": "高松市",
+        "value": 41528
+      }
+    },
+    {
+      "group": "穀類",
+      "item": "生うどん・そば",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 6,
+      "kyotoValue": 4439,
+      "top": {
+        "city": "高松市",
+        "value": 6472
+      }
+    },
+    {
+      "group": "穀類",
+      "item": "生うどん・そば",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 4,
+      "kyotoValue": 12409,
+      "top": {
+        "city": "高松市",
+        "value": 17369
+      }
+    },
+    {
+      "group": "穀類",
+      "item": "乾うどん・そば",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 27,
+      "kyotoValue": 2196,
+      "top": {
+        "city": "秋田市",
+        "value": 3943
+      }
+    },
+    {
+      "group": "穀類",
+      "item": "乾うどん・そば",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 38,
+      "kyotoValue": 2492,
+      "top": {
+        "city": "秋田市",
+        "value": 5370
+      }
+    },
+    {
+      "group": "穀類",
+      "item": "パスタ",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 30,
+      "kyotoValue": 1462,
+      "top": {
+        "city": "東京都区部",
+        "value": 1924
+      }
+    },
+    {
+      "group": "穀類",
+      "item": "パスタ",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 31,
+      "kyotoValue": 2996,
+      "top": {
+        "city": "札幌市",
+        "value": 3983
+      }
+    },
+    {
+      "group": "穀類",
+      "item": "中華麺",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 36,
+      "kyotoValue": 4389,
+      "top": {
+        "city": "盛岡市",
+        "value": 6475
+      }
+    },
+    {
+      "group": "穀類",
+      "item": "中華麺",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 39,
+      "kyotoValue": 7697,
+      "top": {
+        "city": "盛岡市",
+        "value": 11582
+      }
+    },
+    {
+      "group": "穀類",
+      "item": "カップ麺",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 52,
+      "kyotoValue": 4484,
+      "top": {
+        "city": "青森市",
+        "value": 8326
+      }
+    },
+    {
+      "group": "穀類",
+      "item": "カップ麺",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 52,
+      "kyotoValue": 3340,
+      "top": {
+        "city": "青森市",
+        "value": 6406
+      }
+    },
+    {
+      "group": "穀類",
+      "item": "即席麺",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 15,
+      "kyotoValue": 2629,
+      "top": {
+        "city": "鳥取市",
+        "value": 3493
+      }
+    },
+    {
+      "group": "穀類",
+      "item": "即席麺",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 8,
+      "kyotoValue": 3247,
+      "top": {
+        "city": "鳥取市",
+        "value": 4215
+      }
+    },
+    {
+      "group": "穀類",
+      "item": "他の麺類",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 21,
+      "kyotoValue": 673,
+      "top": {
+        "city": "横浜市",
+        "value": 1049
+      }
+    },
+    {
+      "group": "穀類",
+      "item": "他の麺類",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 34,
+      "kyotoValue": 491,
+      "top": {
+        "city": "相模原市",
+        "value": 1031
+      }
+    },
+    {
+      "group": "穀類",
+      "item": "他の穀類",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 13,
+      "kyotoValue": 6496,
+      "top": {
+        "city": "大津市",
+        "value": 7603
+      }
+    },
+    {
+      "group": "穀類",
+      "item": "他の穀類",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 33,
+      "kyotoValue": 7855,
+      "top": {
+        "city": "長野市",
+        "value": 10238
+      }
+    },
+    {
+      "group": "穀類",
+      "item": "小麦粉",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 14,
+      "kyotoValue": 696,
+      "top": {
+        "city": "長野市",
+        "value": 1025
+      }
+    },
+    {
+      "group": "穀類",
+      "item": "小麦粉",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 17,
+      "kyotoValue": 2046,
+      "top": {
+        "city": "長野市",
+        "value": 3649
+      }
+    },
+    {
+      "group": "穀類",
+      "item": "もち",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 18,
+      "kyotoValue": 1844,
+      "top": {
+        "city": "福井市",
+        "value": 3057
+      }
+    },
+    {
+      "group": "穀類",
+      "item": "もち",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 33,
+      "kyotoValue": 1898,
+      "top": {
+        "city": "新潟市",
+        "value": 3027
+      }
+    },
+    {
+      "group": "穀類",
+      "item": "他の穀類のその他",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 16,
+      "kyotoValue": 3956,
+      "top": {
+        "city": "大津市",
+        "value": 4894
+      }
+    },
+    {
+      "group": "穀類",
+      "item": "他の穀類のその他",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 20,
+      "kyotoValue": 4159,
+      "top": {
+        "city": "大津市",
+        "value": 5540
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "魚介類",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 13,
+      "kyotoValue": 78049,
+      "top": {
+        "city": "富山市",
+        "value": 88432
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "生鮮魚介",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 12,
+      "kyotoValue": 44089,
+      "top": {
+        "city": "富山市",
+        "value": 48638
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "生鮮魚介",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 21,
+      "kyotoValue": 18029,
+      "top": {
+        "city": "青森市",
+        "value": 25090
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "鮮魚",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 9,
+      "kyotoValue": 41545,
+      "top": {
+        "city": "富山市",
+        "value": 45952
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "鮮魚",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 19,
+      "kyotoValue": 17197,
+      "top": {
+        "city": "鳥取市",
+        "value": 22767
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "まぐろ",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 33,
+      "kyotoValue": 3659,
+      "top": {
+        "city": "静岡市",
+        "value": 10785
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "あじ",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 26,
+      "kyotoValue": 999,
+      "top": {
+        "city": "長崎市",
+        "value": 2376
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "あじ",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 23,
+      "kyotoValue": 620,
+      "top": {
+        "city": "松江市",
+        "value": 1780
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "いわし",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 22,
+      "kyotoValue": 463,
+      "top": {
+        "city": "鳥取市",
+        "value": 948
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "いわし",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 21,
+      "kyotoValue": 466,
+      "top": {
+        "city": "鳥取市",
+        "value": 1246
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "かつお",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 24,
+      "kyotoValue": 1658,
+      "top": {
+        "city": "高知市",
+        "value": 7530
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "かつお",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 22,
+      "kyotoValue": 836,
+      "top": {
+        "city": "高知市",
+        "value": 3574
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "かれい",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 5,
+      "kyotoValue": 1517,
+      "top": {
+        "city": "鳥取市",
+        "value": 2685
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "かれい",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 10,
+      "kyotoValue": 826,
+      "top": {
+        "city": "鳥取市",
+        "value": 2474
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "さけ",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 10,
+      "kyotoValue": 5479,
+      "top": {
+        "city": "札幌市",
+        "value": 7588
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "さけ",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 18,
+      "kyotoValue": 2124,
+      "top": {
+        "city": "札幌市",
+        "value": 3309
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "さば",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 4,
+      "kyotoValue": 1294,
+      "top": {
+        "city": "鹿児島市",
+        "value": 1531
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "さば",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 5,
+      "kyotoValue": 885,
+      "top": {
+        "city": "鹿児島市",
+        "value": 1138
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "さんま",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 24,
+      "kyotoValue": 676,
+      "top": {
+        "city": "秋田市",
+        "value": 979
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "さんま",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 31,
+      "kyotoValue": 368,
+      "top": {
+        "city": "秋田市",
+        "value": 707
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "たい",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 14,
+      "kyotoValue": 1534,
+      "top": {
+        "city": "熊本市",
+        "value": 2194
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "たい",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 19,
+      "kyotoValue": 548,
+      "top": {
+        "city": "佐賀市",
+        "value": 1219
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "ぶり",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 17,
+      "kyotoValue": 3559,
+      "top": {
+        "city": "富山市",
+        "value": 6836
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "ぶり",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 20,
+      "kyotoValue": 1483,
+      "top": {
+        "city": "富山市",
+        "value": 2835
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "いか",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 7,
+      "kyotoValue": 2073,
+      "top": {
+        "city": "富山市",
+        "value": 3552
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "いか",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 8,
+      "kyotoValue": 1036,
+      "top": {
+        "city": "鳥取市",
+        "value": 1710
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "たこ",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 13,
+      "kyotoValue": 452,
+      "top": {
+        "city": "堺市",
+        "value": 612
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "えび",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 12,
+      "kyotoValue": 3287,
+      "top": {
+        "city": "堺市",
+        "value": 4105
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "えび",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 28,
+      "kyotoValue": 1226,
+      "top": {
+        "city": "大阪市",
+        "value": 1636
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "かに",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 13,
+      "kyotoValue": 1946,
+      "top": {
+        "city": "鳥取市",
+        "value": 4980
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "かに",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 18,
+      "kyotoValue": 548,
+      "top": {
+        "city": "鳥取市",
+        "value": 2760
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "他の鮮魚",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 6,
+      "kyotoValue": 8129,
+      "top": {
+        "city": "北九州市",
+        "value": 10238
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "他の鮮魚",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 10,
+      "kyotoValue": 4126,
+      "top": {
+        "city": "長崎市",
+        "value": 6117
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "さしみ盛合わせ",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 25,
+      "kyotoValue": 3990,
+      "top": {
+        "city": "北九州市",
+        "value": 6745
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "さしみ盛合わせ",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 46,
+      "kyotoValue": 860,
+      "top": {
+        "city": "北九州市",
+        "value": 1830
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "貝類",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 29,
+      "kyotoValue": 2544,
+      "top": {
+        "city": "青森市",
+        "value": 5608
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "貝類",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 50,
+      "kyotoValue": 877,
+      "top": {
+        "city": "青森市",
+        "value": 3697
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "あさり",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 25,
+      "kyotoValue": 357,
+      "top": {
+        "city": "甲府市",
+        "value": 698
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "しじみ",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 33,
+      "kyotoValue": 258,
+      "top": {
+        "city": "松江市",
+        "value": 2187
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "しじみ",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 33,
+      "kyotoValue": 147,
+      "top": {
+        "city": "松江市",
+        "value": 2055
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "かき（貝）",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 18,
+      "kyotoValue": 772,
+      "top": {
+        "city": "広島市",
+        "value": 2112
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "ほたて貝",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 29,
+      "kyotoValue": 801,
+      "top": {
+        "city": "青森市",
+        "value": 3046
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "ほたて貝",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 52,
+      "kyotoValue": 150,
+      "top": {
+        "city": "青森市",
+        "value": 1779
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "他の貝",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 23,
+      "kyotoValue": 356,
+      "top": {
+        "city": "青森市",
+        "value": 930
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "他の貝",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 40,
+      "kyotoValue": 105,
+      "top": {
+        "city": "青森市",
+        "value": 602
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "塩干魚介",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 16,
+      "kyotoValue": 14582,
+      "top": {
+        "city": "青森市",
+        "value": 17798
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "塩干魚介",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 24,
+      "kyotoValue": 5281,
+      "top": {
+        "city": "青森市",
+        "value": 8915
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "塩さけ",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 29,
+      "kyotoValue": 2402,
+      "top": {
+        "city": "新潟市",
+        "value": 5104
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "塩さけ",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 33,
+      "kyotoValue": 1054,
+      "top": {
+        "city": "新潟市",
+        "value": 2524
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "たらこ",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 35,
+      "kyotoValue": 1685,
+      "top": {
+        "city": "北九州市",
+        "value": 4297
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "たらこ",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 32,
+      "kyotoValue": 469,
+      "top": {
+        "city": "北九州市",
+        "value": 1021
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "しらす干し",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 6,
+      "kyotoValue": 2519,
+      "top": {
+        "city": "静岡市",
+        "value": 3066
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "しらす干し",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 5,
+      "kyotoValue": 640,
+      "top": {
+        "city": "和歌山市",
+        "value": 928
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "干しあじ",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 20,
+      "kyotoValue": 518,
+      "top": {
+        "city": "甲府市",
+        "value": 1084
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "干しあじ",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 17,
+      "kyotoValue": 385,
+      "top": {
+        "city": "静岡市",
+        "value": 706
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "他の塩干魚介",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 11,
+      "kyotoValue": 7456,
+      "top": {
+        "city": "青森市",
+        "value": 10211
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "他の塩干魚介",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 43,
+      "kyotoValue": 2708,
+      "top": {
+        "city": "青森市",
+        "value": 5538
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "魚肉練製品",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 39,
+      "kyotoValue": 8444,
+      "top": {
+        "city": "長崎市",
+        "value": 15548
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "揚げかまぼこ",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 28,
+      "kyotoValue": 2315,
+      "top": {
+        "city": "鹿児島市",
+        "value": 6479
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "ちくわ",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 25,
+      "kyotoValue": 2036,
+      "top": {
+        "city": "鳥取市",
+        "value": 3668
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "かまぼこ",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 40,
+      "kyotoValue": 2743,
+      "top": {
+        "city": "仙台市",
+        "value": 8056
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "他の魚肉練製品",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 40,
+      "kyotoValue": 1350,
+      "top": {
+        "city": "静岡市",
+        "value": 2656
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "他の魚介加工品",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 29,
+      "kyotoValue": 10934,
+      "top": {
+        "city": "青森市",
+        "value": 15547
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "かつお節・削り節",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 10,
+      "kyotoValue": 978,
+      "top": {
+        "city": "那覇市",
+        "value": 2033
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "かつお節・削り節",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 8,
+      "kyotoValue": 223,
+      "top": {
+        "city": "那覇市",
+        "value": 592
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "魚介の漬物",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 25,
+      "kyotoValue": 2895,
+      "top": {
+        "city": "富山市",
+        "value": 7213
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "魚介のつくだ煮",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 3,
+      "kyotoValue": 1448,
+      "top": {
+        "city": "静岡市",
+        "value": 1835
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "魚介の缶詰",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 34,
+      "kyotoValue": 2543,
+      "top": {
+        "city": "那覇市",
+        "value": 5437
+      }
+    },
+    {
+      "group": "魚介類",
+      "item": "他の魚介加工品のその他",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 36,
+      "kyotoValue": 3070,
+      "top": {
+        "city": "青森市",
+        "value": 5146
+      }
+    },
+    {
+      "group": "肉類",
+      "item": "肉類",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 1,
+      "kyotoValue": 118299,
+      "top": {
+        "city": "京都市",
+        "value": 118299
+      }
+    },
+    {
+      "group": "肉類",
+      "item": "生鮮肉",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 1,
+      "kyotoValue": 100292,
+      "top": {
+        "city": "京都市",
+        "value": 100292
+      }
+    },
+    {
+      "group": "肉類",
+      "item": "生鮮肉",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 17,
+      "kyotoValue": 51465,
+      "top": {
+        "city": "熊本市",
+        "value": 57607
+      }
+    },
+    {
+      "group": "肉類",
+      "item": "牛肉",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 1,
+      "kyotoValue": 36081,
+      "top": {
+        "city": "京都市",
+        "value": 36081
+      }
+    },
+    {
+      "group": "肉類",
+      "item": "牛肉",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 1,
+      "kyotoValue": 8119,
+      "top": {
+        "city": "京都市",
+        "value": 8119
+      }
+    },
+    {
+      "group": "肉類",
+      "item": "豚肉",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 21,
+      "kyotoValue": 34415,
+      "top": {
+        "city": "新潟市",
+        "value": 38131
+      }
+    },
+    {
+      "group": "肉類",
+      "item": "豚肉",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 37,
+      "kyotoValue": 20073,
+      "top": {
+        "city": "新潟市",
+        "value": 27169
+      }
+    },
+    {
+      "group": "肉類",
+      "item": "鶏肉",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 5,
+      "kyotoValue": 22282,
+      "top": {
+        "city": "鹿児島市",
+        "value": 23534
+      }
+    },
+    {
+      "group": "肉類",
+      "item": "鶏肉",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 18,
+      "kyotoValue": 19309,
+      "top": {
+        "city": "熊本市",
+        "value": 23078
+      }
+    },
+    {
+      "group": "肉類",
+      "item": "合いびき肉",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 12,
+      "kyotoValue": 4382,
+      "top": {
+        "city": "長崎市",
+        "value": 5466
+      }
+    },
+    {
+      "group": "肉類",
+      "item": "合いびき肉",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 19,
+      "kyotoValue": 2896,
+      "top": {
+        "city": "長崎市",
+        "value": 3628
+      }
+    },
+    {
+      "group": "肉類",
+      "item": "他の生鮮肉",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 24,
+      "kyotoValue": 3132,
+      "top": {
+        "city": "熊本市",
+        "value": 6935
+      }
+    },
+    {
+      "group": "肉類",
+      "item": "他の生鮮肉",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 44,
+      "kyotoValue": 1218,
+      "top": {
+        "city": "熊本市",
+        "value": 2464
+      }
+    },
+    {
+      "group": "肉類",
+      "item": "加工肉",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 33,
+      "kyotoValue": 18006,
+      "top": {
+        "city": "青森市",
+        "value": 22376
+      }
+    },
+    {
+      "group": "肉類",
+      "item": "ハム",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 3,
+      "kyotoValue": 5456,
+      "top": {
+        "city": "横浜市",
+        "value": 5650
+      }
+    },
+    {
+      "group": "肉類",
+      "item": "ハム",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 25,
+      "kyotoValue": 2253,
+      "top": {
+        "city": "相模原市",
+        "value": 2840
+      }
+    },
+    {
+      "group": "肉類",
+      "item": "ソーセージ",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 40,
+      "kyotoValue": 7316,
+      "top": {
+        "city": "青森市",
+        "value": 9659
+      }
+    },
+    {
+      "group": "肉類",
+      "item": "ソーセージ",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 36,
+      "kyotoValue": 4760,
+      "top": {
+        "city": "青森市",
+        "value": 6277
+      }
+    },
+    {
+      "group": "肉類",
+      "item": "ベーコン",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 31,
+      "kyotoValue": 2415,
+      "top": {
+        "city": "山形市",
+        "value": 3412
+      }
+    },
+    {
+      "group": "肉類",
+      "item": "ベーコン",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 35,
+      "kyotoValue": 1272,
+      "top": {
+        "city": "山形市",
+        "value": 1946
+      }
+    },
+    {
+      "group": "肉類",
+      "item": "他の加工肉",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 41,
+      "kyotoValue": 2819,
+      "top": {
+        "city": "那覇市",
+        "value": 6254
+      }
+    },
+    {
+      "group": "乳卵類",
+      "item": "乳卵類",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 10,
+      "kyotoValue": 56180,
+      "top": {
+        "city": "さいたま市",
+        "value": 58813
+      }
+    },
+    {
+      "group": "乳卵類",
+      "item": "牛乳",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 2,
+      "kyotoValue": 18947,
+      "top": {
+        "city": "奈良市",
+        "value": 19422
+      }
+    },
+    {
+      "group": "乳卵類",
+      "item": "牛乳",
+      "measure": "quantity",
+      "unit": "L",
+      "cities": 52,
+      "kyotoRank": 2,
+      "kyotoValue": 80.39,
+      "top": {
+        "city": "奈良市",
+        "value": 82.73
+      }
+    },
+    {
+      "group": "乳卵類",
+      "item": "乳製品",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 31,
+      "kyotoValue": 23276,
+      "top": {
+        "city": "東京都区部",
+        "value": 29613
+      }
+    },
+    {
+      "group": "乳卵類",
+      "item": "粉ミルク",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 44,
+      "kyotoValue": 574,
+      "top": {
+        "city": "高知市",
+        "value": 2039
+      }
+    },
+    {
+      "group": "乳卵類",
+      "item": "ヨーグルト",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 40,
+      "kyotoValue": 12644,
+      "top": {
+        "city": "水戸市",
+        "value": 17665
+      }
+    },
+    {
+      "group": "乳卵類",
+      "item": "バター",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 1,
+      "kyotoValue": 1976,
+      "top": {
+        "city": "京都市",
+        "value": 1976
+      }
+    },
+    {
+      "group": "乳卵類",
+      "item": "バター",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 1,
+      "kyotoValue": 842,
+      "top": {
+        "city": "京都市",
+        "value": 842
+      }
+    },
+    {
+      "group": "乳卵類",
+      "item": "チーズ",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 24,
+      "kyotoValue": 7023,
+      "top": {
+        "city": "東京都区部",
+        "value": 9446
+      }
+    },
+    {
+      "group": "乳卵類",
+      "item": "チーズ",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 24,
+      "kyotoValue": 3395,
+      "top": {
+        "city": "川崎市",
+        "value": 4476
+      }
+    },
+    {
+      "group": "乳卵類",
+      "item": "他の乳製品",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 4,
+      "kyotoValue": 1059,
+      "top": {
+        "city": "川崎市",
+        "value": 1243
+      }
+    },
+    {
+      "group": "乳卵類",
+      "item": "卵",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 12,
+      "kyotoValue": 13956,
+      "top": {
+        "city": "高知市",
+        "value": 15431
+      }
+    },
+    {
+      "group": "乳卵類",
+      "item": "卵",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 16,
+      "kyotoValue": 32555,
+      "top": {
+        "city": "鳥取市",
+        "value": 36349
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "野菜・海藻",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 5,
+      "kyotoValue": 127646,
+      "top": {
+        "city": "東京都区部",
+        "value": 133150
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "生鮮野菜",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 6,
+      "kyotoValue": 85267,
+      "top": {
+        "city": "東京都区部",
+        "value": 92539
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "生鮮野菜",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 8,
+      "kyotoValue": 165731,
+      "top": {
+        "city": "新潟市",
+        "value": 176261
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "葉茎菜",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 5,
+      "kyotoValue": 27399,
+      "top": {
+        "city": "東京都区部",
+        "value": 28675
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "葉茎菜",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 3,
+      "kyotoValue": 61690,
+      "top": {
+        "city": "秋田市",
+        "value": 63634
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "キャベツ",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 23,
+      "kyotoValue": 3326,
+      "top": {
+        "city": "松江市",
+        "value": 3830
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "キャベツ",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 5,
+      "kyotoValue": 17887,
+      "top": {
+        "city": "長野市",
+        "value": 18992
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "ほうれんそう",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 5,
+      "kyotoValue": 2518,
+      "top": {
+        "city": "秋田市",
+        "value": 3095
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "ほうれんそう",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 4,
+      "kyotoValue": 3348,
+      "top": {
+        "city": "秋田市",
+        "value": 3900
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "はくさい",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 3,
+      "kyotoValue": 1871,
+      "top": {
+        "city": "堺市",
+        "value": 1954
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "はくさい",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 4,
+      "kyotoValue": 9404,
+      "top": {
+        "city": "堺市",
+        "value": 10545
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "ねぎ",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 1,
+      "kyotoValue": 4397,
+      "top": {
+        "city": "京都市",
+        "value": 4397
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "ねぎ",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 19,
+      "kyotoValue": 4470,
+      "top": {
+        "city": "山形市",
+        "value": 5581
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "レタス",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 4,
+      "kyotoValue": 3118,
+      "top": {
+        "city": "横浜市",
+        "value": 3369
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "レタス",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 16,
+      "kyotoValue": 5768,
+      "top": {
+        "city": "千葉市",
+        "value": 7216
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "ブロッコリー",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 11,
+      "kyotoValue": 3119,
+      "top": {
+        "city": "さいたま市",
+        "value": 3345
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "ブロッコリー",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 5,
+      "kyotoValue": 5653,
+      "top": {
+        "city": "さいたま市",
+        "value": 6042
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "もやし",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 22,
+      "kyotoValue": 1074,
+      "top": {
+        "city": "山形市",
+        "value": 1460
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "もやし",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 38,
+      "kyotoValue": 5416,
+      "top": {
+        "city": "山形市",
+        "value": 9515
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "他の葉茎菜",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 12,
+      "kyotoValue": 7975,
+      "top": {
+        "city": "山形市",
+        "value": 9946
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "他の葉茎菜",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 12,
+      "kyotoValue": 8559,
+      "top": {
+        "city": "山形市",
+        "value": 10664
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "根菜",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 2,
+      "kyotoValue": 22848,
+      "top": {
+        "city": "横浜市",
+        "value": 22983
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "根菜",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 15,
+      "kyotoValue": 55513,
+      "top": {
+        "city": "新潟市",
+        "value": 61559
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "さつまいも",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 5,
+      "kyotoValue": 1584,
+      "top": {
+        "city": "徳島市",
+        "value": 2564
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "さつまいも",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 15,
+      "kyotoValue": 3042,
+      "top": {
+        "city": "徳島市",
+        "value": 4801
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "じゃがいも",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 8,
+      "kyotoValue": 3280,
+      "top": {
+        "city": "浜松市",
+        "value": 3654
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "じゃがいも",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 9,
+      "kyotoValue": 9368,
+      "top": {
+        "city": "浜松市",
+        "value": 10357
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "さといも",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 32,
+      "kyotoValue": 734,
+      "top": {
+        "city": "山形市",
+        "value": 1856
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "さといも",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 42,
+      "kyotoValue": 933,
+      "top": {
+        "city": "新潟市",
+        "value": 2123
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "だいこん",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 1,
+      "kyotoValue": 2154,
+      "top": {
+        "city": "京都市",
+        "value": 2154
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "だいこん",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 9,
+      "kyotoValue": 11511,
+      "top": {
+        "city": "盛岡市",
+        "value": 12486
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "にんじん",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 12,
+      "kyotoValue": 2939,
+      "top": {
+        "city": "那覇市",
+        "value": 3984
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "にんじん",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 24,
+      "kyotoValue": 7513,
+      "top": {
+        "city": "那覇市",
+        "value": 8986
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "ごぼう",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 18,
+      "kyotoValue": 1037,
+      "top": {
+        "city": "佐賀市",
+        "value": 1229
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "ごぼう",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 25,
+      "kyotoValue": 1286,
+      "top": {
+        "city": "盛岡市",
+        "value": 1766
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "たまねぎ",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 3,
+      "kyotoValue": 4891,
+      "top": {
+        "city": "奈良市",
+        "value": 4913
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "たまねぎ",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 8,
+      "kyotoValue": 16756,
+      "top": {
+        "city": "札幌市",
+        "value": 18276
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "れんこん",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 12,
+      "kyotoValue": 1211,
+      "top": {
+        "city": "金沢市",
+        "value": 1624
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "れんこん",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 30,
+      "kyotoValue": 1243,
+      "top": {
+        "city": "新潟市",
+        "value": 2051
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "たけのこ",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 2,
+      "kyotoValue": 1203,
+      "top": {
+        "city": "山形市",
+        "value": 1267
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "たけのこ",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 5,
+      "kyotoValue": 795,
+      "top": {
+        "city": "山形市",
+        "value": 1312
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "他の根菜",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 6,
+      "kyotoValue": 3814,
+      "top": {
+        "city": "東京都区部",
+        "value": 4436
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "他の根菜",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 17,
+      "kyotoValue": 4430,
+      "top": {
+        "city": "長野市",
+        "value": 5918
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "他の野菜",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 11,
+      "kyotoValue": 35020,
+      "top": {
+        "city": "新潟市",
+        "value": 41316
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "他の野菜",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 16,
+      "kyotoValue": 46699,
+      "top": {
+        "city": "新潟市",
+        "value": 55454
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "さやまめ",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 10,
+      "kyotoValue": 2126,
+      "top": {
+        "city": "新潟市",
+        "value": 5688
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "さやまめ",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 14,
+      "kyotoValue": 1512,
+      "top": {
+        "city": "新潟市",
+        "value": 4603
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "かぼちゃ",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 11,
+      "kyotoValue": 1915,
+      "top": {
+        "city": "横浜市",
+        "value": 2200
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "かぼちゃ",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 12,
+      "kyotoValue": 3765,
+      "top": {
+        "city": "奈良市",
+        "value": 4368
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "きゅうり",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 32,
+      "kyotoValue": 3398,
+      "top": {
+        "city": "横浜市",
+        "value": 4450
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "きゅうり",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 25,
+      "kyotoValue": 6613,
+      "top": {
+        "city": "前橋市",
+        "value": 9531
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "なす",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 1,
+      "kyotoValue": 2964,
+      "top": {
+        "city": "京都市",
+        "value": 2964
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "なす",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 2,
+      "kyotoValue": 5424,
+      "top": {
+        "city": "新潟市",
+        "value": 5541
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "トマト",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 11,
+      "kyotoValue": 9105,
+      "top": {
+        "city": "東京都区部",
+        "value": 10831
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "トマト",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 16,
+      "kyotoValue": 10945,
+      "top": {
+        "city": "東京都区部",
+        "value": 12495
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "ピーマン",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 3,
+      "kyotoValue": 2986,
+      "top": {
+        "city": "横浜市",
+        "value": 3130
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "ピーマン",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 2,
+      "kyotoValue": 3186,
+      "top": {
+        "city": "横浜市",
+        "value": 3208
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "生しいたけ",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 13,
+      "kyotoValue": 2175,
+      "top": {
+        "city": "富山市",
+        "value": 2467
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "生しいたけ",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 11,
+      "kyotoValue": 1617,
+      "top": {
+        "city": "秋田市",
+        "value": 2199
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "しめじ",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 22,
+      "kyotoValue": 1933,
+      "top": {
+        "city": "長野市",
+        "value": 2363
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "しめじ",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 20,
+      "kyotoValue": 2753,
+      "top": {
+        "city": "長野市",
+        "value": 3269
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "えのきたけ",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 45,
+      "kyotoValue": 1266,
+      "top": {
+        "city": "長野市",
+        "value": 1792
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "えのきたけ",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 42,
+      "kyotoValue": 2261,
+      "top": {
+        "city": "長野市",
+        "value": 4170
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "他のきのこ",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 20,
+      "kyotoValue": 2621,
+      "top": {
+        "city": "山形市",
+        "value": 4270
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "他のきのこ",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 23,
+      "kyotoValue": 2504,
+      "top": {
+        "city": "山形市",
+        "value": 4280
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "他の野菜のその他",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 25,
+      "kyotoValue": 4532,
+      "top": {
+        "city": "那覇市",
+        "value": 7869
+      }
+    },
+    {
+      "group": "生鮮野菜",
+      "item": "他の野菜のその他",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 27,
+      "kyotoValue": 6057,
+      "top": {
+        "city": "長崎市",
+        "value": 11545
+      }
+    },
+    {
+      "group": "乾物・海藻、大豆加工品等",
+      "item": "乾物・海藻",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 15,
+      "kyotoValue": 9855,
+      "top": {
+        "city": "佐賀市",
+        "value": 11077
+      }
+    },
+    {
+      "group": "乾物・海藻、大豆加工品等",
+      "item": "豆類",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 8,
+      "kyotoValue": 499,
+      "top": {
+        "city": "松江市",
+        "value": 599
+      }
+    },
+    {
+      "group": "乾物・海藻、大豆加工品等",
+      "item": "干ししいたけ",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 33,
+      "kyotoValue": 302,
+      "top": {
+        "city": "鹿児島市",
+        "value": 654
+      }
+    },
+    {
+      "group": "乾物・海藻、大豆加工品等",
+      "item": "干しのり",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 35,
+      "kyotoValue": 3029,
+      "top": {
+        "city": "佐賀市",
+        "value": 5653
+      }
+    },
+    {
+      "group": "乾物・海藻、大豆加工品等",
+      "item": "わかめ",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 35,
+      "kyotoValue": 1344,
+      "top": {
+        "city": "盛岡市",
+        "value": 2666
+      }
+    },
+    {
+      "group": "乾物・海藻、大豆加工品等",
+      "item": "わかめ",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 31,
+      "kyotoValue": 627,
+      "top": {
+        "city": "盛岡市",
+        "value": 1691
+      }
+    },
+    {
+      "group": "乾物・海藻、大豆加工品等",
+      "item": "こんぶ",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 6,
+      "kyotoValue": 1034,
+      "top": {
+        "city": "富山市",
+        "value": 1587
+      }
+    },
+    {
+      "group": "乾物・海藻、大豆加工品等",
+      "item": "他の乾物・海藻",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 3,
+      "kyotoValue": 3648,
+      "top": {
+        "city": "秋田市",
+        "value": 3687
+      }
+    },
+    {
+      "group": "乾物・海藻、大豆加工品等",
+      "item": "大豆加工品",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 17,
+      "kyotoValue": 15000,
+      "top": {
+        "city": "盛岡市",
+        "value": 18427
+      }
+    },
+    {
+      "group": "乾物・海藻、大豆加工品等",
+      "item": "豆腐",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 25,
+      "kyotoValue": 5350,
+      "top": {
+        "city": "那覇市",
+        "value": 7708
+      }
+    },
+    {
+      "group": "乾物・海藻、大豆加工品等",
+      "item": "豆腐",
+      "measure": "quantity",
+      "unit": "丁",
+      "cities": 52,
+      "kyotoRank": 16,
+      "kyotoValue": 85.12,
+      "top": {
+        "city": "富山市",
+        "value": 108.15
+      }
+    },
+    {
+      "group": "乾物・海藻、大豆加工品等",
+      "item": "油揚げ・がんもどき",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 2,
+      "kyotoValue": 4309,
+      "top": {
+        "city": "福井市",
+        "value": 5855
+      }
+    },
+    {
+      "group": "乾物・海藻、大豆加工品等",
+      "item": "納豆",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 41,
+      "kyotoValue": 3921,
+      "top": {
+        "city": "福島市",
+        "value": 7102
+      }
+    },
+    {
+      "group": "乾物・海藻、大豆加工品等",
+      "item": "他の大豆製品",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 2,
+      "kyotoValue": 1421,
+      "top": {
+        "city": "奈良市",
+        "value": 1428
+      }
+    },
+    {
+      "group": "乾物・海藻、大豆加工品等",
+      "item": "他の野菜・海藻加工品",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 1,
+      "kyotoValue": 17525,
+      "top": {
+        "city": "京都市",
+        "value": 17525
+      }
+    },
+    {
+      "group": "乾物・海藻、大豆加工品等",
+      "item": "こんにゃく",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 15,
+      "kyotoValue": 1698,
+      "top": {
+        "city": "山形市",
+        "value": 2910
+      }
+    },
+    {
+      "group": "乾物・海藻、大豆加工品等",
+      "item": "梅干し",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 10,
+      "kyotoValue": 1587,
+      "top": {
+        "city": "和歌山市",
+        "value": 3048
+      }
+    },
+    {
+      "group": "乾物・海藻、大豆加工品等",
+      "item": "梅干し",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 5,
+      "kyotoValue": 824,
+      "top": {
+        "city": "和歌山市",
+        "value": 1447
+      }
+    },
+    {
+      "group": "乾物・海藻、大豆加工品等",
+      "item": "だいこん漬",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 45,
+      "kyotoValue": 1065,
+      "top": {
+        "city": "盛岡市",
+        "value": 1898
+      }
+    },
+    {
+      "group": "乾物・海藻、大豆加工品等",
+      "item": "はくさい漬",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 36,
+      "kyotoValue": 570,
+      "top": {
+        "city": "高知市",
+        "value": 2072
+      }
+    },
+    {
+      "group": "乾物・海藻、大豆加工品等",
+      "item": "はくさい漬",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 43,
+      "kyotoValue": 632,
+      "top": {
+        "city": "高知市",
+        "value": 2218
+      }
+    },
+    {
+      "group": "乾物・海藻、大豆加工品等",
+      "item": "他の野菜の漬物",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 1,
+      "kyotoValue": 7974,
+      "top": {
+        "city": "京都市",
+        "value": 7974
+      }
+    },
+    {
+      "group": "乾物・海藻、大豆加工品等",
+      "item": "こんぶつくだ煮",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 9,
+      "kyotoValue": 1473,
+      "top": {
+        "city": "福井市",
+        "value": 2027
+      }
+    },
+    {
+      "group": "乾物・海藻、大豆加工品等",
+      "item": "こんぶつくだ煮",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 17,
+      "kyotoValue": 487,
+      "top": {
+        "city": "福井市",
+        "value": 895
+      }
+    },
+    {
+      "group": "乾物・海藻、大豆加工品等",
+      "item": "他の野菜・海藻のつくだ煮",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 5,
+      "kyotoValue": 565,
+      "top": {
+        "city": "山口市",
+        "value": 638
+      }
+    },
+    {
+      "group": "乾物・海藻、大豆加工品等",
+      "item": "他の野菜・海藻加工品のその他",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 13,
+      "kyotoValue": 2581,
+      "top": {
+        "city": "青森市",
+        "value": 3120
+      }
+    },
+    {
+      "group": "果物",
+      "item": "果物",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 14,
+      "kyotoValue": 46479,
+      "top": {
+        "city": "山形市",
+        "value": 53608
+      }
+    },
+    {
+      "group": "果物",
+      "item": "生鮮果物",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 11,
+      "kyotoValue": 42913,
+      "top": {
+        "city": "山形市",
+        "value": 49503
+      }
+    },
+    {
+      "group": "果物",
+      "item": "生鮮果物",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 12,
+      "kyotoValue": 67181,
+      "top": {
+        "city": "奈良市",
+        "value": 76132
+      }
+    },
+    {
+      "group": "果物",
+      "item": "りんご",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 7,
+      "kyotoValue": 6001,
+      "top": {
+        "city": "青森市",
+        "value": 8246
+      }
+    },
+    {
+      "group": "果物",
+      "item": "りんご",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 8,
+      "kyotoValue": 9614,
+      "top": {
+        "city": "青森市",
+        "value": 20290
+      }
+    },
+    {
+      "group": "果物",
+      "item": "みかん",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 14,
+      "kyotoValue": 4659,
+      "top": {
+        "city": "和歌山市",
+        "value": 6494
+      }
+    },
+    {
+      "group": "果物",
+      "item": "みかん",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 22,
+      "kyotoValue": 7347,
+      "top": {
+        "city": "和歌山市",
+        "value": 13140
+      }
+    },
+    {
+      "group": "果物",
+      "item": "オレンジ",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 36,
+      "kyotoValue": 423,
+      "top": {
+        "city": "富山市",
+        "value": 1118
+      }
+    },
+    {
+      "group": "果物",
+      "item": "他の柑きつ類",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 15,
+      "kyotoValue": 2473,
+      "top": {
+        "city": "松山市",
+        "value": 4343
+      }
+    },
+    {
+      "group": "果物",
+      "item": "他の柑きつ類",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 26,
+      "kyotoValue": 3841,
+      "top": {
+        "city": "松山市",
+        "value": 11544
+      }
+    },
+    {
+      "group": "果物",
+      "item": "梨",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 28,
+      "kyotoValue": 1627,
+      "top": {
+        "city": "鳥取市",
+        "value": 7465
+      }
+    },
+    {
+      "group": "果物",
+      "item": "梨",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 39,
+      "kyotoValue": 1933,
+      "top": {
+        "city": "鳥取市",
+        "value": 9465
+      }
+    },
+    {
+      "group": "果物",
+      "item": "ぶどう",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 11,
+      "kyotoValue": 3934,
+      "top": {
+        "city": "甲府市",
+        "value": 6577
+      }
+    },
+    {
+      "group": "果物",
+      "item": "ぶどう",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 11,
+      "kyotoValue": 2206,
+      "top": {
+        "city": "甲府市",
+        "value": 3692
+      }
+    },
+    {
+      "group": "果物",
+      "item": "柿",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 4,
+      "kyotoValue": 1486,
+      "top": {
+        "city": "奈良市",
+        "value": 1914
+      }
+    },
+    {
+      "group": "果物",
+      "item": "柿",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 3,
+      "kyotoValue": 2930,
+      "top": {
+        "city": "岐阜市",
+        "value": 5122
+      }
+    },
+    {
+      "group": "果物",
+      "item": "桃",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 11,
+      "kyotoValue": 1356,
+      "top": {
+        "city": "福島市",
+        "value": 6663
+      }
+    },
+    {
+      "group": "果物",
+      "item": "桃",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 15,
+      "kyotoValue": 1104,
+      "top": {
+        "city": "福島市",
+        "value": 9358
+      }
+    },
+    {
+      "group": "果物",
+      "item": "すいか",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 26,
+      "kyotoValue": 1536,
+      "top": {
+        "city": "熊本市",
+        "value": 2442
+      }
+    },
+    {
+      "group": "果物",
+      "item": "すいか",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 30,
+      "kyotoValue": 2743,
+      "top": {
+        "city": "新潟市",
+        "value": 5031
+      }
+    },
+    {
+      "group": "果物",
+      "item": "メロン",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 36,
+      "kyotoValue": 874,
+      "top": {
+        "city": "水戸市",
+        "value": 3566
+      }
+    },
+    {
+      "group": "果物",
+      "item": "いちご",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 12,
+      "kyotoValue": 3924,
+      "top": {
+        "city": "宇都宮市",
+        "value": 5296
+      }
+    },
+    {
+      "group": "果物",
+      "item": "いちご",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 12,
+      "kyotoValue": 2289,
+      "top": {
+        "city": "宇都宮市",
+        "value": 3229
+      }
+    },
+    {
+      "group": "果物",
+      "item": "バナナ",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 6,
+      "kyotoValue": 6930,
+      "top": {
+        "city": "富山市",
+        "value": 7000
+      }
+    },
+    {
+      "group": "果物",
+      "item": "バナナ",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 4,
+      "kyotoValue": 21356,
+      "top": {
+        "city": "神戸市",
+        "value": 22720
+      }
+    },
+    {
+      "group": "果物",
+      "item": "キウイフルーツ",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 11,
+      "kyotoValue": 2773,
+      "top": {
+        "city": "川崎市",
+        "value": 3479
+      }
+    },
+    {
+      "group": "果物",
+      "item": "キウイフルーツ",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 6,
+      "kyotoValue": 2970,
+      "top": {
+        "city": "川崎市",
+        "value": 3306
+      }
+    },
+    {
+      "group": "果物",
+      "item": "他の果物",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 17,
+      "kyotoValue": 5145,
+      "top": {
+        "city": "山形市",
+        "value": 11247
+      }
+    },
+    {
+      "group": "果物",
+      "item": "他の果物",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 18,
+      "kyotoValue": 5167,
+      "top": {
+        "city": "長崎市",
+        "value": 6825
+      }
+    },
+    {
+      "group": "果物",
+      "item": "果物加工品",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 32,
+      "kyotoValue": 3566,
+      "top": {
+        "city": "東京都区部",
+        "value": 5144
+      }
+    },
+    {
+      "group": "油脂・調味料",
+      "item": "油脂・調味料",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 12,
+      "kyotoValue": 50073,
+      "top": {
+        "city": "長野市",
+        "value": 53318
+      }
+    },
+    {
+      "group": "油脂・調味料",
+      "item": "油脂",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 15,
+      "kyotoValue": 5668,
+      "top": {
+        "city": "長野市",
+        "value": 6324
+      }
+    },
+    {
+      "group": "油脂・調味料",
+      "item": "油脂",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 21,
+      "kyotoValue": 8180,
+      "top": {
+        "city": "長野市",
+        "value": 9598
+      }
+    },
+    {
+      "group": "油脂・調味料",
+      "item": "食用油",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 18,
+      "kyotoValue": 4951,
+      "top": {
+        "city": "長野市",
+        "value": 5636
+      }
+    },
+    {
+      "group": "油脂・調味料",
+      "item": "食用油",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 21,
+      "kyotoValue": 7452,
+      "top": {
+        "city": "長野市",
+        "value": 8868
+      }
+    },
+    {
+      "group": "油脂・調味料",
+      "item": "マーガリン",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 15,
+      "kyotoValue": 716,
+      "top": {
+        "city": "堺市",
+        "value": 843
+      }
+    },
+    {
+      "group": "油脂・調味料",
+      "item": "マーガリン",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 17,
+      "kyotoValue": 772,
+      "top": {
+        "city": "神戸市",
+        "value": 953
+      }
+    },
+    {
+      "group": "油脂・調味料",
+      "item": "調味料",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 16,
+      "kyotoValue": 44406,
+      "top": {
+        "city": "長野市",
+        "value": 46994
+      }
+    },
+    {
+      "group": "油脂・調味料",
+      "item": "食塩",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 43,
+      "kyotoValue": 394,
+      "top": {
+        "city": "新潟市",
+        "value": 597
+      }
+    },
+    {
+      "group": "油脂・調味料",
+      "item": "食塩",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 33,
+      "kyotoValue": 1197,
+      "top": {
+        "city": "新潟市",
+        "value": 2882
+      }
+    },
+    {
+      "group": "油脂・調味料",
+      "item": "しょう油",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 28,
+      "kyotoValue": 1736,
+      "top": {
+        "city": "山形市",
+        "value": 2941
+      }
+    },
+    {
+      "group": "油脂・調味料",
+      "item": "しょう油",
+      "measure": "quantity",
+      "unit": "ml",
+      "cities": 52,
+      "kyotoRank": 23,
+      "kyotoValue": 3883,
+      "top": {
+        "city": "山形市",
+        "value": 5356
+      }
+    },
+    {
+      "group": "油脂・調味料",
+      "item": "みそ",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 18,
+      "kyotoValue": 2323,
+      "top": {
+        "city": "長野市",
+        "value": 3133
+      }
+    },
+    {
+      "group": "油脂・調味料",
+      "item": "みそ",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 43,
+      "kyotoValue": 3654,
+      "top": {
+        "city": "長野市",
+        "value": 6606
+      }
+    },
+    {
+      "group": "油脂・調味料",
+      "item": "砂糖",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 40,
+      "kyotoValue": 1023,
+      "top": {
+        "city": "鳥取市",
+        "value": 1629
+      }
+    },
+    {
+      "group": "油脂・調味料",
+      "item": "砂糖",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 34,
+      "kyotoValue": 3168,
+      "top": {
+        "city": "長野市",
+        "value": 4935
+      }
+    },
+    {
+      "group": "油脂・調味料",
+      "item": "酢",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 15,
+      "kyotoValue": 800,
+      "top": {
+        "city": "鹿児島市",
+        "value": 1121
+      }
+    },
+    {
+      "group": "油脂・調味料",
+      "item": "酢",
+      "measure": "quantity",
+      "unit": "ml",
+      "cities": 52,
+      "kyotoRank": 23,
+      "kyotoValue": 1493,
+      "top": {
+        "city": "鹿児島市",
+        "value": 2131
+      }
+    },
+    {
+      "group": "油脂・調味料",
+      "item": "ソース",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 8,
+      "kyotoValue": 990,
+      "top": {
+        "city": "広島市",
+        "value": 1287
+      }
+    },
+    {
+      "group": "油脂・調味料",
+      "item": "ソース",
+      "measure": "quantity",
+      "unit": "ml",
+      "cities": 52,
+      "kyotoRank": 9,
+      "kyotoValue": 1771,
+      "top": {
+        "city": "広島市",
+        "value": 2056
+      }
+    },
+    {
+      "group": "油脂・調味料",
+      "item": "ケチャップ",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 8,
+      "kyotoValue": 847,
+      "top": {
+        "city": "岐阜市",
+        "value": 900
+      }
+    },
+    {
+      "group": "油脂・調味料",
+      "item": "ケチャップ",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 17,
+      "kyotoValue": 1655,
+      "top": {
+        "city": "岐阜市",
+        "value": 2019
+      }
+    },
+    {
+      "group": "油脂・調味料",
+      "item": "ﾏﾖﾈｰｽﾞ･ﾏﾖﾈｰｽﾞ風調味料",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 26,
+      "kyotoValue": 1756,
+      "top": {
+        "city": "鳥取市",
+        "value": 1971
+      }
+    },
+    {
+      "group": "油脂・調味料",
+      "item": "ﾏﾖﾈｰｽﾞ･ﾏﾖﾈｰｽﾞ風調味料",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 22,
+      "kyotoValue": 2489,
+      "top": {
+        "city": "宮崎市",
+        "value": 2874
+      }
+    },
+    {
+      "group": "油脂・調味料",
+      "item": "ドレッシング",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 31,
+      "kyotoValue": 2095,
+      "top": {
+        "city": "さいたま市",
+        "value": 2737
+      }
+    },
+    {
+      "group": "油脂・調味料",
+      "item": "ジャム",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 5,
+      "kyotoValue": 1782,
+      "top": {
+        "city": "川崎市",
+        "value": 1855
+      }
+    },
+    {
+      "group": "油脂・調味料",
+      "item": "ジャム",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 4,
+      "kyotoValue": 1406,
+      "top": {
+        "city": "川崎市",
+        "value": 1472
+      }
+    },
+    {
+      "group": "油脂・調味料",
+      "item": "カレールウ",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 47,
+      "kyotoValue": 1339,
+      "top": {
+        "city": "新潟市",
+        "value": 1895
+      }
+    },
+    {
+      "group": "油脂・調味料",
+      "item": "カレールウ",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 47,
+      "kyotoValue": 1085,
+      "top": {
+        "city": "新潟市",
+        "value": 1534
+      }
+    },
+    {
+      "group": "油脂・調味料",
+      "item": "乾燥スープ",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 44,
+      "kyotoValue": 3761,
+      "top": {
+        "city": "川崎市",
+        "value": 5110
+      }
+    },
+    {
+      "group": "油脂・調味料",
+      "item": "風味調味料",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 9,
+      "kyotoValue": 2996,
+      "top": {
+        "city": "福岡市",
+        "value": 3290
+      }
+    },
+    {
+      "group": "油脂・調味料",
+      "item": "ふりかけ",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 50,
+      "kyotoValue": 1545,
+      "top": {
+        "city": "熊本市",
+        "value": 2697
+      }
+    },
+    {
+      "group": "油脂・調味料",
+      "item": "つゆ・たれ",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 12,
+      "kyotoValue": 5927,
+      "top": {
+        "city": "秋田市",
+        "value": 6739
+      }
+    },
+    {
+      "group": "油脂・調味料",
+      "item": "他の調味料",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 11,
+      "kyotoValue": 15091,
+      "top": {
+        "city": "東京都区部",
+        "value": 17303
+      }
+    },
+    {
+      "group": "菓子類",
+      "item": "菓子類",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 13,
+      "kyotoValue": 110166,
+      "top": {
+        "city": "さいたま市",
+        "value": 119010
+      }
+    },
+    {
+      "group": "菓子類",
+      "item": "ようかん",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 18,
+      "kyotoValue": 794,
+      "top": {
+        "city": "福井市",
+        "value": 1449
+      }
+    },
+    {
+      "group": "菓子類",
+      "item": "まんじゅう",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 39,
+      "kyotoValue": 698,
+      "top": {
+        "city": "鳥取市",
+        "value": 2241
+      }
+    },
+    {
+      "group": "菓子類",
+      "item": "他の和生菓子",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 4,
+      "kyotoValue": 13113,
+      "top": {
+        "city": "金沢市",
+        "value": 15395
+      }
+    },
+    {
+      "group": "菓子類",
+      "item": "カステラ",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 7,
+      "kyotoValue": 1147,
+      "top": {
+        "city": "長崎市",
+        "value": 5906
+      }
+    },
+    {
+      "group": "菓子類",
+      "item": "ケーキ",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 21,
+      "kyotoValue": 7666,
+      "top": {
+        "city": "さいたま市",
+        "value": 9539
+      }
+    },
+    {
+      "group": "菓子類",
+      "item": "プリン",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 18,
+      "kyotoValue": 1971,
+      "top": {
+        "city": "川崎市",
+        "value": 2265
+      }
+    },
+    {
+      "group": "菓子類",
+      "item": "他の洋生菓子",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 2,
+      "kyotoValue": 13702,
+      "top": {
+        "city": "金沢市",
+        "value": 13733
+      }
+    },
+    {
+      "group": "菓子類",
+      "item": "せんべい",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 16,
+      "kyotoValue": 7634,
+      "top": {
+        "city": "水戸市",
+        "value": 9772
+      }
+    },
+    {
+      "group": "菓子類",
+      "item": "ビスケット",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 17,
+      "kyotoValue": 6291,
+      "top": {
+        "city": "高知市",
+        "value": 7714
+      }
+    },
+    {
+      "group": "菓子類",
+      "item": "スナック菓子",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 48,
+      "kyotoValue": 5789,
+      "top": {
+        "city": "佐賀市",
+        "value": 8721
+      }
+    },
+    {
+      "group": "菓子類",
+      "item": "キャンデー",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 13,
+      "kyotoValue": 2885,
+      "top": {
+        "city": "大津市",
+        "value": 3386
+      }
+    },
+    {
+      "group": "菓子類",
+      "item": "チョコレート",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 22,
+      "kyotoValue": 7327,
+      "top": {
+        "city": "さいたま市",
+        "value": 8393
+      }
+    },
+    {
+      "group": "菓子類",
+      "item": "チョコレート菓子",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 39,
+      "kyotoValue": 2474,
+      "top": {
+        "city": "山形市",
+        "value": 3417
+      }
+    },
+    {
+      "group": "菓子類",
+      "item": "ｱｲｽｸﾘｰﾑ･ｼｬｰﾍﾞｯﾄ",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 39,
+      "kyotoValue": 11867,
+      "top": {
+        "city": "福島市",
+        "value": 14409
+      }
+    },
+    {
+      "group": "菓子類",
+      "item": "他の菓子",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 27,
+      "kyotoValue": 24498,
+      "top": {
+        "city": "福岡市",
+        "value": 29251
+      }
+    },
+    {
+      "group": "調理食品",
+      "item": "調理食品",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 32,
+      "kyotoValue": 150347,
+      "top": {
+        "city": "東京都区部",
+        "value": 189271
+      }
+    },
+    {
+      "group": "調理食品",
+      "item": "主食的調理食品",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 38,
+      "kyotoValue": 63514,
+      "top": {
+        "city": "東京都区部",
+        "value": 83691
+      }
+    },
+    {
+      "group": "調理食品",
+      "item": "弁当",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 47,
+      "kyotoValue": 14292,
+      "top": {
+        "city": "高知市",
+        "value": 27424
+      }
+    },
+    {
+      "group": "調理食品",
+      "item": "すし（弁当）",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 13,
+      "kyotoValue": 16848,
+      "top": {
+        "city": "奈良市",
+        "value": 18982
+      }
+    },
+    {
+      "group": "調理食品",
+      "item": "おにぎり・その他",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 45,
+      "kyotoValue": 5262,
+      "top": {
+        "city": "川崎市",
+        "value": 8350
+      }
+    },
+    {
+      "group": "調理食品",
+      "item": "調理パン",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 15,
+      "kyotoValue": 7650,
+      "top": {
+        "city": "東京都区部",
+        "value": 10151
+      }
+    },
+    {
+      "group": "調理食品",
+      "item": "他の主食的調理食品",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 27,
+      "kyotoValue": 19462,
+      "top": {
+        "city": "広島市",
+        "value": 25042
+      }
+    },
+    {
+      "group": "調理食品",
+      "item": "他の調理食品",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 23,
+      "kyotoValue": 86833,
+      "top": {
+        "city": "富山市",
+        "value": 109188
+      }
+    },
+    {
+      "group": "調理食品",
+      "item": "うなぎのかば焼き",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 2,
+      "kyotoValue": 3683,
+      "top": {
+        "city": "浜松市",
+        "value": 5039
+      }
+    },
+    {
+      "group": "調理食品",
+      "item": "サラダ",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 27,
+      "kyotoValue": 5793,
+      "top": {
+        "city": "新潟市",
+        "value": 9138
+      }
+    },
+    {
+      "group": "調理食品",
+      "item": "コロッケ",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 6,
+      "kyotoValue": 2793,
+      "top": {
+        "city": "福井市",
+        "value": 3519
+      }
+    },
+    {
+      "group": "調理食品",
+      "item": "カツレツ",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 25,
+      "kyotoValue": 2300,
+      "top": {
+        "city": "福井市",
+        "value": 4282
+      }
+    },
+    {
+      "group": "調理食品",
+      "item": "天ぷら・フライ",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 47,
+      "kyotoValue": 11677,
+      "top": {
+        "city": "福井市",
+        "value": 18276
+      }
+    },
+    {
+      "group": "調理食品",
+      "item": "しゅうまい",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 20,
+      "kyotoValue": 1109,
+      "top": {
+        "city": "横浜市",
+        "value": 2849
+      }
+    },
+    {
+      "group": "調理食品",
+      "item": "ぎょうざ",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 6,
+      "kyotoValue": 2314,
+      "top": {
+        "city": "浜松市",
+        "value": 4051
+      }
+    },
+    {
+      "group": "調理食品",
+      "item": "やきとり",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 50,
+      "kyotoValue": 1652,
+      "top": {
+        "city": "青森市",
+        "value": 5063
+      }
+    },
+    {
+      "group": "調理食品",
+      "item": "ハンバーグ",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 33,
+      "kyotoValue": 1584,
+      "top": {
+        "city": "浜松市",
+        "value": 2589
+      }
+    },
+    {
+      "group": "調理食品",
+      "item": "冷凍調理食品",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 44,
+      "kyotoValue": 9566,
+      "top": {
+        "city": "浜松市",
+        "value": 14281
+      }
+    },
+    {
+      "group": "調理食品",
+      "item": "そうざい材料ｾｯﾄ",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 30,
+      "kyotoValue": 3423,
+      "top": {
+        "city": "富山市",
+        "value": 9590
+      }
+    },
+    {
+      "group": "調理食品",
+      "item": "他の調理食品のその他",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 16,
+      "kyotoValue": 40938,
+      "top": {
+        "city": "東京都区部",
+        "value": 51367
+      }
+    },
+    {
+      "group": "飲料",
+      "item": "飲料",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 42,
+      "kyotoValue": 62053,
+      "top": {
+        "city": "福島市",
+        "value": 75689
+      }
+    },
+    {
+      "group": "飲料",
+      "item": "茶類",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 45,
+      "kyotoValue": 11894,
+      "top": {
+        "city": "川崎市",
+        "value": 17984
+      }
+    },
+    {
+      "group": "飲料",
+      "item": "緑茶",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 20,
+      "kyotoValue": 3176,
+      "top": {
+        "city": "静岡市",
+        "value": 7697
+      }
+    },
+    {
+      "group": "飲料",
+      "item": "緑茶",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 3,
+      "kyotoValue": 1030,
+      "top": {
+        "city": "静岡市",
+        "value": 1215
+      }
+    },
+    {
+      "group": "飲料",
+      "item": "紅茶",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 9,
+      "kyotoValue": 1123,
+      "top": {
+        "city": "東京都区部",
+        "value": 1618
+      }
+    },
+    {
+      "group": "飲料",
+      "item": "紅茶",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 10,
+      "kyotoValue": 285,
+      "top": {
+        "city": "神戸市",
+        "value": 370
+      }
+    },
+    {
+      "group": "飲料",
+      "item": "他の茶葉",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 7,
+      "kyotoValue": 1962,
+      "top": {
+        "city": "北九州市",
+        "value": 2191
+      }
+    },
+    {
+      "group": "飲料",
+      "item": "他の茶葉",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 2,
+      "kyotoValue": 1970,
+      "top": {
+        "city": "堺市",
+        "value": 2225
+      }
+    },
+    {
+      "group": "飲料",
+      "item": "茶飲料",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 52,
+      "kyotoValue": 5633,
+      "top": {
+        "city": "宇都宮市",
+        "value": 11130
+      }
+    },
+    {
+      "group": "飲料",
+      "item": "コーヒー・ココア",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 7,
+      "kyotoValue": 15926,
+      "top": {
+        "city": "大津市",
+        "value": 16805
+      }
+    },
+    {
+      "group": "飲料",
+      "item": "コーヒー",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 2,
+      "kyotoValue": 10149,
+      "top": {
+        "city": "大津市",
+        "value": 10396
+      }
+    },
+    {
+      "group": "飲料",
+      "item": "コーヒー",
+      "measure": "quantity",
+      "unit": "g",
+      "cities": 52,
+      "kyotoRank": 1,
+      "kyotoValue": 3265,
+      "top": {
+        "city": "京都市",
+        "value": 3265
+      }
+    },
+    {
+      "group": "飲料",
+      "item": "コーヒー飲料",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 30,
+      "kyotoValue": 5427,
+      "top": {
+        "city": "青森市",
+        "value": 7545
+      }
+    },
+    {
+      "group": "飲料",
+      "item": "ココア・ココア飲料",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 44,
+      "kyotoValue": 349,
+      "top": {
+        "city": "那覇市",
+        "value": 780
+      }
+    },
+    {
+      "group": "飲料",
+      "item": "他の飲料",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 47,
+      "kyotoValue": 34233,
+      "top": {
+        "city": "福島市",
+        "value": 45200
+      }
+    },
+    {
+      "group": "飲料",
+      "item": "果実・野菜ジュース",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 37,
+      "kyotoValue": 6937,
+      "top": {
+        "city": "青森市",
+        "value": 10508
+      }
+    },
+    {
+      "group": "飲料",
+      "item": "炭酸飲料",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 38,
+      "kyotoValue": 7166,
+      "top": {
+        "city": "青森市",
+        "value": 11210
+      }
+    },
+    {
+      "group": "飲料",
+      "item": "乳酸菌飲料",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 44,
+      "kyotoValue": 4698,
+      "top": {
+        "city": "鹿児島市",
+        "value": 9388
+      }
+    },
+    {
+      "group": "飲料",
+      "item": "乳飲料",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 35,
+      "kyotoValue": 2545,
+      "top": {
+        "city": "福島市",
+        "value": 3811
+      }
+    },
+    {
+      "group": "飲料",
+      "item": "ミネラルウォーター",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 32,
+      "kyotoValue": 3695,
+      "top": {
+        "city": "那覇市",
+        "value": 7711
+      }
+    },
+    {
+      "group": "飲料",
+      "item": "スポーツドリンク",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 47,
+      "kyotoValue": 1259,
+      "top": {
+        "city": "山口市",
+        "value": 2554
+      }
+    },
+    {
+      "group": "飲料",
+      "item": "他の飲料のその他",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 40,
+      "kyotoValue": 7933,
+      "top": {
+        "city": "富山市",
+        "value": 10561
+      }
+    },
+    {
+      "group": "酒類",
+      "item": "酒類",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 23,
+      "kyotoValue": 45859,
+      "top": {
+        "city": "青森市",
+        "value": 62506
+      }
+    },
+    {
+      "group": "酒類",
+      "item": "清酒",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 24,
+      "kyotoValue": 5407,
+      "top": {
+        "city": "秋田市",
+        "value": 10089
+      }
+    },
+    {
+      "group": "酒類",
+      "item": "清酒",
+      "measure": "quantity",
+      "unit": "ml",
+      "cities": 52,
+      "kyotoRank": 18,
+      "kyotoValue": 6095,
+      "top": {
+        "city": "福島市",
+        "value": 8965
+      }
+    },
+    {
+      "group": "酒類",
+      "item": "焼酎",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 47,
+      "kyotoValue": 4439,
+      "top": {
+        "city": "宮崎市",
+        "value": 12067
+      }
+    },
+    {
+      "group": "酒類",
+      "item": "焼酎",
+      "measure": "quantity",
+      "unit": "ml",
+      "cities": 52,
+      "kyotoRank": 50,
+      "kyotoValue": 5495,
+      "top": {
+        "city": "宮崎市",
+        "value": 16503
+      }
+    },
+    {
+      "group": "酒類",
+      "item": "ビール",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 8,
+      "kyotoValue": 14810,
+      "top": {
+        "city": "青森市",
+        "value": 18770
+      }
+    },
+    {
+      "group": "酒類",
+      "item": "ビール",
+      "measure": "quantity",
+      "unit": "L",
+      "cities": 52,
+      "kyotoRank": 8,
+      "kyotoValue": 27.25,
+      "top": {
+        "city": "盛岡市",
+        "value": 34.63
+      }
+    },
+    {
+      "group": "酒類",
+      "item": "ウイスキー",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 27,
+      "kyotoValue": 2728,
+      "top": {
+        "city": "秋田市",
+        "value": 4994
+      }
+    },
+    {
+      "group": "酒類",
+      "item": "ウイスキー",
+      "measure": "quantity",
+      "unit": "ml",
+      "cities": 52,
+      "kyotoRank": 27,
+      "kyotoValue": 1549,
+      "top": {
+        "city": "秋田市",
+        "value": 3101
+      }
+    },
+    {
+      "group": "酒類",
+      "item": "ワイン",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 13,
+      "kyotoValue": 4124,
+      "top": {
+        "city": "東京都区部",
+        "value": 7460
+      }
+    },
+    {
+      "group": "酒類",
+      "item": "ワイン",
+      "measure": "quantity",
+      "unit": "ml",
+      "cities": 52,
+      "kyotoRank": 26,
+      "kyotoValue": 2954,
+      "top": {
+        "city": "千葉市",
+        "value": 7313
+      }
+    },
+    {
+      "group": "酒類",
+      "item": "発泡酒",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 30,
+      "kyotoValue": 7498,
+      "top": {
+        "city": "高知市",
+        "value": 14116
+      }
+    },
+    {
+      "group": "酒類",
+      "item": "発泡酒",
+      "measure": "quantity",
+      "unit": "L",
+      "cities": 52,
+      "kyotoRank": 31,
+      "kyotoValue": 18.78,
+      "top": {
+        "city": "高知市",
+        "value": 35.48
+      }
+    },
+    {
+      "group": "酒類",
+      "item": "チューハイ・カクテル",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 34,
+      "kyotoValue": 4871,
+      "top": {
+        "city": "仙台市",
+        "value": 8207
+      }
+    },
+    {
+      "group": "酒類",
+      "item": "チューハイ・カクテル",
+      "measure": "quantity",
+      "unit": "ml",
+      "cities": 52,
+      "kyotoRank": 35,
+      "kyotoValue": 12831,
+      "top": {
+        "city": "盛岡市",
+        "value": 21813
+      }
+    },
+    {
+      "group": "酒類",
+      "item": "他の酒",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 3,
+      "kyotoValue": 1980,
+      "top": {
+        "city": "東京都区部",
+        "value": 2311
+      }
+    },
+    {
+      "group": "外食",
+      "item": "外食",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 13,
+      "kyotoValue": 196710,
+      "top": {
+        "city": "東京都区部",
+        "value": 276675
+      }
+    },
+    {
+      "group": "外食",
+      "item": "一般外食",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 10,
+      "kyotoValue": 191743,
+      "top": {
+        "city": "東京都区部",
+        "value": 274615
+      }
+    },
+    {
+      "group": "外食",
+      "item": "食事代",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 12,
+      "kyotoValue": 159442,
+      "top": {
+        "city": "東京都区部",
+        "value": 222104
+      }
+    },
+    {
+      "group": "外食",
+      "item": "日本そば・うどん",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 33,
+      "kyotoValue": 7216,
+      "top": {
+        "city": "高松市",
+        "value": 17704
+      }
+    },
+    {
+      "group": "外食",
+      "item": "中華そば",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 36,
+      "kyotoValue": 7698,
+      "top": {
+        "city": "山形市",
+        "value": 21695
+      }
+    },
+    {
+      "group": "外食",
+      "item": "すし（外食）",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 18,
+      "kyotoValue": 17662,
+      "top": {
+        "city": "金沢市",
+        "value": 22406
+      }
+    },
+    {
+      "group": "外食",
+      "item": "和食",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 8,
+      "kyotoValue": 32358,
+      "top": {
+        "city": "岐阜市",
+        "value": 42533
+      }
+    },
+    {
+      "group": "外食",
+      "item": "中華食",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 1,
+      "kyotoValue": 8639,
+      "top": {
+        "city": "京都市",
+        "value": 8639
+      }
+    },
+    {
+      "group": "外食",
+      "item": "洋食",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 4,
+      "kyotoValue": 19706,
+      "top": {
+        "city": "宇都宮市",
+        "value": 22654
+      }
+    },
+    {
+      "group": "外食",
+      "item": "焼肉",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 37,
+      "kyotoValue": 7577,
+      "top": {
+        "city": "高知市",
+        "value": 19541
+      }
+    },
+    {
+      "group": "外食",
+      "item": "ハンバーガー",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 32,
+      "kyotoValue": 6023,
+      "top": {
+        "city": "那覇市",
+        "value": 8417
+      }
+    },
+    {
+      "group": "外食",
+      "item": "他の主食的外食",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 22,
+      "kyotoValue": 49875,
+      "top": {
+        "city": "東京都区部",
+        "value": 106115
+      }
+    },
+    {
+      "group": "外食",
+      "item": "喫茶代",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 8,
+      "kyotoValue": 12758,
+      "top": {
+        "city": "名古屋市",
+        "value": 16431
+      }
+    },
+    {
+      "group": "外食",
+      "item": "飲酒代",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 17,
+      "kyotoValue": 19543,
+      "top": {
+        "city": "東京都区部",
+        "value": 36241
+      }
+    },
+    {
+      "group": "外食",
+      "item": "学校給食",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 48,
+      "kyotoValue": 4967,
+      "top": {
+        "city": "山形市",
+        "value": 16636
+      }
+    },
+    {
+      "group": "食料以外",
+      "item": "電気代",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 47,
+      "kyotoValue": 130900,
+      "top": {
+        "city": "福井市",
+        "value": 215694
+      }
+    },
+    {
+      "group": "食料以外",
+      "item": "電気代",
+      "measure": "quantity",
+      "unit": "kWh",
+      "cities": 52,
+      "kyotoRank": 35,
+      "kyotoValue": 4537.319,
+      "top": {
+        "city": "福井市",
+        "value": 7565.968
+      }
+    },
+    {
+      "group": "食料以外",
+      "item": "都市ガス",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 2,
+      "kyotoValue": 74914,
+      "top": {
+        "city": "大阪市",
+        "value": 77510
+      }
+    },
+    {
+      "group": "食料以外",
+      "item": "プロパンガス",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 48,
+      "kyotoValue": 2792,
+      "top": {
+        "city": "高知市",
+        "value": 42101
+      }
+    },
+    {
+      "group": "食料以外",
+      "item": "プロパンガス",
+      "measure": "quantity",
+      "unit": "m³",
+      "cities": 52,
+      "kyotoRank": 48,
+      "kyotoValue": 4.163,
+      "top": {
+        "city": "高知市",
+        "value": 68.683
+      }
+    },
+    {
+      "group": "食料以外",
+      "item": "灯油",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 41,
+      "kyotoValue": 4355,
+      "top": {
+        "city": "青森市",
+        "value": 92401
+      }
+    },
+    {
+      "group": "食料以外",
+      "item": "灯油",
+      "measure": "quantity",
+      "unit": "L",
+      "cities": 52,
+      "kyotoRank": 41,
+      "kyotoValue": 39.39,
+      "top": {
+        "city": "青森市",
+        "value": 817.11
+      }
+    },
+    {
+      "group": "食料以外",
+      "item": "上下水道料",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 34,
+      "kyotoValue": 59984,
+      "top": {
+        "city": "山形市",
+        "value": 85342
+      }
+    },
+    {
+      "group": "食料以外",
+      "item": "バス代",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 21,
+      "kyotoValue": 3362,
+      "top": {
+        "city": "長崎市",
+        "value": 8801
+      }
+    },
+    {
+      "group": "食料以外",
+      "item": "タクシー代",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 7,
+      "kyotoValue": 7166,
+      "top": {
+        "city": "東京都区部",
+        "value": 11514
+      }
+    },
+    {
+      "group": "食料以外",
+      "item": "ガソリン",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 48,
+      "kyotoValue": 38695,
+      "top": {
+        "city": "鳥取市",
+        "value": 107406
+      }
+    },
+    {
+      "group": "食料以外",
+      "item": "ガソリン",
+      "measure": "quantity",
+      "unit": "L",
+      "cities": 52,
+      "kyotoRank": 49,
+      "kyotoValue": 232.33,
+      "top": {
+        "city": "津市",
+        "value": 650.75
+      }
+    },
+    {
+      "group": "食料以外",
+      "item": "映画・演劇等入場料",
+      "measure": "amount",
+      "unit": "円",
+      "cities": 52,
+      "kyotoRank": 12,
+      "kyotoValue": 8014,
+      "top": {
+        "city": "東京都区部",
+        "value": 13699
+      }
+    }
+  ]
+}

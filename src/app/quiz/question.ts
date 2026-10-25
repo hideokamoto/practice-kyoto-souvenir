@@ -1,0 +1,50 @@
+import type {
+  KakeiData,
+  KankoData,
+  MeishoData,
+  OmiyageData,
+  Photo,
+  SangyoData,
+  ShajiData,
+} from '../data/types';
+import type { Rng } from './rng';
+
+export type DatasetKey = 'omiyage' | 'meisho' | 'kanko' | 'kakei' | 'shaji' | 'sangyo';
+
+export interface Datasets {
+  omiyage?: OmiyageData;
+  meisho?: MeishoData;
+  kanko?: KankoData;
+  kakei?: KakeiData;
+  shaji?: ShajiData;
+  sangyo?: SangyoData;
+}
+
+export type Media =
+  | { kind: 'photo'; photo: Photo; alt: string }
+  | { kind: 'aerial'; lat: number; lon: number; zoom: number; alt: string };
+
+export interface Question {
+  /** `${template}:${entityKey}`。1 プレイの中で重複させない。 */
+  id: string;
+  template: string;
+  prompt: string;
+  /** 問題文に添える引用（説明文の抜粋など）。答えは伏せ字にしてある。 */
+  quote?: string;
+  media?: Media;
+  choices: string[];
+  answerIndex: number;
+  explanation: string;
+  /** 出典 id（SourceMeta.id） */
+  sources: string[];
+}
+
+/** 1 種類の出題テンプレート。E は出題対象（品目・施設など）。 */
+export interface Template<E = unknown> {
+  id: string;
+  needs: DatasetKey;
+  candidates(d: Datasets): readonly E[];
+  key(e: E): string;
+  /** 条件に合う問題が作れなければ null（呼び出し側は別の対象で作り直す）。 */
+  build(e: E, d: Datasets, rng: Rng): Question | null;
+}

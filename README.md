@@ -1,161 +1,110 @@
-# 京都みやげアプリ
+# 京都いけず問答
 
-京都の観光スポットとお土産情報を提供するIonicアプリケーションです。
+オープンデータが出す、ちょっといけずな京都クイズ。京都市・京都府・国のオープンデータから、毎回ちがう 4 択（一部 2 択）の問題を自動で作ります。1 回 5 問。
 
-## セットアップ
+旧「きょう再見」（京都の観光スポットとお土産の発見アプリ）を作り替えたものです。旧アプリが使っていた京都市オープンデータ「京都観光Navi」はそのまま問題の材料にしています。
 
-### 必要な環境
+## モード
 
-- Node.js
-- npm または yarn
-- Ionic CLI
+| モード | 材料 | 出題 |
+|---|---|---|
+| みやげ鑑定 | 京都観光Navi お土産情報（108 品） | 名前を伏せた説明文から名前を当てる／漢字の名前の読み |
+| 名所めぐり | 京都観光Navi 見もの情報（648 件） | 説明文から名前／文化財の時代／国宝か重要文化財か／地名の読み／所在の区 |
+| 京都人の台所 | 家計調査 都市別ランキング（395 品目） | 京都市が 52 市中 1 位の品目／京都市の順位帯／1 位の都市 |
+| 空から当てる | 京都府 観光施設一覧（京都市内 762 件）＋地理院タイル | 航空写真の中心にある寺社／所在の区／いちばん近い名所 |
+| 寺社の写真 | Wikidata（457 件）＋ Wikimedia Commons（写真 437 枚） | 写真の寺社／世界遺産「古都京都の文化財」の構成資産 |
+| 京の産業 | 国税庁・農林水産省・文化庁の都道府県別データ（8 指標） | 全国 1 位の都道府県／京都府の順位 |
+| 今日の5問 | 上の全部 | 日本時間の日付で決まる日替わり 5 問（同じ日なら誰でも同じ） |
 
-### インストール
+## 問題を作るときの決まり
 
-```bash
-npm install
-```
+自動生成なので、正解が 2 つある問題や答えが見えている問題を作らないことを、テストで保証しています（`src/app/quiz/real-data.spec.ts` が全データ・全テンプレートで確かめます）。
 
-### 開発サーバーの起動
+- 問題文・引用・画像の代替テキストに正解が出ていれば、その問題は作らない（カタカナ／ひらがな、小書きの違いも同じとみなす）。
+- 選択肢は表記ゆれも含めて重複させない。
+- 同じ対象（例: 清水寺 本堂）は、テンプレートが違っても 1 プレイで 1 回だけ。
+- 名所の時代と指定は、説明文の最初の一文の定型句（「〜にある桃山時代建築の国宝建造物」）からだけ取る。一文に時代が 2 つあれば使わない。
+- 美術品は寄託先（京都国立博物館など）の住所が入っていることがあるので、区を問うのは建造物・名木・地名など場所そのものだけ。
+- 航空写真の誤答は正解から 1.5km 以上、寺社の写真の誤答は 0.5km 以上離れたものだけ（同じ境内の塔頭などで正解が 2 つにならないように）。
+- 「いちばん近い名所」は、正解が他の選択肢より 1.6 倍以上近いときだけ出す。
+- 世界遺産の誤答は「構成資産ではない」と確定しているものだけ（構成資産の一覧が 17 件そろったときだけ判定し、構成資産から 500m 以内の寺社は判定しない）。
+- 順位の問題は、同じ値の都道府県・都市があって順位が決まらないものは出さない。
+- Wikidata の創建年は検証できないため、出題に使わない。
 
-```bash
-npm start
-```
+## データの出典とライセンス
 
-### ビルド
+アプリ内の「クレジット」画面に、取得日・加工内容と一緒に表示しています。
 
-```bash
-npm run build
-```
+| データ | 提供 | ライセンス |
+|---|---|---|
+| 京都観光Navi（見もの・お土産） | 京都市 | CC BY 4.0（※） |
+| 観光施設一覧 | 京都府（京都府観光連盟「京都府観光ガイド」） | CC BY 4.0 |
+| 家計調査 都市別ランキング（2023〜2025年平均） | 総務省統計局 | 公共データ利用規約（第1.0版） |
+| 寺社の名称・所在地・世界遺産の構成資産 | Wikidata | CC0 |
+| 寺社の写真 | Wikimedia Commons の各作者 | 写真ごと（CC BY / CC BY-SA / CC0 / パブリックドメインのみ使用。作者とライセンスを写真の下に表示） |
+| 清酒の都道府県別売上（令和6年） | 国税庁 | 公共データ利用規約（第1.0版） |
+| 地域特産野菜生産状況調査（令和6年産） | 農林水産省 | 公共データ利用規約（第1.0版） |
+| 国宝・重要文化財等都道府県別指定件数 | 文化庁 | 文部科学省ウェブサイト利用規約 |
+| 航空写真（全国最新写真（シームレス）） | 国土地理院 | 国土地理院コンテンツ利用規約（地理院タイル） |
 
-## E2Eテスト
+※ 京都市オープンデータポータルサイトは 2026-10-25 時点で応答せず、利用規約の原文を再確認できていません。CC BY 4.0 は同ポータルの利用規約（data.city.kyoto.lg.jp/kiyaku）を引用した資料などによります。
 
-### 基本的な実行方法
+京都市・京都府・国の機関・Wikimedia Foundation とは関係のない、非公式のクイズです。
 
-```bash
-# すべてのE2Eテストを実行
-npm run e2e
+## 開発
 
-# または Angular CLI を使用
-ng e2e
-```
-
-### よく使うコマンド
-
-```bash
-# テストを一覧表示（実行しない）
-npm run e2e -- --list
-
-# UIモードで実行（推奨：デバッグに便利）
-npm run e2e:ui
-
-# ヘッド付きブラウザで実行（デバッグ用）
-npm run e2e:headed
-
-# ウォッチモードで実行（ファイル変更を監視）
-npm run e2e:watch
-
-# 特定のテストファイルのみ実行
-npm run e2e -- e2e/playwright/discover-page.spec.ts
-
-# 特定のテスト名で実行
-npm run e2e -- --grep "should navigate"
-```
-
-### トラブルシューティング
-
-**ポート4200が既に使用されている場合**
-
-開発サーバーが既に起動している場合、以下のいずれかの方法で解決できます：
+Node.js 24 以上が必要です（Angular 22）。
 
 ```bash
-# 方法1: 既存のサーバーを停止してから実行
-# （別ターミナルで実行中の `npm start` を停止）
-
-# 方法2: devServerTargetを無効にして実行
-ng e2e --dev-server-target=""
+npm ci
+npm start                 # http://localhost:4200/
+npm test                  # 単体テスト（Angular / Vitest）＋データ生成のテスト（node:test）
+npm run build             # 本番ビルド（dist/kyoto-ikezu-quiz/browser、base href は ./）
+npx playwright test       # E2E（ビルド成果物を games.hidetaka.dev と同じ CSP で配信して全モードを遊ぶ）
 ```
 
-**テストが失敗する場合**
+E2E は `npm run build` の後に実行します。ブラウザを別途用意している環境では `PW_CHROMIUM_PATH=/path/to/chrome npx playwright test` で指定できます。
+
+### 構成
+
+```
+src/app/
+  data/            データの型（types.ts）、読み込み（data.service.ts）、地理院タイルの出典
+  quiz/            出題エンジン
+    templates/     モードごとの出題テンプレート（*.spec.ts にフィクスチャのテスト）
+    game.ts        モード定義・1 プレイの組み立て・今日の5問・称号
+    real-data.spec.ts  生成済みデータ全体に対する性質テスト
+  pages/           ホーム・出題・結果・クレジット・ライセンス
+  shared/          航空写真（地理院タイル）・Commons の写真・出典リスト
+public/data/       生成済みのデータ（手で編集しない）
+tools/data-build/  データ生成スクリプトと、その入力（raw/）・テスト
+e2e/               Playwright の E2E
+```
+
+### データの作り直し
+
+`public/data/*.json` は `tools/data-build/` のスクリプトが `raw/` の原資料から作ります。実行時にアプリが外部の API を叩くことはありません（画像のタイルと写真を除く）。
 
 ```bash
-# HTMLレポートを確認
-npx playwright show-report
-
-# スクリーンショットとトレースを確認
-# test-results/ フォルダを確認
+npm run data:navi     # 京都観光Navi → meisho.json / omiyage.json
+npm run data:kanko    # 京都府 観光施設一覧 → kanko.json
+npm run data:kakei    # 家計調査ランキング（xlsx）→ kakei.json
+npm run data:shaji    # Wikidata + Commons → shaji.json（キャッシュを使う。取り直しは -- --refresh）
+npm run data:sangyo   # 国税庁・農林水産省・文化庁 → sangyo.json
 ```
 
-## データの更新
+作り直したら `npm test` を実行してください。`real-data.spec.ts` が、全テンプレートの問題が壊れていないことを確かめます。
 
-### assetsフォルダのスクリプト・データについて
+OGP 画像は `node tools/og/make-og.mjs` で `tools/og/og-image.html` から撮り直せます。
 
-このプロジェクトでは、`assets`フォルダにCSVデータをJSONに変換するスクリプトが含まれています。
+## 公開
 
-#### ディレクトリ構造
+`main` に push すると、GitHub Actions がテスト・ビルド・E2E を実行し、GitHub Pages に公開します。初回だけ、リポジトリの Settings → Pages → Build and deployment の Source を「GitHub Actions」にしてください。
 
-```
-assets/
-├── package.json          # csvtojsonパッケージの依存関係
-├── sights/               # 観光スポットデータ
-│   ├── csv2json.js      # CSV→JSON変換スクリプト
-│   └── DSIGHT_1.csv     # 観光スポットのCSVデータ
-└── souvenirs/           # お土産データ
-    ├── csv2json.js      # CSV→JSON変換スクリプト
-    └── DSOURVENIR_0.csv # お土産のCSVデータ
-```
+games.hidetaka.dev では `/kyoto-ikezu-quiz/` で配信する想定です（`hideokamoto/games.hidetaka.dev` の `cdk/src/apps.ts` に登録）。ビルドは base href を `./` にしているので、GitHub Pages の URL でも games.hidetaka.dev のサブパスでも同じ成果物が動きます。CSP で許可が必要な外部ホストは、画像の `upload.wikimedia.org` と `cyberjapandata.gsi.go.jp` だけです。
 
-#### データの更新手順
+## 既知の制約
 
-1. **依存関係のインストール**
-
-   `assets`フォルダに移動して、必要なパッケージをインストールします：
-
-   ```bash
-   cd assets
-   npm install
-   ```
-
-2. **CSVデータの更新**
-
-   - 観光スポットデータを更新する場合：`assets/sights/DSIGHT_1.csv`を編集
-   - お土産データを更新する場合：`assets/souvenirs/DSOURVENIR_0.csv`を編集
-
-3. **JSONデータの生成**
-
-   - 観光スポットデータを変換する場合：
-
-     ```bash
-     cd assets/sights
-     node csv2json.js
-
-   - お土産データを変換する場合：
-
-     ```bash
-     cd assets/souvenirs
-     node csv2json.js
-
-   **注意**: 出力先のパスは相対パスで指定してください。上記のコマンドは`assets`フォルダから実行することを想定しています。
-
-4. **生成されたJSONの確認**
-
-   生成されたJSONファイルが正しく作成されているか確認してください：
-   - `src/app/pages/sights/dataset/kyoto-sights.json`
-   - `src/app/pages/souvenir/dataset/kyoto-souvenir.json`
-
-#### スクリプトの仕様
-
-- **観光スポットスクリプト** (`assets/sights/csv2json.js`)
-  - CSVファイルの各フィールドをマッピングし、郵便番号を結合する処理を含みます
-  - 出力されるJSONには、id、name、name_kana、description、住所、連絡先などの情報が含まれます
-
-- **お土産スクリプト** (`assets/souvenirs/csv2json.js`)
-  - CSVファイルから基本的な情報（id、name、name_kana、description）を抽出します
-  - シンプルな構造でJSONを生成します
-
-#### トラブルシューティング
-
-- CSVファイルのエンコーディングがUTF-8であることを確認してください
-- CSVファイルのヘッダー行がない場合、スクリプト内で定義されたヘッダーが使用されます
-- JSONの生成に失敗する場合は、CSVファイルの形式を確認してください
-
+- 京都観光Navi は 2021 年 3 月更新のデータです。国宝・重要文化財の指定などはその時点の記載によります。
+- この開発環境からは upload.wikimedia.org が 429（レート制限）を返したため、寺社の写真が実際に表示されることは確認できていません。表示できなかったときは写真の枠にその旨を出します。
+- 清酒の値は国税庁のアンケートに回答した製造業者の合計で、全製造業者の合計ではありません（問題文にそう書いています）。
