@@ -19,3 +19,6 @@ Thumbs.db
 
 # Netlify CLI のローカル状態
 /.netlify
+
+# 動作確認の録画・スクリーンショット（tools/demo/record.mjs の出力）
+/demo-out

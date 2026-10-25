@@ -95,6 +95,8 @@ npm run data:sangyo   # 国税庁・農林水産省・文化庁 → sangyo.json
 
 作り直したら `npm test` を実行してください。`real-data.spec.ts` が、全テンプレートの問題が壊れていないことを確かめます。
 
+動作確認の録画とスクリーンショットは `node tools/demo/record.mjs [URL]` で撮れます（全 7 モードを 5 問ずつ遊び、`demo-out/` に動画と画像を出力。URL の既定は Netlify のデプロイプレビュー）。
+
 OGP 画像は `node tools/og/make-og.mjs` で `tools/og/og-image.html` から撮り直せます。
 
 ## 公開
