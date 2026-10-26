@@ -1,4 +1,5 @@
-# Netlify（旧アプリから接続されている kyoto-app サイト。PR のデプロイプレビューに使う）のビルド設定。
+# Netlify（旧アプリから接続されている kyoto-app サイト）のビルド設定。main の本番公開と PR のデプロイプレビューの両方に使う。
+# 本番は games.hidetaka.dev/kyoto-ikezu-quiz/ から配信する（CloudFront がこのサイトをオリジンにする）。
 # UI の設定より優先される。Angular 22 は Node 22.22.3 / 24.15.0 以上が必要なので、Node を 24 に固定する。
 [build]
   command = "npm run build"

@@ -5,7 +5,7 @@ import { routes } from './app.routes';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
-    // GitHub Pages・games.hidetaka.dev のサブパスで 404 にならないよう、ハッシュでルーティングする
+    // games.hidetaka.dev のサブパス（/kyoto-ikezu-quiz/）で 404 にならないよう、ハッシュでルーティングする
     provideRouter(routes, withHashLocation()),
   ],
 };
