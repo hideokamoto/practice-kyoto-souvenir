@@ -57,4 +57,4 @@
 
 1. 京都市オープンデータポータルの利用規約原文（ポータル停止中のため）。
 2. Wikimedia Commons の写真が利用者のブラウザで表示されること（開発環境からは 429）。
-3. games.hidetaka.dev への登録（別リポジトリの PR）と、このリポジトリの GitHub Pages 有効化。
+3. games.hidetaka.dev への登録（別リポジトリの PR）。配信元は Netlify の kyoto-app。

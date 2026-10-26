@@ -1,4 +1,5 @@
-name: Test and deploy
+# テスト・ビルド・E2E。公開は Netlify（kyoto-app）が main を自動でビルドして行う。
+name: Test
 
 on:
   push:
@@ -10,7 +11,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: pages-${{ github.ref }}
+  group: test-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -35,21 +36,3 @@ jobs:
         with:
           name: playwright-report
           path: playwright-report
-      - if: github.event_name != 'pull_request'
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist/kyoto-ikezu-quiz/browser
-
-  deploy:
-    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
-    needs: build
-    runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4

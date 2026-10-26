@@ -127,11 +127,13 @@ OGP 画像は `node tools/og/make-og.mjs` で `tools/og/og-image.html` から撮
 
 ## 公開
 
-`main` に push すると、GitHub Actions がテスト・ビルド・E2E を実行し、GitHub Pages に公開します。初回だけ、リポジトリの Settings → Pages → Build and deployment の Source を「GitHub Actions」にしてください。
+Netlify にデプロイし、games.hidetaka.dev のドメインから配信します。
 
-PR ごとのプレビューは、旧アプリから接続されている Netlify サイト（kyoto-app）が `netlify.toml` の設定でビルドします（Node 24 に固定）。
-
-games.hidetaka.dev では `/kyoto-ikezu-quiz/` で配信する想定です（`hideokamoto/games.hidetaka.dev` の `cdk/src/apps.ts` に登録）。ビルドは base href を `./` にしているので、GitHub Pages の URL でも games.hidetaka.dev のサブパスでも同じ成果物が動きます。CSP で許可が必要な外部ホストは、画像の `upload.wikimedia.org` と `cyberjapandata.gsi.go.jp` だけです。
+- **デプロイ:** Netlify サイト kyoto-app が `main` を自動でビルドして公開します（`netlify.toml`、Node 24 に固定）。PR ごとのデプロイプレビューも同じ設定です。
+- **配信:** `https://games.hidetaka.dev/kyoto-ikezu-quiz/`。games.hidetaka.dev の CloudFront が `/kyoto-ikezu-quiz` を剥がして `kyoto-app.netlify.app` へ取りに行きます（`hideokamoto/games.hidetaka.dev` の `cdk/src/apps.ts` に登録）。ビルドは base href を `./` にしているので、Netlify の URL でもサブパスでも同じ成果物が動きます。
+- **CSP:** games.hidetaka.dev の CloudFront が付けます。許可が必要な外部ホストは、画像の `upload.wikimedia.org` と `cyberjapandata.gsi.go.jp` だけです。
+- **キャッシュ:** Netlify のデプロイは games.hidetaka.dev の CloudFront キャッシュを無効化しないので、反映は最大で 5 分ほど遅れます。
+- GitHub Actions（`.github/workflows/ci.yml`）はテスト・ビルド・E2E だけを実行し、公開はしません。
 
 ## 既知の制約
 
