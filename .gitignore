@@ -1,38 +1,24 @@
-# Specifies intentionally untracked files to ignore when using Git
-# http://git-scm.com/docs/gitignore
+# Node / Angular
+/node_modules
+/dist
+/.angular
+/coverage
+*.log
 
-*~
-*.sw[mnpcod]
-.tmp
-*.tmp
-*.tmp.*
-*.sublime-project
-*.sublime-workspace
+# Playwright
+/test-results
+/playwright-report
+/.playwright-mcp
+
+# Editors / OS
+/.idea
+/.vscode
 .DS_Store
 Thumbs.db
-UserInterfaceState.xcuserstate
-$RECYCLE.BIN/
+*~
 
-*.log
-log.txt
-npm-debug.log*
+# Netlify CLI のローカル状態
+/.netlify
 
-/.angular
-/.idea
-/.ionic
-/.sass-cache
-/.sourcemaps
-/.versions
-/.vscode
-/coverage
-/dist
-/node_modules
-/platforms
-/plugins
-/www
-assets/node_modules/
-assets/dbpedia-results.json
-test-results/
-playwright-report/
-/.playwright-mcp
-/.npm
+# 動作確認の録画・スクリーンショット（tools/demo/record.mjs の出力）
+/demo-out

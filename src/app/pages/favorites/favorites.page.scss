@@ -1,7 +1,0 @@
-ion-content {
-  --overflow: auto;
-
-  &::part(scroll) {
-    overflow-y: auto !important;
-  }
-}

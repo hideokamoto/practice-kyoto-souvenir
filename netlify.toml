@@ -1,0 +1,6 @@
+# Netlify（旧アプリから接続されている kyoto-app サイト。PR のデプロイプレビューに使う）のビルド設定。
+# UI の設定より優先される。Angular 22 は Node 22.22.3 / 24.15.0 以上が必要なので、Node を 24 に固定する。
+[build]
+  command = "npm run build"
+  publish = "dist/kyoto-ikezu-quiz/browser"
+  environment = { NODE_VERSION = "24" }

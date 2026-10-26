@@ -1,0 +1,1564 @@
+{
+  "meta": [
+    {
+      "id": "nta-sake",
+      "title": "酒類製造業及び酒類卸売業の概況（令和7年アンケート）1 清酒製造業 表20 都道府県別の回答者数及び取引状況",
+      "publisher": "国税庁",
+      "url": "https://www.nta.go.jp/taxes/sake/shiori-gaikyo/seizo_oroshiuri/r07/pdf/04.pdf",
+      "license": "公共データ利用規約（第1.0版）",
+      "licenseUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
+      "retrievedAt": "2026-10-25",
+      "note": "表20の都道府県別の値を抽出して作成。値は調査に回答した清酒製造業者の合計で、全製造業者の合計ではない。秘匿（X）と回答者なし（-）の都道府県は除外。「酒類製造業及び酒類卸売業の概況（令和7年アンケート）」（国税庁）を加工して作成。"
+    },
+    {
+      "id": "maff-yasai",
+      "title": "令和6年産 地域特産野菜生産状況調査 表2 都道府県別の作付面積、収穫量及び出荷量",
+      "publisher": "農林水産省",
+      "url": "https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&lid=000001484235",
+      "license": "公共データ利用規約（第1.0版）",
+      "licenseUrl": "https://www.digital.go.jp/resources/open_data/public_data_license_v1.0",
+      "retrievedAt": "2026-10-25",
+      "note": "e-Stat で公開されている表から収穫量を抽出して作成。「－」（事実のないもの）は 0、「…」（事実不詳又は調査を欠くもの）と「x」（秘匿）は除外。「令和６年産地域特産野菜生産状況調査」（農林水産省）を加工して作成。"
+    },
+    {
+      "id": "bunka-shitei",
+      "title": "国宝・重要文化財等都道府県別指定件数一覧 1．国宝・重要文化財",
+      "publisher": "文化庁",
+      "url": "https://www.bunka.go.jp/seisaku/bunkazai/shokai/shitei.html",
+      "license": "文部科学省ウェブサイト利用規約（公共データ利用規約 第1.0版準拠）",
+      "licenseUrl": "https://www.mext.go.jp/b_menu/1351168.htm",
+      "retrievedAt": "2026-10-25",
+      "note": "令和8年10月1日現在の一覧（Excel）から都道府県別の国宝・重要文化財の件数を抽出して作成。空欄は 0 件、「補遺」（所有者不明等）は都道府県に含めない。美術工芸品の都道府県別の件数は、表の注記のとおり平成29年9月現在で把握している件数が基準。「国宝・重要文化財等都道府県別指定件数一覧」（文化庁）を加工して作成。"
+    }
+  ],
+  "indicators": [
+    {
+      "id": "nta-sake-domestic-volume",
+      "label": "清酒の国内売上数量（回答した製造業者の合計）",
+      "unit": "kl",
+      "period": "令和6年（2024年1月〜12月）",
+      "source": "nta-sake",
+      "values": [
+        {
+          "pref": "京都府",
+          "value": 86078
+        },
+        {
+          "pref": "兵庫県",
+          "value": 77780
+        },
+        {
+          "pref": "新潟県",
+          "value": 33053
+        },
+        {
+          "pref": "埼玉県",
+          "value": 19237
+        },
+        {
+          "pref": "秋田県",
+          "value": 15461
+        },
+        {
+          "pref": "千葉県",
+          "value": 12545
+        },
+        {
+          "pref": "愛知県",
+          "value": 11230
+        },
+        {
+          "pref": "福島県",
+          "value": 8759
+        },
+        {
+          "pref": "長野県",
+          "value": 8734
+        },
+        {
+          "pref": "栃木県",
+          "value": 8060
+        },
+        {
+          "pref": "山形県",
+          "value": 7187
+        },
+        {
+          "pref": "宮城県",
+          "value": 6989
+        },
+        {
+          "pref": "広島県",
+          "value": 6831
+        },
+        {
+          "pref": "山口県",
+          "value": 5956
+        },
+        {
+          "pref": "石川県",
+          "value": 4358
+        },
+        {
+          "pref": "高知県",
+          "value": 4235
+        },
+        {
+          "pref": "岐阜県",
+          "value": 3864
+        },
+        {
+          "pref": "和歌山県",
+          "value": 3734
+        },
+        {
+          "pref": "青森県",
+          "value": 3446
+        },
+        {
+          "pref": "北海道",
+          "value": 3143
+        },
+        {
+          "pref": "岩手県",
+          "value": 3097
+        },
+        {
+          "pref": "静岡県",
+          "value": 3070
+        },
+        {
+          "pref": "奈良県",
+          "value": 3026
+        },
+        {
+          "pref": "福岡県",
+          "value": 2890
+        },
+        {
+          "pref": "富山県",
+          "value": 2787
+        },
+        {
+          "pref": "福井県",
+          "value": 2675
+        },
+        {
+          "pref": "佐賀県",
+          "value": 2604
+        },
+        {
+          "pref": "滋賀県",
+          "value": 2400
+        },
+        {
+          "pref": "東京都",
+          "value": 2072
+        },
+        {
+          "pref": "三重県",
+          "value": 2067
+        },
+        {
+          "pref": "島根県",
+          "value": 1846
+        },
+        {
+          "pref": "大分県",
+          "value": 1837
+        },
+        {
+          "pref": "岡山県",
+          "value": 1828
+        },
+        {
+          "pref": "群馬県",
+          "value": 1804
+        },
+        {
+          "pref": "山梨県",
+          "value": 1539
+        },
+        {
+          "pref": "茨城県",
+          "value": 1406
+        },
+        {
+          "pref": "愛媛県",
+          "value": 1203
+        },
+        {
+          "pref": "熊本県",
+          "value": 944
+        },
+        {
+          "pref": "神奈川県",
+          "value": 903
+        },
+        {
+          "pref": "鳥取県",
+          "value": 829
+        },
+        {
+          "pref": "香川県",
+          "value": 825
+        },
+        {
+          "pref": "長崎県",
+          "value": 718
+        },
+        {
+          "pref": "大阪府",
+          "value": 635
+        },
+        {
+          "pref": "徳島県",
+          "value": 345
+        }
+      ]
+    },
+    {
+      "id": "nta-sake-domestic-sales",
+      "label": "清酒の国内売上金額（回答した製造業者の合計）",
+      "unit": "百万円",
+      "period": "令和6年（2024年1月〜12月）",
+      "source": "nta-sake",
+      "values": [
+        {
+          "pref": "京都府",
+          "value": 46840
+        },
+        {
+          "pref": "兵庫県",
+          "value": 42417
+        },
+        {
+          "pref": "新潟県",
+          "value": 35679
+        },
+        {
+          "pref": "埼玉県",
+          "value": 13822
+        },
+        {
+          "pref": "秋田県",
+          "value": 13399
+        },
+        {
+          "pref": "山口県",
+          "value": 13044
+        },
+        {
+          "pref": "山形県",
+          "value": 9710
+        },
+        {
+          "pref": "長野県",
+          "value": 9427
+        },
+        {
+          "pref": "福島県",
+          "value": 9072
+        },
+        {
+          "pref": "宮城県",
+          "value": 7607
+        },
+        {
+          "pref": "広島県",
+          "value": 6741
+        },
+        {
+          "pref": "愛知県",
+          "value": 6523
+        },
+        {
+          "pref": "千葉県",
+          "value": 5955
+        },
+        {
+          "pref": "栃木県",
+          "value": 5422
+        },
+        {
+          "pref": "石川県",
+          "value": 5157
+        },
+        {
+          "pref": "青森県",
+          "value": 4562
+        },
+        {
+          "pref": "高知県",
+          "value": 4526
+        },
+        {
+          "pref": "岐阜県",
+          "value": 4498
+        },
+        {
+          "pref": "福井県",
+          "value": 4214
+        },
+        {
+          "pref": "北海道",
+          "value": 4165
+        },
+        {
+          "pref": "静岡県",
+          "value": 3797
+        },
+        {
+          "pref": "富山県",
+          "value": 3566
+        },
+        {
+          "pref": "岩手県",
+          "value": 3561
+        },
+        {
+          "pref": "佐賀県",
+          "value": 3453
+        },
+        {
+          "pref": "福岡県",
+          "value": 3440
+        },
+        {
+          "pref": "三重県",
+          "value": 3358
+        },
+        {
+          "pref": "奈良県",
+          "value": 3331
+        },
+        {
+          "pref": "島根県",
+          "value": 2235
+        },
+        {
+          "pref": "岡山県",
+          "value": 2149
+        },
+        {
+          "pref": "滋賀県",
+          "value": 2112
+        },
+        {
+          "pref": "東京都",
+          "value": 1965
+        },
+        {
+          "pref": "和歌山県",
+          "value": 1877
+        },
+        {
+          "pref": "大分県",
+          "value": 1664
+        },
+        {
+          "pref": "茨城県",
+          "value": 1631
+        },
+        {
+          "pref": "群馬県",
+          "value": 1585
+        },
+        {
+          "pref": "山梨県",
+          "value": 1523
+        },
+        {
+          "pref": "愛媛県",
+          "value": 1464
+        },
+        {
+          "pref": "神奈川県",
+          "value": 1337
+        },
+        {
+          "pref": "熊本県",
+          "value": 1302
+        },
+        {
+          "pref": "鳥取県",
+          "value": 1041
+        },
+        {
+          "pref": "香川県",
+          "value": 952
+        },
+        {
+          "pref": "長崎県",
+          "value": 945
+        },
+        {
+          "pref": "大阪府",
+          "value": 889
+        },
+        {
+          "pref": "徳島県",
+          "value": 403
+        }
+      ]
+    },
+    {
+      "id": "nta-sake-export-volume",
+      "label": "清酒の輸出売上数量（回答した製造業者の合計）",
+      "unit": "kl",
+      "period": "令和6年（2024年1月〜12月）",
+      "source": "nta-sake",
+      "values": [
+        {
+          "pref": "兵庫県",
+          "value": 6754
+        },
+        {
+          "pref": "京都府",
+          "value": 3236
+        },
+        {
+          "pref": "山口県",
+          "value": 2939
+        },
+        {
+          "pref": "新潟県",
+          "value": 1745
+        },
+        {
+          "pref": "秋田県",
+          "value": 342
+        },
+        {
+          "pref": "岐阜県",
+          "value": 341
+        },
+        {
+          "pref": "栃木県",
+          "value": 301
+        },
+        {
+          "pref": "山形県",
+          "value": 296
+        },
+        {
+          "pref": "埼玉県",
+          "value": 270
+        },
+        {
+          "pref": "高知県",
+          "value": 242
+        },
+        {
+          "pref": "静岡県",
+          "value": 234
+        },
+        {
+          "pref": "大阪府",
+          "value": 227
+        },
+        {
+          "pref": "広島県",
+          "value": 224
+        },
+        {
+          "pref": "岩手県",
+          "value": 217
+        },
+        {
+          "pref": "福岡県",
+          "value": 217
+        },
+        {
+          "pref": "長野県",
+          "value": 207
+        },
+        {
+          "pref": "福井県",
+          "value": 194
+        },
+        {
+          "pref": "宮城県",
+          "value": 190
+        },
+        {
+          "pref": "福島県",
+          "value": 183
+        },
+        {
+          "pref": "北海道",
+          "value": 181
+        },
+        {
+          "pref": "島根県",
+          "value": 165
+        },
+        {
+          "pref": "千葉県",
+          "value": 147
+        },
+        {
+          "pref": "愛知県",
+          "value": 139
+        },
+        {
+          "pref": "鳥取県",
+          "value": 133
+        },
+        {
+          "pref": "奈良県",
+          "value": 111
+        },
+        {
+          "pref": "青森県",
+          "value": 99
+        },
+        {
+          "pref": "石川県",
+          "value": 88
+        },
+        {
+          "pref": "岡山県",
+          "value": 66
+        },
+        {
+          "pref": "佐賀県",
+          "value": 65
+        },
+        {
+          "pref": "和歌山県",
+          "value": 62
+        },
+        {
+          "pref": "群馬県",
+          "value": 55
+        },
+        {
+          "pref": "富山県",
+          "value": 54
+        },
+        {
+          "pref": "茨城県",
+          "value": 51
+        },
+        {
+          "pref": "大分県",
+          "value": 49
+        },
+        {
+          "pref": "滋賀県",
+          "value": 41
+        },
+        {
+          "pref": "熊本県",
+          "value": 41
+        },
+        {
+          "pref": "山梨県",
+          "value": 39
+        },
+        {
+          "pref": "東京都",
+          "value": 36
+        },
+        {
+          "pref": "三重県",
+          "value": 35
+        },
+        {
+          "pref": "徳島県",
+          "value": 34
+        },
+        {
+          "pref": "香川県",
+          "value": 33
+        },
+        {
+          "pref": "神奈川県",
+          "value": 25
+        },
+        {
+          "pref": "愛媛県",
+          "value": 22
+        },
+        {
+          "pref": "長崎県",
+          "value": 21
+        }
+      ]
+    },
+    {
+      "id": "maff-yasai-とうがらし（辛味種）",
+      "label": "とうがらし（辛味種）の収穫量",
+      "unit": "t",
+      "period": "令和6年産",
+      "source": "maff-yasai",
+      "values": [
+        {
+          "pref": "大分県",
+          "value": 56
+        },
+        {
+          "pref": "京都府",
+          "value": 35
+        },
+        {
+          "pref": "千葉県",
+          "value": 22
+        },
+        {
+          "pref": "青森県",
+          "value": 13
+        },
+        {
+          "pref": "栃木県",
+          "value": 13
+        },
+        {
+          "pref": "東京都",
+          "value": 12
+        },
+        {
+          "pref": "佐賀県",
+          "value": 12
+        },
+        {
+          "pref": "福岡県",
+          "value": 9
+        },
+        {
+          "pref": "長野県",
+          "value": 8
+        },
+        {
+          "pref": "宮崎県",
+          "value": 6
+        },
+        {
+          "pref": "沖縄県",
+          "value": 6
+        },
+        {
+          "pref": "兵庫県",
+          "value": 4
+        },
+        {
+          "pref": "鹿児島県",
+          "value": 4
+        },
+        {
+          "pref": "神奈川県",
+          "value": 3
+        },
+        {
+          "pref": "岐阜県",
+          "value": 3
+        },
+        {
+          "pref": "岡山県",
+          "value": 3
+        },
+        {
+          "pref": "香川県",
+          "value": 3
+        },
+        {
+          "pref": "福島県",
+          "value": 2
+        },
+        {
+          "pref": "島根県",
+          "value": 2
+        },
+        {
+          "pref": "北海道",
+          "value": 1
+        },
+        {
+          "pref": "山形県",
+          "value": 1
+        },
+        {
+          "pref": "石川県",
+          "value": 1
+        },
+        {
+          "pref": "愛知県",
+          "value": 1
+        },
+        {
+          "pref": "大阪府",
+          "value": 1
+        },
+        {
+          "pref": "和歌山県",
+          "value": 1
+        },
+        {
+          "pref": "広島県",
+          "value": 1
+        },
+        {
+          "pref": "山口県",
+          "value": 1
+        },
+        {
+          "pref": "愛媛県",
+          "value": 1
+        },
+        {
+          "pref": "熊本県",
+          "value": 1
+        },
+        {
+          "pref": "岩手県",
+          "value": 0
+        },
+        {
+          "pref": "宮城県",
+          "value": 0
+        },
+        {
+          "pref": "秋田県",
+          "value": 0
+        },
+        {
+          "pref": "埼玉県",
+          "value": 0
+        },
+        {
+          "pref": "新潟県",
+          "value": 0
+        },
+        {
+          "pref": "福井県",
+          "value": 0
+        },
+        {
+          "pref": "山梨県",
+          "value": 0
+        },
+        {
+          "pref": "静岡県",
+          "value": 0
+        },
+        {
+          "pref": "三重県",
+          "value": 0
+        },
+        {
+          "pref": "滋賀県",
+          "value": 0
+        },
+        {
+          "pref": "奈良県",
+          "value": 0
+        },
+        {
+          "pref": "鳥取県",
+          "value": 0
+        },
+        {
+          "pref": "徳島県",
+          "value": 0
+        },
+        {
+          "pref": "高知県",
+          "value": 0
+        },
+        {
+          "pref": "長崎県",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "id": "bunka-kokuho-bijutsu",
+      "label": "国宝（美術工芸品）の件数",
+      "unit": "件",
+      "period": "令和8年10月1日現在（都道府県別の件数は平成29年9月現在で把握している件数が基準）",
+      "source": "bunka-shitei",
+      "values": [
+        {
+          "pref": "東京都",
+          "value": 291
+        },
+        {
+          "pref": "京都府",
+          "value": 188
+        },
+        {
+          "pref": "奈良県",
+          "value": 144
+        },
+        {
+          "pref": "大阪府",
+          "value": 58
+        },
+        {
+          "pref": "滋賀県",
+          "value": 34
+        },
+        {
+          "pref": "和歌山県",
+          "value": 29
+        },
+        {
+          "pref": "神奈川県",
+          "value": 18
+        },
+        {
+          "pref": "静岡県",
+          "value": 12
+        },
+        {
+          "pref": "広島県",
+          "value": 12
+        },
+        {
+          "pref": "福岡県",
+          "value": 12
+        },
+        {
+          "pref": "栃木県",
+          "value": 10
+        },
+        {
+          "pref": "兵庫県",
+          "value": 10
+        },
+        {
+          "pref": "愛媛県",
+          "value": 9
+        },
+        {
+          "pref": "岩手県",
+          "value": 7
+        },
+        {
+          "pref": "岡山県",
+          "value": 7
+        },
+        {
+          "pref": "愛知県",
+          "value": 6
+        },
+        {
+          "pref": "山口県",
+          "value": 6
+        },
+        {
+          "pref": "山形県",
+          "value": 5
+        },
+        {
+          "pref": "三重県",
+          "value": 5
+        },
+        {
+          "pref": "宮城県",
+          "value": 4
+        },
+        {
+          "pref": "千葉県",
+          "value": 4
+        },
+        {
+          "pref": "福井県",
+          "value": 4
+        },
+        {
+          "pref": "岐阜県",
+          "value": 4
+        },
+        {
+          "pref": "香川県",
+          "value": 4
+        },
+        {
+          "pref": "青森県",
+          "value": 3
+        },
+        {
+          "pref": "埼玉県",
+          "value": 3
+        },
+        {
+          "pref": "山梨県",
+          "value": 3
+        },
+        {
+          "pref": "長野県",
+          "value": 3
+        },
+        {
+          "pref": "北海道",
+          "value": 2
+        },
+        {
+          "pref": "福島県",
+          "value": 2
+        },
+        {
+          "pref": "茨城県",
+          "value": 2
+        },
+        {
+          "pref": "石川県",
+          "value": 2
+        },
+        {
+          "pref": "鳥取県",
+          "value": 2
+        },
+        {
+          "pref": "島根県",
+          "value": 2
+        },
+        {
+          "pref": "高知県",
+          "value": 2
+        },
+        {
+          "pref": "大分県",
+          "value": 2
+        },
+        {
+          "pref": "秋田県",
+          "value": 1
+        },
+        {
+          "pref": "新潟県",
+          "value": 1
+        },
+        {
+          "pref": "佐賀県",
+          "value": 1
+        },
+        {
+          "pref": "鹿児島県",
+          "value": 1
+        },
+        {
+          "pref": "沖縄県",
+          "value": 1
+        },
+        {
+          "pref": "群馬県",
+          "value": 0
+        },
+        {
+          "pref": "富山県",
+          "value": 0
+        },
+        {
+          "pref": "徳島県",
+          "value": 0
+        },
+        {
+          "pref": "長崎県",
+          "value": 0
+        },
+        {
+          "pref": "熊本県",
+          "value": 0
+        },
+        {
+          "pref": "宮崎県",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "id": "bunka-kokuho-kenzobutsu",
+      "label": "国宝（建造物）の件数",
+      "unit": "件",
+      "period": "令和8年10月1日現在",
+      "source": "bunka-shitei",
+      "values": [
+        {
+          "pref": "奈良県",
+          "value": 64
+        },
+        {
+          "pref": "京都府",
+          "value": 54
+        },
+        {
+          "pref": "滋賀県",
+          "value": 23
+        },
+        {
+          "pref": "兵庫県",
+          "value": 12
+        },
+        {
+          "pref": "栃木県",
+          "value": 7
+        },
+        {
+          "pref": "和歌山県",
+          "value": 7
+        },
+        {
+          "pref": "広島県",
+          "value": 7
+        },
+        {
+          "pref": "長野県",
+          "value": 6
+        },
+        {
+          "pref": "大阪府",
+          "value": 5
+        },
+        {
+          "pref": "宮城県",
+          "value": 3
+        },
+        {
+          "pref": "岐阜県",
+          "value": 3
+        },
+        {
+          "pref": "愛知県",
+          "value": 3
+        },
+        {
+          "pref": "島根県",
+          "value": 3
+        },
+        {
+          "pref": "山口県",
+          "value": 3
+        },
+        {
+          "pref": "愛媛県",
+          "value": 3
+        },
+        {
+          "pref": "長崎県",
+          "value": 3
+        },
+        {
+          "pref": "東京都",
+          "value": 2
+        },
+        {
+          "pref": "富山県",
+          "value": 2
+        },
+        {
+          "pref": "福井県",
+          "value": 2
+        },
+        {
+          "pref": "山梨県",
+          "value": 2
+        },
+        {
+          "pref": "三重県",
+          "value": 2
+        },
+        {
+          "pref": "岡山県",
+          "value": 2
+        },
+        {
+          "pref": "香川県",
+          "value": 2
+        },
+        {
+          "pref": "熊本県",
+          "value": 2
+        },
+        {
+          "pref": "大分県",
+          "value": 2
+        },
+        {
+          "pref": "岩手県",
+          "value": 1
+        },
+        {
+          "pref": "山形県",
+          "value": 1
+        },
+        {
+          "pref": "福島県",
+          "value": 1
+        },
+        {
+          "pref": "群馬県",
+          "value": 1
+        },
+        {
+          "pref": "埼玉県",
+          "value": 1
+        },
+        {
+          "pref": "神奈川県",
+          "value": 1
+        },
+        {
+          "pref": "静岡県",
+          "value": 1
+        },
+        {
+          "pref": "鳥取県",
+          "value": 1
+        },
+        {
+          "pref": "高知県",
+          "value": 1
+        },
+        {
+          "pref": "鹿児島県",
+          "value": 1
+        },
+        {
+          "pref": "沖縄県",
+          "value": 1
+        },
+        {
+          "pref": "北海道",
+          "value": 0
+        },
+        {
+          "pref": "青森県",
+          "value": 0
+        },
+        {
+          "pref": "秋田県",
+          "value": 0
+        },
+        {
+          "pref": "茨城県",
+          "value": 0
+        },
+        {
+          "pref": "千葉県",
+          "value": 0
+        },
+        {
+          "pref": "新潟県",
+          "value": 0
+        },
+        {
+          "pref": "石川県",
+          "value": 0
+        },
+        {
+          "pref": "徳島県",
+          "value": 0
+        },
+        {
+          "pref": "福岡県",
+          "value": 0
+        },
+        {
+          "pref": "佐賀県",
+          "value": 0
+        },
+        {
+          "pref": "宮崎県",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "id": "bunka-kokuho-total",
+      "label": "国宝の件数（美術工芸品と建造物の計）",
+      "unit": "件",
+      "period": "令和8年10月1日現在（美術工芸品の都道府県別の件数は平成29年9月現在で把握している件数が基準）",
+      "source": "bunka-shitei",
+      "values": [
+        {
+          "pref": "東京都",
+          "value": 293
+        },
+        {
+          "pref": "京都府",
+          "value": 242
+        },
+        {
+          "pref": "奈良県",
+          "value": 208
+        },
+        {
+          "pref": "大阪府",
+          "value": 63
+        },
+        {
+          "pref": "滋賀県",
+          "value": 57
+        },
+        {
+          "pref": "和歌山県",
+          "value": 36
+        },
+        {
+          "pref": "兵庫県",
+          "value": 22
+        },
+        {
+          "pref": "神奈川県",
+          "value": 19
+        },
+        {
+          "pref": "広島県",
+          "value": 19
+        },
+        {
+          "pref": "栃木県",
+          "value": 17
+        },
+        {
+          "pref": "静岡県",
+          "value": 13
+        },
+        {
+          "pref": "愛媛県",
+          "value": 12
+        },
+        {
+          "pref": "福岡県",
+          "value": 12
+        },
+        {
+          "pref": "長野県",
+          "value": 9
+        },
+        {
+          "pref": "愛知県",
+          "value": 9
+        },
+        {
+          "pref": "岡山県",
+          "value": 9
+        },
+        {
+          "pref": "山口県",
+          "value": 9
+        },
+        {
+          "pref": "岩手県",
+          "value": 8
+        },
+        {
+          "pref": "宮城県",
+          "value": 7
+        },
+        {
+          "pref": "岐阜県",
+          "value": 7
+        },
+        {
+          "pref": "三重県",
+          "value": 7
+        },
+        {
+          "pref": "山形県",
+          "value": 6
+        },
+        {
+          "pref": "福井県",
+          "value": 6
+        },
+        {
+          "pref": "香川県",
+          "value": 6
+        },
+        {
+          "pref": "山梨県",
+          "value": 5
+        },
+        {
+          "pref": "島根県",
+          "value": 5
+        },
+        {
+          "pref": "埼玉県",
+          "value": 4
+        },
+        {
+          "pref": "千葉県",
+          "value": 4
+        },
+        {
+          "pref": "大分県",
+          "value": 4
+        },
+        {
+          "pref": "青森県",
+          "value": 3
+        },
+        {
+          "pref": "福島県",
+          "value": 3
+        },
+        {
+          "pref": "鳥取県",
+          "value": 3
+        },
+        {
+          "pref": "高知県",
+          "value": 3
+        },
+        {
+          "pref": "長崎県",
+          "value": 3
+        },
+        {
+          "pref": "北海道",
+          "value": 2
+        },
+        {
+          "pref": "茨城県",
+          "value": 2
+        },
+        {
+          "pref": "富山県",
+          "value": 2
+        },
+        {
+          "pref": "石川県",
+          "value": 2
+        },
+        {
+          "pref": "熊本県",
+          "value": 2
+        },
+        {
+          "pref": "鹿児島県",
+          "value": 2
+        },
+        {
+          "pref": "沖縄県",
+          "value": 2
+        },
+        {
+          "pref": "秋田県",
+          "value": 1
+        },
+        {
+          "pref": "群馬県",
+          "value": 1
+        },
+        {
+          "pref": "新潟県",
+          "value": 1
+        },
+        {
+          "pref": "佐賀県",
+          "value": 1
+        },
+        {
+          "pref": "徳島県",
+          "value": 0
+        },
+        {
+          "pref": "宮崎県",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "id": "bunka-jubun-total",
+      "label": "重要文化財の件数（国宝を含む）",
+      "unit": "件",
+      "period": "令和8年10月1日現在（美術工芸品の都道府県別の件数は平成29年9月現在で把握している件数が基準）",
+      "source": "bunka-shitei",
+      "values": [
+        {
+          "pref": "東京都",
+          "value": 2868
+        },
+        {
+          "pref": "京都府",
+          "value": 2242
+        },
+        {
+          "pref": "奈良県",
+          "value": 1340
+        },
+        {
+          "pref": "滋賀県",
+          "value": 836
+        },
+        {
+          "pref": "大阪府",
+          "value": 685
+        },
+        {
+          "pref": "兵庫県",
+          "value": 476
+        },
+        {
+          "pref": "和歌山県",
+          "value": 401
+        },
+        {
+          "pref": "神奈川県",
+          "value": 352
+        },
+        {
+          "pref": "愛知県",
+          "value": 347
+        },
+        {
+          "pref": "静岡県",
+          "value": 227
+        },
+        {
+          "pref": "福岡県",
+          "value": 220
+        },
+        {
+          "pref": "広島県",
+          "value": 216
+        },
+        {
+          "pref": "長野県",
+          "value": 191
+        },
+        {
+          "pref": "三重県",
+          "value": 191
+        },
+        {
+          "pref": "岡山県",
+          "value": 171
+        },
+        {
+          "pref": "愛媛県",
+          "value": 163
+        },
+        {
+          "pref": "栃木県",
+          "value": 160
+        },
+        {
+          "pref": "岐阜県",
+          "value": 159
+        },
+        {
+          "pref": "山口県",
+          "value": 141
+        },
+        {
+          "pref": "石川県",
+          "value": 138
+        },
+        {
+          "pref": "香川県",
+          "value": 125
+        },
+        {
+          "pref": "福井県",
+          "value": 117
+        },
+        {
+          "pref": "山梨県",
+          "value": 112
+        },
+        {
+          "pref": "山形県",
+          "value": 103
+        },
+        {
+          "pref": "島根県",
+          "value": 101
+        },
+        {
+          "pref": "福島県",
+          "value": 100
+        },
+        {
+          "pref": "大分県",
+          "value": 91
+        },
+        {
+          "pref": "高知県",
+          "value": 90
+        },
+        {
+          "pref": "新潟県",
+          "value": 89
+        },
+        {
+          "pref": "埼玉県",
+          "value": 86
+        },
+        {
+          "pref": "岩手県",
+          "value": 81
+        },
+        {
+          "pref": "千葉県",
+          "value": 80
+        },
+        {
+          "pref": "茨城県",
+          "value": 79
+        },
+        {
+          "pref": "長崎県",
+          "value": 75
+        },
+        {
+          "pref": "熊本県",
+          "value": 72
+        },
+        {
+          "pref": "宮城県",
+          "value": 68
+        },
+        {
+          "pref": "北海道",
+          "value": 65
+        },
+        {
+          "pref": "群馬県",
+          "value": 64
+        },
+        {
+          "pref": "青森県",
+          "value": 62
+        },
+        {
+          "pref": "鳥取県",
+          "value": 57
+        },
+        {
+          "pref": "徳島県",
+          "value": 53
+        },
+        {
+          "pref": "佐賀県",
+          "value": 52
+        },
+        {
+          "pref": "富山県",
+          "value": 50
+        },
+        {
+          "pref": "沖縄県",
+          "value": 44
+        },
+        {
+          "pref": "秋田県",
+          "value": 43
+        },
+        {
+          "pref": "鹿児島県",
+          "value": 41
+        },
+        {
+          "pref": "宮崎県",
+          "value": 26
+        }
+      ]
+    }
+  ]
+}
