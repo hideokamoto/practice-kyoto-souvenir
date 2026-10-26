@@ -9,6 +9,10 @@ import type {
 } from '../data/types';
 import type { Rng } from './rng';
 
+/** 難易度。問題の型は全段階で同じで、選択肢の紛らわしさと題材の有名さを変える。 */
+export type Level = 'easy' | 'normal' | 'hard';
+export const LEVELS: readonly Level[] = ['easy', 'normal', 'hard'];
+
 export type DatasetKey = 'omiyage' | 'meisho' | 'kanko' | 'kakei' | 'shaji' | 'sangyo';
 
 export interface Datasets {
@@ -43,8 +47,9 @@ export interface Question {
 export interface Template<E = unknown> {
   id: string;
   needs: DatasetKey;
-  candidates(d: Datasets): readonly E[];
+  /** level を省略したら 'normal'。 */
+  candidates(d: Datasets, level?: Level): readonly E[];
   key(e: E): string;
-  /** 条件に合う問題が作れなければ null（呼び出し側は別の対象で作り直す）。 */
-  build(e: E, d: Datasets, rng: Rng): Question | null;
+  /** 条件に合う問題が作れなければ null（呼び出し側は別の対象で作り直す）。level を省略したら 'normal'。 */
+  build(e: E, d: Datasets, rng: Rng, level?: Level): Question | null;
 }

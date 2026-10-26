@@ -202,7 +202,7 @@ export function stripDisambiguation(name) {
   return name.replace(/\s*[（(](?:京都府)?(?:京都市)?(?:[^（）()]{1,3}区)?[)）]$/, '').trim();
 }
 
-export function buildShaji({ candidates, wardMap, inceptions, heritage, photos }) {
+export function buildShaji({ candidates, wardMap, inceptions, heritage, photos, sitelinks = {} }) {
   const allQids = new Set(candidates.map((c) => c.qid));
   const heritageOf = worldHeritageStatus(heritage);
   const umbrellas = new Set(heritage.umbrellas);
@@ -266,6 +266,8 @@ export function buildShaji({ candidates, wardMap, inceptions, heritage, photos }
       inception: pickInception(inceptions[c.qid] ?? []),
       worldHeritage: heritageOf(c.qid, c.parents),
       photo,
+      // 有名さの物差し: この項目の記事がある Wikipedia 等の言語版の数
+      sitelinks: sitelinks[c.qid] ?? 0,
       tatchu: c.classes.includes(TATCHU_CLASS),
     });
   }

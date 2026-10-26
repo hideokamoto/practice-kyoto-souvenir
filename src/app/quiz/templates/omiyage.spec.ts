@@ -56,6 +56,13 @@ describe('omiyage.describe（説明文から名前を当てる）', () => {
     }
   });
 
+  it('引用に伏せ字が無いとき（説明文に名前が出てこない）は「〇〇に当てはまる」と聞かない', () => {
+    const q = tpl.build(data.omiyage!.items[4], data, mulberry32(1))!;
+    expect(q.quote).not.toContain('〇〇');
+    expect(q.prompt).not.toContain('〇〇');
+    expect(q.prompt).toContain('お土産');
+  });
+
   it('同じ種類が 4 つ未満の種類は出題対象にしない', () => {
     expect(tpl.candidates(data).map((o) => o.name)).not.toContain('京扇子');
   });

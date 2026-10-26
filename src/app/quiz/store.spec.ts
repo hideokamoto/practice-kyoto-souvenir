@@ -20,8 +20,8 @@ describe('QuizStore', () => {
   });
 
   it('開始すると 1 問目から、未回答の状態になる', () => {
-    store.load('meisho', [q('1'), q('2')], '2026-10-25');
-    expect(store.mode()).toBe('meisho');
+    store.load('normal', [q('1'), q('2')], '2026-10-25');
+    expect(store.mode()).toBe('normal');
     expect(store.index()).toBe(0);
     expect(store.current()?.id).toBe('1');
     expect(store.currentAnswer()).toBeNull();
@@ -29,7 +29,7 @@ describe('QuizStore', () => {
   });
 
   it('回答は 1 問につき 1 回だけ受け付ける', () => {
-    store.load('meisho', [q('1', 2)], '2026-10-25');
+    store.load('normal', [q('1', 2)], '2026-10-25');
     store.answer(1);
     store.answer(2);
     expect(store.currentAnswer()).toBe(1);
@@ -37,7 +37,7 @@ describe('QuizStore', () => {
   });
 
   it('next は最後の問題で false を返す', () => {
-    store.load('meisho', [q('1'), q('2')], '2026-10-25');
+    store.load('normal', [q('1'), q('2')], '2026-10-25');
     store.answer(0);
     expect(store.next()).toBe(true);
     store.answer(0);
@@ -47,13 +47,13 @@ describe('QuizStore', () => {
   });
 
   it('全問答えたら自己ベストを保存し、低い点では上書きしない', () => {
-    store.load('kakei', [q('1')], '2026-10-25');
+    store.load('hard', [q('1')], '2026-10-25');
     store.answer(0);
-    expect(store.best('kakei')).toBe(1);
-    store.load('kakei', [q('1')], '2026-10-25');
+    expect(store.best('hard')).toBe(1);
+    store.load('hard', [q('1')], '2026-10-25');
     store.answer(3);
-    expect(store.best('kakei')).toBe(1);
-    expect(store.best('meisho')).toBeNull();
+    expect(store.best('hard')).toBe(1);
+    expect(store.best('normal')).toBeNull();
   });
 
   it('今日の5問は日付ごとの結果を残す', () => {
@@ -69,7 +69,7 @@ describe('QuizStore', () => {
     const spy = vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => {
       throw new Error('denied');
     });
-    store.load('kakei', [q('1')], '2026-10-25');
+    store.load('hard', [q('1')], '2026-10-25');
     expect(() => store.answer(0)).not.toThrow();
     spy.mockRestore();
   });

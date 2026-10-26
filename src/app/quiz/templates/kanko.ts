@@ -1,33 +1,29 @@
 import type { Kanko } from '../../data/types';
-import { WARDS } from '../../data/types';
 import { makeQuestion } from '../make';
-import { sample, shuffle } from '../rng';
+import type { Level } from '../question';
+import { shuffle } from '../rng';
 import { containsLoosely, excerpt } from '../text';
 import { defineTemplate, type AnyTemplate } from './common';
+import { distanceKm, wardDistractors } from './geo';
 import { wardLeaks } from './meisho';
 
-const items = (d: { kanko?: { items: Kanko[] } }) => d.kanko?.items ?? [];
+export { distanceKm, wardCentroids } from './geo';
 
-/** 2 点間の大円距離（km）。 */
-export function distanceKm(
-  a: { lat: number; lon: number },
-  b: { lat: number; lon: number },
-): number {
-  const R = 6371;
-  const rad = (x: number) => (x * Math.PI) / 180;
-  const dLat = rad(b.lat - a.lat);
-  const dLon = rad(b.lon - a.lon);
-  const h =
-    Math.sin(dLat / 2) ** 2 + Math.cos(rad(a.lat)) * Math.cos(rad(b.lat)) * Math.sin(dLon / 2) ** 2;
-  return 2 * R * Math.asin(Math.sqrt(h));
-}
+const items = (d: { kanko?: { items: Kanko[] } }) => d.kanko?.items ?? [];
 
 const km = (d: number) => `約${d.toFixed(1)}km`;
 
 /** 航空写真で見て分かる見込みのある施設（寺社・城・庭園など）だけを対象にする。 */
 const AERIAL_NAME = /(寺|神社|神宮|大社|宮|城|御所|離宮|庭園|塔|山荘|大橋)$/;
-/** 誤答は正解からこれ以上離れた施設に限る（写真の端に写り込むと正解が 2 つになるため）。 */
-const AERIAL_MIN_KM = 1.5;
+/**
+ * 誤答にする施設の、正解からの距離（km）。1.5km 未満は写真の端に写り込むと正解が 2 つになるので使わない。
+ * かんたんは遠い施設、むずかしいは近所の施設を誤答にする。
+ */
+const AERIAL_RANGE: Record<Level, [number, number]> = {
+  easy: [5, Infinity],
+  normal: [1.5, Infinity],
+  hard: [1.5, 4],
+};
 
 const aerialCandidates = (d: { kanko?: { items: Kanko[] } }): Kanko[] =>
   items(d).filter((k) => AERIAL_NAME.test(k.name));
@@ -37,10 +33,12 @@ const aerial = defineTemplate<Kanko>({
   needs: 'kanko',
   candidates: aerialCandidates,
   key: (k) => k.id,
-  build(k, d, rng) {
-    const pool = aerialCandidates(d).filter(
-      (x) => x.id !== k.id && distanceKm(k, x) >= AERIAL_MIN_KM,
-    );
+  build(k, d, rng, level = 'normal') {
+    const [min, max] = AERIAL_RANGE[level];
+    const pool = aerialCandidates(d).filter((x) => {
+      const km = distanceKm(k, x);
+      return x.id !== k.id && km >= min && km <= max;
+    });
     return makeQuestion(
       {
         template: 'kanko.aerial',
@@ -66,20 +64,17 @@ const aerial = defineTemplate<Kanko>({
 const ward = defineTemplate<Kanko>({
   id: 'kanko.ward',
   needs: 'kanko',
-  candidates: (d) => items(d).filter((k) => !wardLeaks(k.name, k.ward)),
+  // ホテルや店の所在区は京都の知識では解けないので、寺社などの名所に限る
+  candidates: (d) => aerialCandidates(d).filter((k) => !wardLeaks(k.name, k.ward)),
   key: (k) => k.id,
-  build(k, _d, rng) {
+  build(k, d, rng, level = 'normal') {
     return makeQuestion(
       {
         template: 'kanko.ward',
         key: k.id,
         prompt: `「${k.name}」があるのは何区？`,
         answer: `${k.ward}区`,
-        distractors: sample(
-          WARDS.filter((w) => w !== k.ward),
-          3,
-          rng,
-        ).map((w) => `${w}区`),
+        distractors: wardDistractors(d, k.ward, level, rng).map((w) => `${w}区`),
         explanation: `「${k.name}」は京都市${k.ward}区にあります。${excerpt(k.description, 80)}`,
         sources: ['kyoto-kanko'],
       },
@@ -88,10 +83,16 @@ const ward = defineTemplate<Kanko>({
   },
 });
 
-/** 正解は誤答よりこの倍率以上近いこと（座標の誤差で順位が入れ替わらないように）。 */
-const NEAREST_MARGIN = 1.6;
 const NEAREST_MAX_KM = 3;
-const FAR_MAX_KM = 8;
+/**
+ * 誤答にする施設の距離を、正解の距離 a から決める。どの段階でも a の 1.6 倍以上
+ * （座標の誤差で順位が入れ替わらないように）。かんたんは 3 倍以上、むずかしいは近所の施設に限る。
+ */
+const FAR_RANGE: Record<Level, (a: number) => [number, number]> = {
+  easy: (a) => [a * 3, 8],
+  normal: (a) => [a * 1.6, 8],
+  hard: (a) => [a * 1.6, Math.max(3, a * 2.5)],
+};
 
 const nearest = defineTemplate<Kanko>({
   id: 'kanko.nearest',
@@ -99,7 +100,7 @@ const nearest = defineTemplate<Kanko>({
   // 起点も選択肢も、寺社などの名所に限る（ホテルや店は京都の知識では解けないため）
   candidates: aerialCandidates,
   key: (k) => k.id,
-  build(k, d, rng) {
+  build(k, d, rng, level = 'normal') {
     const others = aerialCandidates(d)
       .filter(
         (x) =>
@@ -109,8 +110,9 @@ const nearest = defineTemplate<Kanko>({
       .sort((a, b) => a.d - b.d);
     const near = others[0];
     if (!near || near.d > NEAREST_MAX_KM) return null;
+    const [min, max] = FAR_RANGE[level](near.d);
     const far = shuffle(
-      others.filter((o) => o.d >= near.d * NEAREST_MARGIN && o.d <= FAR_MAX_KM),
+      others.filter((o) => o.d >= min && o.d <= max),
       rng,
     ).slice(0, 3);
     if (far.length < 3) return null;

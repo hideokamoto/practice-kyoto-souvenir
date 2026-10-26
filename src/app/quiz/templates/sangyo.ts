@@ -1,6 +1,7 @@
 import type { SangyoIndicator } from '../../data/types';
 import { makeQuestion } from '../make';
-import { shuffle } from '../rng';
+import type { Level } from '../question';
+import { sample, shuffle } from '../rng';
 import { defineTemplate, fmtNumber, type AnyTemplate } from './common';
 
 const KYOTO = '京都府';
@@ -30,28 +31,39 @@ function kyotoText(ind: SangyoIndicator): string {
   return r && v ? `京都府は ${r}位（${val(ind, v.value)}）。` : '';
 }
 
+/**
+ * 「全国 1 位は？」の誤答にする都道府県（値の大きい順に並べたうちの 2 位以下）。
+ * かんたんは 6 位以下かつ下半分、ふつうは 2〜7 位に京都府を加えたもの、むずかしいは 2〜4 位。
+ */
+function firstDistractors(s: { pref: string }[], level: Level, rng: () => number): string[] {
+  const rest = s.slice(1).map((x) => x.pref);
+  if (level === 'easy') return shuffle(rest.slice(Math.max(4, Math.ceil(s.length / 2) - 1)), rng);
+  if (level === 'hard') return rest.slice(0, 3);
+  const others = rest.slice(0, 6);
+  return s[0].pref === KYOTO
+    ? shuffle(others, rng)
+    : [
+        KYOTO,
+        ...shuffle(
+          others.filter((p) => p !== KYOTO),
+          rng,
+        ),
+      ];
+}
+
 const first = defineTemplate<SangyoIndicator>({
   id: 'sangyo.first',
   needs: 'sangyo',
-  candidates: (d) =>
+  candidates: (d, level = 'normal') =>
     indicators(d).filter((i) => {
       const s = sorted(i);
-      return s.length >= 4 && s[0].value > s[1].value;
+      return s.length >= (level === 'easy' ? 9 : 4) && s[0].value > s[1].value;
     }),
   key: (i) => i.id,
-  build(i, _d, rng) {
-    const [top, ...rest] = sorted(i);
-    const others = rest.slice(0, 6).map((x) => x.pref);
-    const distractors =
-      top.pref === KYOTO
-        ? shuffle(others, rng)
-        : [
-            KYOTO,
-            ...shuffle(
-              others.filter((p) => p !== KYOTO),
-              rng,
-            ),
-          ];
+  build(i, _d, rng, level = 'normal') {
+    const s = sorted(i);
+    const top = s[0];
+    const distractors = firstDistractors(s, level, rng);
     return makeQuestion(
       {
         template: 'sangyo.first',
@@ -67,19 +79,46 @@ const first = defineTemplate<SangyoIndicator>({
   },
 });
 
+/**
+ * 京都府の順位 r の誤答にする順位。かんたんは 5 位以上離れた順位、
+ * ふつうは前後 4 位以内、むずかしいはいちばん近い 3 つ（前後 2 位以内）。
+ */
+function rankDistractors(r: number, n: number, level: Level, rng: () => number): number[] {
+  const others = Array.from({ length: n }, (_, k) => k + 1).filter((x) => x !== r);
+  const gap = (x: number) => Math.abs(x - r);
+  if (level === 'easy')
+    return sample(
+      others.filter((x) => gap(x) >= 5),
+      3,
+      rng,
+    );
+  if (level === 'hard')
+    return shuffle(others, rng)
+      .sort((a, b) => gap(a) - gap(b))
+      .slice(0, 3);
+  return sample(
+    others.filter((x) => gap(x) <= 4),
+    3,
+    rng,
+  );
+}
+
 const kyotoRank = defineTemplate<SangyoIndicator>({
   id: 'sangyo.kyotoRank',
   needs: 'sangyo',
-  candidates: (d) =>
-    indicators(d).filter((i) => i.values.length >= 4 && prefRank(i, KYOTO) !== null),
+  candidates: (d, level = 'normal') =>
+    indicators(d).filter((i) => {
+      const r = prefRank(i, KYOTO);
+      return (
+        i.values.length >= 4 &&
+        r !== null &&
+        rankDistractors(r, i.values.length, level, () => 0).length === 3
+      );
+    }),
   key: (i) => i.id,
-  build(i, _d, rng) {
+  build(i, _d, rng, level = 'normal') {
     const r = prefRank(i, KYOTO)!;
-    const n = i.values.length;
-    const near = Array.from({ length: n }, (_, k) => k + 1)
-      .filter((x) => x !== r)
-      .sort((a, b) => Math.abs(a - r) - Math.abs(b - r) || rng() - 0.5)
-      .slice(0, 3);
+    const near = rankDistractors(r, i.values.length, level, rng);
     const top = sorted(i)[0];
     return makeQuestion(
       {

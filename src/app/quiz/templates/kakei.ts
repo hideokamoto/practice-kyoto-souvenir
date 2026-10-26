@@ -1,5 +1,6 @@
 import type { KakeiData, KakeiItem } from '../../data/types';
 import { makeQuestion } from '../make';
+import type { Level } from '../question';
 import { shuffle } from '../rng';
 import { containsLoosely } from '../text';
 import { defineTemplate, fmtNumber, type AnyTemplate } from './common';
@@ -14,16 +15,26 @@ const value = (v: number, i: KakeiItem) => `${fmtNumber(v)}${i.unit}`;
 const keyOf = (i: KakeiItem) => `${i.group}/${i.item}/${i.measure}`;
 const note = (d: KakeiData) => `${d.period}、二人以上の世帯の 1 世帯あたり。`;
 
+/**
+ * 誤答にする品目の、京都市の順位。かんたんは下から 4 分の 1、ふつうは下半分、
+ * むずかしいは京都市が 2〜5 位の品目（「京都市が多そう」に見えるもの）。
+ */
+const FIRST_DISTRACTOR: Record<Level, (x: KakeiItem) => boolean> = {
+  easy: (x) => x.kyotoRank > (x.cities * 3) / 4,
+  normal: (x) => x.kyotoRank > x.cities / 2,
+  hard: (x) => x.kyotoRank >= 2 && x.kyotoRank <= 5,
+};
+
 const first = defineTemplate<KakeiItem>({
   id: 'kakei.first',
   needs: 'kakei',
   candidates: (d) => items(d).filter((i) => i.kyotoRank === 1),
   key: keyOf,
-  build(i, d, rng) {
+  build(i, d, rng, level = 'normal') {
     const pool = items(d).filter(
       (x) =>
         x.measure === i.measure &&
-        x.kyotoRank > x.cities / 2 &&
+        FIRST_DISTRACTOR[level](x) &&
         !containsLoosely(x.item, i.item) &&
         !containsLoosely(i.item, x.item),
     );
@@ -42,12 +53,38 @@ const first = defineTemplate<KakeiItem>({
   },
 });
 
-function buckets(cities: number): { label: string; lo: number; hi: number }[] {
+interface Bucket {
+  label: string;
+  lo: number;
+  hi: number;
+}
+
+/**
+ * 順位の選択肢。かんたんは上半分か下半分の 2 択、ふつうは 4 つの幅、
+ * むずかしいは順位そのもの（前後 3 位以内の順位を誤答にする）。
+ */
+function buckets(i: KakeiItem, level: Level, rng: () => number): Bucket[] {
+  const n = i.cities;
+  if (level === 'easy') {
+    const half = Math.ceil(n / 2);
+    return [
+      { label: `1〜${half}位`, lo: 1, hi: half },
+      { label: `${half + 1}〜${n}位`, lo: half + 1, hi: n },
+    ];
+  }
+  if (level === 'hard') {
+    const r = i.kyotoRank;
+    const near = shuffle(
+      [-3, -2, -1, 1, 2, 3].map((x) => r + x).filter((x) => x >= 1 && x <= n),
+      rng,
+    ).slice(0, 3);
+    return [r, ...near].map((x) => ({ label: `${x}位`, lo: x, hi: x }));
+  }
   return [
     { label: '1〜5位', lo: 1, hi: 5 },
     { label: '6〜15位', lo: 6, hi: 15 },
     { label: '16〜30位', lo: 16, hi: 30 },
-    { label: `31〜${cities}位`, lo: 31, hi: cities },
+    { label: `31〜${n}位`, lo: 31, hi: n },
   ];
 }
 
@@ -56,8 +93,8 @@ const rank = defineTemplate<KakeiItem>({
   needs: 'kakei',
   candidates: (d) => items(d).filter((i) => i.cities > 30),
   key: keyOf,
-  build(i, d, rng) {
-    const bs = buckets(i.cities);
+  build(i, d, rng, level = 'normal') {
+    const bs = buckets(i, level, rng);
     const answer = bs.find((b) => i.kyotoRank >= b.lo && i.kyotoRank <= b.hi)!;
     const topText =
       i.top.city === KYOTO ? '1位は京都市' : `1位は${i.top.city}（${value(i.top.value, i)}）`;
@@ -68,6 +105,7 @@ const rank = defineTemplate<KakeiItem>({
         prompt: `京都市の「${i.item}」の 1 世帯あたり${measureLabel(i)}は、${i.cities}市中何位？`,
         answer: answer.label,
         distractors: bs.filter((b) => b !== answer).map((b) => b.label),
+        minChoices: bs.length,
         explanation: `京都市は ${i.kyotoRank}位（${value(i.kyotoValue, i)}）。${topText}。${note(data(d)!)}`,
         sources: SOURCES,
       },

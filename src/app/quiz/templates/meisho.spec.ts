@@ -105,6 +105,18 @@ describe('meisho.describe', () => {
     }
   });
 
+  it('引用に伏せ字が無いとき（説明文に名前が出てこない）は「〇〇に当てはまる」と聞かない', () => {
+    const noName = { ...items[0], description: '音羽山の中腹に建つ、舞台造りで知られる建物。' };
+    const d2 = {
+      ...data,
+      meisho: { ...data.meisho!, items: [noName, ...data.meisho!.items.slice(1)] },
+    };
+    const q = tpl.build(noName, d2, mulberry32(1))!;
+    expect(q.quote).not.toContain('〇〇');
+    expect(q.prompt).not.toContain('〇〇');
+    expect(q.prompt).toContain('建造物');
+  });
+
   it('種類が other のものや、同じ種類が 4 施設に満たない種類は対象外', () => {
     const names = tpl.candidates(data).map((m) => m.name);
     expect(names).not.toContain('犬矢来');

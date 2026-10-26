@@ -30,7 +30,7 @@ function setup() {
 }
 
 describe('HomePage', () => {
-  it('7 つのモードを表示する', async () => {
+  it('難易度 3 つと今日の 5 問を表示する', async () => {
     setup();
     const f = TestBed.createComponent(HomePage);
     await f.whenStable();
@@ -51,7 +51,7 @@ describe('HomePage', () => {
     await f.whenStable();
     (f.nativeElement.querySelector('button.mode') as HTMLButtonElement).click();
     await vi.waitFor(() => expect(nav).toHaveBeenCalledWith(['/quiz']));
-    expect(store.mode()).toBe('omiyage');
+    expect(store.mode()).toBe('easy');
     expect(store.questions().length).toBe(5);
   });
 
@@ -75,7 +75,7 @@ describe('HomePage', () => {
 describe('QuizPage', () => {
   it('問題と選択肢を出し、回答すると正誤・解説・出典を出す', async () => {
     const { store } = setup();
-    store.load('meisho', [question()], '2026-10-25', [meta('kyoto-navi')]);
+    store.load('normal', [question()], '2026-10-25', [meta('kyoto-navi')]);
     const f = TestBed.createComponent(QuizPage);
     await f.whenStable();
     const el: HTMLElement = f.nativeElement;
@@ -94,7 +94,7 @@ describe('QuizPage', () => {
   it('航空写真の問題では、地理院タイルと中心の印を出す', async () => {
     const { store } = setup();
     store.load(
-      'kanko',
+      'normal',
       [
         question({
           media: { kind: 'aerial', lat: 34.9949, lon: 135.785, zoom: 17, alt: '航空写真' },
@@ -115,7 +115,7 @@ describe('QuizPage', () => {
   it('写真の問題では、作者とライセンスを写真の下に出す', async () => {
     const { store } = setup();
     store.load(
-      'shaji',
+      'normal',
       [question({ media: { kind: 'photo', photo: photo('X'), alt: '寺の写真' } })],
       '2026-10-25',
       [],
@@ -133,7 +133,7 @@ describe('写真が読み込めないとき', () => {
   it('写真の枠に読み込めなかったことを出す', async () => {
     const { store } = setup();
     store.load(
-      'shaji',
+      'normal',
       [question({ media: { kind: 'photo', photo: photo('X'), alt: '寺の写真' } })],
       '2026-10-25',
       [],
@@ -151,7 +151,7 @@ describe('写真が読み込めないとき', () => {
 describe('ResultPage', () => {
   it('得点・称号・シェア用リンクを出す', async () => {
     const { store } = setup();
-    store.load('meisho', [question(), question({ id: 't:2' })], '2026-10-25', []);
+    store.load('normal', [question(), question({ id: 't:2' })], '2026-10-25', []);
     store.answer(0);
     store.next();
     store.answer(1);

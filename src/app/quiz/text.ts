@@ -91,3 +91,9 @@ export function excerpt(text: string, max = 120): string {
   if (out === '') return flat.slice(0, max) + (flat.length > max ? '…' : '');
   return out.trim();
 }
+
+/** 最初の 1 文。長すぎるときは excerpt と同じく max 文字で切る。 */
+export function firstSentence(text: string, max = 120): string {
+  const flat = text.replace(/\s*\n\s*/g, ' ').trim();
+  return excerpt(flat.match(/[^。]+。?/)?.[0] ?? '', max);
+}

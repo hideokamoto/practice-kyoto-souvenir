@@ -43,6 +43,12 @@ WHERE {
   OPTIONAL { ?i wdt:P361 ?parent }
 }
 GROUP BY ?i ?label`,
+  sitelinks: `SELECT ?i ?n WHERE {
+  ?i wdt:P131/wdt:P131* ${KYOTO} .
+  ?i wdt:P31/wdt:P279* ?root .
+  VALUES ?root { ${ROOTS} }
+  ?i wikibase:sitelinks ?n .
+}`,
   inceptions: `SELECT DISTINCT ?i ?time ?precision ?rank WHERE {
   ?i wdt:P131/wdt:P131* ${KYOTO} .
   ?i wdt:P31/wdt:P279* ?root .
@@ -157,16 +163,19 @@ async function main() {
     });
   }
 
+  const sitelinks = {};
+  for (const b of await sparql('sitelinks')) sitelinks[qid(b.i.value)] = Number(b.n.value);
+
   const titles = [...new Set(candidates.flatMap((c) => c.images))].sort();
   const photos = await commonsInfo(titles);
 
-  const { items, excluded } = buildShaji({ candidates, wardMap, inceptions, heritage: { constituents, umbrellas }, photos });
+  const { items, excluded } = buildShaji({ candidates, wardMap, inceptions, heritage: { constituents, umbrellas }, photos, sitelinks });
 
   const data = {
     meta: [
       {
         id: 'wikidata',
-        title: 'Wikidata（京都市内の寺院・神社・城の名称・所在地・創建年・世界遺産の構成資産）',
+        title: 'Wikidata（京都市内の寺院・神社・城の名称・所在地・世界遺産の構成資産・記事のある言語版の数）',
         publisher: 'Wikimedia Foundation と Wikidata の編集者',
         url: 'https://www.wikidata.org/',
         license: 'CC0',

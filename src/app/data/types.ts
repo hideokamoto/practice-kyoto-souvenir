@@ -170,6 +170,8 @@ export interface Shaji {
   /** 世界遺産「古都京都の文化財」の構成資産か（構成資産の一覧が揃ったときだけ true/false、取れなければ null） */
   worldHeritage: boolean | null;
   photo: Photo | null;
+  /** 有名さの物差し: この項目の記事がある Wikipedia 等の言語版の数（Wikidata の sitelinks） */
+  sitelinks: number;
 }
 
 export interface ShajiData extends Dataset {

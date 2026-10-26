@@ -1,4 +1,4 @@
-import type { DatasetKey, Datasets, Question } from './question';
+import type { DatasetKey, Datasets, Level, Question } from './question';
 import { hashSeed, mulberry32, shuffle, type Rng } from './rng';
 import type { AnyTemplate } from './templates/common';
 import { KAKEI_TEMPLATES } from './templates/kakei';
@@ -10,12 +10,13 @@ import { SHAJI_TEMPLATES } from './templates/shaji';
 
 export const QUESTIONS_PER_GAME = 5;
 
-export type ModeId = DatasetKey | 'daily';
+export type ModeId = Level | 'daily';
 
 export interface ModeDef {
   id: ModeId;
   label: string;
   description: string;
+  level: Level;
   needs: DatasetKey[];
   templates: AnyTemplate[];
 }
@@ -28,55 +29,40 @@ const ALL_TEMPLATES: AnyTemplate[] = [
   ...SHAJI_TEMPLATES,
   ...SANGYO_TEMPLATES,
 ];
+const ALL_NEEDS: DatasetKey[] = ['omiyage', 'meisho', 'kakei', 'kanko', 'shaji', 'sangyo'];
 
+// どのモードも全データ・全型から出す。難易度で変わるのは、選択肢の紛らわしさと題材の有名さ。
 export const MODES: ModeDef[] = [
   {
-    id: 'omiyage',
-    label: 'みやげ鑑定',
-    description: '京都観光Navi のお土産から。説明文で名前を、漢字で読みを当てる。',
-    needs: ['omiyage'],
-    templates: OMIYAGE_TEMPLATES,
+    id: 'easy',
+    label: 'かんたん',
+    description: '有名どころが中心。誤答は種類や場所が離れていて、見当がつけやすい。',
+    level: 'easy',
+    needs: ALL_NEEDS,
+    templates: ALL_TEMPLATES,
   },
   {
-    id: 'meisho',
-    label: '名所めぐり',
-    description: '京都観光Navi の見ものから。文化財の時代と指定、地名の読み、説明文の名前当て。',
-    needs: ['meisho'],
-    templates: MEISHO_TEMPLATES,
+    id: 'normal',
+    label: 'ふつう',
+    description: '京都に何度か来た人向け。誤答はほどほどに紛らわしい。',
+    level: 'normal',
+    needs: ALL_NEEDS,
+    templates: ALL_TEMPLATES,
   },
   {
-    id: 'kakei',
-    label: '京都人の台所',
-    description: '家計調査の 52 市ランキングから。京都市が 1 位の品目、京都市の順位、1 位の都市。',
-    needs: ['kakei'],
-    templates: KAKEI_TEMPLATES,
-  },
-  {
-    id: 'kanko',
-    label: '空から当てる',
-    description: '京都府の観光施設一覧と国土地理院の航空写真から。場所・区・近さを当てる。',
-    needs: ['kanko'],
-    templates: KANKO_TEMPLATES,
-  },
-  {
-    id: 'shaji',
-    label: '寺社の写真',
-    description: 'Wikidata と Wikimedia Commons から。写真の寺社と、世界遺産の構成資産を当てる。',
-    needs: ['shaji'],
-    templates: SHAJI_TEMPLATES,
-  },
-  {
-    id: 'sangyo',
-    label: '京の産業',
-    description: '国の統計の都道府県別データから。全国 1 位はどこ、京都府は何位？',
-    needs: ['sangyo'],
-    templates: SANGYO_TEMPLATES,
+    id: 'hard',
+    label: 'むずかしい',
+    description: '誤答は隣の区、近所の寺社、前後の順位、隣の時代。説明文も短い。',
+    level: 'hard',
+    needs: ALL_NEEDS,
+    templates: ALL_TEMPLATES,
   },
   {
     id: 'daily',
     label: '今日の5問',
-    description: '全モードから日替わりで 5 問。同じ日なら誰でも同じ問題です。',
-    needs: ['omiyage', 'meisho', 'kakei', 'kanko', 'shaji', 'sangyo'],
+    description: '「ふつう」から日替わりで 5 問。同じ日なら誰でも同じ問題です。',
+    level: 'normal',
+    needs: ALL_NEEDS,
     templates: ALL_TEMPLATES,
   },
 ];
@@ -98,9 +84,10 @@ export function buildGame(
   templates: readonly AnyTemplate[],
   d: Datasets,
   rng: Rng,
+  level: Level = 'normal',
   n = QUESTIONS_PER_GAME,
 ): Question[] {
-  const cands = new Map(templates.map((t) => [t, t.candidates(d)]));
+  const cands = new Map(templates.map((t) => [t, t.candidates(d, level)]));
   const active = shuffle(
     templates.filter((t) => cands.get(t)!.length > 0),
     rng,
@@ -118,7 +105,7 @@ export function buildGame(
       const e = queue.pop();
       const entity = `${t.needs}:${t.key(e)}`;
       if (used.has(entity)) continue;
-      built = t.build(e, d, rng);
+      built = t.build(e, d, rng, level);
       if (built) used.add(entity);
     }
     if (built) {
@@ -141,6 +128,7 @@ export function buildDaily(
   date: string,
   templates: readonly AnyTemplate[],
   d: Datasets,
+  level: Level = 'normal',
 ): Question[] {
   const rng = mulberry32(hashSeed(`daily:${date}`));
   const groups = new Map<DatasetKey, AnyTemplate[]>();
@@ -148,7 +136,7 @@ export function buildDaily(
   const out: Question[] = [];
   for (const key of shuffle([...groups.keys()], rng)) {
     if (out.length === QUESTIONS_PER_GAME) break;
-    const [q] = buildGame(groups.get(key)!, d, rng, 1);
+    const [q] = buildGame(groups.get(key)!, d, rng, level, 1);
     if (q) out.push(q);
   }
   return out;
@@ -157,8 +145,8 @@ export function buildDaily(
 export function startGame(mode: ModeId, d: Datasets, now: Date, rng: Rng): Question[] {
   const m = modeById(mode);
   return mode === 'daily'
-    ? buildDaily(jstDate(now), m.templates, d)
-    : buildGame(m.templates, d, rng);
+    ? buildDaily(jstDate(now), m.templates, d, m.level)
+    : buildGame(m.templates, d, rng, m.level);
 }
 
 export function rankFor(score: number, total: number): string {

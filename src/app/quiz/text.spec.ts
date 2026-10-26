@@ -1,4 +1,4 @@
-import { containsLoosely, excerpt, maskTerms, maskText, normalize } from './text';
+import { containsLoosely, excerpt, firstSentence, maskTerms, maskText, normalize } from './text';
 
 describe('normalize', () => {
   it('カタカナ・小書き・全角半角・空白の違いを吸収する', () => {
@@ -57,5 +57,16 @@ describe('excerpt', () => {
     expect(excerpt(t, 12)).toBe('あいうえお。かきくけこ。');
     expect(excerpt(t, 3)).toBe('あいう…');
     expect(excerpt('改行\nを含む。', 100)).toBe('改行 を含む。');
+  });
+});
+
+describe('firstSentence', () => {
+  it('最初の 1 文だけを返す（改行は詰める）', () => {
+    expect(firstSentence('一つ目の文。\n二つ目の文。')).toBe('一つ目の文。');
+    expect(firstSentence('句点のない文')).toBe('句点のない文');
+  });
+
+  it('1 文が長すぎるときは excerpt と同じく切る', () => {
+    expect(firstSentence('あ'.repeat(200) + '。', 10)).toBe('あ'.repeat(10) + '…');
   });
 });

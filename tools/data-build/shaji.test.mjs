@@ -242,6 +242,7 @@ function build(rows, opts = {}) {
     inceptions: opts.inceptions ?? {},
     heritage: opts.heritage ?? { constituents: SEVENTEEN, umbrellas: [] },
     photos: opts.photos ?? {},
+    sitelinks: opts.sitelinks ?? {},
   });
 }
 
@@ -270,6 +271,7 @@ test('buildShaji: 清水寺を Shaji 型にする', () => {
       inception: 778,
       worldHeritage: true,
       photo: toPhoto(KIYOMIZU_INFO),
+      sitelinks: 0,
     },
   ]);
 });
@@ -404,6 +406,17 @@ test('buildShaji: 曖昧さ回避の括弧（「(京都市)」など）は外し
       ['Q42', '正法寺（右京区）'],
       ['Q43', '正法寺（北区）'],
       ['Q44', '西園寺'],
+    ],
+  );
+});
+
+test('buildShaji: 有名さの物差しとして Wikidata の言語版数（sitelinks）を持たせ、無ければ 0', () => {
+  const { items } = build([row('Q60', '有名寺'), row('Q61', '無名寺')], { sitelinks: { Q60: 42 } });
+  assert.deepEqual(
+    items.map((i) => [i.qid, i.sitelinks]),
+    [
+      ['Q60', 42],
+      ['Q61', 0],
     ],
   );
 });

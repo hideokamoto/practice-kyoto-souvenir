@@ -1,15 +1,17 @@
 import type { Meisho, MeishoGenre, Ward } from '../../data/types';
-import { WARDS } from '../../data/types';
 import { makeQuestion } from '../make';
+import type { Level } from '../question';
 import { sample, shuffle } from '../rng';
-import { containsLoosely, excerpt, maskTerms, maskText } from '../text';
+import { containsLoosely, excerpt, firstSentence, maskTerms, maskText } from '../text';
 import {
-  byLengthCloseness,
   defineTemplate,
+  describePrompt,
+  kanaDistractors,
   KANJI_ONLY,
   memoByObject,
   type AnyTemplate,
 } from './common';
+import { wardDistractors } from './geo';
 
 const SOURCES = ['kyoto-navi'];
 
@@ -36,11 +38,16 @@ const GENRE_NOUN: Record<MeishoGenre, string> = {
 const ERAS = ['飛鳥', '奈良', '平安', '鎌倉', '南北朝', '室町', '桃山', '江戸'];
 
 const items = (d: { meisho?: { items: Meisho[] } }) => d.meisho?.items ?? [];
-const firstSentence = (m: Meisho) => `${m.description.split('。')[0]}。`;
+const leadOf = (m: Meisho) => `${m.description.split('。')[0]}。`;
 
-const quoteOf = memoByObject((m: Meisho) =>
-  maskText(excerpt(m.description, 120), [...maskTerms(m.name, m.kana), ...maskTerms(m.base, '')]),
+const termsOf = (m: Meisho) => [...maskTerms(m.name, m.kana), ...maskTerms(m.base, '')];
+const quoteOf = memoByObject((m: Meisho) => maskText(excerpt(m.description, 120), termsOf(m)));
+/** むずかしいは手がかりを減らすため、最初の 1 文だけを引用する。 */
+const shortQuoteOf = memoByObject((m: Meisho) =>
+  maskText(firstSentence(m.description), termsOf(m)),
 );
+const quoteFor = (m: Meisho, level: Level) => (level === 'hard' ? shortQuoteOf(m) : quoteOf(m));
+const clueLength = (quote: string) => quote.replace(/〇〇/g, '').length;
 
 const describeCandidates = memoByObject((all: Meisho[]): Meisho[] => {
   const bases = new Map<MeishoGenre, Set<string>>();
@@ -50,23 +57,33 @@ const describeCandidates = memoByObject((all: Meisho[]): Meisho[] => {
   }
   return all.filter(
     (m) =>
-      m.genre !== 'other' &&
-      (bases.get(m.genre)?.size ?? 0) >= 4 &&
-      quoteOf(m).replace(/〇〇/g, '').length >= 8,
+      m.genre !== 'other' && (bases.get(m.genre)?.size ?? 0) >= 4 && clueLength(quoteOf(m)) >= 8,
   );
 });
+
+const hardDescribeCandidates = memoByObject((all: Meisho[]): Meisho[] =>
+  describeCandidates(all).filter((m) => clueLength(shortQuoteOf(m)) >= 8),
+);
 
 const describe = defineTemplate<Meisho>({
   id: 'meisho.describe',
   needs: 'meisho',
-  candidates: (d) => (d.meisho ? describeCandidates(d.meisho.items) : []),
+  candidates: (d, level = 'normal') =>
+    !d.meisho
+      ? []
+      : level === 'hard'
+        ? hardDescribeCandidates(d.meisho.items)
+        : describeCandidates(d.meisho.items),
   key: (m) => m.id,
-  build(m, d, rng) {
-    const quote = quoteOf(m);
+  build(m, d, rng, level = 'normal') {
+    const quote = quoteFor(m, level);
     const usedBases = new Set([m.base]);
     const distractors: string[] = [];
+    // かんたんは別の種類（建造物なら山や地名）を誤答にして、種類で絞り込めるようにする
+    const sameKind = (x: Meisho) =>
+      level === 'easy' ? x.genre !== m.genre && x.genre !== 'other' : x.genre === m.genre;
     for (const x of shuffle(items(d), rng)) {
-      if (x.genre !== m.genre || usedBases.has(x.base)) continue;
+      if (!sameKind(x) || usedBases.has(x.base)) continue;
       if (containsLoosely(quote, x.name) || containsLoosely(quote, x.base)) continue;
       usedBases.add(x.base);
       distractors.push(x.name);
@@ -75,7 +92,7 @@ const describe = defineTemplate<Meisho>({
       {
         template: 'meisho.describe',
         key: m.id,
-        prompt: `京都観光Navi の説明文です。〇〇に当てはまる${GENRE_NOUN[m.genre]}は？`,
+        prompt: describePrompt(quote, GENRE_NOUN[m.genre]),
         quote,
         answer: m.name,
         distractors,
@@ -92,12 +109,25 @@ const era = defineTemplate<Meisho>({
   needs: 'meisho',
   candidates: (d) => items(d).filter((m) => m.era !== null && ERAS.includes(m.era)),
   key: (m) => m.id,
-  build(m, _d, rng) {
+  build(m, _d, rng, level = 'normal') {
     const i = ERAS.indexOf(m.era!);
-    // 近い時代ほど紛らわしいので、近い 4 つから 3 つを誤答にする
-    const near = ERAS.filter((e) => e !== m.era)
-      .sort((a, b) => Math.abs(ERAS.indexOf(a) - i) - Math.abs(ERAS.indexOf(b) - i))
-      .slice(0, 4);
+    const gap = (e: string) => Math.abs(ERAS.indexOf(e) - i);
+    // 近い時代ほど紛らわしい。かんたんは 2 時代以上離れたものから 3 つ、
+    // ふつうは近い 4 つから 3 つ、むずかしいはいちばん近い 3 つ
+    const byGap = shuffle(
+      ERAS.filter((e) => e !== m.era),
+      rng,
+    ).sort((a, b) => gap(a) - gap(b));
+    const eras =
+      level === 'easy'
+        ? sample(
+            byGap.filter((e) => gap(e) >= 2),
+            3,
+            rng,
+          )
+        : level === 'hard'
+          ? byGap.slice(0, 3)
+          : sample(byGap.slice(0, 4), 3, rng);
     const what = m.genre === 'kenzobutsu' ? '建築' : '作';
     return makeQuestion(
       {
@@ -105,8 +135,8 @@ const era = defineTemplate<Meisho>({
         key: m.id,
         prompt: `「${m.name}」は何時代の${what}？`,
         answer: `${m.era}時代`,
-        distractors: sample(near, 3, rng).map((e) => `${e}時代`),
-        explanation: `京都観光Navi の説明文：「${firstSentence(m)}」`,
+        distractors: eras.map((e) => `${e}時代`),
+        explanation: `京都観光Navi の説明文：「${leadOf(m)}」`,
         sources: SOURCES,
       },
       rng,
@@ -130,7 +160,7 @@ const designation = defineTemplate<Meisho>({
         answer: m.designation!,
         distractors: [other],
         minChoices: 2,
-        explanation: `京都観光Navi の説明文：「${firstSentence(m)}」（指定は 2021年3月時点のデータによります）`,
+        explanation: `京都観光Navi の説明文：「${leadOf(m)}」（指定は 2021年3月時点のデータによります）`,
         sources: SOURCES,
       },
       rng,
@@ -148,7 +178,7 @@ const kana = defineTemplate<Meisho>({
   needs: 'meisho',
   candidates: kanaCandidates,
   key: (m) => m.id,
-  build(m, d, rng) {
+  build(m, d, rng, level = 'normal') {
     const pool = kanaCandidates(d)
       .filter((x) => x.id !== m.id)
       .map((x) => x.kana);
@@ -158,7 +188,7 @@ const kana = defineTemplate<Meisho>({
         key: m.id,
         prompt: `「${m.name}」の読みは？`,
         answer: m.kana,
-        distractors: byLengthCloseness(m.kana, pool, rng),
+        distractors: kanaDistractors(m.kana, pool, level, rng),
         explanation: `「${m.name}」は「${m.kana}」と読みます。${excerpt(m.description, 100)}`,
         sources: SOURCES,
       },
@@ -196,18 +226,14 @@ const ward = defineTemplate<Meisho>({
       (m) => m.ward !== null && WARD_GENRES.includes(m.genre) && !wardLeaks(m.name, m.ward),
     ),
   key: (m) => m.id,
-  build(m, _d, rng) {
+  build(m, d, rng, level = 'normal') {
     return makeQuestion(
       {
         template: 'meisho.ward',
         key: m.id,
         prompt: `「${m.name}」があるのは何区？`,
         answer: `${m.ward}区`,
-        distractors: sample(
-          WARDS.filter((w) => w !== m.ward),
-          3,
-          rng,
-        ).map((w) => `${w}区`),
+        distractors: wardDistractors(d, m.ward!, level, rng).map((w) => `${w}区`),
         explanation: `「${m.name}」は京都市${m.ward}区にあります（京都観光Navi の住所による）。`,
         sources: SOURCES,
       },

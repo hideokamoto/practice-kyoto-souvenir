@@ -58,6 +58,17 @@ describe('buildGame', () => {
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
+  it('難易度を、出題対象の選び出しと問題づくりの両方に渡す（省略したら「ふつう」）', () => {
+    const t = fake('t1', 20);
+    const cands = vi.spyOn(t, 'candidates');
+    const build = vi.spyOn(t, 'build');
+    buildGame([t], {}, mulberry32(1), 'hard');
+    expect(cands).toHaveBeenCalledWith({}, 'hard');
+    expect(build.mock.calls.every((c) => c[3] === 'hard')).toBe(true);
+    buildGame([t], {}, mulberry32(1));
+    expect(cands).toHaveBeenLastCalledWith({}, 'normal');
+  });
+
   it('同じシードなら同じ出題', () => {
     const ts = [fake('t1', 30), fake('t2', 30)];
     expect(buildGame(ts, {}, mulberry32(9))).toEqual(buildGame(ts, {}, mulberry32(9)));
@@ -65,19 +76,16 @@ describe('buildGame', () => {
 });
 
 describe('MODES', () => {
-  it('7 モード（6 つのデータ別と今日の 5 問）があり、テンプレートは重複しない', () => {
-    expect(MODES.map((m) => m.id)).toEqual([
-      'omiyage',
-      'meisho',
-      'kakei',
-      'kanko',
-      'shaji',
-      'sangyo',
-      'daily',
+  it('難易度 3 段階と今日の 5 問。難易度のモードはその難易度で出題する', () => {
+    expect(MODES.map((m) => [m.id, m.level])).toEqual([
+      ['easy', 'easy'],
+      ['normal', 'normal'],
+      ['hard', 'hard'],
+      ['daily', 'normal'],
     ]);
-    const ids = MODES.filter((m) => m.id !== 'daily').flatMap((m) => m.templates.map((t) => t.id));
-    expect(new Set(ids).size).toBe(ids.length);
     for (const m of MODES) {
+      const ids = m.templates.map((t) => t.id);
+      expect(new Set(ids).size).toBe(ids.length);
       expect(m.label.length).toBeGreaterThan(0);
       expect(m.description.length).toBeGreaterThan(0);
       for (const t of m.templates) expect(m.needs).toContain(t.needs);

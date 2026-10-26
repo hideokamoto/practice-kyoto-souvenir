@@ -2,7 +2,7 @@
  "meta": [
   {
    "id": "wikidata",
-   "title": "Wikidata（京都市内の寺院・神社・城の名称・所在地・創建年・世界遺産の構成資産）",
+   "title": "Wikidata（京都市内の寺院・神社・城の名称・所在地・世界遺産の構成資産・記事のある言語版の数）",
    "publisher": "Wikimedia Foundation と Wikidata の編集者",
    "url": "https://www.wikidata.org/",
    "license": "CC0",
@@ -39,7 +39,8 @@
     "author": "PlusMinus",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
-   }
+   },
+   "sitelinks": 8
   },
   {
    "qid": "Q221716",
@@ -58,7 +59,8 @@
     "author": "Martin Falbisoner",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 77
   },
   {
    "qid": "Q257473",
@@ -69,7 +71,8 @@
    "lon": 135.798333333,
    "inception": null,
    "worldHeritage": true,
-   "photo": null
+   "photo": null,
+   "sitelinks": 33
   },
   {
    "qid": "Q270983",
@@ -88,7 +91,8 @@
     "author": "Basile Morin",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 57
   },
   {
    "qid": "Q276779",
@@ -107,7 +111,8 @@
     "author": "Chi King",
     "license": "CC BY 2.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
-   }
+   },
+   "sitelinks": 9
   },
   {
    "qid": "Q276781",
@@ -126,7 +131,8 @@
     "author": "Saigen Jiro",
     "license": "CC0",
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
-   }
+   },
+   "sitelinks": 7
   },
   {
    "qid": "Q276830",
@@ -145,7 +151,8 @@
     "author": "Naokijp",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 7
   },
   {
    "qid": "Q376288",
@@ -164,7 +171,8 @@
     "author": "Tomomarusan",
     "license": "CC BY 2.5",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.5"
-   }
+   },
+   "sitelinks": 17
   },
   {
    "qid": "Q377386",
@@ -183,7 +191,8 @@
     "author": "663highland",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 9
   },
   {
    "qid": "Q385141",
@@ -202,7 +211,8 @@
     "author": "Saigen Jiro",
     "license": "CC0",
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
-   }
+   },
+   "sitelinks": 27
   },
   {
    "qid": "Q500955",
@@ -221,7 +231,8 @@
     "author": "663highland",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 6
   },
   {
    "qid": "Q501266",
@@ -240,7 +251,8 @@
     "author": "nnh",
     "license": "Public domain",
     "licenseUrl": null
-   }
+   },
+   "sitelinks": 6
   },
   {
    "qid": "Q534101",
@@ -259,7 +271,8 @@
     "author": "Mti",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 7
   },
   {
    "qid": "Q587371",
@@ -278,7 +291,8 @@
     "author": "663highland",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 32
   },
   {
    "qid": "Q599378",
@@ -297,7 +311,8 @@
     "author": "663highland on Japanese Wikipedia",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
-   }
+   },
+   "sitelinks": 8
   },
   {
    "qid": "Q608668",
@@ -316,7 +331,8 @@
     "author": "KENPEI",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
-   }
+   },
+   "sitelinks": 11
   },
   {
    "qid": "Q626535",
@@ -335,7 +351,8 @@
     "author": "PlusMinus",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
-   }
+   },
+   "sitelinks": 20
   },
   {
    "qid": "Q662176",
@@ -354,7 +371,8 @@
     "author": "663highland",
     "license": "CC BY 2.5",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.5"
-   }
+   },
+   "sitelinks": 19
   },
   {
    "qid": "Q692714",
@@ -373,7 +391,8 @@
     "author": "Zairon",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 23
   },
   {
    "qid": "Q700448",
@@ -392,7 +411,8 @@
     "author": "663highland",
     "license": "CC BY 2.5",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.5"
-   }
+   },
+   "sitelinks": 27
   },
   {
    "qid": "Q701620",
@@ -411,7 +431,8 @@
     "author": "Mochi at Japanese Wikipedia",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
-   }
+   },
+   "sitelinks": 22
   },
   {
    "qid": "Q705635",
@@ -430,7 +451,8 @@
     "author": "nnh",
     "license": "Public domain",
     "licenseUrl": null
-   }
+   },
+   "sitelinks": 8
   },
   {
    "qid": "Q709822",
@@ -449,7 +471,8 @@
     "author": "663highland",
     "license": "CC BY 2.5",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.5"
-   }
+   },
+   "sitelinks": 9
   },
   {
    "qid": "Q710302",
@@ -468,7 +491,8 @@
     "author": "Saigen Jiro",
     "license": "CC0",
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
-   }
+   },
+   "sitelinks": 8
   },
   {
    "qid": "Q713021",
@@ -487,7 +511,8 @@
     "author": "Tomomarusan",
     "license": "CC BY 2.5",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.5"
-   }
+   },
+   "sitelinks": 11
   },
   {
    "qid": "Q713177",
@@ -506,7 +531,8 @@
     "author": "Saigen Jiro",
     "license": "CC0",
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
-   }
+   },
+   "sitelinks": 14
   },
   {
    "qid": "Q714828",
@@ -525,7 +551,8 @@
     "author": "Saigen Jiro",
     "license": "CC0",
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
-   }
+   },
+   "sitelinks": 41
   },
   {
    "qid": "Q738971",
@@ -544,7 +571,8 @@
     "author": "掬茶",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 10
   },
   {
    "qid": "Q772598",
@@ -563,7 +591,8 @@
     "author": "663highland",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 10
   },
   {
    "qid": "Q873645",
@@ -582,7 +611,8 @@
     "author": "BriYYZ from Toronto, Canada",
     "license": "CC BY-SA 2.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0"
-   }
+   },
+   "sitelinks": 20
   },
   {
    "qid": "Q901256",
@@ -601,7 +631,8 @@
     "author": "663highland",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 20
   },
   {
    "qid": "Q910041",
@@ -620,7 +651,8 @@
     "author": "Collection of Mitsui Bunko archive",
     "license": "Public domain",
     "licenseUrl": null
-   }
+   },
+   "sitelinks": 9
   },
   {
    "qid": "Q910281",
@@ -639,7 +671,8 @@
     "author": "663highland",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 13
   },
   {
    "qid": "Q911985",
@@ -658,7 +691,8 @@
     "author": "PlusMinus",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
-   }
+   },
+   "sitelinks": 4
   },
   {
    "qid": "Q986750",
@@ -677,7 +711,8 @@
     "author": "663highland",
     "license": "CC BY 2.5",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.5"
-   }
+   },
+   "sitelinks": 20
   },
   {
    "qid": "Q1013399",
@@ -696,7 +731,8 @@
     "author": "Keith Pomakis",
     "license": "CC BY-SA 2.5",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5"
-   }
+   },
+   "sitelinks": 29
   },
   {
    "qid": "Q1045971",
@@ -715,7 +751,8 @@
     "author": "663highland",
     "license": "CC BY 2.5",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.5"
-   }
+   },
+   "sitelinks": 14
   },
   {
    "qid": "Q1046403",
@@ -734,7 +771,8 @@
     "author": "Kakidai",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 30
   },
   {
    "qid": "Q1060771",
@@ -753,7 +791,8 @@
     "author": "663highland",
     "license": "CC BY 2.5",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.5"
-   }
+   },
+   "sitelinks": 10
   },
   {
    "qid": "Q1060966",
@@ -772,7 +811,8 @@
     "author": "663highland",
     "license": "CC BY 2.5",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.5"
-   }
+   },
+   "sitelinks": 13
   },
   {
    "qid": "Q1072538",
@@ -783,7 +823,8 @@
    "lon": 135.83444444,
    "inception": null,
    "worldHeritage": false,
-   "photo": null
+   "photo": null,
+   "sitelinks": 8
   },
   {
    "qid": "Q1072965",
@@ -802,7 +843,8 @@
     "author": "＋－ at Japanese Wikipedia / user:PlusMinus",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
-   }
+   },
+   "sitelinks": 10
   },
   {
    "qid": "Q1075034",
@@ -821,7 +863,8 @@
     "author": "663highland",
     "license": "CC BY 2.5",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.5"
-   }
+   },
+   "sitelinks": 9
   },
   {
    "qid": "Q1082935",
@@ -840,7 +883,8 @@
     "author": "Hyppolyte de Saint-Rambert",
     "license": "CC BY 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/4.0"
-   }
+   },
+   "sitelinks": 10
   },
   {
    "qid": "Q1089231",
@@ -859,7 +903,8 @@
     "author": "PlusMinus",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
-   }
+   },
+   "sitelinks": 6
   },
   {
    "qid": "Q1089767",
@@ -878,7 +923,8 @@
     "author": "663highland",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 22
   },
   {
    "qid": "Q1146038",
@@ -897,7 +943,8 @@
     "author": "663highland",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 17
   },
   {
    "qid": "Q1157535",
@@ -908,7 +955,8 @@
    "lon": 135.81944444,
    "inception": 874,
    "worldHeritage": true,
-   "photo": null
+   "photo": null,
+   "sitelinks": 23
   },
   {
    "qid": "Q1157585",
@@ -927,7 +975,8 @@
     "author": "PlusMinus",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
-   }
+   },
+   "sitelinks": 11
   },
   {
    "qid": "Q1196273",
@@ -946,7 +995,8 @@
     "author": "Thomas vanierschot",
     "license": "Public domain",
     "licenseUrl": null
-   }
+   },
+   "sitelinks": 26
   },
   {
    "qid": "Q1202871",
@@ -965,7 +1015,8 @@
     "author": "663highland",
     "license": "CC BY 2.5",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.5"
-   }
+   },
+   "sitelinks": 25
   },
   {
    "qid": "Q1391664",
@@ -984,7 +1035,8 @@
     "author": "663highland",
     "license": "CC BY 2.5",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.5"
-   }
+   },
+   "sitelinks": 3
   },
   {
    "qid": "Q1440954",
@@ -1003,7 +1055,8 @@
     "author": "663highland",
     "license": "CC BY 2.5",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.5"
-   }
+   },
+   "sitelinks": 13
   },
   {
    "qid": "Q1516753",
@@ -1022,7 +1075,8 @@
     "author": "Ivanoff~commonswiki",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
-   }
+   },
+   "sitelinks": 22
   },
   {
    "qid": "Q1652745",
@@ -1041,7 +1095,8 @@
     "author": "L26",
     "license": "CC BY 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/3.0"
-   }
+   },
+   "sitelinks": 4
   },
   {
    "qid": "Q1759226",
@@ -1060,7 +1115,8 @@
     "author": "osakaosaka",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 20
   },
   {
    "qid": "Q1786709",
@@ -1079,7 +1135,8 @@
     "author": "663highland",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 14
   },
   {
    "qid": "Q2166743",
@@ -1098,7 +1155,8 @@
     "author": "PlusMinus",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
-   }
+   },
+   "sitelinks": 23
   },
   {
    "qid": "Q2380134",
@@ -1117,7 +1175,8 @@
     "author": "Martin Falbisoner",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 9
   },
   {
    "qid": "Q2413893",
@@ -1136,7 +1195,8 @@
     "author": "Braveheart",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 8
   },
   {
    "qid": "Q2702064",
@@ -1155,7 +1215,8 @@
     "author": "663highland",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 15
   },
   {
    "qid": "Q2824122",
@@ -1174,7 +1235,8 @@
     "author": "663highland",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 6
   },
   {
    "qid": "Q2852420",
@@ -1193,7 +1255,8 @@
     "author": "663highland",
     "license": "CC BY 2.5",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.5"
-   }
+   },
+   "sitelinks": 6
   },
   {
    "qid": "Q3015355",
@@ -1212,7 +1275,8 @@
     "author": "Yanajin33",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 6
   },
   {
    "qid": "Q3028486",
@@ -1231,7 +1295,8 @@
     "author": "Fg2",
     "license": "Public domain",
     "licenseUrl": null
-   }
+   },
+   "sitelinks": 8
   },
   {
    "qid": "Q3054422",
@@ -1250,7 +1315,8 @@
     "author": "Oilstreet",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 6
   },
   {
    "qid": "Q3076920",
@@ -1269,7 +1335,8 @@
     "author": "PlusMinus",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
-   }
+   },
+   "sitelinks": 9
   },
   {
    "qid": "Q3076940",
@@ -1288,7 +1355,8 @@
     "author": "Daderot",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 7
   },
   {
    "qid": "Q3080421",
@@ -1307,7 +1375,8 @@
     "author": "663highland",
     "license": "CC BY 2.5",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.5"
-   }
+   },
+   "sitelinks": 8
   },
   {
    "qid": "Q3095172",
@@ -1326,7 +1395,8 @@
     "author": "Yanajin33",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 8
   },
   {
    "qid": "Q3096514",
@@ -1345,7 +1415,8 @@
     "author": "663highland",
     "license": "CC BY 2.5",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.5"
-   }
+   },
+   "sitelinks": 7
   },
   {
    "qid": "Q3138637",
@@ -1364,7 +1435,8 @@
     "author": "663highland",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 10
   },
   {
    "qid": "Q3140297",
@@ -1383,7 +1455,8 @@
     "author": "Brakeet",
     "license": "CC0",
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
-   }
+   },
+   "sitelinks": 6
   },
   {
    "qid": "Q3146371",
@@ -1394,7 +1467,8 @@
    "lon": 135.676975,
    "inception": 713,
    "worldHeritage": false,
-   "photo": null
+   "photo": null,
+   "sitelinks": 6
   },
   {
    "qid": "Q3195151",
@@ -1413,7 +1487,8 @@
     "author": "Yanajin33",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 7
   },
   {
    "qid": "Q3198741",
@@ -1432,7 +1507,8 @@
     "author": "ttshr1970",
     "license": "CC BY 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/3.0"
-   }
+   },
+   "sitelinks": 6
   },
   {
    "qid": "Q3201026",
@@ -1451,7 +1527,8 @@
     "author": "Oilstreet",
     "license": "CC BY 2.5",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.5"
-   }
+   },
+   "sitelinks": 5
   },
   {
    "qid": "Q3541652",
@@ -1470,7 +1547,8 @@
     "author": "Yasu ( talk )",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 5
   },
   {
    "qid": "Q3551943",
@@ -1489,7 +1567,8 @@
     "author": "663highland",
     "license": "CC BY 2.5",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.5"
-   }
+   },
+   "sitelinks": 4
   },
   {
    "qid": "Q3594020",
@@ -1508,7 +1587,8 @@
     "author": "ChiefHira",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 8
   },
   {
    "qid": "Q6134090",
@@ -1527,7 +1607,8 @@
     "author": "NORITO,S",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
-   }
+   },
+   "sitelinks": 7
   },
   {
    "qid": "Q6540880",
@@ -1546,7 +1627,8 @@
     "author": "nnh",
     "license": "Public domain",
     "licenseUrl": null
-   }
+   },
+   "sitelinks": 3
   },
   {
    "qid": "Q8664338",
@@ -1565,7 +1647,8 @@
     "author": "663highland",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 6
   },
   {
    "qid": "Q10919351",
@@ -1576,7 +1659,8 @@
    "lon": 135.767761,
    "inception": null,
    "worldHeritage": false,
-   "photo": null
+   "photo": null,
+   "sitelinks": 5
   },
   {
    "qid": "Q10927539",
@@ -1595,7 +1679,8 @@
     "author": "663highland",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 3
   },
   {
    "qid": "Q10928238",
@@ -1614,7 +1699,8 @@
     "author": "KENPEI",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
-   }
+   },
+   "sitelinks": 4
   },
   {
    "qid": "Q10934650",
@@ -1633,7 +1719,8 @@
     "author": "Hyppolyte de Saint-Rambert",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 9
   },
   {
    "qid": "Q10938466",
@@ -1652,7 +1739,8 @@
     "author": "掬茶",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 3
   },
   {
    "qid": "Q10943054",
@@ -1671,7 +1759,8 @@
     "author": "663highland",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 6
   },
   {
    "qid": "Q10943057",
@@ -1690,7 +1779,8 @@
     "author": "663highland",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 4
   },
   {
    "qid": "Q10952442",
@@ -1709,7 +1799,8 @@
     "author": "Mariemon at Japanese Wikipedia",
     "license": "CC BY 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/3.0"
-   }
+   },
+   "sitelinks": 3
   },
   {
    "qid": "Q11028481",
@@ -1728,7 +1819,8 @@
     "author": "Hyppolyte de Saint-Rambert",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 5
   },
   {
    "qid": "Q11049290",
@@ -1747,7 +1839,8 @@
     "author": "Kumano3 ( talk )",
     "license": "Public domain",
     "licenseUrl": null
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11060322",
@@ -1766,7 +1859,8 @@
     "author": "663highland",
     "license": "CC BY 2.5",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.5"
-   }
+   },
+   "sitelinks": 4
   },
   {
    "qid": "Q11064894",
@@ -1785,7 +1879,8 @@
     "author": "663highland",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 7
   },
   {
    "qid": "Q11090279",
@@ -1804,7 +1899,8 @@
     "author": "663highland",
     "license": "CC BY 2.5",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.5"
-   }
+   },
+   "sitelinks": 7
   },
   {
    "qid": "Q11093340",
@@ -1823,7 +1919,8 @@
     "author": "Shigeru-a24",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 4
   },
   {
    "qid": "Q11123495",
@@ -1842,7 +1939,8 @@
     "author": "663highland",
     "license": "CC BY 2.5",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.5"
-   }
+   },
+   "sitelinks": 3
   },
   {
    "qid": "Q11126319",
@@ -1861,7 +1959,8 @@
     "author": "663highland",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 3
   },
   {
    "qid": "Q11143738",
@@ -1880,7 +1979,8 @@
     "author": "663highland",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 5
   },
   {
    "qid": "Q11151768",
@@ -1899,7 +1999,8 @@
     "author": "ナムソン",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11269244",
@@ -1918,7 +2019,8 @@
     "author": "Wikiwikiyarou",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 3
   },
   {
    "qid": "Q11352666",
@@ -1937,7 +2039,8 @@
     "author": "DCyokohama",
     "license": "CC BY 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/3.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q11353186",
@@ -1956,7 +2059,8 @@
     "author": "663highland",
     "license": "CC BY 2.5",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.5"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11354048",
@@ -1975,7 +2079,8 @@
     "author": "dragon2850",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11354999",
@@ -1994,7 +2099,8 @@
     "author": "KENPEI",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
-   }
+   },
+   "sitelinks": 3
   },
   {
    "qid": "Q11355544",
@@ -2013,7 +2119,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q11358227",
@@ -2032,7 +2139,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11358674",
@@ -2051,7 +2159,8 @@
     "author": "Atelier Verde",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11358677",
@@ -2070,7 +2179,8 @@
     "author": "須原宏志",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q11359018",
@@ -2089,7 +2199,8 @@
     "author": "Atelier Verde",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 4
   },
   {
    "qid": "Q11359019",
@@ -2108,7 +2219,8 @@
     "author": "KishujiRapid",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q11360904",
@@ -2127,7 +2239,8 @@
     "author": "Kumano3 ( talk )",
     "license": "Public domain",
     "licenseUrl": null
-   }
+   },
+   "sitelinks": 4
   },
   {
    "qid": "Q11361596",
@@ -2146,7 +2259,8 @@
     "author": "KishujiRapid",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11368831",
@@ -2165,7 +2279,8 @@
     "author": "Bath Corvus",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11369376",
@@ -2184,7 +2299,8 @@
     "author": "Saigen Jiro",
     "license": "CC0",
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11370080",
@@ -2203,7 +2319,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q11370399",
@@ -2214,7 +2331,8 @@
    "lon": 135.762555555,
    "inception": null,
    "worldHeritage": false,
-   "photo": null
+   "photo": null,
+   "sitelinks": 0
   },
   {
    "qid": "Q11371044",
@@ -2233,7 +2351,8 @@
     "author": "＋－",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11372506",
@@ -2252,7 +2371,8 @@
     "author": "Hirojin taja",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11378564",
@@ -2271,7 +2391,8 @@
     "author": "Nesnad",
     "license": "CC BY 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11381859",
@@ -2290,7 +2411,8 @@
     "author": "醒ヶ井",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11381937",
@@ -2309,7 +2431,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q11388400",
@@ -2328,7 +2451,8 @@
     "author": "Fg2",
     "license": "Public domain",
     "licenseUrl": null
-   }
+   },
+   "sitelinks": 3
   },
   {
    "qid": "Q11392320",
@@ -2347,7 +2471,8 @@
     "author": "Saigen Jiro",
     "license": "CC0",
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
-   }
+   },
+   "sitelinks": 4
   },
   {
    "qid": "Q11395508",
@@ -2366,7 +2491,8 @@
     "author": "Ritsuka",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q11400156",
@@ -2385,7 +2511,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11400336",
@@ -2404,7 +2531,8 @@
     "author": "663highland",
     "license": "CC BY 2.5",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.5"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11400358",
@@ -2415,7 +2543,8 @@
    "lon": 135.834528,
    "inception": 1013,
    "worldHeritage": false,
-   "photo": null
+   "photo": null,
+   "sitelinks": 2
   },
   {
    "qid": "Q11401294",
@@ -2434,7 +2563,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11405045",
@@ -2453,7 +2583,8 @@
     "author": "Yoshio Kohara",
     "license": "CC BY 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/3.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11405174",
@@ -2472,7 +2603,8 @@
     "author": "Naokijp",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11405369",
@@ -2491,7 +2623,8 @@
     "author": "user:Hiroyuki0904",
     "license": "Public domain",
     "licenseUrl": null
-   }
+   },
+   "sitelinks": 3
   },
   {
    "qid": "Q11409172",
@@ -2510,7 +2643,8 @@
     "author": "KENPEI",
     "license": "CC BY 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/3.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11410117",
@@ -2529,7 +2663,8 @@
     "author": "Braveheart",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11410134",
@@ -2548,7 +2683,8 @@
     "author": "Braveheart",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 5
   },
   {
    "qid": "Q11410466",
@@ -2567,7 +2703,8 @@
     "author": "Maechan0360",
     "license": "CC BY 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/3.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q11414206",
@@ -2586,7 +2723,8 @@
     "author": "Yanajin33",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 3
   },
   {
    "qid": "Q11418947",
@@ -2605,7 +2743,8 @@
     "author": "Anguttu100",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11418981",
@@ -2624,7 +2763,8 @@
     "author": "KENPEI",
     "license": "CC BY 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/3.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11422904",
@@ -2643,7 +2783,8 @@
     "author": "663highland",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11424669",
@@ -2662,7 +2803,8 @@
     "author": "Bittercup",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11424689",
@@ -2681,7 +2823,8 @@
     "author": "Atelier Verde",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11424695",
@@ -2700,7 +2843,8 @@
     "author": "Ibaraki101c",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11426034",
@@ -2719,7 +2863,8 @@
     "author": "Wikiwikiyarou",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11426261",
@@ -2738,7 +2883,8 @@
     "author": "Toki-ho",
     "license": "Public domain",
     "licenseUrl": null
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q11432214",
@@ -2757,7 +2903,8 @@
     "author": "Saigen Jiro",
     "license": "CC0",
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11433633",
@@ -2776,7 +2923,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q11434209",
@@ -2795,7 +2943,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q11434526",
@@ -2814,7 +2963,8 @@
     "author": "663highland",
     "license": "CC BY 2.5",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.5"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11434527",
@@ -2833,7 +2983,8 @@
     "author": "日:もかめーる",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11437955",
@@ -2852,7 +3003,8 @@
     "author": "Saigen Jiro",
     "license": "CC0",
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11438539",
@@ -2871,7 +3023,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q11438704",
@@ -2890,7 +3043,8 @@
     "author": "硲彪",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q11439325",
@@ -2909,7 +3063,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11441809",
@@ -2928,7 +3083,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q11442065",
@@ -2947,7 +3103,8 @@
     "author": "Degueulasse",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11442545",
@@ -2966,7 +3123,8 @@
     "author": "須原宏志",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11442798",
@@ -2985,7 +3143,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11446844",
@@ -3004,7 +3163,8 @@
     "author": "Urushi88",
     "license": "Public domain",
     "licenseUrl": null
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11446853",
@@ -3023,7 +3183,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11447007",
@@ -3042,7 +3203,8 @@
     "author": "Atelier Verde",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 4
   },
   {
    "qid": "Q11447037",
@@ -3061,7 +3223,8 @@
     "author": "Follow up on Upload file",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 3
   },
   {
    "qid": "Q11447077",
@@ -3080,7 +3243,8 @@
     "author": "Atelier Verde",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 3
   },
   {
    "qid": "Q11450246",
@@ -3099,7 +3263,8 @@
     "author": "663highland",
     "license": "CC BY 2.5",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.5"
-   }
+   },
+   "sitelinks": 3
   },
   {
    "qid": "Q11450871",
@@ -3118,7 +3283,8 @@
     "author": "Yanajin33",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11451144",
@@ -3137,7 +3303,8 @@
     "author": "663highland",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11451877",
@@ -3156,7 +3323,8 @@
     "author": "Saigen Jiro",
     "license": "CC0",
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
-   }
+   },
+   "sitelinks": 3
   },
   {
    "qid": "Q11452346",
@@ -3175,7 +3343,8 @@
     "author": "PlusMinus",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
-   }
+   },
+   "sitelinks": 3
   },
   {
    "qid": "Q11452667",
@@ -3194,7 +3363,8 @@
     "author": "Yanajin33",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11452697",
@@ -3213,7 +3383,8 @@
     "author": "PlusMinus",
     "license": "CC BY 2.5",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.5"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11452823",
@@ -3232,7 +3403,8 @@
     "author": "＋－",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
-   }
+   },
+   "sitelinks": 4
   },
   {
    "qid": "Q11453117",
@@ -3251,7 +3423,8 @@
     "author": "663highland",
     "license": "CC BY 2.5",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.5"
-   }
+   },
+   "sitelinks": 3
   },
   {
    "qid": "Q11470816",
@@ -3270,7 +3443,8 @@
     "author": "Kumano3 ( talk )",
     "license": "Public domain",
     "licenseUrl": null
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11472971",
@@ -3289,7 +3463,8 @@
     "author": "Tinylittletree",
     "license": "CC0",
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11474383",
@@ -3308,7 +3483,8 @@
     "author": "Maechan0360",
     "license": "CC BY 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/3.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11476122",
@@ -3327,7 +3503,8 @@
     "author": "酒井勲",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11477104",
@@ -3346,7 +3523,8 @@
     "author": "Kumano3 ( talk )",
     "license": "Public domain",
     "licenseUrl": null
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11481409",
@@ -3365,7 +3543,8 @@
     "author": "Bittercup",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q11481415",
@@ -3384,7 +3563,8 @@
     "author": "KishujiRapid",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q11481457",
@@ -3403,7 +3583,8 @@
     "author": "Dr BUER",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11481460",
@@ -3422,7 +3603,8 @@
     "author": "Indiana jo",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11483471",
@@ -3441,7 +3623,8 @@
     "author": "KishujiRapid",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 3
   },
   {
    "qid": "Q11486473",
@@ -3460,7 +3643,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11487153",
@@ -3479,7 +3663,8 @@
     "author": "Hyppolyte de Saint-Rambert",
     "license": "CC BY 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11489342",
@@ -3498,7 +3683,8 @@
     "author": "Brakeet",
     "license": "CC0",
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11490569",
@@ -3517,7 +3703,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q11491512",
@@ -3536,7 +3723,8 @@
     "author": "山重",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q11492949",
@@ -3555,7 +3743,8 @@
     "author": "Mavicsuma",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11499684",
@@ -3574,7 +3763,8 @@
     "author": "Yanajin33",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 4
   },
   {
    "qid": "Q11502277",
@@ -3593,7 +3783,8 @@
     "author": "Bokuchan20120524",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11502342",
@@ -3612,7 +3803,8 @@
     "author": "KENPEI",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 3
   },
   {
    "qid": "Q11505112",
@@ -3631,7 +3823,8 @@
     "author": "KENPEI",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
-   }
+   },
+   "sitelinks": 3
   },
   {
    "qid": "Q11518370",
@@ -3650,7 +3843,8 @@
     "author": "Saigen Jiro",
     "license": "CC0",
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11520503",
@@ -3669,7 +3863,8 @@
     "author": "663highland",
     "license": "CC BY 2.5",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.5"
-   }
+   },
+   "sitelinks": 4
   },
   {
    "qid": "Q11520525",
@@ -3688,7 +3883,8 @@
     "author": "Bittercup",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11520743",
@@ -3707,7 +3903,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q11521041",
@@ -3726,7 +3923,8 @@
     "author": "Bittercup",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11521047",
@@ -3745,7 +3943,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q11521049",
@@ -3764,7 +3963,8 @@
     "author": "Suiryu",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11523758",
@@ -3783,7 +3983,8 @@
     "author": "Nankou Oronain (as36…",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11523759",
@@ -3802,7 +4003,8 @@
     "author": "KENPEI",
     "license": "CC BY 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/3.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11526269",
@@ -3821,7 +4023,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q11526330",
@@ -3840,7 +4043,8 @@
     "author": "663highland",
     "license": "CC BY 2.5",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.5"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11526754",
@@ -3851,7 +4055,8 @@
    "lon": 135.785388888,
    "inception": 1552,
    "worldHeritage": null,
-   "photo": null
+   "photo": null,
+   "sitelinks": 1
   },
   {
    "qid": "Q11532808",
@@ -3862,7 +4067,8 @@
    "lon": 135.802167,
    "inception": null,
    "worldHeritage": false,
-   "photo": null
+   "photo": null,
+   "sitelinks": 1
   },
   {
    "qid": "Q11535783",
@@ -3881,7 +4087,8 @@
     "author": "bittercup",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q11537038",
@@ -3900,7 +4107,8 @@
     "author": "さかおり",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q11538723",
@@ -3919,7 +4127,8 @@
     "author": "Saigen Jiro",
     "license": "CC0",
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11538748",
@@ -3938,7 +4147,8 @@
     "author": "Kumano3 ( talk )",
     "license": "Public domain",
     "licenseUrl": null
-   }
+   },
+   "sitelinks": 3
   },
   {
    "qid": "Q11544580",
@@ -3957,7 +4167,8 @@
     "author": "ChiefHira",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11545313",
@@ -3976,7 +4187,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 4
   },
   {
    "qid": "Q11545356",
@@ -3995,7 +4207,8 @@
     "author": "Junichi Morita",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11545392",
@@ -4006,7 +4219,8 @@
    "lon": 135.764755,
    "inception": null,
    "worldHeritage": false,
-   "photo": null
+   "photo": null,
+   "sitelinks": 0
   },
   {
    "qid": "Q11545536",
@@ -4025,7 +4239,8 @@
     "author": "Bittercup",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q11545555",
@@ -4044,7 +4259,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q11548940",
@@ -4055,7 +4271,8 @@
    "lon": 135.751916666,
    "inception": null,
    "worldHeritage": false,
-   "photo": null
+   "photo": null,
+   "sitelinks": 4
   },
   {
    "qid": "Q11550311",
@@ -4074,7 +4291,8 @@
     "author": "Yanajin33",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11551131",
@@ -4093,7 +4311,8 @@
     "author": "Fryrzr0000",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11555149",
@@ -4112,7 +4331,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11555255",
@@ -4131,7 +4351,8 @@
     "author": "Bittercup",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q11555257",
@@ -4150,7 +4371,8 @@
     "author": "Eric Salard",
     "license": "CC BY-SA 2.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0"
-   }
+   },
+   "sitelinks": 7
   },
   {
    "qid": "Q11555272",
@@ -4169,7 +4391,8 @@
     "author": "663highland",
     "license": "CC BY 2.5",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.5"
-   }
+   },
+   "sitelinks": 4
   },
   {
    "qid": "Q11555353",
@@ -4188,7 +4411,8 @@
     "author": "663highland",
     "license": "CC BY 2.5",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.5"
-   }
+   },
+   "sitelinks": 10
   },
   {
    "qid": "Q11555368",
@@ -4207,7 +4431,8 @@
     "author": "Atelier Verde",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11556781",
@@ -4226,7 +4451,8 @@
     "author": "小倉商事",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11556826",
@@ -4245,7 +4471,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q11556828",
@@ -4264,7 +4491,8 @@
     "author": "Yanajin33",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q11558861",
@@ -4283,7 +4511,8 @@
     "author": "Bittercup",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11559693",
@@ -4294,7 +4523,8 @@
    "lon": 135.71911361,
    "inception": null,
    "worldHeritage": false,
-   "photo": null
+   "photo": null,
+   "sitelinks": 2
   },
   {
    "qid": "Q11559695",
@@ -4313,7 +4543,8 @@
     "author": "投稿者が撮影",
     "license": "Public domain",
     "licenseUrl": null
-   }
+   },
+   "sitelinks": 5
   },
   {
    "qid": "Q11560543",
@@ -4332,7 +4563,8 @@
     "author": "Bittercup",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q11561286",
@@ -4351,7 +4583,8 @@
     "author": "PlusMinus",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
-   }
+   },
+   "sitelinks": 3
   },
   {
    "qid": "Q11561294",
@@ -4370,7 +4603,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11561442",
@@ -4389,7 +4623,8 @@
     "author": "SRIA",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 4
   },
   {
    "qid": "Q11564007",
@@ -4408,7 +4643,8 @@
     "author": "663highland",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11564240",
@@ -4427,7 +4663,8 @@
     "author": "Tagao0707",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q11566981",
@@ -4446,7 +4683,8 @@
     "author": "Jerry fish tkc",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11573864",
@@ -4465,7 +4703,8 @@
     "author": "Bittercup",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q11573899",
@@ -4484,7 +4723,8 @@
     "author": "Daderot",
     "license": "CC0",
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
-   }
+   },
+   "sitelinks": 3
   },
   {
    "qid": "Q11577577",
@@ -4503,7 +4743,8 @@
     "author": "Mariemon",
     "license": "CC BY 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/3.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11581754",
@@ -4522,7 +4763,8 @@
     "author": "駿遠線",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11583037",
@@ -4541,7 +4783,8 @@
     "author": "Atelier Verde",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 3
   },
   {
    "qid": "Q11584591",
@@ -4560,7 +4803,8 @@
     "author": "Daderot",
     "license": "CC0",
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
-   }
+   },
+   "sitelinks": 4
   },
   {
    "qid": "Q11585175",
@@ -4579,7 +4823,8 @@
     "author": "PlusMinus",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11585586",
@@ -4598,7 +4843,8 @@
     "author": "宮内 利彰",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11588451",
@@ -4617,7 +4863,8 @@
     "author": "じゃんもどき on Japanese Wikipedia",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 3
   },
   {
    "qid": "Q11588753",
@@ -4636,7 +4883,8 @@
     "author": "日:もかめーる",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 3
   },
   {
    "qid": "Q11590468",
@@ -4655,7 +4903,8 @@
     "author": "663highland",
     "license": "CC BY 2.5",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.5"
-   }
+   },
+   "sitelinks": 9
   },
   {
    "qid": "Q11591827",
@@ -4674,7 +4923,8 @@
     "author": "663highland",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11594015",
@@ -4693,7 +4943,8 @@
     "author": "VanishingDuck",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11598009",
@@ -4712,7 +4963,8 @@
     "author": "Atelier Verde",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11604632",
@@ -4731,7 +4983,8 @@
     "author": "Daderot",
     "license": "Public domain",
     "licenseUrl": null
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11607305",
@@ -4750,7 +5003,8 @@
     "author": "Jerry fish tkc",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q11612453",
@@ -4769,7 +5023,8 @@
     "author": "Atelier Verde",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11613316",
@@ -4788,7 +5043,8 @@
     "author": "投稿者が撮影",
     "license": "Public domain",
     "licenseUrl": null
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11613411",
@@ -4807,7 +5063,8 @@
     "author": "663highland",
     "license": "CC BY 2.5",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.5"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11613457",
@@ -4826,7 +5083,8 @@
     "author": "Hyppolyte de Saint-Rambert",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 3
   },
   {
    "qid": "Q11616253",
@@ -4845,7 +5103,8 @@
     "author": "Cakoko23",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11620048",
@@ -4864,7 +5123,8 @@
     "author": "Yanajin33",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 3
   },
   {
    "qid": "Q11621738",
@@ -4883,7 +5143,8 @@
     "author": "663highland",
     "license": "CC BY 2.5",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.5"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11621739",
@@ -4902,7 +5163,8 @@
     "author": "user:KMR",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11624431",
@@ -4921,7 +5183,8 @@
     "author": "Naokijp",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 3
   },
   {
    "qid": "Q11627446",
@@ -4940,7 +5203,8 @@
     "author": "Brakeet",
     "license": "CC0",
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11627693",
@@ -4959,7 +5223,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11628329",
@@ -4978,7 +5243,8 @@
     "author": "Shinmaebashi",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q11628331",
@@ -4997,7 +5263,8 @@
     "author": "Atelier Verde",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q11628431",
@@ -5016,7 +5283,8 @@
     "author": "663highland",
     "license": "CC BY 2.5",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.5"
-   }
+   },
+   "sitelinks": 3
   },
   {
    "qid": "Q11629472",
@@ -5035,7 +5303,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11629957",
@@ -5054,7 +5323,8 @@
     "author": "Ritsuka",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11629973",
@@ -5073,7 +5343,8 @@
     "author": "KishujiRapid",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11630596",
@@ -5092,7 +5363,8 @@
     "author": "Original uploader was Nnn at ja.wikipedia (Edited by 663highland )",
     "license": "CC BY 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/3.0"
-   }
+   },
+   "sitelinks": 4
   },
   {
    "qid": "Q11632498",
@@ -5111,7 +5383,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q11632526",
@@ -5130,7 +5403,8 @@
     "author": "No machine-readable author provided. S kitahashi assumed (based on copyright claims).",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
-   }
+   },
+   "sitelinks": 4
   },
   {
    "qid": "Q11637305",
@@ -5149,7 +5423,8 @@
     "author": "＋－",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11640503",
@@ -5168,7 +5443,8 @@
     "author": "Atelier Verde",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11641865",
@@ -5187,7 +5463,8 @@
     "author": "日:もかめーる",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11642476",
@@ -5206,7 +5483,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q11646439",
@@ -5225,7 +5503,8 @@
     "author": "KishujiRapid",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q11647848",
@@ -5244,7 +5523,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11650427",
@@ -5263,7 +5543,8 @@
     "author": "Naokijp",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 6
   },
   {
    "qid": "Q11652982",
@@ -5282,7 +5563,8 @@
     "author": "Tagao0707",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q11653106",
@@ -5301,7 +5583,8 @@
     "author": "小倉商事",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11653535",
@@ -5320,7 +5603,8 @@
     "author": "KENPEI",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11653663",
@@ -5339,7 +5623,8 @@
     "author": "KishujiRapid",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11657419",
@@ -5358,7 +5643,8 @@
     "author": "Bittercup",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11657420",
@@ -5377,7 +5663,8 @@
     "author": "Chu-Totoro",
     "license": "Public domain",
     "licenseUrl": null
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11658945",
@@ -5396,7 +5683,8 @@
     "author": "663highland",
     "license": "CC BY 2.5",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.5"
-   }
+   },
+   "sitelinks": 4
   },
   {
    "qid": "Q11659439",
@@ -5415,7 +5703,8 @@
     "author": "Bittercup",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q11660689",
@@ -5434,7 +5723,8 @@
     "author": "ignis",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
-   }
+   },
+   "sitelinks": 3
   },
   {
    "qid": "Q11662837",
@@ -5453,7 +5743,8 @@
     "author": "Bittercup",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11662840",
@@ -5472,7 +5763,8 @@
     "author": "L26",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11664405",
@@ -5491,7 +5783,8 @@
     "author": "mariemon",
     "license": "CC BY 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/3.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11665144",
@@ -5510,7 +5803,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q11666843",
@@ -5529,7 +5823,8 @@
     "author": "PlusMinus",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
-   }
+   },
+   "sitelinks": 3
   },
   {
    "qid": "Q11676429",
@@ -5548,7 +5843,8 @@
     "author": "shiro524",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 3
   },
   {
    "qid": "Q11677239",
@@ -5567,7 +5863,8 @@
     "author": "663highland",
     "license": "CC BY 2.5",
     "licenseUrl": "https://creativecommons.org/licenses/by/2.5"
-   }
+   },
+   "sitelinks": 3
   },
   {
    "qid": "Q11679201",
@@ -5586,7 +5883,8 @@
     "author": "Bittercup",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q17191533",
@@ -5605,7 +5903,8 @@
     "author": "Saigen Jiro",
     "license": "CC0",
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q17191862",
@@ -5624,7 +5923,8 @@
     "author": "Yanajin33",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 3
   },
   {
    "qid": "Q17193550",
@@ -5643,7 +5943,8 @@
     "author": "Bittercup",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q17209556",
@@ -5662,7 +5963,8 @@
     "author": "Yanajin33",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 3
   },
   {
    "qid": "Q17214466",
@@ -5681,7 +5983,8 @@
     "author": "Akanezora",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q17218077",
@@ -5700,7 +6003,8 @@
     "author": "Yanajin33",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q17218563",
@@ -5719,7 +6023,8 @@
     "author": "Bittercup",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q17218661",
@@ -5738,7 +6043,8 @@
     "author": "Shinmaebashi",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q17218751",
@@ -5757,7 +6063,8 @@
     "author": "Yanajin33",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 3
   },
   {
    "qid": "Q17221535",
@@ -5776,7 +6083,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q17224626",
@@ -5795,7 +6103,8 @@
     "author": "Woles",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 3
   },
   {
    "qid": "Q17225038",
@@ -5814,7 +6123,8 @@
     "author": "Yanajin33",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q17226256",
@@ -5833,7 +6143,8 @@
     "author": "Yanajin33",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q17988913",
@@ -5852,7 +6163,8 @@
     "author": "Atelier Verde",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q17993668",
@@ -5871,7 +6183,8 @@
     "author": "Shinmaebashi",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 6
   },
   {
    "qid": "Q17994598",
@@ -5890,7 +6203,8 @@
     "author": "Atelier Verde",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q18338914",
@@ -5909,7 +6223,8 @@
     "author": "Atelier Verde",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q18339120",
@@ -5928,7 +6243,8 @@
     "author": "Saigen Jiro",
     "license": "CC0",
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
-   }
+   },
+   "sitelinks": 3
   },
   {
    "qid": "Q18378681",
@@ -5947,7 +6263,8 @@
     "author": "＋－ at Japanese Wikipedia on Japanese Wikipedia",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
-   }
+   },
+   "sitelinks": 4
   },
   {
    "qid": "Q18460218",
@@ -5966,7 +6283,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q20043316",
@@ -5985,7 +6303,8 @@
     "author": "Kamigata0",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q20043593",
@@ -6004,7 +6323,8 @@
     "author": "KENPEI",
     "license": "CC BY 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/3.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q20044419",
@@ -6023,7 +6343,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q20044462",
@@ -6042,7 +6363,8 @@
     "author": "Bittercup",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q21019665",
@@ -6061,7 +6383,8 @@
     "author": "Saigen Jiro",
     "license": "CC0",
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
-   }
+   },
+   "sitelinks": 3
   },
   {
    "qid": "Q21019695",
@@ -6080,7 +6403,8 @@
     "author": "Yanajin33",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q21019704",
@@ -6099,7 +6423,8 @@
     "author": "Indiana jo",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q22118804",
@@ -6118,7 +6443,8 @@
     "author": "Lovelin6th",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q22119290",
@@ -6137,7 +6463,8 @@
     "author": "Dr BUER",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q22119355",
@@ -6156,7 +6483,8 @@
     "author": "KishujiRapid",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q22120562",
@@ -6175,7 +6503,8 @@
     "author": "Tagao0707",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q24006041",
@@ -6194,7 +6523,8 @@
     "author": "従六位上河内介",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q24859535",
@@ -6213,7 +6543,8 @@
     "author": "ccfarmer",
     "license": "CC BY 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/3.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q24868753",
@@ -6232,7 +6563,8 @@
     "author": "Bittercup",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q24870524",
@@ -6251,7 +6583,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q28682504",
@@ -6270,7 +6603,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q28693478",
@@ -6289,7 +6623,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q29407978",
@@ -6308,7 +6643,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q29407985",
@@ -6327,7 +6663,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q29408035",
@@ -6346,7 +6683,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q29408070",
@@ -6365,7 +6703,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q29408088",
@@ -6384,7 +6723,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q30930656",
@@ -6403,7 +6743,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q30931092",
@@ -6422,7 +6763,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q30931103",
@@ -6441,7 +6783,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q30931223",
@@ -6460,7 +6803,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q30931242",
@@ -6479,7 +6823,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q30931482",
@@ -6498,7 +6843,8 @@
     "author": "663highland",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q30931490",
@@ -6517,7 +6863,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q30931507",
@@ -6536,7 +6883,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q30932866",
@@ -6555,7 +6903,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q38277764",
@@ -6574,7 +6923,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q43594314",
@@ -6593,7 +6943,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q43594565",
@@ -6612,7 +6963,8 @@
     "author": "龍岳",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q43594574",
@@ -6631,7 +6983,8 @@
     "author": "Nw1326",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q43594910",
@@ -6650,7 +7003,8 @@
     "author": "龍岳",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q48762420",
@@ -6669,7 +7023,8 @@
     "author": "龍岳",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q48762959",
@@ -6688,7 +7043,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q48763132",
@@ -6707,7 +7063,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q48763139",
@@ -6726,7 +7083,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q48763144",
@@ -6745,7 +7103,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q48763373",
@@ -6764,7 +7123,8 @@
     "author": "Syunsak",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q48763821",
@@ -6783,7 +7143,8 @@
     "author": "龍岳",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q54152952",
@@ -6802,7 +7163,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q54152981",
@@ -6821,7 +7183,8 @@
     "author": "Naokijp",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 5
   },
   {
    "qid": "Q54152983",
@@ -6840,7 +7203,8 @@
     "author": "Indiana jo",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q54153258",
@@ -6859,7 +7223,8 @@
     "author": "Sun Taro",
     "license": "CC BY-SA 2.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q54153288",
@@ -6878,7 +7243,8 @@
     "author": "KENPEI",
     "license": "CC BY 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/3.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q55534771",
@@ -6897,7 +7263,8 @@
     "author": "Bittercup",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q55537255",
@@ -6916,7 +7283,8 @@
     "author": "KENPEI",
     "license": "CC BY 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/3.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q55537303",
@@ -6935,7 +7303,8 @@
     "author": "Brakeet",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q55537320",
@@ -6954,7 +7323,8 @@
     "author": "KENPEI",
     "license": "CC BY 3.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/3.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q55537374",
@@ -6973,7 +7343,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q55538275",
@@ -6992,7 +7363,8 @@
     "author": "Dr BUER",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q55538321",
@@ -7011,7 +7383,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q56347627",
@@ -7030,7 +7403,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q56348500",
@@ -7049,7 +7423,8 @@
     "author": "大野 一将",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q57338123",
@@ -7068,7 +7443,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q59208988",
@@ -7087,7 +7463,8 @@
     "author": "Hyppolyte de Saint-Rambert",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q63147928",
@@ -7106,7 +7483,8 @@
     "author": "かえるゼミ",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q65247911",
@@ -7125,7 +7503,8 @@
     "author": "笹谷康之",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q65248501",
@@ -7144,7 +7523,8 @@
     "author": "Bittercup",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q65249543",
@@ -7163,7 +7543,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q65261024",
@@ -7182,7 +7563,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q65269024",
@@ -7201,7 +7583,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q65275830",
@@ -7220,7 +7603,8 @@
     "author": "Okayu2323",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q65278999",
@@ -7239,7 +7623,8 @@
     "author": "Saigen Jiro",
     "license": "CC0",
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q76259441",
@@ -7258,7 +7643,8 @@
     "author": "Monolith0625",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q85875581",
@@ -7277,7 +7663,8 @@
     "author": "Saigen Jiro",
     "license": "CC0",
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q85879932",
@@ -7296,7 +7683,8 @@
     "author": "天才くん",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q85880081",
@@ -7315,7 +7703,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q85880201",
@@ -7334,7 +7723,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q85880838",
@@ -7353,7 +7743,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q85881203",
@@ -7372,7 +7763,8 @@
     "author": "天才くん",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q85882905",
@@ -7391,7 +7783,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q85884334",
@@ -7410,7 +7803,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q97311555",
@@ -7429,7 +7823,8 @@
     "author": "京都新観光提言懇談会メンバー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q100872909",
@@ -7448,7 +7843,8 @@
     "author": "岡本英治",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q105711920",
@@ -7467,7 +7863,8 @@
     "author": "Dong Young",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q106836669",
@@ -7486,7 +7883,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q106836678",
@@ -7505,7 +7903,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q106836682",
@@ -7524,7 +7923,8 @@
     "author": "KENPEI",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q106836704",
@@ -7543,7 +7943,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q106836760",
@@ -7562,7 +7963,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q106852479",
@@ -7581,7 +7983,8 @@
     "author": "KENPEI",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q106852642",
@@ -7600,7 +8003,8 @@
     "author": "Brakeet",
     "license": "CC0",
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q107390991",
@@ -7619,7 +8023,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q109361856",
@@ -7638,7 +8043,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q109581890",
@@ -7657,7 +8063,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q109594691",
@@ -7676,7 +8083,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q109595538",
@@ -7695,7 +8103,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q110712440",
@@ -7714,7 +8123,8 @@
     "author": "恵比寿麦酒",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q111551908",
@@ -7733,7 +8143,8 @@
     "author": "Brakeet",
     "license": "CC0",
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q114885578",
@@ -7752,7 +8163,8 @@
     "author": "Brakeet",
     "license": "CC0",
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q115617516",
@@ -7771,7 +8183,8 @@
     "author": "Higa4",
     "license": "CC0",
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q115621875",
@@ -7790,7 +8203,8 @@
     "author": "Higa4",
     "license": "CC0",
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q115624950",
@@ -7809,7 +8223,8 @@
     "author": "Higa4",
     "license": "CC0",
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q115645224",
@@ -7828,7 +8243,8 @@
     "author": "Higa4",
     "license": "CC0",
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q115645388",
@@ -7847,7 +8263,8 @@
     "author": "Higa4",
     "license": "CC0",
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q115669275",
@@ -7866,7 +8283,8 @@
     "author": "Higa4",
     "license": "CC0",
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q115680385",
@@ -7885,7 +8303,8 @@
     "author": "Higa4",
     "license": "CC0",
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q115687386",
@@ -7904,7 +8323,8 @@
     "author": "Higa4",
     "license": "CC0",
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q115706905",
@@ -7923,7 +8343,8 @@
     "author": "Higa4",
     "license": "CC0",
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q115721833",
@@ -7942,7 +8363,8 @@
     "author": "Higa4",
     "license": "CC0",
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q115721983",
@@ -7961,7 +8383,8 @@
     "author": "Higa4",
     "license": "CC0",
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q115722133",
@@ -7980,7 +8403,8 @@
     "author": "Higa4",
     "license": "CC0",
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q115722437",
@@ -7999,7 +8423,8 @@
     "author": "Higa4",
     "license": "CC0",
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q115917112",
@@ -8018,7 +8443,8 @@
     "author": "Poku45",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q116085694",
@@ -8037,7 +8463,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q116249965",
@@ -8056,7 +8483,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q118556903",
@@ -8075,7 +8503,8 @@
     "author": "Ignis",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q119928706",
@@ -8094,7 +8523,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q119928771",
@@ -8113,7 +8543,8 @@
     "author": "Daderot",
     "license": "CC0",
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q121366720",
@@ -8124,7 +8555,8 @@
    "lon": 135.740583,
    "inception": null,
    "worldHeritage": false,
-   "photo": null
+   "photo": null,
+   "sitelinks": 1
   },
   {
    "qid": "Q121614626",
@@ -8143,7 +8575,8 @@
     "author": "Brakeet",
     "license": "CC0",
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q122833543",
@@ -8162,7 +8595,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q123114940",
@@ -8181,7 +8615,8 @@
     "author": "KENPEI",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q123114960",
@@ -8200,7 +8635,8 @@
     "author": "Brakeet",
     "license": "CC0",
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q123114982",
@@ -8219,7 +8655,8 @@
     "author": "KimonBerlin",
     "license": "CC BY-SA 2.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q123115002",
@@ -8238,7 +8675,8 @@
     "author": "Bittercup",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q124408640",
@@ -8257,7 +8695,8 @@
     "author": "Yukinobu Kurata (倉田幸暢)",
     "license": "CC0",
     "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q124427629",
@@ -8268,7 +8707,8 @@
    "lon": 135.753028,
    "inception": null,
    "worldHeritage": false,
-   "photo": null
+   "photo": null,
+   "sitelinks": 2
   },
   {
    "qid": "Q124482750",
@@ -8279,7 +8719,8 @@
    "lon": 135.761406611,
    "inception": 959,
    "worldHeritage": false,
-   "photo": null
+   "photo": null,
+   "sitelinks": 1
   },
   {
    "qid": "Q124496362",
@@ -8290,7 +8731,8 @@
    "lon": 135.739937,
    "inception": 1602,
    "worldHeritage": false,
-   "photo": null
+   "photo": null,
+   "sitelinks": 1
   },
   {
    "qid": "Q124496369",
@@ -8309,7 +8751,8 @@
     "author": "運動会プロテインパワー",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q124496423",
@@ -8320,7 +8763,8 @@
    "lon": 135.816417,
    "inception": null,
    "worldHeritage": false,
-   "photo": null
+   "photo": null,
+   "sitelinks": 1
   },
   {
    "qid": "Q125688027",
@@ -8339,7 +8783,8 @@
     "author": "Hyppolyte de Saint-Rambert",
     "license": "CC BY 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q126285087",
@@ -8358,7 +8803,8 @@
     "author": "MK39",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q129949871",
@@ -8369,7 +8815,8 @@
    "lon": 135.758,
    "inception": null,
    "worldHeritage": false,
-   "photo": null
+   "photo": null,
+   "sitelinks": 2
   },
   {
    "qid": "Q132040928",
@@ -8388,7 +8835,8 @@
     "author": "Bittercup",
     "license": "CC BY 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q132154375",
@@ -8399,7 +8847,8 @@
    "lon": 135.847806,
    "inception": null,
    "worldHeritage": false,
-   "photo": null
+   "photo": null,
+   "sitelinks": 1
   },
   {
    "qid": "Q134760831",
@@ -8418,7 +8867,8 @@
     "author": "拜郷 英亮",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   },
   {
    "qid": "Q134888240",
@@ -8437,7 +8887,8 @@
     "author": "663highland",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q134893142",
@@ -8456,7 +8907,8 @@
     "author": "Ktktktktktktktktkt",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q135486500",
@@ -8475,7 +8927,8 @@
     "author": "663highland",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q139942459",
@@ -8494,7 +8947,8 @@
     "author": "KENPEI",
     "license": "CC BY-SA 3.0",
     "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q139994582",
@@ -8505,7 +8959,8 @@
    "lon": 135.74435,
    "inception": null,
    "worldHeritage": false,
-   "photo": null
+   "photo": null,
+   "sitelinks": 1
   },
   {
    "qid": "Q140190518",
@@ -8524,7 +8979,8 @@
     "author": "nnh",
     "license": "Public domain",
     "licenseUrl": null
-   }
+   },
+   "sitelinks": 1
   },
   {
    "qid": "Q140356216",
@@ -8543,7 +8999,8 @@
     "author": "663highland",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-   }
+   },
+   "sitelinks": 2
   }
  ]
 }

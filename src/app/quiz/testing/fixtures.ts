@@ -66,5 +66,6 @@ export const shaji = (s: Partial<Shaji> & Pick<Shaji, 'qid' | 'name' | 'lat' | '
   inception: null,
   worldHeritage: false,
   photo: photo(s.qid),
+  sitelinks: 5,
   ...s,
 });
