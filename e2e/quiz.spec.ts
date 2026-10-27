@@ -76,6 +76,11 @@ test('ホームに難易度 3 つと今日の5問が並ぶ', async ({ page }) =>
   await page.goto('./');
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('京都いけず問答');
   await expect(page.locator('.mode-name')).toHaveText(MODES);
+  // 検索エンジン向けの正式な URL（Netlify のドメインで読まれても games.hidetaka.dev を指す）
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+    'href',
+    'https://games.hidetaka.dev/kyoto-ikezu-quiz/',
+  );
   expect(violations).toEqual([]);
 });
 
@@ -175,6 +180,30 @@ test('ライセンス画面に同梱ライブラリのライセンスが出る',
   await prepare(page);
   await page.goto('./#/licenses');
   await expect(page.locator('pre')).toContainText('@angular/core');
+});
+
+test('Netlify の本番ドメインに直接来たら、画面を引き継いで games.hidetaka.dev へ移る', async ({
+  page,
+  baseURL,
+}) => {
+  // Netlify のドメインへのアクセスを、手元でビルドしたものに差し替える
+  await page.route(
+    /^https:\/\/(kyoto-app|deploy-preview-1--kyoto-app)\.netlify\.app\//,
+    async (route) => {
+      const path = new URL(route.request().url()).pathname;
+      route.fulfill({ response: await page.request.fetch(new URL(`.${path}`, baseURL).href) });
+    },
+  );
+  await page.route(/^https:\/\/games\.hidetaka\.dev\//, (r) =>
+    r.fulfill({ status: 200, contentType: 'text/html', body: '<title>moved</title>' }),
+  );
+  await page.goto('https://kyoto-app.netlify.app/#/credits');
+  await expect(page).toHaveURL('https://games.hidetaka.dev/kyoto-ikezu-quiz/#/credits');
+
+  // デプロイプレビューは移さない
+  await page.goto('https://deploy-preview-1--kyoto-app.netlify.app/');
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('京都いけず問答');
+  expect(new URL(page.url()).host).toBe('deploy-preview-1--kyoto-app.netlify.app');
 });
 
 test('出題中にリロードしたらホームに戻る', async ({ page }) => {

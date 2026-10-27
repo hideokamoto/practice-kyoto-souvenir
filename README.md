@@ -132,6 +132,7 @@ Netlify にデプロイし、games.hidetaka.dev のドメインから配信し�
 - **デプロイ:** Netlify サイト kyoto-app が `main` を自動でビルドして公開します（`netlify.toml`、Node 24 に固定）。PR ごとのデプロイプレビューも同じ設定です。
 - **配信:** `https://games.hidetaka.dev/kyoto-ikezu-quiz/`。games.hidetaka.dev の CloudFront が `/kyoto-ikezu-quiz` を剥がして `kyoto-app.netlify.app` へ取りに行きます（`hideokamoto/games.hidetaka.dev` の `cdk/src/apps.ts` に登録）。ビルドは base href を `./` にしているので、Netlify の URL でもサブパスでも同じ成果物が動きます。
 - **CSP:** games.hidetaka.dev の CloudFront が付けます。許可が必要な外部ホストは、画像の `upload.wikimedia.org` と `cyberjapandata.gsi.go.jp` だけです。
+- **Netlify のドメインに直接来たとき:** `kyoto-app.netlify.app` で開くと、アプリの起動前に `https://games.hidetaka.dev/kyoto-ikezu-quiz/` へ移ります（画面のハッシュとクエリは引き継ぐ。`src/app/canonical.ts`）。HTTP の 301 ではなくブラウザ側の移動です。デプロイプレビュー（`--` を含むドメイン）と手元は移しません。検索エンジン向けには `index.html` の `<link rel="canonical">` で正式な URL を示しています。
 - **キャッシュ:** Netlify のデプロイは games.hidetaka.dev の CloudFront キャッシュを無効化しません。Netlify は `max-age=0` を返すので、CloudFront の最小 TTL の 60 秒ほどで反映されます（`max-age` を長くするとその分遅れます）。
 - GitHub Actions（`.github/workflows/ci.yml`）はテスト・ビルド・E2E だけを実行し、公開はしません。
 
